@@ -6,15 +6,10 @@
 
 <tiles-definitions>
 
-	<!-- BASE LAYOUT -->
-	<definition name="baseLayout" template="/layouts/mainLayout.jsp">
-	
-	</definition>
-
 	<!-- INDEX -->
-	<definition name="index" extends="baseLayout">
-		<put-attribute name="title" value="Accueil" />
-		<put-attribute name="body" value="/views/index.jsp" />
+	<definition name="bars" extends="baseLayout">
+		<put-attribute name="title" value="bars" />
+		<put-attribute name="body" value="/views/sorties/bars/bars.jsp" />
 	</definition>
 
 </tiles-definitions>
