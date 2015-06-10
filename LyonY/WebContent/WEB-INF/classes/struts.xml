@@ -24,6 +24,12 @@
 		</action>
 
 	</package>
+	
+		<include file="strutsUtilisateur.xml" />
+		<include file="strutsSortie.xml" />
+		<include file="strutsVisite" />
+		<include file="strutsHoraire" />
+		<include file="strutsLieu" />
 
 <!-- 	<include file="struts???.xml" /> -->
 

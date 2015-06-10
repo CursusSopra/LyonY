@@ -1,44 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="PostgreSQL" id="Project_11c19637" html="y" template="Default" database="PostgreSQL" >
-	<schema name="public" catalogname="lyony" schemaname="public" >
+<project name="PostgreSQL" id="Project_31112849" html="y" template="Default" database="PostgreSQL" >
+	<schema name="public" catalogname="LyonY_BDD" schemaname="public" >
 		<table name="adresse" >
-			<column name="idadresse" type="serial" jt="4" mandatory="y" />
-			<column name="numero" type="integer" jt="4" />
-			<column name="voie" type="varchar" length="30" jt="12" />
-			<column name="codepostal" type="char" length="5" jt="1" mandatory="y" />
-			<column name="ville" type="varchar" length="30" jt="12" mandatory="y" />
-			<column name="idquartier" type="integer" length="20" jt="4" mandatory="y" />
+			<column name="idadresse" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="numero" type="integer" length="10" decimal="0" jt="4" />
+			<column name="voie" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="codepostal" type="char" length="5" decimal="0" jt="1" mandatory="y" />
+			<column name="ville" type="varchar" length="30" decimal="0" jt="12" mandatory="y" />
+			<column name="idquartier" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
 			<index name="pk_adresse" unique="PRIMARY_KEY" >
 				<column name="idadresse" />
-			</index>
-			<index name="idx_adresse" unique="NORMAL" >
-				<column name="idquartier" />
 			</index>
 			<fk name="fk_adresse_quartier" to_schema="public" to_table="quartier" >
 				<fk_column name="idquartier" pk="idquartier" />
 			</fk>
 		</table>
 		<table name="ambiance" >
-			<column name="idambiance" type="serial" jt="4" mandatory="y" />
-			<column name="typea" type="varchar" length="20" jt="12" mandatory="y" />
+			<column name="idambiance" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="typea" type="varchar" length="20" decimal="0" jt="12" mandatory="y" />
 			<index name="pk_ambiance" unique="PRIMARY_KEY" >
 				<column name="idambiance" />
 			</index>
 		</table>
 		<table name="avis" >
-			<column name="idavis" type="serial" jt="4" mandatory="y" />
-			<column name="idlieu" type="integer" jt="4" mandatory="y" />
-			<column name="note" type="integer" length="600" jt="4" mandatory="y" />
-			<column name="message" type="varchar" length="200" jt="12" />
-			<column name="idutilisateur" type="serial" jt="4" mandatory="y" />
+			<column name="idavis" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idlieu" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="note" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="message" type="varchar" length="200" decimal="0" jt="12" />
+			<column name="idutilisateur" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
 			<index name="pk_avis" unique="PRIMARY_KEY" >
 				<column name="idavis" />
-			</index>
-			<index name="idx_avis" unique="NORMAL" >
-				<column name="idlieu" />
-			</index>
-			<index name="idx_avis_0" unique="NORMAL" >
-				<column name="idutilisateur" />
 			</index>
 			<fk name="fk_avis_lieu" to_schema="public" to_table="lieu" >
 				<fk_column name="idlieu" pk="idlieu" />
@@ -48,63 +39,52 @@
 			</fk>
 		</table>
 		<table name="bar" >
-			<column name="idbar" type="serial" jt="4" mandatory="y" />
-			<column name="idsortie" type="integer" jt="4" />
-			<column name="happyhour" type="integer" jt="4" />
-			<column name="typeb" type="varchar" length="20" jt="12" />
+			<column name="idbar" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idsortie" type="integer" length="10" decimal="0" jt="4" />
+			<column name="happyhour" type="integer" length="10" decimal="0" jt="4" />
+			<column name="idambiance" type="integer" length="10" decimal="0" jt="4" />
+			<column name="typeb" type="varchar" length="20" decimal="0" jt="12" />
 			<index name="pk_bar" unique="PRIMARY_KEY" >
 				<column name="idbar" />
 			</index>
-			<index name="idx_bar" unique="NORMAL" >
-				<column name="idsortie" />
-			</index>
-			<index name="idx_bar_0" unique="NORMAL" >
-				<column name="happyhour" />
-			</index>
-			<fk name="fk_bar_commerce" to_schema="public" to_table="sortie" >
-				<fk_column name="idsortie" pk="idsortie" />
+			<fk name="fk_bar_ambiance" to_schema="public" to_table="ambiance" >
+				<fk_column name="idambiance" pk="idambiance" />
 			</fk>
 			<fk name="fk_bar_plagehoraire" to_schema="public" to_table="plagehoraire" >
 				<fk_column name="happyhour" pk="idplagehoraire" />
 			</fk>
+			<fk name="fk_bar_commerce" to_schema="public" to_table="sortie" >
+				<fk_column name="idsortie" pk="idsortie" />
+			</fk>
 		</table>
 		<table name="horaire" >
-			<column name="idhoraire" type="serial" jt="4" mandatory="y" />
-			<column name="jour" type="date" jt="91" mandatory="y" />
-			<column name="idplagehoraire" type="integer" jt="4" />
+			<column name="idhoraire" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="jour" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="idplagehoraire" type="integer" length="10" decimal="0" jt="4" />
 			<index name="pk_horaire" unique="PRIMARY_KEY" >
 				<column name="idhoraire" />
-			</index>
-			<index name="idx_horaire" unique="NORMAL" >
-				<column name="idplagehoraire" />
 			</index>
 			<fk name="fk_horaire_plagehoraire" to_schema="public" to_table="plagehoraire" >
 				<fk_column name="idplagehoraire" pk="idplagehoraire" />
 			</fk>
 		</table>
 		<table name="lien" >
-			<column name="idlien" type="serial" jt="4" mandatory="y" />
-			<column name="liblien" type="varchar" length="20" jt="12" />
-			<column name="url" type="varchar" length="30" jt="12" mandatory="y" />
+			<column name="idlien" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="liblien" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="url" type="varchar" length="30" decimal="0" jt="12" mandatory="y" />
 			<index name="pk_liens" unique="PRIMARY_KEY" >
 				<column name="idlien" />
 			</index>
 		</table>
 		<table name="lieu" >
-			<column name="idlieu" type="serial" jt="4" mandatory="y" />
-			<column name="nom" type="varchar" length="40" jt="12" />
-			<column name="idadresse" type="integer" jt="4" mandatory="y" />
-			<column name="idlien" type="integer" jt="4" />
-			<column name="description" type="text" jt="12" />
-			<column name="accessibilité" type="text" jt="12" />
+			<column name="idlieu" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="nom" type="varchar" length="40" decimal="0" jt="12" />
+			<column name="idadresse" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idlien" type="integer" length="10" decimal="0" jt="4" />
+			<column name="description" type="text" length="2147483647" decimal="0" jt="12" />
+			<column name="accessibilite" type="text" length="2147483647" decimal="0" jt="12" />
 			<index name="pk_lieu" unique="PRIMARY_KEY" >
 				<column name="idlieu" />
-			</index>
-			<index name="idx_lieu" unique="NORMAL" >
-				<column name="idadresse" />
-			</index>
-			<index name="idx_lieu_0" unique="NORMAL" >
-				<column name="idlien" />
 			</index>
 			<fk name="fk_lieu_adresse" to_schema="public" to_table="adresse" >
 				<fk_column name="idadresse" pk="idadresse" />
@@ -114,53 +94,38 @@
 			</fk>
 		</table>
 		<table name="monument" >
-			<column name="idmonument" type="serial" jt="4" mandatory="y" />
-			<column name="idlieu" type="integer" jt="4" mandatory="y" />
-			<column name="anneeconstruction" type="integer" jt="4" />
-			<column name="anneefinconstruction" type="integer" jt="4" />
-			<column name="typem" type="varchar" length="20" jt="12" />
+			<column name="idmonument" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idlieu" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="anneeconstruction" type="integer" length="10" decimal="0" jt="4" />
+			<column name="anneefinconstruction" type="integer" length="10" decimal="0" jt="4" />
+			<column name="typem" type="varchar" length="20" decimal="0" jt="12" />
 			<index name="pk_monument" unique="PRIMARY_KEY" >
 				<column name="idmonument" />
-			</index>
-			<index name="idx_monument" unique="NORMAL" >
-				<column name="idlieu" />
 			</index>
 			<fk name="fk_monument_lieu" to_schema="public" to_table="lieu" >
 				<fk_column name="idlieu" pk="idlieu" />
 			</fk>
 		</table>
 		<table name="nightclub" >
-			<column name="idnightclub" type="serial" jt="4" mandatory="y" />
-			<column name="idsortie" type="integer" jt="4" mandatory="y" />
-			<column name="idambiance" type="integer" jt="4" />
+			<column name="idnightclub" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idsortie" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idambiance" type="integer" length="10" decimal="0" jt="4" />
 			<index name="pk_nightclub" unique="PRIMARY_KEY" >
 				<column name="idnightclub" />
 			</index>
-			<index name="idx_nightclub" unique="NORMAL" >
-				<column name="idsortie" />
-			</index>
-			<index name="idx_nightclub_0" unique="NORMAL" >
-				<column name="idambiance" />
-			</index>
-			<fk name="fk_nightclub_commerce" to_schema="public" to_table="sortie" >
-				<fk_column name="idsortie" pk="idsortie" />
-			</fk>
 			<fk name="fk_nightclub_ambiance" to_schema="public" to_table="ambiance" >
 				<fk_column name="idambiance" pk="idambiance" />
 			</fk>
+			<fk name="fk_nightclub_commerce" to_schema="public" to_table="sortie" >
+				<fk_column name="idsortie" pk="idsortie" />
+			</fk>
 		</table>
 		<table name="ouverture" >
-			<column name="idhoraire" type="integer" jt="4" mandatory="y" />
-			<column name="idsortie" type="integer" jt="4" mandatory="y" />
+			<column name="idsortie" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idhoraire" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
 			<index name="idx_ouverture" unique="PRIMARY_KEY" >
 				<column name="idsortie" />
 				<column name="idhoraire" />
-			</index>
-			<index name="idx_ouverture_0" unique="NORMAL" >
-				<column name="idhoraire" />
-			</index>
-			<index name="idx_ouverture_1" unique="NORMAL" >
-				<column name="idsortie" />
 			</index>
 			<fk name="fk_ouverture_horaire" to_schema="public" to_table="horaire" >
 				<fk_column name="idhoraire" pk="idhoraire" />
@@ -170,108 +135,116 @@
 			</fk>
 		</table>
 		<table name="placeetparc" >
-			<column name="idplaceetparc" type="serial" jt="4" mandatory="y" />
-			<column name="idlieu" type="integer" jt="4" mandatory="y" />
-			<column name="typepp" type="char" length="3" jt="1" />
+			<column name="idplaceetparc" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idlieu" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="typepp" type="char" length="3" decimal="0" jt="1" />
 			<index name="pk_place" unique="PRIMARY_KEY" >
 				<column name="idplaceetparc" />
-			</index>
-			<index name="idx_place" unique="NORMAL" >
-				<column name="idlieu" />
 			</index>
 			<fk name="fk_place_lieu" to_schema="public" to_table="lieu" >
 				<fk_column name="idlieu" pk="idlieu" />
 			</fk>
 		</table>
 		<table name="plagehoraire" >
-			<column name="idplagehoraire" type="serial" jt="4" mandatory="y" />
-			<column name="heuredebut" type="time" jt="92" mandatory="y" />
-			<column name="heurefin" type="time" jt="92" mandatory="y" />
+			<column name="idplagehoraire" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="heuredebut" type="time" length="15" decimal="6" jt="92" mandatory="y" />
+			<column name="heurefin" type="time" length="15" decimal="6" jt="92" mandatory="y" />
 			<index name="pk_plagehoraire" unique="PRIMARY_KEY" >
 				<column name="idplagehoraire" />
 			</index>
 		</table>
 		<table name="quartier" >
-			<column name="idquartier" type="serial" jt="4" mandatory="y" />
-			<column name="nom" type="varchar" length="30" jt="12" mandatory="y" />
-			<column name="budgetmoyen" type="integer" jt="4" />
-			<column name="distancecentreville" type="integer" jt="4" />
+			<column name="idquartier" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="nom" type="varchar" length="30" decimal="0" jt="12" mandatory="y" />
+			<column name="budgetmoyen" type="integer" length="10" decimal="0" jt="4" />
+			<column name="distancecentreville" type="integer" length="10" decimal="0" jt="4" />
 			<index name="pk_quartier" unique="PRIMARY_KEY" >
 				<column name="idquartier" />
 			</index>
 		</table>
 		<table name="restaurant" >
-			<column name="idrestaurant" type="serial" jt="4" mandatory="y" />
-			<column name="idsortie" type="integer" jt="4" mandatory="y" />
-			<column name="typer" type="varchar" length="20" jt="12" />
-			<column name="reservation" type="bool" jt="-7" />
-			<column name="aemporter" type="bool" jt="-7" />
+			<column name="idrestaurant" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idsortie" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="typer" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="idambiance" type="integer" length="10" decimal="0" jt="4" />
+			<column name="reservation" type="bool" length="1" decimal="0" jt="-7" />
+			<column name="aemporter" type="bool" length="1" decimal="0" jt="-7" />
 			<index name="pk_restaurant" unique="PRIMARY_KEY" >
 				<column name="idrestaurant" />
 			</index>
-			<index name="idx_restaurant" unique="NORMAL" >
-				<column name="idsortie" />
-			</index>
+			<fk name="fk_restaurant_ambiance" to_schema="public" to_table="ambiance" >
+				<fk_column name="idambiance" pk="idambiance" />
+			</fk>
 			<fk name="fk_restaurant_commerce" to_schema="public" to_table="sortie" >
 				<fk_column name="idsortie" pk="idsortie" />
 			</fk>
 		</table>
 		<table name="sortie" >
-			<column name="idsortie" type="serial" jt="4" mandatory="y" />
-			<column name="idlieu" type="integer" jt="4" mandatory="y" />
-			<column name="types" type="varchar" length="20" jt="12" mandatory="y" />
-			<column name="prixmax" type="integer" jt="4" />
-			<column name="prixmin" type="integer" jt="4" />
+			<column name="idsortie" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idlieu" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="types" type="varchar" length="20" decimal="0" jt="12" mandatory="y" />
+			<column name="prixmax" type="integer" length="10" decimal="0" jt="4" />
+			<column name="prixmin" type="integer" length="10" decimal="0" jt="4" />
 			<index name="pk_commerce" unique="PRIMARY_KEY" >
 				<column name="idsortie" />
-			</index>
-			<index name="idx_commerce" unique="NORMAL" >
-				<column name="idlieu" />
 			</index>
 			<fk name="fk_commerce_lieu" to_schema="public" to_table="lieu" >
 				<fk_column name="idlieu" pk="idlieu" />
 			</fk>
 		</table>
 		<table name="utilisateur" >
-			<column name="idutilisateur" type="serial" jt="4" mandatory="y" />
-			<column name="pseudo" type="varchar" length="20" jt="12" mandatory="y" />
-			<column name="datenaissance" type="date" jt="91" mandatory="y" />
-			<column name="sexe" type="bool" jt="-7" mandatory="y" />
-			<column name="email" type="varchar" length="30" jt="12" mandatory="y" />
-			<column name="avatar" type="varchar" length="30" jt="12" />
-			<column name="idadresse" type="integer" jt="4" mandatory="y" />
-			<column name="motdepasse" type="varchar" length="30" jt="12" mandatory="y" />
-			<index name="idx_utilisateur" unique="NORMAL" >
-				<column name="idadresse" />
-			</index>
-			<index name="idx_utilisateur_0" unique="PRIMARY_KEY" >
+			<column name="idutilisateur" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="pseudo" type="varchar" length="20" decimal="0" jt="12" mandatory="y" />
+			<column name="datenaissance" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="sexe" type="bool" length="1" decimal="0" jt="-7" mandatory="y" />
+			<column name="email" type="varchar" length="30" decimal="0" jt="12" mandatory="y" />
+			<column name="avatar" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="idadresse" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="motdepasse" type="varchar" length="30" decimal="0" jt="12" mandatory="y" />
+			<index name="pk_utilisateur" unique="PRIMARY_KEY" >
 				<column name="idutilisateur" />
 			</index>
-			<index name="idx_utilisateur_1" unique="UNIQUE" >
+			<index name="ct_unique_pseudo" unique="UNIQUE" >
 				<column name="pseudo" />
 			</index>
 			<fk name="fk_utilisateur_adresse" to_schema="public" to_table="adresse" >
 				<fk_column name="idadresse" pk="idadresse" />
 			</fk>
 		</table>
+		<sequence name="adresse_idadresse_seq" start="1" />
+		<sequence name="ambiance_idambiance_seq" start="1" />
+		<sequence name="avis_idavis_seq" start="1" />
+		<sequence name="avis_idutilisateur_seq" start="1" />
+		<sequence name="bar_idbar_seq" start="1" />
+		<sequence name="horaire_idhoraire_seq" start="1" />
+		<sequence name="lien_idlien_seq" start="1" />
+		<sequence name="lieu_idlieu_seq" start="1" />
+		<sequence name="monument_idmonument_seq" start="1" />
+		<sequence name="nightclub_idnightclub_seq" start="1" />
+		<sequence name="placeetparc_idplaceetparc_seq" start="1" />
+		<sequence name="plagehoraire_idplagehoraire_seq" start="1" />
+		<sequence name="quartier_idquartier_seq" start="1" />
+		<sequence name="restaurant_idrestaurant_seq" start="1" />
+		<sequence name="sortie_idsortie_seq" start="1" />
+		<sequence name="utilisateur_idutilisateur_seq" start="1" />
 	</schema>
-	<connector name="PostgreSQL" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.2-1003.jdbc3.jar" host="localhost" port="5432" instance="lyony" user="postgres" schema_mapping="" />
-	<layout id="Layout_3b2bcc6b" name="Default" joined_routing="y" show_relation_columns="y" >
-		<entity schema="public" name="adresse" color="c0d4f3" x="255" y="270" />
-		<entity schema="public" name="ouverture" color="c0d4f3" x="570" y="45" />
-		<entity schema="public" name="placeetparc" color="c0d4f3" x="645" y="285" />
-		<entity schema="public" name="horaire" color="c0d4f3" x="165" y="45" />
-		<entity schema="public" name="avis" color="c0d4f3" x="330" y="120" />
-		<entity schema="public" name="utilisateur" color="c0d4f3" x="75" y="180" />
-		<entity schema="public" name="nightclub" color="c0d4f3" x="825" y="225" />
-		<entity schema="public" name="lieu" color="c0d4f3" x="465" y="360" />
-		<entity schema="public" name="lien" color="c0d4f3" x="255" y="405" />
-		<entity schema="public" name="sortie" color="c0d4f3" x="675" y="405" />
-		<entity schema="public" name="bar" color="c0d4f3" x="825" y="495" />
-		<entity schema="public" name="restaurant" color="c0d4f3" x="840" y="345" />
-		<entity schema="public" name="quartier" color="c0d4f3" x="45" y="345" />
-		<entity schema="public" name="plagehoraire" color="c0d4f3" x="45" y="525" />
-		<entity schema="public" name="ambiance" color="c0d4f3" x="1005" y="255" />
-		<entity schema="public" name="monument" color="c0d4f3" x="630" y="120" />
+	<connector name="PostgreSQL" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.2-1003.jdbc3.jar" host="localhost" port="5432" instance="LyonY_BDD" user="postgres" passwd="cG9zdGdyZXM=" schema_mapping="" />
+	<layout id="Layout_173ed083" name="public" joined_routing="y" show_relation_columns="y" >
+		<entity schema="public" name="ambiance" color="c0d4f3" x="150" y="45" />
+		<entity schema="public" name="avis" color="c0d4f3" x="330" y="45" />
+		<entity schema="public" name="bar" color="c0d4f3" x="510" y="45" />
+		<entity schema="public" name="horaire" color="c0d4f3" x="675" y="45" />
+		<entity schema="public" name="lien" color="c0d4f3" x="870" y="45" />
+		<entity schema="public" name="lieu" color="c0d4f3" x="1020" y="45" />
+		<entity schema="public" name="monument" color="c0d4f3" x="1185" y="45" />
+		<entity schema="public" name="nightclub" color="c0d4f3" x="390" y="285" />
+		<entity schema="public" name="ouverture" color="c0d4f3" x="570" y="285" />
+		<entity schema="public" name="placeetparc" color="c0d4f3" x="720" y="285" />
+		<entity schema="public" name="plagehoraire" color="c0d4f3" x="900" y="285" />
+		<entity schema="public" name="quartier" color="c0d4f3" x="1095" y="285" />
+		<entity schema="public" name="restaurant" color="c0d4f3" x="390" y="285" />
+		<entity schema="public" name="utilisateur" color="c0d4f3" x="705" y="285" />
+		<entity schema="public" name="sortie" color="c0d4f3" x="480" y="465" />
+		<entity schema="public" name="adresse" color="c0d4f3" x="45" y="210" />
 	</layout>
 </project>
