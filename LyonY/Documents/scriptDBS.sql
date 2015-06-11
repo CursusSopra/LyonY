@@ -145,7 +145,7 @@ CREATE TABLE sorties (
 
 CREATE TABLE horaires ( 
 	idhoraire            serial  NOT NULL,
-	jour                 date  NOT NULL,
+	jour                 varchar(10)  NOT NULL,
 	idplagehoraire       integer  ,
 	CONSTRAINT pk_horaires PRIMARY KEY ( idhoraire )   
  );
