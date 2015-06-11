@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC 
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- INDEX -->
+	<definition name="restaurants" extends="baseLayout">
+		<put-attribute name="title" value="bars" />
+		<put-attribute name="body" value="/views/sorties/nclubs/nclubs.jsp" />
+	</definition>
+
+</tiles-definitions>
