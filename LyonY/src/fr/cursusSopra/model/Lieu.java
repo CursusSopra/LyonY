@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 import fr.cursusSopra.tech.PostgresConnection;
 
@@ -24,15 +23,6 @@ public class Lieu {
 
 	// Adresse du lieu
 	private Adresse adresse;
-
-	// Liste des avis au sujet du lieu
-	private List<Avis> listeDesAvis;
-
-	// Chemin des photos du lieu
-	private List<String> listeDesPhotos;
-
-	// List des id des liens du lieu
-	private int[] listeDesLiens;
 
 	// Constructeur vide non accessible
 	@SuppressWarnings("unused")
@@ -118,9 +108,6 @@ public class Lieu {
 				+ ((description == "") ? "VRAI" : "FAUX"));
 		sb.append("Son accessibilité est décrite"
 				+ ((accessibilite == "") ? "VRAI" : "FAUX"));
-		sb.append("Il possède" + listeDesAvis.size() + "avis");
-		sb.append("Il possède" + listeDesPhotos.size() + "photos");
-		sb.append("Il possède" + listeDesLiens.length + "liens");
 		return sb.toString();
 	}
 
@@ -130,18 +117,6 @@ public class Lieu {
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
-	public List<Avis> getListeDesAvis() {
-		return listeDesAvis;
-	}
-	public void setListeDesAvis(List<Avis> listeDesAvis) {
-		this.listeDesAvis = listeDesAvis;
-	}
-	public List<String> getListeDesPhotos() {
-		return listeDesPhotos;
-	}
-	public void setListeDesPhotos(List<String> listeDesPhotos) {
-		this.listeDesPhotos = listeDesPhotos;
 	}
 	public String getAccessibilite() {
 		return accessibilite;
@@ -170,14 +145,6 @@ public class Lieu {
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
-	}
-
-	public int[] getListeDesLiens() {
-		return listeDesLiens;
-	}
-
-	public void setListeDesLiens(int[] listeDesLiens) {
-		this.listeDesLiens = listeDesLiens;
 	}
 
 }
