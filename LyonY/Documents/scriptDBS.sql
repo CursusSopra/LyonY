@@ -112,9 +112,9 @@ CREATE TABLE placeetparc (
 CREATE TABLE sortie ( 
 	idsortie             serial  NOT NULL,
 	idlieu               integer  NOT NULL,
-	types                varchar(20)  NOT NULL,
 	prixmax              integer  ,
 	prixmin              integer  ,
+	idambiance           integer  ,
 	CONSTRAINT pk_commerce PRIMARY KEY ( idsortie ) 
  );
 
@@ -141,6 +141,7 @@ CREATE TABLE ouverture (
 CREATE TABLE ambiance ( 
 	idambiance           serial  NOT NULL,
 	typea                varchar(20)  NOT NULL,
+	types                char(1)  NOT NULL,
 	CONSTRAINT pk_ambiance PRIMARY KEY ( idambiance )
  );
 
@@ -148,23 +149,18 @@ CREATE TABLE bar (
 	idbar                serial  NOT NULL,
 	idsortie             integer  ,
 	happyhour            integer  ,
-	idambiance           integer  ,
-	typeb                varchar(20)  ,
 	CONSTRAINT pk_bar PRIMARY KEY ( idbar )  
  );
 
 CREATE TABLE nightclub ( 
 	idnightclub          serial  NOT NULL,
 	idsortie             integer  NOT NULL,
-	idambiance           integer  ,
 	CONSTRAINT pk_nightclub PRIMARY KEY ( idnightclub )
  );
 
 CREATE TABLE restaurant ( 
 	idrestaurant         serial  NOT NULL,
 	idsortie             integer  NOT NULL,
-	typer                varchar(20)  ,
-	idambiance           integer  ,
 	reservation          bool  ,
 	aemporter            bool  ,
 	CONSTRAINT pk_restaurant PRIMARY KEY ( idrestaurant ) 
@@ -194,7 +190,8 @@ ALTER TABLE placeetparc
 	ADD CONSTRAINT fk_place_lieu FOREIGN KEY ( idlieu ) REFERENCES lieu( idlieu ) ;
 
 ALTER TABLE sortie
-	ADD CONSTRAINT fk_commerce_lieu FOREIGN KEY ( idlieu ) REFERENCES lieu( idlieu ) ;
+	ADD CONSTRAINT fk_commerce_lieu FOREIGN KEY ( idlieu ) REFERENCES lieu( idlieu )  ,
+	ADD CONSTRAINT fk_commerce_ambiance FOREIGN KEY ( idambiance ) REFERENCES ambiance( idambiance ) ;
 
 ALTER TABLE horaire
 	ADD CONSTRAINT fk_horaire_plagehoraire FOREIGN KEY ( idplagehoraire ) REFERENCES plagehoraire( idplagehoraire ) ;
@@ -205,13 +202,10 @@ ALTER TABLE ouverture
 
 ALTER TABLE bar
 	ADD CONSTRAINT fk_bar_commerce FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) ,
-	ADD CONSTRAINT fk_bar_plagehoraire FOREIGN KEY ( happyhour ) REFERENCES plagehoraire( idplagehoraire ) ,
-	ADD CONSTRAINT fk_bar_ambiance FOREIGN KEY ( idambiance ) REFERENCES ambiance( idambiance ) ;
+	ADD CONSTRAINT fk_bar_plagehoraire FOREIGN KEY ( happyhour ) REFERENCES plagehoraire( idplagehoraire ) ;
 
 ALTER TABLE nightclub
-	ADD CONSTRAINT fk_nightclub_commerce FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) ,
-	ADD CONSTRAINT fk_nightclub_ambiance FOREIGN KEY ( idambiance ) REFERENCES ambiance( idambiance ) ;
+	ADD CONSTRAINT fk_nightclub_commerce FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) ;
 
 ALTER TABLE restaurant
-	ADD CONSTRAINT fk_restaurant_commerce FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) , 
-	ADD CONSTRAINT fk_restaurant_ambiance FOREIGN KEY ( idambiance ) REFERENCES ambiance( idambiance ) ;
+	ADD CONSTRAINT fk_restaurant_commerce FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) ;
