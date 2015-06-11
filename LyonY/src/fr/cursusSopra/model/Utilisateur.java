@@ -1,12 +1,6 @@
-package fr.cursusSopra.action;
+package fr.cursusSopra.model;
 
-import com.opensymphony.xwork2.ActionSupport;
-
-import fr.cursusSopra.model.Utilisateur;
-
-public class UtilisateurAction extends ActionSupport {
-
-	private static final long serialVersionUID = 1L;
+public class Utilisateur {
 	
 	private int idUtilisateur;
 	private String pseudo;
@@ -17,9 +11,6 @@ public class UtilisateurAction extends ActionSupport {
 	private String email;
 	private String avatar;
 	
-	public int getIdUtilisateur() {
-		return idUtilisateur;
-	}
 	public String getPseudo() {
 		return pseudo;
 	}
@@ -44,9 +35,6 @@ public class UtilisateurAction extends ActionSupport {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public boolean isSexe() {
-		return sexe;
-	}
 	public String getMail() {
 		return email;
 	}
@@ -59,24 +47,13 @@ public class UtilisateurAction extends ActionSupport {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public int getIdUtilisateur() {
+		return idUtilisateur;
+	}
+	public boolean isSexe() {
+		return sexe;
 	}
 	
-	public String nouvelUtilisateur () {
-		Utilisateur uti = new Utilisateur();
-		return "nimportequoi";
-		
-	}
 	
-	public String executeCreation(){
-		return SUCCESS;
-	}
-	
-	public String executeConnexion(){
-		Utilisateur uti = new Utilisateur();
-		
-		return SUCCESS;
-	}
 
 }

@@ -1,0 +1,1 @@
+Emplacement des javascript de plugins ou de frameworks

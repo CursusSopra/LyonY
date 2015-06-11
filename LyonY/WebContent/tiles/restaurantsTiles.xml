@@ -7,10 +7,9 @@
 <tiles-definitions>
 
 	<!-- INDEX -->
-	<definition name="sorties" extends="baseLayout">
-		<put-attribute name="title" value="Sorties" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
-		<put-attribute name="body" value="/views/sorties/sorties.jsp" />
+	<definition name="restaurants" extends="baseLayout">
+		<put-attribute name="title" value="bars" />
+		<put-attribute name="body" value="/views/sorties/restaurants/restaurants.jsp" />
 	</definition>
 
 </tiles-definitions>
