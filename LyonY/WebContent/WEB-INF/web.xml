@@ -32,7 +32,10 @@
 		<param-value>
 			/tiles/mainTiles.xml,
 			/tiles/sortiesTiles.xml,
-			/tiles/horairesTiles.xml
+			/tiles/horairesTiles.xml,
+			/tiles/barsTiles.xml,
+			/tiles/restaurantsTiles.xml,
+			/tiles/nclubsTiles.xml,
 			
 		</param-value>
 	</context-param>
