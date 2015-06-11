@@ -15,6 +15,8 @@
 <body>
 	<tiles:insertAttribute name="menuConnexion" />
 	<tiles:insertAttribute name="body" />
+	
+	<a href="<s:url action='sorties'/>">Sorties</a>
 	<script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
 </body>
 </html>
