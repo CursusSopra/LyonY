@@ -148,11 +148,14 @@ public class Bar {
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query = "SELECT idcandidat, nom, prenom"
-				+ ", datenaissance, villenaissance"
-				+ ", datedeces, villedeces "
-				+ ", CASE WHEN datedeces IS NULL THEN    EXTRACT (YEAR FROM CURRENT_DATE) - EXTRACT (YEAR FROM datenaissance)ELSE EXTRACT (YEAR FROM datedeces) - EXTRACT (YEAR FROM datenaissance) END AS age "
-				+ "FROM candidats " + "ORDER BY nom";
+		String query = "SELECT l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax"
+				+ "FROM bar b  " 
+				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
+				+ "INNER JOIN lieus l ON s.idlieu=l.idlieu "
+				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
+				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier"
+				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance";
+		
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
