@@ -13,17 +13,7 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-
-	<div>
-		<form id="idConnexion" name="Connexion" method="POST" action="<s:url action='Connexion' />">
-			Identifiant:<input type="text" name="pseudo" required
-				placeholder="Identifiant" /> Mot de passe:<input type="password"
-				name="motDePasse" required placeholder="Mot de passe" /> <input
-				type="submit" value="Connexion" />
-		</form>
-		<a href='<s:url action="FormCreationUtilisateur"/>'>Inscription</a>
-	</div>
-
+	<tiles:insertAttribute name="menuConnexion" />
 	<tiles:insertAttribute name="body" />
 	<script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
 </body>

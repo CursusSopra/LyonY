@@ -5,9 +5,23 @@
 
 <struts>
 
-	<package name="utilisateur" extends="struts-default">
+	<package name="Utilisateur" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
 		
+		<!-- Création d'un utilisateur -->
+		<action name="FormCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+			method="executeCreation">
+			<result name="success" type="tiles">index</result>
+		</action>
 		
+		<!-- Connexion d'un utilisateur -->
+		<action name="ConnexionUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+			method="executeConnexion">
+			<result name="success" type="tiles">index</result>
+		</action>
 		
 	</package>
 </struts>
