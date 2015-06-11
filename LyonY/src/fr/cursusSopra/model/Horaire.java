@@ -18,7 +18,7 @@ public class Horaire {
 		PlageHoraire plageHoraire = new PlageHoraire();
 	}
 	
-	public String getHoraire() {
+	public String getHoraireTest() {
 		return jour;
 		
 		

@@ -25,11 +25,11 @@
 
 	</package>
 	
-		<include file="strutsUtilisateur.xml" />
-		<include file="strutsSortie.xml" />
-		<include file="strutsVisite.xml" />
-		<include file="strutsHoraire.xml" />
-		<include file="strutsLieu.xml" />
+	<include file="strutsUtilisateur.xml" />
+	<include file="strutsSortie.xml" />
+	<include file="strutsVisite.xml" />
+	<include file="strutsHoraire.xml" />
+	<include file="strutsLieu.xml" />
 
 <!-- 	<include file="struts???.xml" /> -->
 

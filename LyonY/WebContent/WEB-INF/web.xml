@@ -30,7 +30,10 @@
 
 		<!-- Liste des tiles.xml, séparés par des virgules -->
 		<param-value>
-			/tiles/mainTiles.xml
+			/tiles/mainTiles.xml,
+			/tiles/sortiesTiles.xml,
+			/tiles/horairesTiles.xml
+			
 		</param-value>
 	</context-param>
 	<!-- / DEFINITION DU LISTENER -->
