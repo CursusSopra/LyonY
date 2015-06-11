@@ -192,7 +192,7 @@ CREATE TABLE restaurants (
  );
 
 ------------------------------------------------------------------------------
--- AJOUT DES FOREIN KEYS
+-- AJOUT DES FOREIGN KEYS
 
 ALTER TABLE utilisateurs
 	ADD CONSTRAINT fk_utilisateurs_adresses FOREIGN KEY ( idadresse ) REFERENCES adresses( idadresse ) ;
@@ -243,3 +243,158 @@ ALTER TABLE nightclubs
 
 ALTER TABLE restaurants
 	ADD CONSTRAINT fk_restaurants_sorties FOREIGN KEY ( idsortie ) REFERENCES sorties( idsortie ) ;
+
+------------------------------------------------------------------------------
+-- VALORISATION DES TABLES
+
+INSERT INTO quartiers
+	( nom ) 
+	VALUES 
+	( 'Terreaux' ), 
+	( 'Croix-Rousse' ), 
+	( 'Confluence' ), 
+	( 'Bellecour' ), 
+	( 'Vieux Lyon' ), 
+	( 'Cordeliers' ), 
+	( 'Brotteaux' ),
+	( 'Perrache' ), 
+	( 'Pentes de la Croix-Rousse' );
+
+INSERT INTO adresses
+	( numero, voie, codepostal, ville, idquartier) 
+	VALUES 
+	( 20, 'place des Terreaux', 69001, 'Lyon', 1 ), 
+	( 86, 'Quai Perrache', 69002, 'Lyon', 3 ), 
+	( 1, 'place Saint-Nizier', 69002, 'Lyon', 6 ), 
+	( 3, 'cours de Verdun Gensoul', 69002, 'Lyon', 8 ), 
+	( 3, 'rue d''Austerlitz', 69004, 'Lyon', 2 ), 
+	( 30, 'cours de Verdun Perrache', 69002, 'Lyon', 8 ), 
+	( 13, 'rue Neuve', 69002, 'Lyon', 6 ), 
+	( 21, 'place Gabriel Rambaud', 69001, 'Lyon', 1 ), 
+	( 7, 'rue Terme', 69001, 'Lyon', 9 );
+
+INSERT INTO adresses
+	( codepostal, ville, idquartier) 
+	VALUES
+	( 69002, 'Lyon', 4 ),
+	( 69005, 'Lyon', 5 ),
+	( 69006, 'Lyon', 7 );
+
+INSERT INTO lieux
+	( nom, idadresse, description, accessibilite )
+	VALUES
+	( 'Musée des Beaux Arts', 1, 'Description lalalalala', 'Accessibilité lalalalali'), 
+	( 'Musée des Confluences', 2, 'Description lalalalala', 'Accessibilité lalalalali'), 
+	( 'Eglise Saint-Nizier', 3, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Calle Latino', 4, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Dikkenek Café', 5, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Brasserie Georges', 6, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'La Hugonnière', 7, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'La Maison Mère', 8, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'L''Opéra Rock', 9, 'Description lalalalala', 'Accessibilité lalalalali'), 
+	( 'Place Bellecour', 10, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Place Saint-Jean', 11, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Parc de la Tête d''Or', 12, 'Description lalalalala', 'Accessibilité lalalalali');
+
+INSERT INTO typevisites
+	(typev, libtypevisite)
+	VALUES
+	( 'M', 'Musée'),
+	( 'M', 'Lieu de culte'),
+	( 'P', 'Place'),
+	( 'P', 'Parc');
+
+INSERT INTO visites
+	(idlieu, idtypevisite)
+	VALUES
+	(1, 1),
+	(2, 1),
+	(3, 2),
+	(10, 3),
+	(11, 3),
+	(12, 4);
+
+INSERT INTO monuments
+	(anneeconstruction, anneefinconstruction, idvisite)
+	VALUES
+	(1801, 1801, 1),
+	(2003, 2014, 2),
+	(200, 1492, 3);
+
+INSERT INTO placeetparcs
+	(idvisite)
+	VALUES
+	(4),
+	(5),
+	(6);
+
+INSERT INTO ambiances
+	(types, libambiance)
+	VALUES
+	('N', 'Electro'),
+	('N', 'Karaoké'),
+	('B', 'Bar à bière'),
+	('B', 'Bar latino'),
+	('R', 'Brasserie'),
+	('R', 'Bouchon');
+
+INSERT INTO sorties
+	(idlieu, prixmax, prixmin, idambiance)
+	VALUES
+	(4, 10, 5, 4),
+	(5, 15, 3, 3),
+	(6, 30, 20, 5),
+	(7, 25, 15, 6),
+	(8, 20, 10, 1),
+	(9, 20, 10, 2);
+
+INSERT INTO bars
+	(idsortie)
+	VALUES
+	(1),
+	(2);
+
+INSERT INTO restaurants
+	(idsortie, reservation, aemporter)
+	VALUES
+	(3, TRUE, FALSE),
+	(4, FALSE, FALSE);
+
+INSERT INTO nightclubs
+	(idsortie)
+	VALUES
+	(5),
+	(6);
+
+INSERT INTO plagehoraires 
+	(heuredebut,heurefin) 
+	VALUES 
+	('10:00', '20:00'),
+	('09:00', '20:00'),
+	('10:00', '22:00'),
+	('08:00', '23:00'),
+	('07:00', '19:00'),
+	('09:00', '21:00'),
+	('08:00', '21:00');
+
+INSERT INTO horaires 
+	(jour,idplagehoraire) 
+	VALUES 
+	('lundi', 1),
+	('mardi', 2),
+	('mercredi', 3),
+	('jeudi', 4),
+	('vendredi', 5),
+	('samedi', 6),
+	('dimanche', 7);
+
+INSERT INTO ouvertures 
+	(idhoraire, idsortie) 
+	VALUES 
+	(1, 1),
+	(2, 1),
+	(3, 1),
+	(4, 1),
+	(5, 1),
+	(6, 1),
+	(7, 1);
