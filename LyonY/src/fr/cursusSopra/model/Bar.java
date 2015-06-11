@@ -93,29 +93,29 @@ public class Bar {
 //		Connection cnx = PostgresConnection.getConnexion();
 //		// Object instruction SQL
 //		Statement stmt = cnx.createStatement();
-//		Statement stmt1 = cnx.createStatement();
-//		// Requête à exécuter
-//		String query = "SELECT idcandidat, nom, prenom"
-//				+ ", datenaissance, villenaissance"
-//				+ "FROM candidats " 
-//				+ "WHERE idcandidat=" +idbar;
-//
-//		// Obtention de l'ensemble résultats
-//		ResultSet rs = stmt.executeQuery(query);
-//		if (rs.next()) {		
-//			idbar = rs.getInt("idbar");
-//			nom = rs.getString("nom");
-//			prenom = rs.getString("prenom");
-//			dateNaissance = rs.getDate("datenaissance");
-//			villeNaissance = rs.getString("villenaissance");
-//			dateDeces = rs.getDate("datedeces");
-//			villeDeces = rs.getString("villedeces");
-//			age = rs.getInt("age");
-//	
-//			}
+//		
+////		// Requête à exécuter
+////		String query = "SELECT idcandidat, nom, prenom"
+////				+ ", datenaissance, villenaissance"
+////				+ "FROM candidats " 
+////				+ "WHERE idcandidat=" +idbar;
+////
+////		// Obtention de l'ensemble résultats
+////		ResultSet rs = stmt.executeQuery(query);
+////		if (rs.next()) {		
+////			idbar = rs.getInt("idbar");
+////			nom = rs.getString("nom");
+////			prenom = rs.getString("prenom");
+////			dateNaissance = rs.getDate("datenaissance");
+////			villeNaissance = rs.getString("villenaissance");
+////			dateDeces = rs.getDate("datedeces");
+////			villeDeces = rs.getString("villedeces");
+////			age = rs.getInt("age");
+////	
+////			}
 //		
 //		}
-	
+//	
 
 
 	

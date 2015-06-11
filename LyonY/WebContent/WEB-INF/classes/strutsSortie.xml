@@ -7,6 +7,7 @@
 
 	<constant name="struts.devMode" value="true" />
 
+
 	<package name="lyonYSorties" extends="struts-default">
 		<result-types>
 			<result-type name="tiles"
@@ -28,9 +29,15 @@
 			<result name="success" type="tiles">nclubs</result>
 		</action>
 
-		<action name="listeDesBars" class="fr.cursusSopra.action.BarsAction"
+		<action name="listeDesBars" class="fr.cursusSopra.action.ListeDesBarsAction"
 			method="executeListeDesBars">
 			<result name="success" type="tiles">listeDesBars</result>
+			<result name="error">/views/sorties/bars/barsError.jsp</result>
+		</action>
+
+		<action name="detailsBar" class="fr.cursusSopra.action.DetailsBarAction"
+			method="executeDetailsBar">
+			<result name="success" type="tiles">detailsBar</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
 
