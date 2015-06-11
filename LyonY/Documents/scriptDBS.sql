@@ -1,42 +1,48 @@
 ------------------------------------------------------------------------------
 -- SUPPRESSION DES TABLES
 
-DROP TABLE IF EXISTS utilisateur CASCADE;
+DROP TABLE IF EXISTS utilisateurs CASCADE;
 
 DROP TABLE IF EXISTS avis CASCADE;
 
-DROP TABLE IF EXISTS lien CASCADE;
+DROP TABLE IF EXISTS liens CASCADE;
 
-DROP TABLE IF EXISTS lieu CASCADE;
+DROP TABLE IF EXISTS lieux CASCADE;
 
-DROP TABLE IF EXISTS quartier CASCADE;
+DROP TABLE IF EXISTS photos CASCADE;
 
-DROP TABLE IF EXISTS adresse CASCADE;
+DROP TABLE IF EXISTS quartiers CASCADE;
 
-DROP TABLE IF EXISTS monument CASCADE;
+DROP TABLE IF EXISTS adresses CASCADE;
 
-DROP TABLE IF EXISTS placeetparc CASCADE;
+DROP TABLE IF EXISTS visites CASCADE;
 
-DROP TABLE IF EXISTS sortie CASCADE;
+DROP TABLE IF EXISTS typevisites CASCADE;
 
-DROP TABLE IF EXISTS horaire CASCADE;
+DROP TABLE IF EXISTS monuments CASCADE;
 
-DROP TABLE IF EXISTS plagehoraire CASCADE;
+DROP TABLE IF EXISTS placeetparcs CASCADE;
 
-DROP TABLE IF EXISTS ouverture CASCADE;
+DROP TABLE IF EXISTS sorties CASCADE;
 
-DROP TABLE IF EXISTS ambiance CASCADE;
+DROP TABLE IF EXISTS horaires CASCADE;
 
-DROP TABLE IF EXISTS bar CASCADE;
+DROP TABLE IF EXISTS plagehoraires CASCADE;
 
-DROP TABLE IF EXISTS nightclub CASCADE;
+DROP TABLE IF EXISTS ouvertures CASCADE;
 
-DROP TABLE IF EXISTS restaurant CASCADE;
+DROP TABLE IF EXISTS ambiances CASCADE;
+
+DROP TABLE IF EXISTS bars CASCADE;
+
+DROP TABLE IF EXISTS nightclubs CASCADE;
+
+DROP TABLE IF EXISTS restaurants CASCADE;
 
 ------------------------------------------------------------------------------
 -- CREATION DES TABLES
 
-CREATE TABLE utilisateur ( 
+CREATE TABLE utilisateurs ( 
 	idutilisateur        serial  NOT NULL,
 	pseudo               varchar(20)  NOT NULL,
 	datenaissance        date  NOT NULL,
@@ -45,7 +51,7 @@ CREATE TABLE utilisateur (
 	avatar               varchar(30)  ,
 	idadresse            integer  NOT NULL,
 	motdepasse           varchar(30)  NOT NULL,
-	CONSTRAINT pk_utilisateur PRIMARY KEY ( idutilisateur ),
+	CONSTRAINT pk_utilisateurs PRIMARY KEY ( idutilisateur ),
 	CONSTRAINT ct_unique_pseudo UNIQUE ( pseudo )  
  );
 
@@ -53,159 +59,187 @@ CREATE TABLE avis (
 	idavis               serial  NOT NULL,
 	idlieu               integer  NOT NULL,
 	note                 integer  NOT NULL,
-	message              varchar(200)  ,
+	message              text  ,
 	idutilisateur        serial  NOT NULL,
 	CONSTRAINT pk_avis PRIMARY KEY ( idavis )   
  );
 
-CREATE TABLE lien ( 
+CREATE TABLE liens ( 
 	idlien               serial  NOT NULL,
 	liblien              varchar(20)  ,
+	idlieu               integer  NOT NULL,
 	url                  varchar(30)  NOT NULL,
 	CONSTRAINT pk_liens PRIMARY KEY ( idlien )
  );
 
-CREATE TABLE lieu ( 
+CREATE TABLE lieux ( 
 	idlieu               serial  NOT NULL,
-	nom                  varchar(40)  ,
-	idadresse            integer  NOT NULL,
-	idlien               integer  ,
+	nom                  varchar(40) NOT NULL ,
+	idadresse            integer  NOT NULL ,
 	description          text  ,
 	accessibilite        text  ,
-	CONSTRAINT pk_lieu PRIMARY KEY ( idlieu ) 
+	CONSTRAINT pk_lieux PRIMARY KEY ( idlieu ) 
  );
 
-CREATE TABLE quartier ( 
+CREATE TABLE photos ( 
+	idphoto              serial  NOT NULL,
+	libphoto             varchar(20) NOT NULL ,
+	idlieu               integer  NOT NULL,
+	CONSTRAINT pk_photos PRIMARY KEY ( idphoto )
+ );
+
+CREATE TABLE quartiers ( 
 	idquartier           serial  NOT NULL,
 	nom                  varchar(30)  NOT NULL,
 	budgetmoyen          integer  ,
 	distancecentreville  integer  ,
-	CONSTRAINT pk_quartier PRIMARY KEY ( idquartier )
+	CONSTRAINT pk_quartiers PRIMARY KEY ( idquartier )
  );
 
-CREATE TABLE adresse ( 
+CREATE TABLE adresses ( 
 	idadresse            serial  NOT NULL,
 	numero               integer  ,
 	voie                 varchar(30)  ,
 	codepostal           char(5)  NOT NULL,
 	ville                varchar(30)  NOT NULL,
 	idquartier           integer  NOT NULL,
-	CONSTRAINT pk_adresse PRIMARY KEY ( idadresse )  
+	CONSTRAINT pk_adresses PRIMARY KEY ( idadresse )  
  );
 
-CREATE TABLE monument ( 
-	idmonument           serial  NOT NULL,
+CREATE TABLE visites ( 
+	idvisite             serial  NOT NULL,
 	idlieu               integer  NOT NULL,
+	idtypevisite         integer ,
+	CONSTRAINT pk_visites PRIMARY KEY ( idvisite ) 
+ );
+
+CREATE TABLE typevisites ( 
+	idtypevisite         serial  NOT NULL,
+	libtypevisite        varchar(20)  NOT NULL,
+	typev                char(1)  NOT NULL,
+	CONSTRAINT pk_typevisites PRIMARY KEY ( idtypevisite )
+ );
+
+CREATE TABLE monuments ( 
+	idmonument           serial  NOT NULL,
+	idvisite             integer  NOT NULL,
 	anneeconstruction    integer  ,
 	anneefinconstruction integer  ,
-	typem                varchar(20)  ,
-	CONSTRAINT pk_monument PRIMARY KEY ( idmonument )    
+	CONSTRAINT pk_monuments PRIMARY KEY ( idmonument )    
  );
 
-CREATE TABLE placeetparc ( 
+CREATE TABLE placeetparcs ( 
 	idplaceetparc        serial  NOT NULL,
-	idlieu               integer  NOT NULL,
-	typepp               char(3)  ,
-	CONSTRAINT pk_place PRIMARY KEY ( idplaceetparc )   
+	idvisite             integer  NOT NULL,
+	CONSTRAINT pk_placeetparcs PRIMARY KEY ( idplaceetparc )   
  );
 
-CREATE TABLE sortie ( 
+CREATE TABLE sorties ( 
 	idsortie             serial  NOT NULL,
 	idlieu               integer  NOT NULL,
 	prixmax              integer  ,
 	prixmin              integer  ,
 	idambiance           integer  ,
-	CONSTRAINT pk_commerce PRIMARY KEY ( idsortie ) 
+	CONSTRAINT pk_sorties PRIMARY KEY ( idsortie ) 
  );
 
-CREATE TABLE horaire ( 
+CREATE TABLE horaires ( 
 	idhoraire            serial  NOT NULL,
 	jour                 date  NOT NULL,
 	idplagehoraire       integer  ,
-	CONSTRAINT pk_horaire PRIMARY KEY ( idhoraire )   
+	CONSTRAINT pk_horaires PRIMARY KEY ( idhoraire )   
  );
 
-CREATE TABLE plagehoraire ( 
+CREATE TABLE plagehoraires ( 
 	idplagehoraire       serial  NOT NULL,
 	heuredebut           time  NOT NULL,
 	heurefin             time  NOT NULL,
-	CONSTRAINT pk_plagehoraire PRIMARY KEY ( idplagehoraire )
+	CONSTRAINT pk_plagehoraires PRIMARY KEY ( idplagehoraire )
  );
 
-CREATE TABLE ouverture ( 
+CREATE TABLE ouvertures ( 
 	idhoraire            integer  NOT NULL,
 	idsortie             integer  NOT NULL,
-	CONSTRAINT idx_ouverture PRIMARY KEY ( idsortie, idhoraire )  
+	CONSTRAINT idx_ouvertures PRIMARY KEY ( idsortie, idhoraire )  
  );
 
-CREATE TABLE ambiance ( 
+CREATE TABLE ambiances ( 
 	idambiance           serial  NOT NULL,
-	typea                varchar(20)  NOT NULL,
+	libambiance          varchar(20)  NOT NULL,
 	types                char(1)  NOT NULL,
-	CONSTRAINT pk_ambiance PRIMARY KEY ( idambiance )
+	CONSTRAINT pk_ambiances PRIMARY KEY ( idambiance )
  );
 
-CREATE TABLE bar ( 
+CREATE TABLE bars ( 
 	idbar                serial  NOT NULL,
-	idsortie             integer  ,
+	idsortie             integer  NOT NULL ,
 	happyhour            integer  ,
-	CONSTRAINT pk_bar PRIMARY KEY ( idbar )  
+	CONSTRAINT pk_bars PRIMARY KEY ( idbar )  
  );
 
-CREATE TABLE nightclub ( 
+CREATE TABLE nightclubs ( 
 	idnightclub          serial  NOT NULL,
 	idsortie             integer  NOT NULL,
-	CONSTRAINT pk_nightclub PRIMARY KEY ( idnightclub )
+	CONSTRAINT pk_nightclubs PRIMARY KEY ( idnightclub )
  );
 
-CREATE TABLE restaurant ( 
+CREATE TABLE restaurants ( 
 	idrestaurant         serial  NOT NULL,
 	idsortie             integer  NOT NULL,
 	reservation          bool  ,
 	aemporter            bool  ,
-	CONSTRAINT pk_restaurant PRIMARY KEY ( idrestaurant ) 
+	CONSTRAINT pk_restaurants PRIMARY KEY ( idrestaurant ) 
  );
 
 ------------------------------------------------------------------------------
 -- AJOUT DES FOREIN KEYS
 
-ALTER TABLE utilisateur
-	ADD CONSTRAINT fk_utilisateur_adresse FOREIGN KEY ( idadresse ) REFERENCES adresse( idadresse ) ;
+ALTER TABLE utilisateurs
+	ADD CONSTRAINT fk_utilisateurs_adresses FOREIGN KEY ( idadresse ) REFERENCES adresses( idadresse ) ;
 
 ALTER TABLE avis
-	ADD CONSTRAINT fk_avis_lieu FOREIGN KEY ( idlieu ) REFERENCES lieu( idlieu ) ,
-	ADD CONSTRAINT fk_avis_utilisateur FOREIGN KEY ( idutilisateur ) REFERENCES utilisateur( idutilisateur ) ;
+	ADD CONSTRAINT fk_avis_lieux FOREIGN KEY ( idlieu ) REFERENCES lieux( idlieu ) ,
+	ADD CONSTRAINT fk_avis_utilisateurs FOREIGN KEY ( idutilisateur ) REFERENCES utilisateurs( idutilisateur ) ;
 
-ALTER TABLE lieu
-	ADD CONSTRAINT fk_lieu_adresse FOREIGN KEY ( idadresse ) REFERENCES adresse( idadresse ) ,
-	ADD CONSTRAINT fk_lieu_lien FOREIGN KEY ( idlien ) REFERENCES lien( idlien ) ;
+ALTER TABLE lieux
+	ADD CONSTRAINT fk_lieux_adresses FOREIGN KEY ( idadresse ) REFERENCES adresses( idadresse ) ;
 
-ALTER TABLE adresse
-	ADD CONSTRAINT fk_adresse_quartier FOREIGN KEY ( idquartier ) REFERENCES quartier( idquartier ) ;
+ALTER TABLE liens
+	ADD CONSTRAINT fk_liens_lieux FOREIGN KEY ( idlieu ) REFERENCES lieux( idlieu ) ;
 
-ALTER TABLE monument
-	ADD CONSTRAINT fk_monument_lieu FOREIGN KEY ( idlieu ) REFERENCES lieu( idlieu ) ;
+ALTER TABLE photos
+	ADD CONSTRAINT fk_photos_lieux FOREIGN KEY ( idlieu ) REFERENCES lieux( idlieu ) ;
 
-ALTER TABLE placeetparc
-	ADD CONSTRAINT fk_place_lieu FOREIGN KEY ( idlieu ) REFERENCES lieu( idlieu ) ;
+ALTER TABLE adresses
+	ADD CONSTRAINT fk_adresses_quartiers FOREIGN KEY ( idquartier ) REFERENCES quartiers( idquartier ) ;
 
-ALTER TABLE sortie
-	ADD CONSTRAINT fk_commerce_lieu FOREIGN KEY ( idlieu ) REFERENCES lieu( idlieu )  ,
-	ADD CONSTRAINT fk_commerce_ambiance FOREIGN KEY ( idambiance ) REFERENCES ambiance( idambiance ) ;
+ALTER TABLE monuments
+	ADD CONSTRAINT fk_monuments_visites FOREIGN KEY ( idvisite ) REFERENCES visites( idvisite ) ;
 
-ALTER TABLE horaire
-	ADD CONSTRAINT fk_horaire_plagehoraire FOREIGN KEY ( idplagehoraire ) REFERENCES plagehoraire( idplagehoraire ) ;
+ALTER TABLE placeetparcs
+	ADD CONSTRAINT fk_placeetparcs_visites FOREIGN KEY ( idvisite ) REFERENCES visites( idvisite ) ;
 
-ALTER TABLE ouverture
-	ADD CONSTRAINT fk_ouverture_horaire FOREIGN KEY ( idhoraire ) REFERENCES horaire( idhoraire ) ,
-	ADD CONSTRAINT fk_ouverture_sortie FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) ; 
+ALTER TABLE visites
+	ADD CONSTRAINT fk_visites_lieux FOREIGN KEY ( idlieu ) REFERENCES lieux( idlieu )  ,
+	ADD CONSTRAINT fk_visites_typevisites FOREIGN KEY ( idtypevisite ) REFERENCES typevisites( idtypevisite ) ;
+	
+ALTER TABLE sorties
+	ADD CONSTRAINT fk_sorties_lieux FOREIGN KEY ( idlieu ) REFERENCES lieux( idlieu )  ,
+	ADD CONSTRAINT fk_sorties_ambiances FOREIGN KEY ( idambiance ) REFERENCES ambiances( idambiance ) ;
 
-ALTER TABLE bar
-	ADD CONSTRAINT fk_bar_commerce FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) ,
-	ADD CONSTRAINT fk_bar_plagehoraire FOREIGN KEY ( happyhour ) REFERENCES plagehoraire( idplagehoraire ) ;
+ALTER TABLE horaires
+	ADD CONSTRAINT fk_horaires_plagehoraires FOREIGN KEY ( idplagehoraire ) REFERENCES plagehoraires( idplagehoraire ) ;
 
-ALTER TABLE nightclub
-	ADD CONSTRAINT fk_nightclub_commerce FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) ;
+ALTER TABLE ouvertures
+	ADD CONSTRAINT fk_ouvertures_horaires FOREIGN KEY ( idhoraire ) REFERENCES horaires( idhoraire ) ,
+	ADD CONSTRAINT fk_ouvertures_sorties FOREIGN KEY ( idsortie ) REFERENCES sorties( idsortie ) ; 
 
-ALTER TABLE restaurant
-	ADD CONSTRAINT fk_restaurant_commerce FOREIGN KEY ( idsortie ) REFERENCES sortie( idsortie ) ;
+ALTER TABLE bars
+	ADD CONSTRAINT fk_bars_sorties FOREIGN KEY ( idsortie ) REFERENCES sorties( idsortie ) ,
+	ADD CONSTRAINT fk_bars_plagehoraires FOREIGN KEY ( happyhour ) REFERENCES plagehoraires( idplagehoraire ) ;
+
+ALTER TABLE nightclubs
+	ADD CONSTRAINT fk_nightclubs_sorties FOREIGN KEY ( idsortie ) REFERENCES sorties( idsortie ) ;
+
+ALTER TABLE restaurants
+	ADD CONSTRAINT fk_restaurants_sorties FOREIGN KEY ( idsortie ) REFERENCES sorties( idsortie ) ;
