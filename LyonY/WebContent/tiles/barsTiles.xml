@@ -6,9 +6,10 @@
 
 <tiles-definitions>
 
-	<!-- INDEX -->
+	<!-- BARS -->
 	<definition name="bars" extends="baseLayout">
 		<put-attribute name="title" value="bars" />
+		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
 		<put-attribute name="body" value="/views/sorties/bars/bars.jsp" />
 	</definition>
 

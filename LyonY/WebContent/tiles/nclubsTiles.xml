@@ -6,9 +6,10 @@
 
 <tiles-definitions>
 
-	<!-- INDEX -->
-	<definition name="restaurants" extends="baseLayout">
+	<!-- NIGTH CLUBS -->
+	<definition name="nclubs" extends="baseLayout">
 		<put-attribute name="title" value="bars" />
+		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
 		<put-attribute name="body" value="/views/sorties/nclubs/nclubs.jsp" />
 	</definition>
 
