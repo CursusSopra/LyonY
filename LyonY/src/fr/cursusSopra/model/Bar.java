@@ -2,7 +2,6 @@ package fr.cursusSopra.model;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import fr.cursusSopra.tech.PostgresConnection;
@@ -23,13 +22,37 @@ public class Bar {
 	
 	private int prixmax;
 	
+	private String libambiance;
+	
 
 
-	// Getters and Setters
 
 	public Bar() {
 		
 	}
+	
+
+	// Getters and Setters
+
+	public String getNombar() {
+		return nombar;
+	}
+
+
+	public String getNomquartier() {
+		return nomquartier;
+	}
+
+
+	public int getPrixmin() {
+		return prixmin;
+	}
+
+
+	public int getPrixmax() {
+		return prixmax;
+	}
+
 
 	public int getIdbar() {
 		return idbar;
@@ -55,39 +78,47 @@ public class Bar {
 		this.happyhour = happyhour;
 	}
 
-	public Bar(int id) throws SQLException {
-		idbar = id;
-
-		// Connexion à la BDD postgreSQL
-		Connection cnx = PostgresConnection.getConnexion();
-		// Object instruction SQL
-		Statement stmt = cnx.createStatement();
-		Statement stmt1 = cnx.createStatement();
-		// Requête à exécuter
-		String query = "SELECT idcandidat, nom, prenom"
-				+ ", datenaissance, villenaissance"
-				+ "FROM candidats " 
-				+ "WHERE idcandidat=" +idbar;
-
-		// Obtention de l'ensemble résultats
-		ResultSet rs = stmt.executeQuery(query);
-		if (rs.next()) {		
-			idbar = rs.getInt("idbar");
-			nom = rs.getString("nom");
-			prenom = rs.getString("prenom");
-			dateNaissance = rs.getDate("datenaissance");
-			villeNaissance = rs.getString("villenaissance");
-			dateDeces = rs.getDate("datedeces");
-			villeDeces = rs.getString("villedeces");
-			age = rs.getInt("age");
-	
-			}
-		
-		}
-	
-
-
+	public String getLibambiance() {
+		return libambiance;
 	}
+
+	public void setLibambiance(String libambiance) {
+		this.libambiance = libambiance;
+	}
+
+//	public Bar(int id) throws SQLException {
+//		idbar = id;
+//
+//		// Connexion à la BDD postgreSQL
+//		Connection cnx = PostgresConnection.getConnexion();
+//		// Object instruction SQL
+//		Statement stmt = cnx.createStatement();
+//		Statement stmt1 = cnx.createStatement();
+//		// Requête à exécuter
+//		String query = "SELECT idcandidat, nom, prenom"
+//				+ ", datenaissance, villenaissance"
+//				+ "FROM candidats " 
+//				+ "WHERE idcandidat=" +idbar;
+//
+//		// Obtention de l'ensemble résultats
+//		ResultSet rs = stmt.executeQuery(query);
+//		if (rs.next()) {		
+//			idbar = rs.getInt("idbar");
+//			nom = rs.getString("nom");
+//			prenom = rs.getString("prenom");
+//			dateNaissance = rs.getDate("datenaissance");
+//			villeNaissance = rs.getString("villenaissance");
+//			dateDeces = rs.getDate("datedeces");
+//			villeDeces = rs.getString("villedeces");
+//			age = rs.getInt("age");
+//	
+//			}
+//		
+//		}
+	
+
+
+	
 	
 //	public int save() throws SQLException {
 //		Connection cnx = PostgresConnection.getConnexion();
@@ -138,6 +169,7 @@ public class Bar {
 
 	/* Membres statiques */
 	public static List<Bar> listeDesBars;
+	
 
 	public static List<Bar> getListeDesBars() throws SQLException {
 
@@ -148,31 +180,29 @@ public class Bar {
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query = "SELECT l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax"
-				+ "FROM bar b  " 
+		String query = "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax "
+				+ "FROM bars b  " 
 				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
-				+ "INNER JOIN lieus l ON s.idlieu=l.idlieu "
+				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
-				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier"
+				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance";
 		
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
 		while (rs.next()) {
-			Bar c = new Bar();
-			c.idCandidat = rs.getInt("idcandidat");
-			c.nom = rs.getString("nom");
-			c.prenom = rs.getString("prenom");
-			c.dateNaissance = rs.getDate("datenaissance");
-			c.villeNaissance = rs.getString("villenaissance");
-			c.dateDeces = rs.getDate("datedeces");
-			c.villeDeces = rs.getString("villedeces");
-			c.age = rs.getInt("age");
-			listeDesCandidats.add(c);
+			Bar b = new Bar();
+			b.idbar = rs.getInt("idbar");
+			b.nombar = rs.getString("nombar");
+			b.nomquartier = rs.getString("nomquartier");
+			b.libambiance = rs.getString("libambiance");
+			b.prixmin = rs.getInt("prixmin");
+			b.prixmax = rs.getInt("prixmax");
+			listeDesBars.add(b);
 		}
 
-		return listeDesCandidats;
+		return listeDesBars;
 
 	}
 

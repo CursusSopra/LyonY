@@ -7,7 +7,7 @@
 
 <div>
 	<div>
-		<a href="<s:url action='bars'/>"><img
+		<a href="<s:url action='listeDesBars'/>"><img
 			src="/icons/256_icons/bar.png" /></a>
 	</div>
 	
