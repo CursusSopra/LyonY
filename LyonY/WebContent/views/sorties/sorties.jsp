@@ -10,10 +10,14 @@
 		<a href="<s:url action='bars'/>"><img
 			src="/icons/256_icons/bar.png" /></a>
 	</div>
+	
 	<div>
-		<a><img src="/icons/256_icons/restau.png" /></a>
+		<a href="<s:url action='restaurants'/>"><img
+			src="/icons/256_icons/restau.png" /></a>
 	</div>
+	
 	<div>
-		<a><img src="/icons/256_icons/disco.png" /></a>
+		<a href="<s:url action='nclubs'/>"><img
+			src="/icons/256_icons/disco.png" /></a>
 	</div>
 </div>
