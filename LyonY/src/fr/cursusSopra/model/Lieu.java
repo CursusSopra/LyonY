@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.cursusSopra.tech.PostgresConnection;
 
@@ -25,7 +27,6 @@ public class Lieu {
 	private Adresse adresse;
 
 	// Constructeur vide non accessible
-	@SuppressWarnings("unused")
 	private Lieu() {};
 
 	// Constructeur à partir du nom
@@ -111,6 +112,31 @@ public class Lieu {
 		return sb.toString();
 	}
 
+	// Liste des Lieux
+	private static List<Lieu> listeDesLieux;
+	public static List<Lieu> getListeDesLieux() throws SQLException {
+		listeDesLieux = new ArrayList<Lieu>();
+		// connexion a la base de donnees postgresSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		// requete à executer
+		String query = "SELECT nom, idadresse, description, accessibilite "
+				+ "FROM lieux " ;
+		// obtention de l'ensemble resultat
+		ResultSet rs = stmt.executeQuery(query);// rs demande les valeur pour un ligne, ligne par ligne
+		while (rs.next()) {
+			Lieu l = new Lieu();
+			l.idLieu = rs.getInt("idlieu");
+			l.nom = rs.getString("nom");
+			l.adresse = new Adresse(rs.getInt("idadresse"));
+			l.description = rs.getString("description");
+			l.accessibilite = rs.getString("accessibilite");
+			listeDesLieux.add(l);
+		}
+		return listeDesLieux;
+	}
+	
 	// Setters And Getters
 	public String getNom() {
 		return nom;
@@ -145,6 +171,11 @@ public class Lieu {
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+
+
+	public static void setListeDesLieux(List<Lieu> listeDesLieux) {
+		Lieu.listeDesLieux = listeDesLieux;
 	}
 
 }

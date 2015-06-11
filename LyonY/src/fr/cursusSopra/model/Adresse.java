@@ -25,19 +25,19 @@ public class Adresse {
 	private String ville;
 	
 	// Identitfiant du quartier
-	private int idQuartier;
+	private Quartier quartier;
 
 	// Constructeur vide
 	@SuppressWarnings("unused")
 	private Adresse(){};
 	
 	// Constructeur à partir du nom
-	public Adresse(int numero, String voie, int codePostal, String ville, int idQuartier) {
+	public Adresse(int numero, String voie, int codePostal, String ville, int idQuartier) throws SQLException {
 		this.numero = numero;
 		this.voie = voie;
 		this.codePostal = codePostal;
 		this.ville = ville;
-		this.idQuartier = idQuartier;
+		this.quartier = new Quartier(idQuartier);
 	}
 
 	// Constructeur d'une adresse correspondant à partir d'un identifiant
@@ -141,12 +141,12 @@ public class Adresse {
 		this.ville = ville;
 	}
 
-	public int getIdQuartier() {
-		return idQuartier;
+	public Quartier getQuartier() {
+		return quartier;
 	}
 
-	public void setIdQuartier(int idQuartier) {
-		this.idQuartier = idQuartier;
+	public void setQuartier(Quartier quartier) {
+		this.quartier = quartier;
 	}
 	
 }
