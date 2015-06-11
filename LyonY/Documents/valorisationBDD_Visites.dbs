@@ -1,0 +1,78 @@
+INSERT INTO quartiers
+	( nom ) 
+	VALUES 
+	( 'Terreaux' ), 
+	( 'Croix-Rousse' ), 
+	( 'Confluence'), 
+	( 'Bellecour'), 
+	( 'Vieux Lyon'), 
+	( 'Cordeliers'), 
+	( 'Brotteaux');
+
+INSERT INTO adresses
+	( numero, voie, codepostal, ville, idquartier) 
+	VALUES 
+	( 20, 'place des Terreaux', 69001, 'Lyon', 1 ), 
+	( 86, 'Quai Perrache', 69002, 'Lyon', 3 ), 
+	( 1, 'place Saint-Nizier', 69002, 'Lyon', 6 );
+
+INSERT INTO adresses
+	( codepostal, ville, idquartier) 
+	VALUES
+	( 69002, 'Lyon', 4 ),
+	( 69005, 'Lyon', 5 ),
+	( 69006, 'Lyon', 7 );
+
+INSERT INTO lieux
+	( nom, idadresse, description, accessibilite )
+	VALUES
+	( 'Musée des Beaux Arts', 1, 'Description lalalalala', 'Accessibilité lalalalali'), 
+	( 'Musée des Confluences', 2, 'Description lalalalala', 'Accessibilité lalalalali'), 
+	( 'Eglise Saint-Nizier', 3, 'Description lalalalala', 'Accessibilité lalalalali'), 
+	( 'Place Bellecour', 4, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Place Saint-Jean', 5, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Parc de la Tête d Or', 6, 'Description lalalalala', 'Accessibilité lalalalali');
+
+INSERT INTO typevisites
+	(typev, libtypevisite)
+	VALUES
+	( 'M', 'Musée'),
+	( 'M', 'Lieu de culte'),
+	( 'P', 'Place'),
+	( 'P', 'Parc');
+
+INSERT INTO visites
+	(idlieu, idtypevisite)
+	VALUES
+	(1, 1),
+	(2, 1),
+	(3, 2),
+	(4, 3),
+	(5, 3),
+	(6, 4);
+
+INSERT INTO monuments
+	(anneeconstruction, anneefinconstruction, idvisite)
+	VALUES
+	(1801, 1801, 1),
+	(2003, 2014, 2),
+	(200, 1492, 3);
+
+INSERT INTO placeetparcs
+	(idvisite)
+	VALUES
+	(4),
+	(5),
+	(6);
+
+SELECT * FROM monuments
+	INNER JOIN visites USING (idvisite)
+	INNER JOIN lieux USING (idlieu)
+	INNER JOIN adresses USING (idadresse)
+	INNER JOIN quartiers USING (idquartier);
+
+SELECT * FROM placeetparcs
+	INNER JOIN visites USING (idvisite)
+	INNER JOIN lieux USING (idlieu)
+	INNER JOIN adresses USING (idadresse)
+	INNER JOIN quartiers USING (idquartier);

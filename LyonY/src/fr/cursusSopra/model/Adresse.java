@@ -67,12 +67,13 @@ public class Adresse {
 	// Prend en paramètre une connection (synchronisation entre les classes
 	// métiers)
 	public int create(Connection cnx) throws SQLException {
-		String query = " INSERT INTO adresses(nom, voie, codepostal, ville) VALUES (?,?,?,?)";
+		String query = " INSERT INTO adresses(nom, voie, codepostal, ville, idquartier) VALUES (?,?,?,?,?)";
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, numero);
 		ps.setString(2, voie);
 		ps.setInt(3, codePostal);
 		ps.setString(4, ville);
+		ps.setInt(5, quartier.getidquartier());
 		return ps.executeUpdate();
 	}
 
