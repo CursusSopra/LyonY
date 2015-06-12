@@ -1,10 +1,17 @@
 package fr.cursusSopra.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 public class Horaire {
 	
-	private int idHoraire;
 	private String jour;
-//	private int idPlageHoraire;
+	private PlageHoraire plageHoraire;
+	private DateFormat df = new SimpleDateFormat("HH:mm");
+	public static List<Integer> listeDesIdHoraireDuneSortie;
+	public static List<Horaire> listeDesHorairesDuneSortie;
+
 	
 	public String getJour() {
 		return jour;
@@ -12,18 +19,15 @@ public class Horaire {
 	public void setJour(String jour) {
 		this.jour = jour;
 	}
+	public PlageHoraire getPlageHoraire() {
+		return plageHoraire;
+	}
+	public void setPlageHoraire(PlageHoraire plageHoraire) {
+		this.plageHoraire = plageHoraire;
+	}
 	
 	public Horaire() {
-		jour = "lundi";
-		PlageHoraire plageHoraire = new PlageHoraire();
-	}
-	
-	public String getHoraireTest() {
-		return jour;
-		
-		
-		
+		plageHoraire = new PlageHoraire();
 	}
 
-	
 }

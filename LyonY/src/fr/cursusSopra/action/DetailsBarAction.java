@@ -3,11 +3,9 @@ package fr.cursusSopra.action;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 import fr.cursusSopra.model.Bar;
 
-public class DetailsBarAction extends ActionSupport {
+public class DetailsBarAction extends SortiesAction {
 
 	private static final long serialVersionUID = 1L;
 
@@ -41,12 +39,12 @@ public class DetailsBarAction extends ActionSupport {
 	public String executeDetailsBar() {
 		try {
 			bar = new Bar(idbar);
+			executeGetListeDesHorairesDuneSortie(idbar);
 			return SUCCESS;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ERROR;
 		}
-
 	}
 }

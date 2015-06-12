@@ -7,10 +7,9 @@ import java.text.SimpleDateFormat;
 
 public class PlageHoraire {
 	
-	private int idPlageHoraire;
 	private Date heureDebut;
 	private Date heureFin;
-	private DateFormat format = new SimpleDateFormat("HH:mm");
+	private DateFormat df = new SimpleDateFormat("HH:mm");
 	
 	public Date getHeureDebut() {
 		return heureDebut;
@@ -25,17 +24,15 @@ public class PlageHoraire {
 		this.heureFin = heureFin;
 	}
 	
-	public PlageHoraire() {
-		
-		try {
-			
-			heureDebut = format.parse("9:00");
-			heureFin = format.parse("20:00");
-			
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-				
+	public PlageHoraire() {		
 	}
 	
 }
+
+//		try {			
+//			heureDebut = df.parse("09:00");
+//			heureFin = df.parse("20:00");
+//			
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}				
