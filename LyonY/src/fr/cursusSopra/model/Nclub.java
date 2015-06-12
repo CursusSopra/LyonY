@@ -214,7 +214,7 @@ public class Nclub {
 		// Requête à exécuter
 		String query = "SELECT n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax "
 				+ "FROM nightclubs n  " 
-				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
+				+ "INNER JOIN sorties s ON s.idsortie=n.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
