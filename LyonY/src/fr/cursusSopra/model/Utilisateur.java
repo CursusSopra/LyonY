@@ -1,16 +1,54 @@
 package fr.cursusSopra.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Date;
+
+import fr.cursusSopra.tech.PostgresConnection;
+
 public class Utilisateur {
 	
 	private int idUtilisateur;
 	private String pseudo;
+	private Date dateNaissance;
 	private String motDePasse;
-	private String nom;
-	private String prenom;
 	private boolean sexe;
 	private String email;
+	private int idadresse;
 	private String avatar;
 	
+	
+	public void setSexe(boolean sexe) {
+		this.sexe = sexe;
+	}
+	public boolean isSexe() {
+		return sexe;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getIdadresse() {
+		return idadresse;
+	}
+	public void setIdadresse(int idadresse) {
+		this.idadresse = idadresse;
+	}
 	public String getPseudo() {
 		return pseudo;
 	}
@@ -23,37 +61,27 @@ public class Utilisateur {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	public String getPrenom() {
-		return prenom;
-	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	public String getMail() {
-		return email;
-	}
-	public void setMail(String mail) {
-		this.email = mail;
-	}
-	public String getAvatar() {
-		return avatar;
-	}
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
 	public int getIdUtilisateur() {
 		return idUtilisateur;
 	}
-	public boolean isSexe() {
-		return sexe;
+
+	
+	public Utilisateur() {
 	}
 	
-	
+	public int create (Connection cnx) throws SQLException {
+		
+		String query = "INSERT INTO utilisateurs (pseudo, sexe, email, avatar, motdepasse) VALUES (?, ?, ?, ?, ?)";
+		PreparedStatement ps = cnx.prepareStatement(query);
+		ps.setString(1, pseudo);
+		//ps.setDate(2,  new java.sql.Date(dateNaissance.getTime()));
+		ps.setBoolean(2, sexe);
+		ps.setString(3, email);
+		ps.setString(4, avatar);
+		ps.setString(5, motDePasse);
+		
+		return ps.executeUpdate();
+		
+	}
 
 }

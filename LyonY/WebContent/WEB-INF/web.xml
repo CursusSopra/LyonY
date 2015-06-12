@@ -36,6 +36,7 @@
 			/tiles/barsTiles.xml,
 			/tiles/restaurantsTiles.xml,
 			/tiles/nclubsTiles.xml,
+			/tiles/creationUtilisateurTiles.xml
 			
 		</param-value>
 	</context-param>

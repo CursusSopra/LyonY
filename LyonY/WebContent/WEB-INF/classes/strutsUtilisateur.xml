@@ -11,11 +11,20 @@
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 		
-		<!-- Création d'un utilisateur -->
+		<!-- Afficher le formulaire de création d'un utilisateur -->
 		<action name="FormCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+			method="execute">
+			<result name="success" type="tiles">creation</result>
+		</action>
+		
+		<!-- Envoyer le formulaire de creation -->
+		<action name="SendCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
 			method="executeCreation">
 			<result name="success" type="tiles">index</result>
+			<result name="error" type="tiles">indexerror</result>
 		</action>
+		
+		
 		
 		<!-- Connexion d'un utilisateur -->
 		<action name="ConnexionUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
