@@ -12,6 +12,7 @@ import fr.cursusSopra.tech.PostgresConnection;
 public class Placeetparc {
 
 	//Variables
+	private int idPlaceetparc;
 	private String nomLieu;
 	private String descriptionLieu;
 	private String accessibiliteLieu;
@@ -21,7 +22,9 @@ public class Placeetparc {
 	private String typeVisite;
 	
 	// GETS SETS
-	
+	public int getIdPlaceetparc() {
+		return idPlaceetparc;
+	}
 	public String getNomLieu() {
 		return nomLieu;
 	}
@@ -44,6 +47,11 @@ public class Placeetparc {
 		return typeVisite;
 	}
 
+
+	//CTORS
+	
+	
+	// METHODES STATIQUES
 	private static List<Placeetparc> listeDesPlaceetparcs;
 	
 	public static List<Placeetparc> getListeDesPlaceetparcs() throws SQLException{
@@ -58,7 +66,8 @@ public class Placeetparc {
 							+ "l.nom AS nomL, l.description, l.accessibilite, "
 							+ "a.codepostal, a.ville, "
 							+ "q.nom AS nomQ, "
-							+ "t.libtypevisite "
+							+ "t.libtypevisite, "
+							+ "p.idplaceetparc "
 						+ "FROM placeetparcs p "
 							+ "INNER JOIN visites v USING (idvisite) "
 							+ "INNER JOIN lieux l USING (idlieu) "
@@ -71,6 +80,7 @@ public class Placeetparc {
 		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
 		while(rs.next()){
 			Placeetparc p = new Placeetparc();
+			p.idPlaceetparc = rs.getInt("idplaceetparc");
 			p.nomLieu = rs.getString("nomL");
 			p.descriptionLieu = rs.getString("description");
 			p.accessibiliteLieu = rs.getString("accessibilite");

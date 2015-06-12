@@ -22,9 +22,13 @@
 						</thead>
 						<tbody>
 							<s:iterator value="listeDesMonuments">
+								<s:url action="detailsMonuments" var="dm">
+									<s:param name="idMonument">
+										<s:property value="idMonument"/>
+									</s:param>
+								</s:url>
 								<tr>
-
-									<td><s:property value="nomLieu"/></td>
+									<td><a href="<s:property value='#dm'/>"><s:property value="nomLieu"/></a></td>
 									<td><s:property value="numAdres"/>&nbsp;<s:property value="voieAdres"/>, &nbsp;<s:property value="cpAdres"/>&nbsp;<s:property value="villeAdres"/></td>
 									<td><s:property value="nomQuartier"/></td>
 									<td><s:property value="typeVisite"/></td>

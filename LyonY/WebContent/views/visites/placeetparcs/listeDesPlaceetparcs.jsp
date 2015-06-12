@@ -21,9 +21,13 @@
 						</thead>
 						<tbody>
 							<s:iterator value="listeDesPlaceetparcs">
+								<s:url action="detailsPlaceetparcs" var="dpp">
+									<s:param name="idPlaceetparc">
+										<s:property value="idPlaceetparc"/>
+									</s:param>
+								</s:url>
 								<tr>
-
-									<td><s:property value="nomLieu"/></td>
+									<td><a href="<s:property value='#dpp'/>"><s:property value="nomLieu"/></a></td>
 									<td><s:property value="cpAdres"/>&nbsp;<s:property value="villeAdres"/></td>
 									<td><s:property value="nomQuartier"/></td>
 									<td><s:property value="typeVisite"/></td>
@@ -35,3 +39,4 @@
 				<div class="col-md-1"></div>
 			</div>
 		</div>
+								
