@@ -113,6 +113,7 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setMotDePasse(motDePasse);
 		try {
 			if(uti.checkExists(cnx)){
+				this.email=uti.getEmail();
 				return SUCCESS;
 			}
 		} catch (SQLException e) {

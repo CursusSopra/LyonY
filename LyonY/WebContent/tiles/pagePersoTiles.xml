@@ -9,7 +9,7 @@
 	<!-- INDEX -->
 	<definition name="pagePerso" extends="baseLayout">
 		<put-attribute name="title" value="Page personnelle" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
+		<put-attribute name="menuConnexion" value="/views/utilisateurs/empty.jsp"/>
 		<put-attribute name="body" value="/views/pagePerso.jsp" />
 	</definition>
 

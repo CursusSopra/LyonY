@@ -94,7 +94,7 @@ public class Utilisateur {
 		ps.execute();
 		ResultSet rs= ps.getResultSet();
 		if(rs.next()) {
-			//this.email=rs.getString("email");
+			this.email=rs.getString("email");
 			return true;
 		}
 		return false;
