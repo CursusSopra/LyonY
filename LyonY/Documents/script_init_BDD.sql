@@ -271,7 +271,9 @@ INSERT INTO adresses
 	( 30, 'cours de Verdun Perrache', 69002, 'Lyon', 8 ), 
 	( 13, 'rue Neuve', 69002, 'Lyon', 6 ), 
 	( 21, 'place Gabriel Rambaud', 69001, 'Lyon', 1 ), 
-	( 7, 'rue Terme', 69001, 'Lyon', 9 );
+	( 7, 'rue Terme', 69001, 'Lyon', 9 ),
+	( 15, 'rue des Chartreux', 69001, 'Lyon', 2),
+	( 37, 'rue René Lénon', 69001, 'Lyon', 9);
 
 INSERT INTO adresses
 	( codepostal, ville, idquartier) 
@@ -292,9 +294,9 @@ INSERT INTO lieux
 	( 'La Hugonnière', 7, 'Description lalalalala', 'Accessibilité lalalalali'),
 	( 'La Maison Mère', 8, 'Description lalalalala', 'Accessibilité lalalalali'),
 	( 'L''Opéra Rock', 9, 'Description lalalalala', 'Accessibilité lalalalali'), 
-	( 'Place Bellecour', 10, 'Description lalalalala', 'Accessibilité lalalalali'),
-	( 'Place Saint-Jean', 11, 'Description lalalalala', 'Accessibilité lalalalali'),
-	( 'Parc de la Tête d''Or', 12, 'Description lalalalala', 'Accessibilité lalalalali');
+	( 'Place Bellecour', 12, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Place Saint-Jean', 13, 'Description lalalalala', 'Accessibilité lalalalali'),
+	( 'Parc de la Tête d''Or', 14, 'Description lalalalala', 'Accessibilité lalalalali');
 
 INSERT INTO typevisites
 	(typev, libtypevisite)
@@ -398,3 +400,16 @@ INSERT INTO ouvertures
 	(5, 1),
 	(6, 1),
 	(7, 1);
+
+INSERT INTO utilisateurs
+	(pseudo, datenaissance, sexe, email, idadresse, motdepasse)
+	VALUES
+	( 'JeanMitoufle', '1989-07-14', TRUE, 'jean.mitoufle@yahoo.com', 10, 'JaimelesSchtroumpfs'),
+	( 'MadeleineDeMouton', '1989-11-16', FALSE, 'madeleine.de-mouton@yahoo.com', 11, 'JaimeGargamel');
+
+INSERT INTO avis
+	(idlieu, note, message, idutilisateur)
+	VALUES
+	(9, 5, 'Super karaoké !', 1),
+	(12, 4, 'Jolie statue !', 1),
+	(4, 5, 'Mojitos que te llevan al paraiso!', 2);
