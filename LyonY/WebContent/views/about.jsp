@@ -25,7 +25,7 @@
 							</h5>
 							<h5>
 								<i class="fa fa-building-o fa-fw text-muted"></i>
-								LesFinesGueules Inc.
+								LyonY A tout Fait Bien Le Site Inc.
 							</h5>
 							<h5>
 								<i class="fa fa-envelope-o fa-fw text-muted"></i>
