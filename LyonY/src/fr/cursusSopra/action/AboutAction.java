@@ -46,10 +46,10 @@ public class AboutAction extends ActionSupport {
 				"Lyon, France", "ca@lyony.fr", "", "bio", // Bio
 				"competences, ...")); // Compétences
 
-		listCollab.add(new Collaborateurs("fond.png", // Image de fond
+		listCollab.add(new Collaborateurs("brasseriecarnot.jpg", // Image de fond
 				"jtanchon.jpg", // Image identité
 				"Julien Tanchon", // Nom complet
-				"Manager des Blagues de Fond de Cours", // Titre
+				"Responsable des Annulations de Réservation", // Titre
 				"Lyon, France", "jt@lyony.fr", "", "bio", // Bio
 				"competences, ...")); // Compétences
 
