@@ -46,7 +46,7 @@ CREATE TABLE utilisateurs (
 	idutilisateur        serial  NOT NULL,
 	pseudo               varchar(20)  NOT NULL,
 	datenaissance        date  NOT NULL,
-	sexe                 bool  NOT NULL,
+	sexe                 char(1)  NOT NULL,
 	email                varchar(30)  NOT NULL,
 	avatar               varchar(30)  ,
 	idadresse            integer  NOT NULL,
@@ -404,8 +404,8 @@ INSERT INTO ouvertures
 INSERT INTO utilisateurs
 	(pseudo, datenaissance, sexe, email, idadresse, motdepasse)
 	VALUES
-	( 'JeanMitoufle', '1989-07-14', TRUE, 'jean.mitoufle@yahoo.com', 10, 'JaimelesSchtroumpfs'),
-	( 'MadeleineDeMouton', '1989-11-16', FALSE, 'madeleine.de-mouton@yahoo.com', 11, 'JaimeGargamel');
+	( 'JeanMitoufle', '1989-07-14', 'M', 'jean.mitoufle@yahoo.com', 10, 'JaimelesSchtroumpfs'),
+	( 'MadeleineDeMouton', '1989-11-16', 'F', 'madeleine.de-mouton@yahoo.com', 11, 'JaimeGargamel');
 
 INSERT INTO avis
 	(idlieu, note, message, idutilisateur)

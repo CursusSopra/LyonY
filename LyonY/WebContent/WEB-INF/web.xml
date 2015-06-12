@@ -49,6 +49,9 @@
 			/tiles/barsTiles.xml,
 			/tiles/restaurantsTiles.xml,
 			/tiles/nclubsTiles.xml,
+			/tiles/visitesTiles.xml,
+			/tiles/monumentsTiles.xml,
+			/tiles/placeetparcsTiles.xml,
 			/tiles/creationUtilisateurTiles.xml,
 			/tiles/pagePersoTiles.xml
 			

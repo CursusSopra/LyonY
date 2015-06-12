@@ -7,9 +7,16 @@
 <tiles-definitions>
 
 	<!-- NIGTH CLUBS -->
-	<definition name="nclubs" extends="baseLayout">
-		<put-attribute name="title" value="bars" />
-		<put-attribute name="body" value="/views/sorties/nclubs/nclubs.jsp" />
+	<definition name="listeDesNclubs" extends="baseLayout">
+		<put-attribute name="title" value="Liste des Night Clubs" />
+		<put-attribute name="body" value="/views/sorties/nclubs/listeDesNclubs.jsp" />
+	</definition>
+	
+	
+	<definition name="detailsNclub" extends="baseLayout">
+		<put-attribute name="title" value="Détails du Night Club" />
+		<put-attribute name="body"
+			value="/views/sorties/bars/detailsNclub.jsp" />
 	</definition>
 
 </tiles-definitions>

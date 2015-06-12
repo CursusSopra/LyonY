@@ -19,14 +19,27 @@
 			<result name="success" type="tiles">sorties</result>
 		</action>
 
-		<action name="restaurants" class="fr.cursusSopra.action.RestaurantsAction"
-			method="execute">
-			<result name="success" type="tiles">restaurants</result>
+		<action name="listeDesRestaurants" class="fr.cursusSopra.action.ListeDesRestaurantsAction"
+			method="executeListeDesRestaurants">
+			<result name="success" type="tiles">listeDesRestaurants</result>
+		</action>
+		
+		<action name="detailsRestaurant" class="fr.cursusSopra.action.DetailsRestaurantAction"
+			method="executeDetailsRestaurant">
+			<result name="success" type="tiles">detailsRestaurant</result>
+			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
 
-		<action name="nclubs" class="fr.cursusSopra.action.NclubsAction"
+		<action name="listeDesNclubs" class="fr.cursusSopra.action.ListeDesNclubsAction"
 			method="execute">
-			<result name="success" type="tiles">nclubs</result>
+			<result name="success" type="tiles">listeDesNclubs</result>
+			<result name="error">/views/sorties/bars/barsError.jsp</result>
+		</action>
+		
+		<action name="detailsNclub" class="fr.cursusSopra.action.DetailsNclubAction"
+			method="executeDetailsNclub">
+			<result name="success" type="tiles">detailsNclub</result>
+			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
 
 		<action name="listeDesBars" class="fr.cursusSopra.action.ListeDesBarsAction"

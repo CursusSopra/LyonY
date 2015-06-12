@@ -1,6 +1,6 @@
 package fr.cursusSopra.action;
 
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -23,10 +23,9 @@ public class ListeDesMonumentsAction extends ActionSupport {
 
 	public String execute() {
 		try {
-			listeDesMonuments = Monument.getListMonuments();
+			listeDesMonuments = Monument.getListeDesMonuments();
 			return SUCCESS;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ERROR;
 		}

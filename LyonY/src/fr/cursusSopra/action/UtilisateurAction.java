@@ -19,15 +19,12 @@ public class UtilisateurAction extends ActionSupport {
 	private String pseudo;
 	private String dateNaissance;
 	private String motDePasse;
-	private boolean sexe;
+	private String sexe;
 	private String email;
 	private int idadresse;
 	private String avatar;
 	
 
-	public void setSexe(boolean sexe) {
-		this.sexe = sexe;
-	}
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
@@ -64,11 +61,14 @@ public class UtilisateurAction extends ActionSupport {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
+	public String getSexe() {
+		return sexe;
+	}
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
 	public int getIdUtilisateur() {
 		return idUtilisateur;
-	}
-	public boolean isSexe() {
-		return sexe;
 	}
 	
 	public static long getSerialversionuid() {
@@ -90,7 +90,7 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setSexe(sexe);
 		
 		try {
-			//uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd").parse(dateNaissance));
+			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd").parse(dateNaissance));
 			return uti.create(cnx) != 0 ? SUCCESS : ERROR;
 		}
 		 catch (SQLException e) {
@@ -99,11 +99,11 @@ public class UtilisateurAction extends ActionSupport {
 			return ERROR;
 		 }
 
-			//		 catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			return ERROR;
-//		}
+					 catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 	
 	public String executeConnexion(){
@@ -113,6 +113,7 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setMotDePasse(motDePasse);
 		try {
 			if(uti.checkExists(cnx)){
+				this.email=uti.getEmail();
 				return SUCCESS;
 			}
 		} catch (SQLException e) {
@@ -123,4 +124,42 @@ public class UtilisateurAction extends ActionSupport {
 		
 		return "erreurIdentification";
 	}
+	
+	public String executeDemandeSuppression(){
+		Utilisateur uti = new Utilisateur();
+		uti.setPseudo(pseudo);
+		return SUCCESS;
+	}
+	
+	public String executeSuppression(){
+		Connection cnx = PostgresConnection.getConnexion();
+		Utilisateur uti = new Utilisateur();
+		uti.setPseudo(pseudo);
+		try {
+			uti.delete(cnx);
+			return SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ERROR;
+	}
+
+	public String executeModif () {
+		Connection cnx = PostgresConnection.getConnexion();
+		
+		Utilisateur uti = new Utilisateur();
+		uti.setPseudo(pseudo);
+		uti.setAvatar(avatar);
+		uti.setMotDePasse(motDePasse);
+		uti.setEmail(email);
+		
+		try {
+			return uti.modif(cnx) != 0 ? SUCCESS : ERROR;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ERROR;
+		}
 }

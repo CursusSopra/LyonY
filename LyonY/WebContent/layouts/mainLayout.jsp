@@ -34,7 +34,9 @@
 	<tiles:insertAttribute name="menuConnexion" />
 	<tiles:insertAttribute name="body" />
 	
-	<a href="<s:url action='sorties'/>">Sorties</a>
+	<a href="<s:url action='sorties'/>">Sorties</a><br/>
+	<a href="<s:url action='visites'/>">Visites</a>
+	<a href="<s:url action='quartiers'/>">Quartiers</a>
 	<script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
 	
 	<!-- ================================================== -->

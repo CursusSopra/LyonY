@@ -6,10 +6,15 @@
 
 <tiles-definitions>
 
-	<!-- Listes des monuments -->
+	<!-- Monuments -->
 	<definition name="listeDesMonuments" extends="baseLayout">
 		<put-attribute name="title" value="Liste des monuments" />
 		<put-attribute name="body" value="/views/visites/monuments/listeDesMonuments.jsp" />
+	</definition>
+	
+	<definition name="detailsMonument" extends="baseLayout">
+		<put-attribute name="title" value="Détails du monument" />
+		<put-attribute name="body" value="/views/visites/monuments/detailsMonument.jsp" />
 	</definition>
 
 </tiles-definitions>

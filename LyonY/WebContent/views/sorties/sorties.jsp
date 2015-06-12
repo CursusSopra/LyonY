@@ -12,12 +12,12 @@
 	</div>
 	
 	<div>
-		<a href="<s:url action='restaurants'/>"><img
+		<a href="<s:url action='listeDesRestaurants'/>"><img
 			src="/icons/256_icons/restau.png" /></a>
 	</div>
 	
 	<div>
-		<a href="<s:url action='nclubs'/>"><img
+		<a href="<s:url action='listeDesNclubs'/>"><img
 			src="/icons/256_icons/disco.png" /></a>
 	</div>
 </div>

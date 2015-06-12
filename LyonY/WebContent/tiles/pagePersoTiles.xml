@@ -6,11 +6,27 @@
 
 <tiles-definitions>
 
-	<!-- INDEX -->
+	<!-- Page Perso -->
 	<definition name="pagePerso" extends="baseLayout">
 		<put-attribute name="title" value="Page personnelle" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
+		<put-attribute name="menuConnexion" value="/views/utilisateurs/empty.jsp"/>
 		<put-attribute name="body" value="/views/pagePerso.jsp" />
+	</definition>
+	
+	<definition name="erreuridentification" extends="baseLayout">
+		<put-attribute name="title" value="Erreur d'identification" />
+		<put-attribute name="body" value="/views/utilisateurs/erreurIdentification.jsp" />
+	</definition>
+	
+	<definition name="suppression" extends="baseLayout">
+		<put-attribute name="title" value="Suppression du profil" />
+		<put-attribute name="menuConnexion" value="/views/utilisateurs/empty.jsp"/>
+		<put-attribute name="body" value="/views/utilisateurs/supprimeProfil.jsp" />
+	</definition>
+	
+	<definition name="valideSuppression" extends="baseLayout">
+		<put-attribute name="title" value="Suppression du profil" />
+		<put-attribute name="body" value="/views/utilisateurs/supprimeProfilReussi.jsp" />
 	</definition>
 
 </tiles-definitions>
