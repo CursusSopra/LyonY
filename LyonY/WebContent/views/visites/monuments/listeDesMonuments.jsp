@@ -14,9 +14,9 @@
 						<thead>
 							<tr>
 								<th>Nom</th>
-								<th>Description</th>
 								<th>Adresse</th>
-								<th>Accessibilité</th>
+								<th>Quartier</th>
+								<th>Type de monument</th>
 								<th>Années de construction</th>
 							</tr>
 						</thead>
@@ -25,9 +25,10 @@
 								<tr>
 
 									<td><s:property value="nomLieu"/></td>
-									<td><s:property value="descriptionLieu"/></td>
-									<td><s:property value="numAdres"/>&nbsp;<s:property value="voieAdres"/>&nbsp;<s:property value="villeAdres"/></td>
-									<td><s:property value="annCons"/>&nbsp;<s:property value="annFinCons"/>&nbsp;</td>
+									<td><s:property value="numAdres"/>&nbsp;<s:property value="voieAdres"/>, &nbsp;<s:property value="cpAdres"/>&nbsp;<s:property value="villeAdres"/></td>
+									<td><s:property value="nomQuartier"/></td>
+									<td><s:property value="typeVisite"/></td>
+									<td><s:property value="annCons"/>&nbsp;-&nbsp;<s:property value="annFinCons"/></td>
 								</tr>
 							</s:iterator>
 						</tbody>
