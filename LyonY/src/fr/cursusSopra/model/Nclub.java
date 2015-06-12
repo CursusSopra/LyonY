@@ -8,10 +8,9 @@ import fr.cursusSopra.tech.PostgresConnection;
 
 public class Nclub {
 
-	private int idbar;
+	private int idnightclub;
 	private int idsortie;	
-	private String happyhour;	
-	private String nombar;	
+	private String nomnightclub;	
 	private String nomquartier;	
 	private int prixmin;	
 	private int prixmax;	
@@ -29,8 +28,8 @@ public class Nclub {
 
 	// Getters and Setters
 
-	public String getNombar() {
-		return nombar;
+	public String getNomnightclub() {
+		return nomnightclub;
 	}
 
 
@@ -49,12 +48,12 @@ public class Nclub {
 	}
 
 
-	public int getIdbar() {
-		return idbar;
+	public int getIdnightclub() {
+		return idnightclub;
 	}
 
-	public void setIdbar(int idbar) {
-		this.idbar = idbar;
+	public void setIdbar(int idnightclub) {
+		this.idnightclub = idnightclub;
 	}
 
 	public int getIdsortie() {
@@ -65,13 +64,7 @@ public class Nclub {
 		this.idsortie = idsortie;
 	}
 
-	public String getHappyhour() {
-		return happyhour;
-	}
-
-	public void setHappyhour(String happyhour) {
-		this.happyhour = happyhour;
-	}
+	
 
 	public String getLibambiance() {
 		return libambiance;
@@ -120,7 +113,7 @@ public class Nclub {
 	}
 	
 	public Nclub(int id) throws SQLException {
-		idbar = id;
+		idnightclub = id;
 
 		// Connexion à la BDD postgreSQL
 		Connection cnx = PostgresConnection.getConnexion();
@@ -128,20 +121,20 @@ public class Nclub {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, happyhour "
-				+ "FROM bars b "
+		String query = "SELECT n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, "
+				+ "FROM nightclubs n "
 				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "WHERE b.idbar = "+ idbar;
+				+ "WHERE n.idnightclub = "+ idnightclub;
 
 	// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
 		if (rs.next()) {		
-			idbar = rs.getInt("idbar");
-			nombar = rs.getString("nombar");
+			idnightclub = rs.getInt("idnightclub");
+			nomnightclub = rs.getString("nomnightclub");
 			nomquartier = rs.getString("nomquartier");
 			libambiance = rs.getString("libambiance");
 			prixmin = rs.getInt("prixmin");
@@ -207,20 +200,20 @@ public class Nclub {
 //	}
 
 	/* Membres statiques */
-	public static List<Nclub> listeDesBars;
+	public static List<Nclub> listeDesNightclubs;
 	
 
-	public static List<Nclub> getListeDesBars() throws SQLException {
+	public static List<Nclub> getListeDesNightclubs() throws SQLException {
 
-		listeDesBars = new ArrayList<Nclub>();
+		listeDesNightclubs = new ArrayList<Nclub>();
 
 		// Connexion à la BDD postgreSQL
 		Connection cnx = PostgresConnection.getConnexion();
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query = "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax "
-				+ "FROM bars b  " 
+		String query = "SELECT n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax "
+				+ "FROM nightclubs n  " 
 				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
@@ -231,17 +224,17 @@ public class Nclub {
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
 		while (rs.next()) {
-			Nclub b = new Nclub();
-			b.idbar = rs.getInt("idbar");
-			b.nombar = rs.getString("nombar");
-			b.nomquartier = rs.getString("nomquartier");
-			b.libambiance = rs.getString("libambiance");
-			b.prixmin = rs.getInt("prixmin");
-			b.prixmax = rs.getInt("prixmax");
-			listeDesBars.add(b);
+			Nclub n = new Nclub();
+			n.idnightclub = rs.getInt("idnightclub");
+			n.nomnightclub = rs.getString("nomnightclub");
+			n.nomquartier = rs.getString("nomquartier");
+			n.libambiance = rs.getString("libambiance");
+			n.prixmin = rs.getInt("prixmin");
+			n.prixmax = rs.getInt("prixmax");
+			listeDesNightclubs.add(n);
 		}
 
-		return listeDesBars;
+		return listeDesNightclubs;
 
 	}
 

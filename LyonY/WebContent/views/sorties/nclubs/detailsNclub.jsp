@@ -11,7 +11,7 @@
 
 			<div>
 				Nom du bar :
-				<s:property value="bar.nombar" />
+				<s:property value="bar.nomnightclub" />
 			</div>
 			<div>
 				Quartier :
@@ -35,15 +35,12 @@
 				Budget :
 				<s:property value="bar.prixmin" /> - <s:property value="bar.prixmax" /> &euro;
 			</div>
-			<div>
-				Happy hours :
-				<s:property value="bar.happyhour" />
-			</div>
+			
 			<div>
 			
 			<iframe class="map-top" width="598" height="450"
 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
-&q=<s:property value="bar.nombar" />,<s:property value="bar.numero" />+<s:property value="bar.voie" />,<s:property value="bar.ville" />"></iframe>
+&q=<s:property value="bar.nomnightclub" />,<s:property value="bar.numero" />+<s:property value="bar.voie" />,<s:property value="bar.ville" />"></iframe>
 			</div>
 
 

@@ -20,7 +20,7 @@
 		</action>
 
 		<action name="listeDesRestaurants" class="fr.cursusSopra.action.ListeDesRestaurantsAction"
-			method="execute">
+			method="executeListeDesRestaurants">
 			<result name="success" type="tiles">listeDesRestaurants</result>
 		</action>
 		
