@@ -10,26 +10,25 @@ import fr.cursusSopra.tech.PostgresConnection;
 
 public class Adresse {
 	// Clé primaire de l'adresse
-	private int idAdresse;
+	int idAdresse;
 	
 	// Numéro de voie
-	private int numero;
+	int numero;
 	
 	// Libellé de la voie
-	private String voie;
+	String voie;
 	
 	// Code Postal
-	private int codePostal;
+	int codePostal;
 	
 	// Nom de la ville
-	private String ville;
+	String ville;
 	
 	// Identitfiant du quartier
 	private Quartier quartier;
 
 	// Constructeur vide
-	@SuppressWarnings("unused")
-	private Adresse(){};
+	@SuppressWarnings("unused") Adresse(){};
 	
 	// Constructeur à partir du nom
 	public Adresse(int numero, String voie, int codePostal, String ville, int idQuartier) throws SQLException {
@@ -67,13 +66,13 @@ public class Adresse {
 	// Prend en paramètre une connection (synchronisation entre les classes
 	// métiers)
 	public int create(Connection cnx) throws SQLException {
-		String query = " INSERT INTO adresses(nom, voie, codepostal, ville, idquartier) VALUES (?,?,?,?,?)";
+		String query = " INSERT INTO adresses(numero, voie, codepostal, ville, idquartier) VALUES (?,?,?,?,?)";
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, numero);
 		ps.setString(2, voie);
 		ps.setInt(3, codePostal);
 		ps.setString(4, ville);
-		ps.setInt(5, quartier.getidquartier());
+		ps.setInt(5, quartier.getIdquartier());
 		return ps.executeUpdate();
 	}
 

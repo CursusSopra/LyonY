@@ -17,33 +17,32 @@ public class Quartier {
 	private int budgetMoyen;
 	private int distanceCentreVille;
 
-	public int getidquartier() {
+	public int getIdquartier() {
 		return idquartier;
-	}
-
-	public void setidquartier(int idquartier) {
+	}	
+	public void setIdquartier(int idquartier) {
 		this.idquartier = idquartier;
 	}
-
-	public String getnom() {
+	public String getNom() {
 		return nom;
 	}
-
-	public void setnom(String nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-	public int getbudgetMoyen() {
+	public int getBudgetMoyen() {
 		return budgetMoyen;
 	}
-
-	public void setbudgetMoyen(int budgetMoyen) {
+	public void setBudgetMoyen(int budgetMoyen) {
 		this.budgetMoyen = budgetMoyen;
 	}
-
-	public int getdistanceCentreVille() {
+	public int getDistanceCentreVille() {
 		return distanceCentreVille;
 	}
+	public void setDistanceCentreVille(int distanceCentreVille) {
+		this.distanceCentreVille = distanceCentreVille;
+	}
+	
+	// ********************************************************************************
 
 	// constructeur
 	public Quartier(int id) throws SQLException {
@@ -56,7 +55,7 @@ public class Quartier {
 		Statement stmt = cnx.createStatement();
 		// requete à executer
 		String query = "SELECT nom, budgetMoyen, distanceCentreVille"
-				+ "FROM quartiers WHERE idquartier = " + idquartier	+ " ; ";
+				+ "FROM quartiers WHERE idquartier = " + idquartier + " ; ";
 		// obtention de l'ensemble resultat
 
 		ResultSet rs = stmt.executeQuery(query);// rs demande les valeur pour un
@@ -70,8 +69,7 @@ public class Quartier {
 		}
 	}
 
-	// ********************************************************************************
-
+	// contructeur vide
 	public Quartier() {
 	}
 
@@ -87,7 +85,7 @@ public class Quartier {
 		return ret;
 	}
 
-	public int save() throws SQLException {
+	public int create() throws SQLException {
 		Connection cnx = PostgresConnection.getConnexion();
 		String query = "INSERT INTO quartiers (nom, budgetMoyen, distanceCentreVille) VALUES (?, ?, ?)";
 		PreparedStatement ps = cnx.prepareStatement(query);
@@ -135,5 +133,39 @@ public class Quartier {
 			listeDesQuartiers.add(q);
 		}
 		return listeDesQuartiers;
+	}
+
+	
+	private  List<Adresse> listeDesAdressesDunQuartier;
+	
+	public  List<Adresse> getListeDesAdressesDunQuartier()
+			throws SQLException {		
+
+		listeDesAdressesDunQuartier = new ArrayList<Adresse>();
+
+		// connexion a la base de donnees postgresSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		// requete à executer
+		String query = "SELECT idadresse, numero, voie, codepostal, ville "
+				+ "FROM adresses, quartiers "
+				+ "WHERE quartiers.idquartier = adresses.idquartier "
+				+ "AND nom = '" + nom + "' ; ";
+
+		// obtention de l'ensemble resultat
+		ResultSet rs = stmt.executeQuery(query);// rs demande les valeur pour un
+												// ligne, ligne par ligne
+		while (rs.next()) {
+			Adresse a = new Adresse();
+			a.idAdresse = rs.getInt("idadresse");
+			a.numero = rs.getInt("numero");
+			a.voie = rs.getString("voie");
+			a.codePostal = rs.getInt("codepostal");
+			a.ville = rs.getString("ville");
+
+			listeDesAdressesDunQuartier.add(a);
+		}
+		return listeDesAdressesDunQuartier;
 	}
 }
