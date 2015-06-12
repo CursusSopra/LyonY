@@ -21,16 +21,32 @@ public class DetailsBarAction extends ActionSupport {
 
 	public DetailsBarAction() {
 	}
-	
+
 	public String execute() {
 
 		return SUCCESS;
 	}
 
-	public String executeDetailsBar() {
+	private int idbar;
+	private Bar bar;
 
-		return SUCCESS;
-
+	public void setIdbar(int idbar) {
+		this.idbar = idbar;
 	}
 
+	public Bar getBar() {
+		return bar;
+	}
+
+	public String executeDetailsBar() {
+		try {
+			bar = new Bar(idbar);
+			return SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ERROR;
+		}
+
+	}
 }

@@ -9,22 +9,17 @@ import fr.cursusSopra.tech.PostgresConnection;
 public class Bar {
 
 	private int idbar;
-
-	private int idsortie;
-	
-	private String happyhour;
-	
-	private String nombar;
-	
-	private String nomquartier;
-	
-	private int prixmin;
-	
-	private int prixmax;
-	
+	private int idsortie;	
+	private String happyhour;	
+	private String nombar;	
+	private String nomquartier;	
+	private int prixmin;	
+	private int prixmax;	
 	private String libambiance;
-	
-
+	private int numero;
+	private String voie;
+	private String ville;
+	private String description;
 
 
 	public Bar() {
@@ -86,36 +81,80 @@ public class Bar {
 		this.libambiance = libambiance;
 	}
 
-//	public Bar(int id) throws SQLException {
-//		idbar = id;
-//
-//		// Connexion à la BDD postgreSQL
-//		Connection cnx = PostgresConnection.getConnexion();
-//		// Object instruction SQL
-//		Statement stmt = cnx.createStatement();
-//		
-////		// Requête à exécuter
-////		String query = "SELECT idcandidat, nom, prenom"
-////				+ ", datenaissance, villenaissance"
-////				+ "FROM candidats " 
-////				+ "WHERE idcandidat=" +idbar;
-////
-////		// Obtention de l'ensemble résultats
-////		ResultSet rs = stmt.executeQuery(query);
-////		if (rs.next()) {		
-////			idbar = rs.getInt("idbar");
-////			nom = rs.getString("nom");
-////			prenom = rs.getString("prenom");
-////			dateNaissance = rs.getDate("datenaissance");
-////			villeNaissance = rs.getString("villenaissance");
-////			dateDeces = rs.getDate("datedeces");
-////			villeDeces = rs.getString("villedeces");
-////			age = rs.getInt("age");
-////	
-////			}
-//		
-//		}
-//	
+	public int getNumero() {
+		return numero;
+	}
+	
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+
+	public String getVoie() {
+		return voie;
+	}
+
+
+	public void setVoie(String voie) {
+		this.voie = voie;
+	}
+
+
+	public String getVille() {
+		return ville;
+	}
+
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public Bar(int id) throws SQLException {
+		idbar = id;
+
+		// Connexion à la BDD postgreSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// Object instruction SQL
+		Statement stmt = cnx.createStatement();
+		
+		// Requête à exécuter
+		String query = "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, happyhour "
+				+ "FROM bars b "
+				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
+				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
+				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
+				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
+				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
+				+ "WHERE b.idbar = "+ idbar;
+
+	// Obtention de l'ensemble résultats
+		ResultSet rs = stmt.executeQuery(query);
+		if (rs.next()) {		
+			idbar = rs.getInt("idbar");
+			nombar = rs.getString("nombar");
+			nomquartier = rs.getString("nomquartier");
+			libambiance = rs.getString("libambiance");
+			prixmin = rs.getInt("prixmin");
+			prixmax = rs.getInt("prixmax");
+			numero = rs.getInt("numero");
+			voie = rs.getString("voie");
+			ville = rs.getString("ville");
+			description = rs.getString("description");
+	
+			}
+		
+		}
+	
 
 
 	

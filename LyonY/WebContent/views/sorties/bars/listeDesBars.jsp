@@ -24,14 +24,14 @@
 				<tbody>
 					<s:iterator value="listeDesBars">
 						<tr>
-							<s:url action="" var="dc">
-								<s:param name="idCandidat">
-									<s:property value="idCandidat" />
+							<s:url action="detailsBar" var="db">
+								<s:param name="idbar">
+									<s:property value="idbar" />
 								</s:param>
 							</s:url>
 
 
-							<td><s:property value="nombar" /></td>
+							<td><a href="<s:property value='#db'/>"> <s:property value="nombar" /></a></td>
 							<td><s:property value="libambiance" /></td>
 							<td><s:property value="prixmin" /></td>
 							<td><s:property value="prixmax" /></td>
