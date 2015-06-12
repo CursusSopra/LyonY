@@ -7,9 +7,9 @@
 <tiles-definitions>
 
 	<!-- RESTAURANTS -->
-	<definition name="restaurants" extends="baseLayout">
+	<definition name="listeDesRestaurants" extends="baseLayout">
 		<put-attribute name="title" value="Restaurants" />
-		<put-attribute name="body" value="/views/sorties/restaurants/restaurants.jsp" />
+		<put-attribute name="body" value="/views/sorties/restaurants/listeDesRestaurants.jsp" />
 	</definition>
 
 </tiles-definitions>
