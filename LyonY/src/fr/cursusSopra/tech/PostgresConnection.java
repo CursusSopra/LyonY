@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class PostgresConnection {
-	public static Connection GetConnexion() {
+	public static Connection getConnexion() {
 		String server = "localhost";
 		String user = "postgres";
 		String passwd = "postgres";
