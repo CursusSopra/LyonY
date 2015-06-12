@@ -10,13 +10,25 @@
 	<definition name="creation" extends="baseLayout">
 		<put-attribute name="title" value="creation" />
 		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
-		<put-attribute name="body" value="/views/FormCreationUtilisateur.jsp" />
+		<put-attribute name="body" value="/views/utilisateurs/FormCreationUtilisateur.jsp" />
 	</definition>
 	
 	<definition name="indexerror" extends="baseLayout">
 		<put-attribute name="title" value="creation" />
 		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
-		<put-attribute name="body" value="/views/FormCreationUtilisateur.jsp" />
+		<put-attribute name="body" value="/views/utilisateurs/FormCreationUtilisateur.jsp" />
+	</definition>
+	
+	<definition name="modification" extends="baseLayout">
+		<put-attribute name="title" value="Modification du profil" />
+		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
+		<put-attribute name="body" value="/views/utilisateurs/FormModifUtilisateur.jsp" />
+	</definition>
+	
+	<definition name="errormodif" extends="baseLayout">
+		<put-attribute name="title" value="creation" />
+		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
+		<put-attribute name="body" value="/views/utilisateurs/FormModifUtilisateur.jsp" />
 	</definition>
 	
 

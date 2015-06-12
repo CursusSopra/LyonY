@@ -52,7 +52,7 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<input type="text" class="form-control" id="idDateNaissance"
-								name="dateNaissance" placeholder="aaaa-mm-jj"/>
+								name="dateNaissance" placeholder="aaaa-mm-jj" required/>
 						</div>
 						<span class="col-lg-6 control-label">&nbsp;</span>
 					</div>
