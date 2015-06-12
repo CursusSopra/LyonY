@@ -35,7 +35,7 @@ public class AboutAction extends ActionSupport {
 		listCollab.add(new Collaborateurs("fond.png", // Image de fond
 				"rgesnik.jpg", // Image identité
 				"Rémy Gesnik", // Nom complet
-				"Responsable des Stations de Rravail", // Titre
+				"Responsable des Stations de Travail", // Titre
 				"Lyon, France", "rg@lyony.fr", "", "bio", // Bio
 				"Les T-Shirts au nom de l'école, ...")); // Compétences
 
