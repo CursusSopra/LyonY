@@ -24,11 +24,11 @@
 				<tbody>
 					<s:iterator value="listeDesBars">
 						<tr>
-							<%-- 							<s:url action="" var = "dc"> --%>
-							<%-- 							<s:param name ="idCandidat"> --%>
-							<%-- 							<s:property value="idCandidat"/> --%>
-							<%-- 							</s:param> --%>
-							<%-- 							</s:url> --%>
+							<s:url action="" var="dc">
+								<s:param name="idCandidat">
+									<s:property value="idCandidat" />
+								</s:param>
+							</s:url>
 
 
 							<td><s:property value="nombar" /></td>

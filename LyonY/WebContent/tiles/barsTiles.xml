@@ -9,7 +9,15 @@
 	<!-- BARS -->
 	<definition name="listeDesBars" extends="baseLayout">
 		<put-attribute name="title" value="Liste des bars" />
-		<put-attribute name="body" value="/views/sorties/bars/listeDesBars.jsp" />
+		<put-attribute name="body"
+			value="/views/sorties/bars/listeDesBars.jsp" />
 	</definition>
+
+	<definition name="detailsBar" extends="baseLayout">
+		<put-attribute name="title" value="Détails du bar" />
+		<put-attribute name="body"
+			value="/views/sorties/bars/detailsBar.jsp" />
+	</definition>
+	
 
 </tiles-definitions>

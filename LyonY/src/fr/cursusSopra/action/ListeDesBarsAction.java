@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import fr.cursusSopra.model.Bar;
 
-public class BarsAction extends ActionSupport {
+public class ListeDesBarsAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +19,7 @@ public class BarsAction extends ActionSupport {
 
 	}
 
-	public BarsAction() {
+	public ListeDesBarsAction() {
 	}
 	
 	public String execute() {
