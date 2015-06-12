@@ -32,7 +32,7 @@ public class AboutAction extends ActionSupport {
 						"Après un master de recherches sur les 4 opérations arithmétiques, s'oriente vers quelque chose de plus simple : Pacbase", // Bio
 						"POO, Algorithmique, ...")); // Compétences
 
-		listCollab.add(new Collaborateurs("fond.png", // Image de fond
+		listCollab.add(new Collaborateurs("stationdetravail.jpg", // Image de fond
 				"rgesnik.jpg", // Image identité
 				"Rémy Gesnik", // Nom complet
 				"Responsable des Stations de Travail", // Titre
@@ -49,7 +49,7 @@ public class AboutAction extends ActionSupport {
 		listCollab.add(new Collaborateurs("fond.png", // Image de fond
 				"jtanchon.jpg", // Image identité
 				"Julien Tanchon", // Nom complet
-				"", // Titre
+				"Manager des Blagues de Fond de Cours", // Titre
 				"Lyon, France", "jt@lyony.fr", "", "bio", // Bio
 				"competences, ...")); // Compétences
 
@@ -88,10 +88,10 @@ public class AboutAction extends ActionSupport {
 				"Lyon, France", "ym@lyony.fr", "", "bio", // Bio
 				"Poulets à la Plancha, ...")); // Compétences
 
-		listCollab.add(new Collaborateurs("petanque.jpg", // Image de fond
+		listCollab.add(new Collaborateurs("rolandgarros.jpg", // Image de fond
 				"mvitaglione.jpg", // Image identité
 				"Maxime Vitaglione", // Nom complet
-				"Sporting Club Manager", // Titre
+				"Responsable des Retransmissions de Roland Garros", // Titre
 				"Lyon, France", "mv@lyony.fr", "", "bio", // Bio
 				"Sait lire l'heure, ...")); // Compétences
 
