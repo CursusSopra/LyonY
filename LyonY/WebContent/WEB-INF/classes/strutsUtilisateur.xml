@@ -30,9 +30,21 @@
 		<action name="ConnexionUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
 			method="executeConnexion">
 			<result name="success" type="tiles">pagePerso</result>
-			<result name="error" type="tiles">creation</result>
+			<result name="error" type="tiles">index</result>
 			<result name="erreurIdentification" type="tiles">erreuridentification</result>
 		</action>
 		
+		<!-- Demande de supression d'un utilisateur -->
+		<action name="SupprimUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+			method="executeDemandeSuppression">
+			<result name="success" type="tiles">suppression</result>
+		</action>
+		
+		<!-- Supression d'un utilisateur -->
+		<action name="validateSuppression" class="fr.cursusSopra.action.UtilisateurAction"
+			method="executeSuppression">
+			<result name="success" type="tiles">valideSuppression</result>
+			<result name="error" type="tiles">index</result>
+		</action>
 	</package>
 </struts>

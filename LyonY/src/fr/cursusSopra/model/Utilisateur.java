@@ -99,5 +99,14 @@ public class Utilisateur {
 		}
 		return false;
 	}
+	
+	public int delete(Connection cnx) throws SQLException{
+		
+		String query="DELETE FROM utilisateurs WHERE pseudo=?";
+		PreparedStatement ps = cnx.prepareStatement(query);
+		ps.setString(1, pseudo);
+		
+		return ps.executeUpdate();
+	}
 
 }

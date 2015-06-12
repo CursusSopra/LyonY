@@ -124,4 +124,25 @@ public class UtilisateurAction extends ActionSupport {
 		
 		return "erreurIdentification";
 	}
+	
+	public String executeDemandeSuppression(){
+		Utilisateur uti = new Utilisateur();
+		uti.setPseudo(pseudo);
+		return SUCCESS;
+	}
+	
+	public String executeSuppression(){
+		Connection cnx = PostgresConnection.getConnexion();
+		Utilisateur uti = new Utilisateur();
+		uti.setPseudo(pseudo);
+		try {
+			uti.delete(cnx);
+			return SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ERROR;
+	}
+
 }
