@@ -2,6 +2,7 @@ package fr.cursusSopra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -82,6 +83,21 @@ public class Utilisateur {
 		
 		return ps.executeUpdate();
 		
+	}
+	
+	public boolean checkExists(Connection cnx) throws SQLException{
+		
+		String query = "SELECT pseudo, motdepasse, email FROM utilisateurs WHERE pseudo=? AND motdepasse=?";
+		PreparedStatement ps = cnx.prepareStatement(query);
+		ps.setString(1, pseudo);
+		ps.setString(2, motDePasse);
+		ps.execute();
+		ResultSet rs= ps.getResultSet();
+		if(rs.next()) {
+			//this.email=rs.getString("email");
+			return true;
+		}
+		return false;
 	}
 
 }

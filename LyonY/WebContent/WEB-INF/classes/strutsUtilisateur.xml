@@ -29,7 +29,9 @@
 		<!-- Connexion d'un utilisateur -->
 		<action name="ConnexionUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
 			method="executeConnexion">
-			<result name="success" type="tiles">index</result>
+			<result name="success" type="tiles">pagePerso</result>
+			<result name="error" type="tiles">creation</result>
+			<result name="erreurIdentification" type="tiles">index</result>
 		</action>
 		
 	</package>

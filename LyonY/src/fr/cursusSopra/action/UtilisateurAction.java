@@ -107,8 +107,20 @@ public class UtilisateurAction extends ActionSupport {
 	}
 	
 	public String executeConnexion(){
+		Connection cnx = PostgresConnection.getConnexion();
 		Utilisateur uti = new Utilisateur();
+		uti.setPseudo(pseudo);
+		uti.setMotDePasse(motDePasse);
+		try {
+			if(uti.checkExists(cnx)){
+				return SUCCESS;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ERROR;
+		}	
 		
-		return SUCCESS;
+		return "erreurIdentification";
 	}
 }
