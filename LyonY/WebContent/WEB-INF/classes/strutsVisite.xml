@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
 
@@ -10,11 +13,10 @@
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 
-
-
 		<!-- Affichage de la liste des monuments -->
-		<action name="listeDesMonuments" class="fr.cursusSopra.action.ListeDesMonumentsAction"
-			<result name="success" type="tiles">liste des monuments</result>
+		<action name="listeDesMonuments" class="fr.cursusSopra.action.ListeDesMonumentsAction" method="execute">
+			<result name="success" type="tiles">listeDesMonuments</result>
 		</action>
 		
 	</package>
+</struts>
