@@ -6,11 +6,18 @@
 
 <tiles-definitions>
 
-	<!-- INDEX -->
+	<!-- Page Perso -->
 	<definition name="pagePerso" extends="baseLayout">
 		<put-attribute name="title" value="Page personnelle" />
 		<put-attribute name="menuConnexion" value="/views/utilisateurs/empty.jsp"/>
 		<put-attribute name="body" value="/views/pagePerso.jsp" />
 	</definition>
+	
+	<definition name="erreuridentification" extends="baseLayout">
+		<put-attribute name="title" value="Erreur d'identification" />
+		<put-attribute name="body" value="/views/utilisateurs/erreurIdentification.jsp" />
+	</definition>
+	
+	
 
 </tiles-definitions>

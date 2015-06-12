@@ -31,7 +31,7 @@
 			method="executeConnexion">
 			<result name="success" type="tiles">pagePerso</result>
 			<result name="error" type="tiles">creation</result>
-			<result name="erreurIdentification" type="tiles">index</result>
+			<result name="erreurIdentification" type="tiles">erreuridentification</result>
 		</action>
 		
 	</package>
