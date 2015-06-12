@@ -235,12 +235,12 @@ public class Restaurant {
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
 		String query = "SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, libambiance, prixmin, prixmax "
-				+ "FROM restaurants r  "
+				+ "FROM restaurants r "
 				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
-				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance";
+				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance ";
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);

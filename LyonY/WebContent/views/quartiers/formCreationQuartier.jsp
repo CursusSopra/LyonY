@@ -87,7 +87,7 @@
 						</div>
 
 					</fieldset>
-				<input type="submit" value="Créer le quartier" /> <a
+				<input type="submit" value="Créer le quartier" />
 
 				</form>
 
