@@ -105,7 +105,7 @@ public class Monument {
 			m.nomLieu = rs.getString("nomL");
 			m.descriptionLieu = rs.getString("description");
 			m.accessibiliteLieu = rs.getString("accessibilite");
-			m.numAdres = rs.getInt("numero");;
+			m.numAdres = rs.getInt("numero");
 			m.voieAdres = rs.getString("voie");
 			m.cpAdres = rs.getString("codepostal");
 			m.villeAdres = rs.getString("ville");
