@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="Quartier" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<!-- Affichage du formulaire de création d'un quartier -->
+		<action name="formCreationQuartier" class="fr.cursusSopra.action.QuartierAction"
+			method="execute">
+			<result name="success" type="tiles">creation</result>
+		</action>
+		
+		<!-- Envoi du formulaire de creation -->
+		<action name="SendCreationQuartier" class="fr.cursusSopra.action.QuartierAction"
+			method="executeCreation">
+			<result name="success" type="tiles">index</result>
+			<result name="error" type="tiles">indexerror</result>
+		</action>
+		
+			</package>
+</struts>
