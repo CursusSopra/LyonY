@@ -3,7 +3,9 @@ package fr.cursusSopra.action;
 import java.sql.SQLException;
 import java.util.List;
 
+import fr.cursusSopra.action.sorties.SortiesAction;
 import fr.cursusSopra.model.Bar;
+import fr.cursusSopra.tech.Breadcrumbs;
 
 public class DetailsBarAction extends SortiesAction {
 
@@ -18,6 +20,7 @@ public class DetailsBarAction extends SortiesAction {
 	}
 
 	public DetailsBarAction() {
+		listeBreadcrumbs.add(new Breadcrumbs("Les Bars", "listeProduits", null));
 	}
 
 	public String execute() {

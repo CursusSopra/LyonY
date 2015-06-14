@@ -7,7 +7,7 @@
 <tiles-definitions>
 
 	<!-- BASE LAYOUT -->
-	<definition name="baseLayout" template="/layouts/mainLayout.jsp">
+	<definition name="baseLayout" template="/layouts/secondLayout.jsp">
 		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
 	</definition>
 
