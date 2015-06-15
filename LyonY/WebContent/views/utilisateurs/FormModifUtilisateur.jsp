@@ -1,9 +1,9 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<h1>Bonjour <s:property value='pseudo'/>. <br>Vous êtes sur le points de modifiez votre profil utilisateur Lyon'Y.</h1>
+<h1>Bonjour <s:property value='pseudo'/>, <br>Vous êtes sur le points de modifiez votre profil utilisateur Lyon'Y.</h1>
 
 <form class="form-horizontal" method="post" id="idSendModifUtilisateur"
 	action="<s:url action='sendModifUtilisateur'/>">
-	<input type="hidden" name="pseudo" value="<s:property value='pseudo'/>" />
+	<input type="hidden" name="idUtilisateur" value="<s:property value='Utilisateur.idUtilisateur'/>" />
 	<fieldset>
 		<legend>Login</legend>
 		<div class="form-group">

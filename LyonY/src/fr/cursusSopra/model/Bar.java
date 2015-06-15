@@ -6,10 +6,9 @@ import java.util.List;
 
 import fr.cursusSopra.tech.PostgresConnection;
 
-public class Bar {
+public class Bar extends Sortie {
 
-	private int idbar;
-	private int idsortie;	
+	private int idBar;
 	private String happyhour;	
 	private String nombar;	
 	private String nomquartier;	
@@ -22,8 +21,7 @@ public class Bar {
 	private String description;
 
 
-	public Bar() {
-		
+	public Bar() {		
 	}
 	
 
@@ -50,19 +48,11 @@ public class Bar {
 
 
 	public int getIdbar() {
-		return idbar;
+		return idBar;
 	}
 
 	public void setIdbar(int idbar) {
-		this.idbar = idbar;
-	}
-
-	public int getIdsortie() {
-		return idsortie;
-	}
-
-	public void setIdsortie(int idsortie) {
-		this.idsortie = idsortie;
+		this.idBar = idbar;
 	}
 
 	public String getHappyhour() {
@@ -120,7 +110,7 @@ public class Bar {
 	}
 	
 	public Bar(int id) throws SQLException {
-		idbar = id;
+		idBar = id;
 
 		// Connexion à la BDD postgreSQL
 		Connection cnx = PostgresConnection.getConnexion();
@@ -135,12 +125,12 @@ public class Bar {
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "WHERE b.idbar = "+ idbar;
+				+ "WHERE b.idbar = "+ idBar;
 
 	// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
 		if (rs.next()) {		
-			idbar = rs.getInt("idbar");
+			idBar = rs.getInt("idbar");
 			nombar = rs.getString("nombar");
 			nomquartier = rs.getString("nomquartier");
 			libambiance = rs.getString("libambiance");
@@ -232,7 +222,7 @@ public class Bar {
 		ResultSet rs = stmt.executeQuery(query);
 		while (rs.next()) {
 			Bar b = new Bar();
-			b.idbar = rs.getInt("idbar");
+			b.idBar = rs.getInt("idbar");
 			b.nombar = rs.getString("nombar");
 			b.nomquartier = rs.getString("nomquartier");
 			b.libambiance = rs.getString("libambiance");

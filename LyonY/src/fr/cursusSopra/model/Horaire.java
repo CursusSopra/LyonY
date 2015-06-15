@@ -1,14 +1,11 @@
 package fr.cursusSopra.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class Horaire {
 	
 	private String jour;
 	private PlageHoraire plageHoraire;
-	private DateFormat df = new SimpleDateFormat("HH:mm");
 	public static List<Integer> listeDesIdHoraireDuneSortie;
 	public static List<Horaire> listeDesHorairesDuneSortie;
 

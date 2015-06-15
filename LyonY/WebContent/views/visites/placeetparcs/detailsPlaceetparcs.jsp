@@ -1,10 +1,7 @@
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-
-<%-- <a href="<s:url action='index'/>">Retour à la page d'accueil</a> --%>
-
-<h1>Détails du monument</h1>
+<h1>Détails du parc ou de la palce</h1>
 
 <div class="container-fluid">
 	<div class="row">
@@ -12,7 +9,7 @@
 		<div class="col-md-10">
 
 			<div>
-				Nom du monument :
+				Nom du parc ou de la place :
 				<s:property value="nomLieu" />
 			</div>
 			<div>
@@ -62,7 +59,6 @@
 		</div>
 		<div class="col-md-1"></div>
 	</div>
-
 
 
 </div>

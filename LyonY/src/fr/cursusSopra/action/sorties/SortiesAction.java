@@ -13,6 +13,16 @@ public class SortiesAction extends ActionGeneral {
 
 	private static final long serialVersionUID = 1L;
 	
+	private int idSortie;
+	
+	public int getIdSortie() {
+		return idSortie;
+	}
+
+	public void setIdSortie(int idSortie) {
+		this.idSortie = idSortie;
+	}
+	
 	private List<Horaire> listeDesHorairesDuneSortie;
 	
 	public List<Horaire> getListeDesHorairesDuneSortie() {
@@ -23,13 +33,8 @@ public class SortiesAction extends ActionGeneral {
 
 
 	public String executeGetListeDesHorairesDuneSortie(int idSortie) {		
-		try {
-			listeDesHorairesDuneSortie = Sortie.getListeDesHorairesDuneSortie(idSortie);
-			return SUCCESS;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return ERROR;
-		}
+		listeDesHorairesDuneSortie = getListeDesHorairesDuneSortie();
+		return SUCCESS;
 	}
 
 }

@@ -28,5 +28,12 @@
 			<result name="success" type="tiles">listeDesPlaceetparcs</result>
 		</action>
 		
+		<!-- Affichage des détails d'un monument -->
+		<action name="detailsMonument" class="fr.cursusSopra.action.visites.DetailsMonumentAction" method="executeDetailsMonument">
+			<result name="success" type="tiles">detailsMonument</result>
+		</action>
+		
+		
+		
 	</package>
 </struts>
