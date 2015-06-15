@@ -41,26 +41,29 @@
 			</div>
 			<div>
 				Reservation :
-				<s:property value="restaurant.reservation" />
-				<s:set name="reservation" value="restaurant.reservation"/>
-				
-				<s:if test=  "%{#reservation == 'true'}">
+
+
+				<s:set var="res" value="restaurant.reservation" />				
+
+				<s:if test="%{res}">
 					Oui
 				</s:if>
-				<s:elseif test= "%{ #reservation == 'false'}">
+				<s:else>
     				Non
-				</s:elseif>
+				</s:else>
 			</div>
 
 			<div>
 				A emporter :
-				<s:property value="restaurant.aemporter" />
-					<s:if test="%{true}">
+
+				<s:set var="aemp" value="restaurant.aemporter" />
+
+				<s:if test="%{aemp}">
 					Oui
 				</s:if>
-				<s:elseif test="%{false}">
+				<s:else>
     				Non
-				</s:elseif>
+				</s:else>
 			</div>
 
 			<div>
