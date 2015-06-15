@@ -25,7 +25,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="password" class="form-control" id="idMotDePasse"
-							name="motDePasse" required />
+							name="motDePasse" placeholder="Mot de Passe" required />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -56,7 +56,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idDateNaissance"
-							name="dateNaissance" placeholder="aaaa-mm-jj" required />
+							name="dateNaissance" placeholder="aaaa-mm-jj" pattern="\d{4}-\d{2}-\d{2}" required />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
