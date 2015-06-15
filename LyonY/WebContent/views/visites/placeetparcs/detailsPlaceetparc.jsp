@@ -3,7 +3,7 @@
 
 <h1>Détails du parc ou de la place</h1>
 <div>
-	<s:url action="modifPlaceetparc" var="mp">
+	<s:url action="formModifPlaceetparc" var="mp">
 		<s:param name="idPlaceetparc">
 			<s:property value="placeetparc.idPlaceetparc"/>
 		</s:param>

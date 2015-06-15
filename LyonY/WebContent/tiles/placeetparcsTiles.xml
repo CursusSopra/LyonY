@@ -12,8 +12,18 @@
 	</definition>
 
 	<definition name="detailsPlaceetparc" extends="baseLayout">
-		<put-attribute name="title" value="Détails" />
+		<put-attribute name="title" value="Détails de place ou parc" />
 		<put-attribute name="body" value="/views/visites/placeetparcs/detailsPlaceetparc.jsp" />
+	</definition>
+	
+	<definition name="formCreationPlaceetparc" extends="baseLayout">
+		<put-attribute name="title" value="Ajout d'une place ou d'un parc" />
+		<put-attribute name="body" value="/views/visites/placeetparcs/formCreationPlaceetparc.jsp" />
+	</definition>
+	
+	<definition name="formModifPlaceetparc" extends="baseLayout">
+		<put-attribute name="title" value="Modification de place ou parc" />
+		<put-attribute name="body" value="/views/visites/placeetparcs/formModifPlaceetparc.jsp" />
 	</definition>
 	
 </tiles-definitions>

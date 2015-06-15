@@ -17,11 +17,9 @@ public class ManagePlaceetparcAction extends ListeDesPlaceetparcsAction {
 	public Placeetparc getPlaceetparc() {
 		return placeetparc;
 	}
-
 	public void setPlaceetparc(Placeetparc placeetparc) {
 		this.placeetparc = placeetparc;
 	}
-
 	public void setIdPlaceetparc(int idPlaceetparc) {
 		this.idPlaceetparc = idPlaceetparc;
 	}
@@ -38,14 +36,24 @@ public class ManagePlaceetparcAction extends ListeDesPlaceetparcsAction {
 
 	public String executeDetailsPlaceetparc(){
 		
-	try {
-		placeetparc = new Placeetparc(idPlaceetparc);
-		return SUCCESS;
-	} catch (SQLException e) {
-		e.printStackTrace();			
-		return 	ERROR;
+		try {
+			placeetparc = new Placeetparc(idPlaceetparc);
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();			
+			return 	ERROR;
+		}
 	}
-}
+	
+	public String executeCreationPlaceetparc(){
+		
+		return SUCCESS;
+	}
+	
+	public String executeModifPlaceetparc(){
+		
+		return SUCCESS;
+	}
 
 
 }

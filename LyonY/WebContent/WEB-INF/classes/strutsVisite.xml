@@ -18,14 +18,11 @@
 			<result name="success" type="tiles">visites</result>
 		</action>
 		
+		<!-- MONUMENTS -->
+		
 		<!-- Affichage de la liste des monuments -->
 		<action name="listeDesMonuments" class="fr.cursusSopra.action.visites.ListeDesMonumentsAction" method="execute">
 			<result name="success" type="tiles">listeDesMonuments</result>
-		</action>
-		
-		<!-- Affichage de la liste des placeetparcs -->
-		<action name="listeDesPlaceetparcs" class="fr.cursusSopra.action.visites.ListeDesPlaceetparcsAction" method="execute">
-			<result name="success" type="tiles">listeDesPlaceetparcs</result>
 		</action>
 		
  		<!-- Affichage des détails d'un monument -->
@@ -33,9 +30,36 @@
 			<result name="success" type="tiles">detailsMonument</result>
 		</action>
 		
+ 		<!-- Formulaire de création d'un monument -->
+		<action name="formCreationMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeCreationMonument">
+			<result name="success" type="tiles">formCreationMonument</result>
+		</action>
+		
+ 		<!-- Formulaire de modification d'un monument -->
+		<action name="formModifMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeModifMonument">
+			<result name="success" type="tiles">formModifMonument</result>
+		</action>
+		
+		<!-- PLACEETPARCS -->
+		
+		<!-- Affichage de la liste des placeetparcs -->
+		<action name="listeDesPlaceetparcs" class="fr.cursusSopra.action.visites.ListeDesPlaceetparcsAction" method="execute">
+			<result name="success" type="tiles">listeDesPlaceetparcs</result>
+		</action>
+		
 		<!-- Affichage des détails d'une place ou d'un parc -->
 		<action name="detailsPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeDetailsPlaceetparc">
 			<result name="success" type="tiles">detailsPlaceetparc</result>
+		</action>
+		
+ 		<!-- Formulaire de création d'une place ou d'un parc -->
+		<action name="formCreationPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeCreationPlaceetparc">
+			<result name="success" type="tiles">formCreationPlaceetparc</result>
+		</action>
+		
+ 		<!-- Formulaire de modification d'une place ou d'un parc -->
+		<action name="formModifPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeModifPlaceetparc">
+			<result name="success" type="tiles">formModifPlaceetparc</result>
 		</action>
 		
 	</package>

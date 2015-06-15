@@ -47,16 +47,14 @@ public class ManageMonumentAction extends ListeDesMonumentsAction {
 		}
 	}
 	
+	public String executeCreationMonument(){
+
+		return SUCCESS;
+	}
+	
 	public String executeModifMonument(){
-		
-		try {
-			monument = new Monument(idMonument);
-			
-			return SUCCESS;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return 	ERROR;
-		}
+
+		return SUCCESS;
 	}
 	
 }

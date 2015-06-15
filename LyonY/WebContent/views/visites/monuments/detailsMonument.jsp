@@ -6,7 +6,7 @@
 
 <h1>Détails du monument</h1>
 <div>
-	<s:url action="modifMonument" var="mm">
+	<s:url action="formModifMonument" var="mm">
 		<s:param name="idMonument">
 			<s:property value="monument.idMonument"/>
 		</s:param>
