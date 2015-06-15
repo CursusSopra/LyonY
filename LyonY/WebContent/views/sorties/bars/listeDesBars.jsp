@@ -4,6 +4,15 @@
 
 <h1>Bars de Lyon</h1>
 
+<div>
+	<s:url action="formAjoutBar" var="fab">
+		<s:param name="idBar">
+			<s:property value="bar.idBar"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#fab'/>">Ajouter un bar</a>
+</div>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-1"></div>

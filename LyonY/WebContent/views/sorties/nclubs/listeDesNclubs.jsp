@@ -5,6 +5,15 @@
 
 <h1>Discothèques de Lyon</h1>
 
+<div>
+	<s:url action="formAjoutNclub" var="fan">
+		<s:param name="idNclub">
+			<s:property value="nclub.idNclub"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#fan'/>">Ajouter une discothèque</a>
+</div>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-1"></div>
