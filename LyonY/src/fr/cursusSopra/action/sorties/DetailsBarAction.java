@@ -1,13 +1,12 @@
-package fr.cursusSopra.action;
+package fr.cursusSopra.action.sorties;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import fr.cursusSopra.action.sorties.SortiesAction;
 import fr.cursusSopra.model.Bar;
 import fr.cursusSopra.tech.Breadcrumbs;
 
-public class DetailsBarAction extends SortiesAction {
+public class DetailsBarAction extends ListeDesBarsAction {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +20,7 @@ public class DetailsBarAction extends SortiesAction {
 
 	public DetailsBarAction() {
 		super();
-		listeBreadcrumbs.add(new Breadcrumbs("Les Bars", "listeDesBars", null));
+		listeBreadcrumbs.add(new Breadcrumbs("Bars", "listeDesBars", null));
 	}
 
 	public String execute() {
