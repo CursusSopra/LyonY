@@ -56,7 +56,6 @@ public class Bar extends Sortie {
 			ville = rs.getString("ville");
 			description = rs.getString("description");
 		}
-		
 		// Construction de la liste des horaires - Méthode de la classe mère
 		getListeDesHoraires();
 	}
@@ -66,71 +65,54 @@ public class Bar extends Sortie {
 	public String getNombar() {
 		return nombar;
 	}
-
 	public String getNomquartier() {
 		return nomquartier;
 	}
-
 	public int getPrixmin() {
 		return prixmin;
 	}
-
 	public int getPrixmax() {
 		return prixmax;
 	}
-
-	public int getIdbar() {
+	public int getIdBar() {
 		return idBar;
 	}
-
-	public void setIdbar(int idbar) {
+	public void setIdBar(int idbar) {
 		this.idBar = idbar;
 	}
-
 	public String getHappyhour() {
 		return happyhour;
 	}
-
 	public void setHappyhour(String happyhour) {
 		this.happyhour = happyhour;
 	}
-
 	public String getLibambiance() {
 		return libambiance;
 	}
-
 	public void setLibambiance(String libambiance) {
 		this.libambiance = libambiance;
 	}
-
 	public int getNumero() {
 		return numero;
 	}
-
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-
 	public String getVoie() {
 		return voie;
 	}
-
 	public void setVoie(String voie) {
 		this.voie = voie;
 	}
-
 	public String getVille() {
 		return ville;
 	}
-
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -216,9 +198,6 @@ public class Bar extends Sortie {
 			b.prixmax = rs.getInt("prixmax");
 			listeDesBars.add(b);
 		}
-
 		return listeDesBars;
-
 	}
-
 }

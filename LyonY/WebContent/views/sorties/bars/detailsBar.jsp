@@ -55,7 +55,7 @@
 						<s:iterator value="bar.listeDesHoraires">
 						<tr>
 							<td><s:property value="jour"/></td>
-							<td><s:property value="plageHoraire.heureDebut"/></td>
+							<td><s:date name="plageHoraire.heureDebut" format="HH:mm" /></td>
 							<td><s:date name="plageHoraire.heureFin" format="HH:mm" /></td>
 						</tr>
 					</s:iterator>

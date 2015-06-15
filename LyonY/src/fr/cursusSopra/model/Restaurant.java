@@ -6,10 +6,9 @@ import java.util.List;
 
 import fr.cursusSopra.tech.PostgresConnection;
 
-public class Restaurant {
+public class Restaurant extends Sortie {
 
-	private int idrestaurant;
-	private int idsortie;
+	private int idRestaurant;
 	private String nomrestaurant;
 	private String nomquartier;
 	private int prixmin;
@@ -24,26 +23,67 @@ public class Restaurant {
 	private boolean aemporter;
 
 	public Restaurant() {
-
+	}
+	
+	public Restaurant(int id) throws SQLException {
+		idRestaurant = id;
+		
+		// Connexion à la BDD postgreSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// Object instruction SQL
+		Statement stmt = cnx.createStatement();
+		
+		// Requête à exécuter
+		String query = "SELECT r.idsortie, r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codepostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter "
+				+ "FROM restaurants r "
+				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
+				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
+				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
+				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
+				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
+				+ "WHERE idrestaurant = " + idRestaurant;
+		
+		
+		
+		// Obtention de l'ensemble résultats
+		ResultSet rs = stmt.executeQuery(query);
+		if (rs.next()) {
+			idRestaurant = rs.getInt("idrestaurant");
+			idSortie = rs.getInt("idsortie");
+			nomrestaurant = rs.getString("nomrestaurant");
+			nomquartier = rs.getString("nomquartier");
+			libambiance = rs.getString("libambiance");
+			prixmin = rs.getInt("prixmin");
+			prixmax = rs.getInt("prixmax");
+			numero = rs.getInt("numero");
+			voie = rs.getString("voie");
+			codepostal = rs.getInt("codepostal");
+			ville = rs.getString("ville");
+			description = rs.getString("description");
+			reservation = rs.getBoolean("reservation");
+			aemporter = rs.getBoolean("aemporter");
+			
+		}
+		// Construction de la liste des horaires - Méthode de la classe mère
+		getListeDesHoraires();
 	}
 
-	// ////////////////////////////// Getters and
-	// Setters/////////////////////////////////////////////////////////////
+	// /////////////// Getters and Setters/////////////////////////////////////////////////////////////
 
-	public int getIdrestaurant() {
-		return idrestaurant;
+	public int getIdRestaurant() {
+		return idRestaurant;
 	}
 
-	public void setIdrestaurant(int idrestaurant) {
-		this.idrestaurant = idrestaurant;
+	public void setIdRestaurant(int idrestaurant) {
+		this.idRestaurant = idrestaurant;
 	}
 
-	public int getIdsortie() {
-		return idsortie;
+	public int getIdSortie() {
+		return idSortie;
 	}
 
-	public void setIdsortie(int idsortie) {
-		this.idsortie = idsortie;
+	public void setIdSortie(int idsortie) {
+		this.idSortie = idsortie;
 	}
 
 	public String getNomrestaurant() {
@@ -142,46 +182,6 @@ public class Restaurant {
 		this.aemporter = aemporter;
 	}
 
-	public Restaurant(int id) throws SQLException {
-		idrestaurant = id;
-
-		// Connexion à la BDD postgreSQL
-		Connection cnx = PostgresConnection.getConnexion();
-		// Object instruction SQL
-		Statement stmt = cnx.createStatement();
-
-		// Requête à exécuter
-		String query = "SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codepostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter "
-				+ "FROM restaurants r "
-				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
-				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
-				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
-				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
-				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "WHERE idrestaurant = " + idrestaurant;
-
-		
-		
-		// Obtention de l'ensemble résultats
-		ResultSet rs = stmt.executeQuery(query);
-		if (rs.next()) {
-			idrestaurant = rs.getInt("idrestaurant");
-			nomrestaurant = rs.getString("nomrestaurant");
-			nomquartier = rs.getString("nomquartier");
-			libambiance = rs.getString("libambiance");
-			prixmin = rs.getInt("prixmin");
-			prixmax = rs.getInt("prixmax");
-			numero = rs.getInt("numero");
-			voie = rs.getString("voie");
-			codepostal = rs.getInt("codepostal");
-			ville = rs.getString("ville");
-			description = rs.getString("description");
-			reservation = rs.getBoolean("reservation");
-			aemporter = rs.getBoolean("aemporter");
-
-		}
-
-	}
 
 	// public int save() throws SQLException {
 	// Connection cnx = PostgresConnection.getConnexion();
@@ -256,7 +256,7 @@ public class Restaurant {
 		ResultSet rs = stmt.executeQuery(query);
 		while (rs.next()) {
 			Restaurant r = new Restaurant();
-			r.idrestaurant = rs.getInt("idrestaurant");
+			r.idRestaurant = rs.getInt("idrestaurant");
 			r.nomrestaurant = rs.getString("nomrestaurant");
 			r.nomquartier = rs.getString("nomquartier");
 			r.libambiance = rs.getString("libambiance");

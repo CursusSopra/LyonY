@@ -65,6 +65,27 @@
     				Non
 				</s:else>
 			</div>
+			
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Jour de la semaine</th>
+						<th>Heure d'ouverture</th>
+						<th>Heure de fermeture</th>
+					</tr>
+				</thead>
+				<tbody>
+						<s:iterator value="restaurant.listeDesHoraires">
+						<tr>
+							<td><s:property value="jour"/></td>
+							<td><s:date name="plageHoraire.heureDebut" format="HH:mm" /></td>
+							<td><s:date name="plageHoraire.heureFin" format="HH:mm" /></td>
+						</tr>
+					</s:iterator>
+						
+
+				</tbody>
+			</table>
 
 			<div>
 
