@@ -20,6 +20,7 @@
 			<div>
 				Nom du restaurant :
 				<s:property value="restaurant.nomrestaurant" />
+				 (<s:property value="restaurant.notemoy" />)
 			</div>
 			<div>
 				Quartier :

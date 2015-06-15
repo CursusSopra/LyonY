@@ -21,6 +21,7 @@
 			<div>
 				Nom du bar :
 				<s:property value="bar.nombar" />
+				 (<s:property value="bar.notemoy" />)
 			</div>
 			<div>
 				Quartier :

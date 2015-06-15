@@ -21,6 +21,12 @@
 			<div>
 				Nom du Night Club :
 				<s:property value="nclub.nomnightclub" />
+				<s:iterator begin="1" end="nclub.notemoy">
+						
+						<img src="/icons/star.png" />	
+						
+
+					</s:iterator>
 				 (<s:property value="nclub.notemoy" />)
 			</div>
 			<div>

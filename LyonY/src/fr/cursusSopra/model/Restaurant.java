@@ -21,6 +21,8 @@ public class Restaurant extends Sortie {
 	private String description;
 	private boolean reservation;
 	private boolean aemporter;
+	private float notemoy;
+	private int nbavis;
 
 	public Restaurant() {
 	}
@@ -34,14 +36,16 @@ public class Restaurant extends Sortie {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT r.idsortie, r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codepostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter "
+		String query = "SELECT r.idsortie, r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codepostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM restaurants r "
 				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "WHERE idrestaurant = " + idRestaurant;
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+				+ "WHERE idrestaurant = " + idRestaurant
+				+ " GROUP BY r.idrestaurant, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
 		
 		
 		
@@ -62,6 +66,8 @@ public class Restaurant extends Sortie {
 			description = rs.getString("description");
 			reservation = rs.getBoolean("reservation");
 			aemporter = rs.getBoolean("aemporter");
+			notemoy = rs.getFloat("notemoy");
+			nbavis = rs.getInt("nbavis");
 			
 		}
 		// Construction de la liste des horaires - Méthode de la classe mère
@@ -231,6 +237,23 @@ public class Restaurant extends Sortie {
 	// return ret;
 	//
 	// }
+
+	public float getNotemoy() {
+		return notemoy;
+	}
+
+	public void setNotemoy(float notemoy) {
+		this.notemoy = notemoy;
+	}
+
+	public int getNbavis() {
+		return nbavis;
+	}
+
+	public void setNbavis(int nbavis) {
+		this.nbavis = nbavis;
+	}
+
 
 	/* Membres statiques */
 	public static List<Restaurant> listeDesRestaurants;

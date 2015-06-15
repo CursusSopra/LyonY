@@ -19,6 +19,8 @@ public class Bar extends Sortie {
 	private String voie;
 	private String ville;
 	private String description;
+	private float notemoy;
+	private int nbavis;
 
 	public Bar() {
 	}
@@ -32,14 +34,16 @@ public class Bar extends Sortie {
 		Statement stmt = cnx.createStatement();
 
 		// Requête à exécuter
-		String query = "SELECT b.idsortie, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, happyhour "
+		String query = "SELECT b.idsortie, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, happyhour, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM bars b "
 				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "WHERE b.idbar = " + idBar;
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+				+ "WHERE b.idbar = " + idBar
+				+ " GROUP BY b.idbar, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
@@ -55,6 +59,8 @@ public class Bar extends Sortie {
 			voie = rs.getString("voie");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
+			notemoy = rs.getFloat("notemoy");
+			nbavis = rs.getInt("nbavis");
 		}
 		// Construction de la liste des horaires - Méthode de la classe mère
 		getListeDesHoraires();
@@ -165,6 +171,22 @@ public class Bar extends Sortie {
 	// return ret;
 	//
 	// }
+
+	public float getNotemoy() {
+		return notemoy;
+	}
+
+	public void setNotemoy(float notemoy) {
+		this.notemoy = notemoy;
+	}
+
+	public int getNbavis() {
+		return nbavis;
+	}
+
+	public void setNbavis(int nbavis) {
+		this.nbavis = nbavis;
+	}
 
 	/* Membres statiques */
 	public static List<Bar> listeDesBars;
