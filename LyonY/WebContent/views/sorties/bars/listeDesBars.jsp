@@ -26,7 +26,7 @@
 						<tr>
 							<s:url action="detailsBar" var="db">
 								<s:param name="idBar">
-									<s:property value="idbar" />
+									<s:property value="idBar" />
 								</s:param>
 							</s:url>
 

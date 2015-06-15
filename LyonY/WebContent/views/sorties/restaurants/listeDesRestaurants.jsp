@@ -27,7 +27,7 @@
 						<tr>
 							<s:url action="detailsRestaurant" var="dr"> 
 								<s:param name="idrestaurant"> 
-								<s:property value="idrestaurant" /> 
+								<s:property value="idRestaurant" /> 
 							</s:param> 
 						</s:url> 
 
