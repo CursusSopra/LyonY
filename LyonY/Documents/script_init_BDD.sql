@@ -411,5 +411,6 @@ INSERT INTO avis
 	(idlieu, note, message, idutilisateur)
 	VALUES
 	(9, 5, 'Super karaoké !', 1),
-	(12, 4, 'Jolie statue !', 1),
-	(4, 5, 'Mojitos que te llevan al paraiso!', 2);
+	(10, 4, 'Jolie statue !', 1),
+	(4, 5, 'Mojitos que te llevan al paraiso!', 2),
+	(10,5, 'Ke placita tan mona', 2);
