@@ -57,17 +57,28 @@
 				</div>
 
 				<div class="col-md-8">
+					<form class="form-inline"  id="idConnexion" name="Connexion" method="POST" action="<s:url action='ConnexionUtilisateur' />">
+	  					<div class="form-group">
+	    					<label for="exampleInputName2">Identifiant</label>
+	    					<input type="text" class="form-control" id="idPseudo" name="pseudo" required>
+	  					</div>
+	  					<div class="form-group">
+		    				<label for="exampleInputEmail2">Mot de passe</label>
+		    				<input type="password" class="form-control" id="idMotDePasse" name="motDePasse" required>
+					  	</div>
+					  	<button type="submit" class="btn btn-default">Connexion</button>
+					</form>
 				
 				
 				
 				
-				<form id="idConnexion" name="Connexion" method="POST" action="<s:url action='ConnexionUtilisateur' />">
-			Identifiant:<input type="text" name="pseudo" required
-				placeholder="Identifiant" /> Mot de passe:<input type="password"
-				name="motDePasse" required placeholder="Mot de passe" /> <input
-				type="submit" value="Connexion" />
-		</form>
-		<a href='<s:url action="FormCreationUtilisateur"/>'>Inscription</a>
+<%-- 				<form id="idConnexion" name="Connexion" method="POST" action="<s:url action='ConnexionUtilisateur' />"> --%>
+<!-- 			Identifiant:<input type="text" name="pseudo" required -->
+<!-- 				placeholder="Identifiant" /> Mot de passe:<input type="password" -->
+<!-- 				name="motDePasse" required placeholder="Mot de passe" /> <input -->
+<!-- 				type="submit" value="Connexion" /> -->
+<!-- 		</form> -->
+					<a href='<s:url action="FormCreationUtilisateur"/>'>Inscription</a>
 				</div>
 			</div>
 		</div>
