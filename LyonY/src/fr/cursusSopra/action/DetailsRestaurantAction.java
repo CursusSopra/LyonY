@@ -5,21 +5,25 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import fr.cursusSopra.action.sorties.SortiesAction;
 import fr.cursusSopra.model.Bar;
+import fr.cursusSopra.model.Restaurant;
+import fr.cursusSopra.tech.Breadcrumbs;
 
-public class DetailsRestaurantAction extends ActionSupport {
+public class DetailsRestaurantAction extends SortiesAction {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Bar> listeDesBars;
+	private List<Bar> listeDesRestaurants;
 
-	public List<Bar> getListeDesBars() {
+	public List<Bar> getListeDesRestaurants() {
 
-		return listeDesBars;
+		return listeDesRestaurants;
 
 	}
 
 	public DetailsRestaurantAction() {
+		listeBreadcrumbs.add(new Breadcrumbs("Les Restaurants", "listeProduits", null));
 	}
 
 	public String execute() {
@@ -27,20 +31,20 @@ public class DetailsRestaurantAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	private int idbar;
-	private Bar bar;
+	private int idrestaurant;
+	private Restaurant restaurant;
 
-	public void setIdbar(int idbar) {
-		this.idbar = idbar;
+	public void setIdrestaurant(int idrestaurant) {
+		this.idrestaurant = idrestaurant;
 	}
 
-	public Bar getBar() {
-		return bar;
+	public Restaurant getRestaurant() {
+		return restaurant;
 	}
 
 	public String executeDetailsRestaurant() {
 		try {
-			bar = new Bar(idbar);
+			restaurant = new Restaurant(idrestaurant);
 			return SUCCESS;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

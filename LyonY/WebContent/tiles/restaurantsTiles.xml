@@ -11,5 +11,11 @@
 		<put-attribute name="title" value="Restaurants" />
 		<put-attribute name="body" value="/views/sorties/restaurants/listeDesRestaurants.jsp" />
 	</definition>
+	
+	<definition name="detailsRestaurant" extends="baseLayout">
+		<put-attribute name="title" value="Détails du restaurant" />
+		<put-attribute name="body"
+			value="/views/sorties/restaurants/detailsRestaurant.jsp" />
+	</definition>
 
 </tiles-definitions>
