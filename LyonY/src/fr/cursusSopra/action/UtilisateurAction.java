@@ -177,20 +177,29 @@ public class UtilisateurAction extends ActionSupport {
 	/* Modification du compte*/
 /* ================================================================================================ */
 	
-	public String modification(){
-		Utilisateur uti = new Utilisateur();
-		uti.setIdUtilisateur(idUtilisateur);
-		uti.setPseudo(pseudo);
-		uti.setMotDePasse(motDePasse);
-		uti.setEmail(email);
-		uti.setAvatar(avatar);
-		return SUCCESS;
+	public String modification() {
+
+		try {
+			Utilisateur uti = new Utilisateur();
+			uti.setPseudo(pseudo);
+			uti.detailsModif();
+			email = uti.getEmail();
+			motDePasse = uti.getMotDePasse();
+			avatar = uti.getAvatar();
+			idUtilisateur = uti.getIdUtilisateur();
+			return SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 	
 	public String executeModif () {
 		Connection cnx = PostgresConnection.getConnexion();
 		
 		Utilisateur uti = new Utilisateur();
+		uti.setIdUtilisateur(idUtilisateur);
 		uti.setPseudo(pseudo);
 		uti.setAvatar(avatar);
 		uti.setMotDePasse(motDePasse);

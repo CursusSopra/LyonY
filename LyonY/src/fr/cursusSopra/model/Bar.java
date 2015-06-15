@@ -9,106 +9,20 @@ import fr.cursusSopra.tech.PostgresConnection;
 public class Bar extends Sortie {
 
 	private int idBar;
-	private String happyhour;	
-	private String nombar;	
-	private String nomquartier;	
-	private int prixmin;	
-	private int prixmax;	
+	private String happyhour;
+	private String nombar;
+	private String nomquartier;
+	private int prixmin;
+	private int prixmax;
 	private String libambiance;
 	private int numero;
 	private String voie;
 	private String ville;
 	private String description;
 
-
-	public Bar() {		
-	}
-	
-
-	// Getters and Setters
-
-	public String getNombar() {
-		return nombar;
+	public Bar() {
 	}
 
-
-	public String getNomquartier() {
-		return nomquartier;
-	}
-
-
-	public int getPrixmin() {
-		return prixmin;
-	}
-
-
-	public int getPrixmax() {
-		return prixmax;
-	}
-
-
-	public int getIdbar() {
-		return idBar;
-	}
-
-	public void setIdbar(int idbar) {
-		this.idBar = idbar;
-	}
-
-	public String getHappyhour() {
-		return happyhour;
-	}
-
-	public void setHappyhour(String happyhour) {
-		this.happyhour = happyhour;
-	}
-
-	public String getLibambiance() {
-		return libambiance;
-	}
-
-	public void setLibambiance(String libambiance) {
-		this.libambiance = libambiance;
-	}
-
-	public int getNumero() {
-		return numero;
-	}
-	
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-
-
-	public String getVoie() {
-		return voie;
-	}
-
-
-	public void setVoie(String voie) {
-		this.voie = voie;
-	}
-
-
-	public String getVille() {
-		return ville;
-	}
-
-
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
 	public Bar(int id) throws SQLException {
 		idBar = id;
 
@@ -116,21 +30,22 @@ public class Bar extends Sortie {
 		Connection cnx = PostgresConnection.getConnexion();
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
-		
+
 		// Requête à exécuter
-		String query = "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, happyhour "
+		String query = "SELECT b.idsortie, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, happyhour "
 				+ "FROM bars b "
 				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "WHERE b.idbar = "+ idBar;
+				+ "WHERE b.idbar = " + idBar;
 
-	// Obtention de l'ensemble résultats
+		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
-		if (rs.next()) {		
+		if (rs.next()) {
 			idBar = rs.getInt("idbar");
+			idSortie = rs.getInt("idsortie");
 			nombar = rs.getString("nombar");
 			nomquartier = rs.getString("nomquartier");
 			libambiance = rs.getString("libambiance");
@@ -140,65 +55,119 @@ public class Bar extends Sortie {
 			voie = rs.getString("voie");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
-	
-			}
-		
 		}
-	
+		// Construction de la liste des horaires - Méthode de la classe mère
+		getListeDesHoraires();
+	}
 
+	// Getters and Setters
 
-	
-	
-//	public int save() throws SQLException {
-//		Connection cnx = PostgresConnection.getConnexion();
-//		String query = "INSERT INTO candidats(nom, prenom, datenaissance, villenaissance) "
-//				+ "VALUES (?, ?, ?, ?)";
-//		PreparedStatement ps = cnx.prepareStatement(query);
-//		ps.setString(1, nom);
-//		ps.setString(2, prenom);
-//		ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
-//		ps.setString(4, villeNaissance);
-//		
-//		int ret = ps.executeUpdate();
-//		
-//		return ret;
-//		
-//	}
-//	
-//	public int edit() throws SQLException {
-//		Connection cnx = PostgresConnection.getConnexion();
-//		String query = "UPDATE candidats SET nom=?, prenom=?, datenaissance=?, villenaissance=? "
-//				+ "WHERE idCandidat=?";
-//		PreparedStatement ps = cnx.prepareStatement(query);
-//		ps.setString(1, nom);
-//		ps.setString(2, prenom);
-//		ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
-//		ps.setString(4, villeNaissance);
-//		ps.setInt(5, idCandidat);
-//		
-//		
-//		int ret = ps.executeUpdate();
-//		
-//		return ret;
-//		
-//	}	
-//	
-//	public int delete() throws SQLException {
-//		Connection cnx = PostgresConnection.getConnexion();
-//		String query = "DELETE FROM candidats "
-//				+ "WHERE idCandidat=?";
-//		PreparedStatement ps = cnx.prepareStatement(query);
-//		ps.setInt(1, idCandidat);
-//		
-//		int ret = ps.executeUpdate();
-//		
-//		return ret;
-//		
-//	}
+	public String getNombar() {
+		return nombar;
+	}
+	public String getNomquartier() {
+		return nomquartier;
+	}
+	public int getPrixmin() {
+		return prixmin;
+	}
+	public int getPrixmax() {
+		return prixmax;
+	}
+	public int getIdBar() {
+		return idBar;
+	}
+	public void setIdBar(int idbar) {
+		this.idBar = idbar;
+	}
+	public String getHappyhour() {
+		return happyhour;
+	}
+	public void setHappyhour(String happyhour) {
+		this.happyhour = happyhour;
+	}
+	public String getLibambiance() {
+		return libambiance;
+	}
+	public void setLibambiance(String libambiance) {
+		this.libambiance = libambiance;
+	}
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	public String getVoie() {
+		return voie;
+	}
+	public void setVoie(String voie) {
+		this.voie = voie;
+	}
+	public String getVille() {
+		return ville;
+	}
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	// public int save() throws SQLException {
+	// Connection cnx = PostgresConnection.getConnexion();
+	// String query =
+	// "INSERT INTO candidats(nom, prenom, datenaissance, villenaissance) "
+	// + "VALUES (?, ?, ?, ?)";
+	// PreparedStatement ps = cnx.prepareStatement(query);
+	// ps.setString(1, nom);
+	// ps.setString(2, prenom);
+	// ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
+	// ps.setString(4, villeNaissance);
+	//
+	// int ret = ps.executeUpdate();
+	//
+	// return ret;
+	//
+	// }
+	//
+	// public int edit() throws SQLException {
+	// Connection cnx = PostgresConnection.getConnexion();
+	// String query =
+	// "UPDATE candidats SET nom=?, prenom=?, datenaissance=?, villenaissance=? "
+	// + "WHERE idCandidat=?";
+	// PreparedStatement ps = cnx.prepareStatement(query);
+	// ps.setString(1, nom);
+	// ps.setString(2, prenom);
+	// ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
+	// ps.setString(4, villeNaissance);
+	// ps.setInt(5, idCandidat);
+	//
+	//
+	// int ret = ps.executeUpdate();
+	//
+	// return ret;
+	//
+	// }
+	//
+	// public int delete() throws SQLException {
+	// Connection cnx = PostgresConnection.getConnexion();
+	// String query = "DELETE FROM candidats "
+	// + "WHERE idCandidat=?";
+	// PreparedStatement ps = cnx.prepareStatement(query);
+	// ps.setInt(1, idCandidat);
+	//
+	// int ret = ps.executeUpdate();
+	//
+	// return ret;
+	//
+	// }
 
 	/* Membres statiques */
 	public static List<Bar> listeDesBars;
-	
 
 	public static List<Bar> getListeDesBars() throws SQLException {
 
@@ -210,13 +179,12 @@ public class Bar extends Sortie {
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
 		String query = "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax "
-				+ "FROM bars b  " 
+				+ "FROM bars b  "
 				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance";
-		
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
@@ -230,9 +198,6 @@ public class Bar extends Sortie {
 			b.prixmax = rs.getInt("prixmax");
 			listeDesBars.add(b);
 		}
-
 		return listeDesBars;
-
 	}
-
 }

@@ -3,7 +3,7 @@
 
 <form class="form-horizontal" method="post" id="idSendModifUtilisateur"
 	action="<s:url action='sendModifUtilisateur'/>">
-	<input type="hidden" name="idUtilisateur" value="<s:property value='uti.idUtilisateur'/>" />
+	<input type="hidden" name="idUtilisateur" value="<s:property value='idUtilisateur'/>" />
 	<fieldset>
 		<legend>Login</legend>
 		<div class="form-group">
@@ -12,7 +12,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idPseudo"
-							name="pseudo" value="<s:property value='uti.pseudo' />" />
+							name="pseudo" value="<s:property value='pseudo' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -26,7 +26,7 @@
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idMotDePasse"
 							name="motDePasse"
-							value="<s:property value='uti.motDePasse' />" />
+							value="<s:property value='motDePasse' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -43,7 +43,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idEmail" name="email"
-							value="<s:property value='uti.email' />" />
+							value="<s:property value='email' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -60,7 +60,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idAvatar"
-							name="avatar" value="<s:property value='uti.avatar' />" />
+							name="avatar" value="<s:property value='avatar' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
