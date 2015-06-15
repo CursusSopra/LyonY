@@ -1,13 +1,13 @@
-package fr.cursusSopra.action;
+package fr.cursusSopra.action.sorties;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import fr.cursusSopra.action.sorties.SortiesAction;
 import fr.cursusSopra.model.Bar;
 import fr.cursusSopra.model.Nclub;
+import fr.cursusSopra.tech.Breadcrumbs;
 
 
 public class ListeDesNclubsAction extends SortiesAction {
@@ -22,6 +22,7 @@ public class ListeDesNclubsAction extends SortiesAction {
 	}
 
 	public ListeDesNclubsAction() {
+		listeBreadcrumbs.add(new Breadcrumbs("Sorties", "sorties", null));
 
 	}
 	

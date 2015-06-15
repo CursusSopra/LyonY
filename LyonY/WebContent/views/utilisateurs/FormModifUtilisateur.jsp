@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<h1>Modification de votre profil utilisateur Lyon'Y</h1>
+<h1>Bonjour <s:property value='pseudo'/>. <br>Vous êtes sur le points de modifiez votre profil utilisateur Lyon'Y.</h1>
 
 <form class="form-horizontal" method="post" id="idSendModifUtilisateur"
 	action="<s:url action='sendModifUtilisateur'/>">
@@ -12,7 +12,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idPseudo"
-							name="pseudo" placeholder="<s:property value='utilisateur.pseudo' />" />
+							name="pseudo" value="<s:property value='utilisateur.pseudo' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -43,7 +43,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idEmail" name="email"
-							placeholder="<s:property value='utilisateur.email' />" />
+							value="<s:property value='utilisateur.email' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -60,7 +60,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idAvatar"
-							name="avatar" placeholder="<s:property value='utilisateur.avatar' />" />
+							name="avatar" value="<s:property value='utilisateur.avatar' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
