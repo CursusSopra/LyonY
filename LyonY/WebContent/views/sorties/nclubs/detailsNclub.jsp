@@ -4,6 +4,15 @@
 
 <h1>Détails du Night Club</h1>
 
+<div>
+	<s:url action="modifNclub" var="mn">
+		<s:param name="idNclub">
+			<s:property value="nclub.idNclub"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#mn'/>">Modifier les informations</a>
+</div>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-1"></div>

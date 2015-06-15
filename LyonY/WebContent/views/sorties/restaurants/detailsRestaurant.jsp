@@ -3,6 +3,15 @@
 <a href="<s:url action='index'/>">Retour à la page d'accueil</a>
 <h1>Détails du Restaurant</h1>
 
+<div>
+	<s:url action="modifRestaurant" var="mr">
+		<s:param name="idRestaurant">
+			<s:property value="restaurant.idRestaurant"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#mr'/>">Modifier les informations</a>
+</div>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-1"></div>
