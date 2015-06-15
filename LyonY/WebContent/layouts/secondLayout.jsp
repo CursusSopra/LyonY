@@ -56,7 +56,12 @@
 					</strong>+90-897-678-44
 				</div>
 
-				<div class="col-md-8"><form id="idConnexion" name="Connexion" method="POST" action="<s:url action='ConnexionUtilisateur' />">
+				<div class="col-md-8">
+				
+				
+				
+				
+				<form id="idConnexion" name="Connexion" method="POST" action="<s:url action='ConnexionUtilisateur' />">
 			Identifiant:<input type="text" name="pseudo" required
 				placeholder="Identifiant" /> Mot de passe:<input type="password"
 				name="motDePasse" required placeholder="Mot de passe" /> <input
