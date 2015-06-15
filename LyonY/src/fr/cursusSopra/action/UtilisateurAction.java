@@ -169,6 +169,13 @@ public class UtilisateurAction extends ActionSupport {
 
 	/* Modification du compte*/
 /* ================================================================================================ */
+	
+	public String modification(){
+		Utilisateur uti = new Utilisateur();
+		uti.setPseudo(pseudo);
+		return SUCCESS;
+	}
+	
 	public String executeModif () {
 		Connection cnx = PostgresConnection.getConnexion();
 		

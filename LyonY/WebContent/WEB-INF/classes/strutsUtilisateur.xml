@@ -11,6 +11,7 @@
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 		
+		
 		<!-- Afficher le formulaire de création d'un utilisateur -->
 		<action name="FormCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
 			method="execute">
@@ -20,6 +21,21 @@
 		<!-- Envoyer le formulaire de creation -->
 		<action name="SendCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
 			method="executeCreation">
+			<result name="success" type="tiles">index</result>
+			<result name="error" type="tiles">indexerror</result>
+		</action>
+		
+		
+		
+		<!-- Afficher le formulaire de modification du compte -->
+		<action name="FormModifUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+			method="execute">
+			<result name="success" type="tiles">modification</result>
+		</action>
+		
+		<!-- Envoyer le formulaire de modification -->
+		<action name="sendModifUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+			method="executeModif">
 			<result name="success" type="tiles">index</result>
 			<result name="error" type="tiles">indexerror</result>
 		</action>

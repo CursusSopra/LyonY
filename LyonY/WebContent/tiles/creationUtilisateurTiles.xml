@@ -20,7 +20,7 @@
 	</definition>
 	
 	<definition name="modification" extends="baseLayout">
-		<put-attribute name="title" value="Modification du profil" />
+		<put-attribute name="title" value="ModificationProfil" />
 		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
 		<put-attribute name="body" value="/views/utilisateurs/FormModifUtilisateur.jsp" />
 	</definition>

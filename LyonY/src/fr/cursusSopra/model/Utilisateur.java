@@ -128,7 +128,7 @@ public class Utilisateur {
 /* =================================================================================== */
 	public int modif(Connection cnx) throws SQLException {
 		
-		String query = "UPDATE utilisateurs SET pseudo=?, email=?, avatar=?, motdepasse=?  WHERE idcandidat=?";
+		String query = "UPDATE utilisateurs SET pseudo=?, email=?, avatar=?, motdepasse=?  WHERE idutilisateur=?";
 		
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setString(1, pseudo);
