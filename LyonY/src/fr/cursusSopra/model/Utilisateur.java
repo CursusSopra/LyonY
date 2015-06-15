@@ -135,6 +135,7 @@ public class Utilisateur {
 		ps.setString(2, email);
 		ps.setString(3, avatar);
 		ps.setString(4, motDePasse);
+		ps.setInt(5, idUtilisateur);
 				
 		return ps.executeUpdate();
 	}

@@ -15,7 +15,7 @@ email: <s:property value="email" /><br/>
 							</s:param>
 </s:url>
 
-<a href="<s:url action='#mo'/>">Modifier le profil</a> <br/>
+<a href="<s:property value='#mo'/>">Modifier le profil</a> <br/>
 <a href="<s:url action='AjouteAvis'/>">Ajouter un avis</a> <br/>
 <a href="<s:property value= '#su' />">Supprimer le compte</a> <br/>
 <a href="<s:url action='index'/>">Retour à la page d'accueil</a><br/>
