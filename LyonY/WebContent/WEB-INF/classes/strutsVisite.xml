@@ -34,7 +34,7 @@
 <!-- 		</action> -->
 		
 		<!-- Affichage des détails d'une place ou d'un parc -->
-		<action name="detailsPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeDetailsMonument">
+		<action name="detailsPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeDetailsPlaceetparc">
 			<result name="success" type="tiles">detailsPlaceetparc</result>
 		</action>
 		
