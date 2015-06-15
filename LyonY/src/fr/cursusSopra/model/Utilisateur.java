@@ -23,15 +23,6 @@ public class Utilisateur {
 	private String avatar;
 	private JRadioButton male;
 	
-//	public String gestionSexe (JRadioButton male){
-//		if (male.isSelected()) {
-//			sexe = "M";
-//		} else {
-//			sexe = "F";
-//		}
-//		return sexe;
-//	}
-	
 
 	public JRadioButton getMale() {
 		return male;
@@ -89,6 +80,8 @@ public class Utilisateur {
 	public Utilisateur() {
 	}
 	
+	/* Création d'un compte utilisateur Candidat */
+/* =================================================================================== */
 	public int create (Connection cnx) throws SQLException {
 		
 		String query = "INSERT INTO utilisateurs (pseudo, datenaissance, sexe, email, avatar, motdepasse) VALUES (?, ?, ?, ?, ?, ?)";
@@ -103,6 +96,8 @@ public class Utilisateur {
 		return ps.executeUpdate();
 	}
 	
+	/* Vérification si le pseudo est déjà uitilisé*/
+/* =================================================================================== */
 	public boolean checkExists(Connection cnx) throws SQLException{
 		
 		String query = "SELECT pseudo, motdepasse, email FROM utilisateurs WHERE pseudo=? AND motdepasse=?";
@@ -118,6 +113,8 @@ public class Utilisateur {
 		return false;
 	}
 	
+	/* Supression du compte*/
+/* =================================================================================== */
 	public int delete(Connection cnx) throws SQLException{
 		
 		String query="DELETE FROM utilisateurs WHERE pseudo=?";
@@ -127,6 +124,8 @@ public class Utilisateur {
 		return ps.executeUpdate();
 	}
 	
+	/* Modification du compte*/
+/* =================================================================================== */
 	public int modif(Connection cnx) throws SQLException {
 		
 		String query = "UPDATE utilisateurs SET pseudo=?, email=?, avatar=?, motdepasse=?  WHERE idcandidat=?";
