@@ -1,9 +1,9 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<h1>Bonjour <s:property value='pseudo'/>, <br>Vous êtes sur le points de modifiez votre profil utilisateur Lyon'Y.</h1>
+<h1>Bonjour <s:property value='pseudo'/>, <br>Vous êtes sur le point de modifier votre profil utilisateur Lyon'Y.</h1>
 
 <form class="form-horizontal" method="post" id="idSendModifUtilisateur"
 	action="<s:url action='sendModifUtilisateur'/>">
-	<input type="hidden" name="idUtilisateur" value="<s:property value='Utilisateur.idUtilisateur'/>" />
+	<input type="hidden" name="idUtilisateur" value="<s:property value='uti.idUtilisateur'/>" />
 	<fieldset>
 		<legend>Login</legend>
 		<div class="form-group">
@@ -12,7 +12,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idPseudo"
-							name="pseudo" value="<s:property value='utilisateur.pseudo' />" />
+							name="pseudo" value="<s:property value='uti.pseudo' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -26,7 +26,7 @@
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idMotDePasse"
 							name="motDePasse"
-							value="<s:property value='utilisateur.motDePasse' />" />
+							value="<s:property value='uti.motDePasse' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -43,7 +43,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idEmail" name="email"
-							value="<s:property value='utilisateur.email' />" />
+							value="<s:property value='uti.email' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
@@ -60,7 +60,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<input type="text" class="form-control" id="idAvatar"
-							name="avatar" value="<s:property value='utilisateur.avatar' />" />
+							name="avatar" value="<s:property value='uti.avatar' />" />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
 				</div>
