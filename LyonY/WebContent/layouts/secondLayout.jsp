@@ -1,7 +1,7 @@
 ﻿<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -132,7 +132,7 @@
 							<li><a href="forms.html">Lyon'Y Boit</a></li>
 							<li><a href="<s:url action='visites' />">Lyon'Y Visite</a></li>
 							<li><a href="blank.html">Lyon'Y Danse</a></li>
-
+							<li><a href="<s:url action='about' />">Qui Lyon'Y Est</a></li>
 						</ul>
 					</div>
 				</div>
@@ -171,10 +171,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					&copy; 2015 YourCompany | By : <a
-						href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
+					&copy; 2015 LyonY | By : <a
+						href="http://cursussopra.xyz/" target="_blank">Cursus Sopra</a>
 				</div>
-
 			</div>
 		</div>
 	</footer>
