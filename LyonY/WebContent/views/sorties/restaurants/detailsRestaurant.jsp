@@ -2,7 +2,7 @@
 
 <a href="<s:url action='index'/>">Retour à la page d'accueil</a>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
-<h1>Détails du Bar</h1>
+<h1>Détails du Restaurant</h1>
 
 <div class="container-fluid">
 	<div class="row">
@@ -10,40 +10,64 @@
 		<div class="col-md-10">
 
 			<div>
-				Nom du bar :
-				<s:property value="bar.nombar" />
+				Nom du restaurant :
+				<s:property value="restaurant.nomrestaurant" />
 			</div>
 			<div>
 				Quartier :
-				<s:property value="bar.nomquartier" />
+				<s:property value="restaurant.nomquartier" />
 			</div>
 			<div>
 				Ambiance :
-				<s:property value="bar.libambiance" />
+				<s:property value="restaurant.libambiance" />
 			</div>
 			<div>
 				Adresse :
-				<s:property value="bar.numero" />
-				<s:property value="bar.voie" />
-				<s:property value="bar.ville" />
+				<s:property value="restaurant.numero" />
+				<s:property value="restaurant.voie" />
+				<s:property value="restaurant.codepostal" />
+				<s:property value="restaurant.ville" />
 			</div>
 			<div>
 				Description :
-				<s:property value="bar.description" />
+				<s:property value="restaurant.description" />
 			</div>
 			<div>
 				Budget :
-				<s:property value="bar.prixmin" /> - <s:property value="bar.prixmax" /> &euro;
+				<s:property value="restaurant.prixmin" />
+				-
+				<s:property value="restaurant.prixmax" />
+				&euro;
 			</div>
 			<div>
-				Happy hours :
-				<s:property value="bar.happyhour" />
+				Reservation :
+				<s:property value="restaurant.reservation" />
+				<s:set name="reservation" value="restaurant.reservation"/>
+				
+				<s:if test=  "%{#reservation == 'true'}">
+					Oui
+				</s:if>
+				<s:elseif test= "%{ #reservation == 'false'}">
+    				Non
+				</s:elseif>
 			</div>
+
 			<div>
-			
-			<iframe class="map-top" width="598" height="450"
-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
-&q=<s:property value="bar.nombar" />,<s:property value="bar.numero" />+<s:property value="bar.voie" />,<s:property value="bar.ville" />"></iframe>
+				A emporter :
+				<s:property value="restaurant.aemporter" />
+					<s:if test="%{true}">
+					Oui
+				</s:if>
+				<s:elseif test="%{false}">
+    				Non
+				</s:elseif>
+			</div>
+
+			<div>
+
+				<iframe class="map-top" width="598" height="450"
+					src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
+&q=<s:property value="restaurant.nomrestaurant" />,<s:property value="restaurant.numero" />+<s:property value="restaurant.voie" />,<s:property value="restaurant.ville" />"></iframe>
 			</div>
 
 

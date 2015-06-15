@@ -33,6 +33,7 @@ public class Restaurant {
 	public int getIdrestaurant() {
 		return idrestaurant;
 	}
+
 	public void setIdrestaurant(int idrestaurant) {
 		this.idrestaurant = idrestaurant;
 	}
@@ -40,6 +41,7 @@ public class Restaurant {
 	public int getIdsortie() {
 		return idsortie;
 	}
+
 	public void setIdsortie(int idsortie) {
 		this.idsortie = idsortie;
 	}
@@ -47,6 +49,7 @@ public class Restaurant {
 	public String getNomrestaurant() {
 		return nomrestaurant;
 	}
+
 	public void setNomrestaurant(String nomrestaurant) {
 		this.nomrestaurant = nomrestaurant;
 	}
@@ -54,6 +57,7 @@ public class Restaurant {
 	public String getNomquartier() {
 		return nomquartier;
 	}
+
 	public void setNomquartier(String nomquartier) {
 		this.nomquartier = nomquartier;
 	}
@@ -61,6 +65,7 @@ public class Restaurant {
 	public int getPrixmin() {
 		return prixmin;
 	}
+
 	public void setPrixmin(int prixmin) {
 		this.prixmin = prixmin;
 	}
@@ -68,6 +73,7 @@ public class Restaurant {
 	public int getPrixmax() {
 		return prixmax;
 	}
+
 	public void setPrixmax(int prixmax) {
 		this.prixmax = prixmax;
 	}
@@ -75,6 +81,7 @@ public class Restaurant {
 	public String getLibambiance() {
 		return libambiance;
 	}
+
 	public void setLibambiance(String libambiance) {
 		this.libambiance = libambiance;
 	}
@@ -82,6 +89,7 @@ public class Restaurant {
 	public int getNumero() {
 		return numero;
 	}
+
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
@@ -89,6 +97,7 @@ public class Restaurant {
 	public String getVoie() {
 		return voie;
 	}
+
 	public void setVoie(String voie) {
 		this.voie = voie;
 	}
@@ -96,6 +105,7 @@ public class Restaurant {
 	public int getCodepostal() {
 		return codepostal;
 	}
+
 	public void setCodepostal(int codepostal) {
 		this.codepostal = codepostal;
 	}
@@ -103,6 +113,7 @@ public class Restaurant {
 	public String getVille() {
 		return ville;
 	}
+
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
@@ -110,6 +121,7 @@ public class Restaurant {
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -117,6 +129,7 @@ public class Restaurant {
 	public boolean isReservation() {
 		return reservation;
 	}
+
 	public void setReservation(boolean reservation) {
 		this.reservation = reservation;
 	}
@@ -124,54 +137,51 @@ public class Restaurant {
 	public boolean isAemporter() {
 		return aemporter;
 	}
+
 	public void setAemporter(boolean aemporter) {
 		this.aemporter = aemporter;
 	}
 
-	// public Restaurant(int id) throws SQLException {
-	// idbar = id;
-	//
-	// // Connexion à la BDD postgreSQL
-	// Connection cnx = PostgresConnection.getConnexion();
-	// // Object instruction SQL
-	// Statement stmt = cnx.createStatement();
-	//
-	// // Requête à exécuter
-	// String query =
-	// "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, happyhour "
-	// + "FROM bars b "
-	// + "INNER JOIN sorties s ON s.idsortie=b.idsortie "
-	// + "INNER JOIN lieux l ON s.idlieu=l.idlieu "
-	// + "INNER JOIN adresses a ON a.idadresse=l.idadresse "
-	// + "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
-	// + "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-	// + "WHERE b.idbar = "+ idbar;
-//	
-//	SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codepostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter
-//	FROM restaurants r
-//	INNER JOIN sorties s ON s.idsortie=r.idsortie
-//	INNER JOIN lieux l ON s.idlieu=l.idlieu 
-//	INNER JOIN adresses a ON a.idadresse=l.idadresse
-//	INNER JOIN quartiers q ON q.idquartier=a.idquartier
-//	INNER JOIN ambiances am ON am.idambiance=s.idambiance
-	//
-	// // Obtention de l'ensemble résultats
-	// ResultSet rs = stmt.executeQuery(query);
-	// if (rs.next()) {
-	// idbar = rs.getInt("idbar");
-	// nombar = rs.getString("nombar");
-	// nomquartier = rs.getString("nomquartier");
-	// libambiance = rs.getString("libambiance");
-	// prixmin = rs.getInt("prixmin");
-	// prixmax = rs.getInt("prixmax");
-	// numero = rs.getInt("numero");
-	// voie = rs.getString("voie");
-	// ville = rs.getString("ville");
-	// description = rs.getString("description");
-	//
-	// }
-	//
-	// }
+	public Restaurant(int id) throws SQLException {
+		idrestaurant = id;
+
+		// Connexion à la BDD postgreSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// Object instruction SQL
+		Statement stmt = cnx.createStatement();
+
+		// Requête à exécuter
+		String query = "SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codepostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter "
+				+ "FROM restaurants r "
+				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
+				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
+				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
+				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
+				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
+				+ "WHERE idrestaurant = " + idrestaurant;
+
+		
+		
+		// Obtention de l'ensemble résultats
+		ResultSet rs = stmt.executeQuery(query);
+		if (rs.next()) {
+			idrestaurant = rs.getInt("idrestaurant");
+			nomrestaurant = rs.getString("nomrestaurant");
+			nomquartier = rs.getString("nomquartier");
+			libambiance = rs.getString("libambiance");
+			prixmin = rs.getInt("prixmin");
+			prixmax = rs.getInt("prixmax");
+			numero = rs.getInt("numero");
+			voie = rs.getString("voie");
+			codepostal = rs.getInt("codepostal");
+			ville = rs.getString("ville");
+			description = rs.getString("description");
+			reservation = rs.getBoolean("reservation");
+			aemporter = rs.getBoolean("aemporter");
+
+		}
+
+	}
 
 	// public int save() throws SQLException {
 	// Connection cnx = PostgresConnection.getConnexion();

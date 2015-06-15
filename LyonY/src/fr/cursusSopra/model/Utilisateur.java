@@ -23,14 +23,14 @@ public class Utilisateur {
 	private String avatar;
 	private JRadioButton male;
 	
-	public void actionPerformed(ActionEvent arg0){
-		if (male.isSelected()) {
-			
-		}
-		
-			
-		
-	}
+//	public String gestionSexe (JRadioButton male){
+//		if (male.isSelected()) {
+//			sexe = "M";
+//		} else {
+//			sexe = "F";
+//		}
+//		return sexe;
+//	}
 	
 
 	public JRadioButton getMale() {
@@ -39,7 +39,6 @@ public class Utilisateur {
 	public void setMale(JRadioButton male) {
 		this.male = male;
 	}
-	
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}

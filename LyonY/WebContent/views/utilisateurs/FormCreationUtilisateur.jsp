@@ -62,8 +62,8 @@
 			<div class="form-group">
 				<label for="idSexe" class="col-lg-4 control-label">Sexe</label>
 				<div class="row">
-					<input type="radio" name="sexe" value="male">Homme 
-					<input type="radio" name="sexe" value="female">Femme
+					<input type="radio" name="sexe" value="M">Homme 
+					<input type="radio" name="sexe" value="F">Femme
 				</div>
 			</div>
 		</fieldset>

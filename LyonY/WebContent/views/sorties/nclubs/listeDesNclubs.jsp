@@ -25,14 +25,14 @@
 				<tbody>
 					<s:iterator value="listeDesNclubs">
 						<tr>
-							<s:url action="detailsNightclub" var="db">
+							<s:url action="detailsNclub" var="dn">
 								<s:param name="idnightclub">
 									<s:property value="idnightclub" />
 								</s:param>
 							</s:url>
 
 
-							<td><a href="<s:property value='#db'/>"> <s:property value="nomnightclub" /></a></td>
+							<td><a href="<s:property value='#dn'/>"> <s:property value="nomnightclub" /></a></td>
 							<td><s:property value="libambiance" /></td>
 							<td><s:property value="prixmin" /></td>
 							<td><s:property value="prixmax" /></td>
