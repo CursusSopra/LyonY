@@ -88,6 +88,9 @@ public class UtilisateurAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	
+	/* Création d'un compte utilisateur Candidat */
+/* ================================================================================================ */
 	public String executeCreation(){
 		Connection cnx = PostgresConnection.getConnexion();
 		
@@ -114,7 +117,11 @@ public class UtilisateurAction extends ActionSupport {
 			return ERROR;
 		}
 	}
-	
+	/* Fin de création */
+/* ================================================================================================ */
+		
+	/* Connection au compte utilisateur*/
+/* ================================================================================================ */
 	public String executeConnexion(){
 		Connection cnx = PostgresConnection.getConnexion();
 		Utilisateur uti = new Utilisateur();
@@ -133,7 +140,11 @@ public class UtilisateurAction extends ActionSupport {
 		
 		return "erreurIdentification";
 	}
+	/* Fin de connection */
+/* ================================================================================================ */
 	
+	/* Supression du compte*/
+/* ================================================================================================ */
 	public String executeDemandeSuppression(){
 		Utilisateur uti = new Utilisateur();
 		uti.setPseudo(pseudo);
@@ -153,7 +164,11 @@ public class UtilisateurAction extends ActionSupport {
 		}
 		return ERROR;
 	}
+	/* Fin de supression */
+/* ================================================================================================ */
 
+	/* Modification du compte*/
+/* ================================================================================================ */
 	public String executeModif () {
 		Connection cnx = PostgresConnection.getConnexion();
 		
@@ -171,4 +186,6 @@ public class UtilisateurAction extends ActionSupport {
 		}
 		return ERROR;
 		}
+	/* Fin de modification du compte*/
+/* ================================================================================================ */
 }
