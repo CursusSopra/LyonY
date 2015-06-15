@@ -50,7 +50,12 @@
 <!-- 				</tbody> -->
 <!-- 			</table> -->
 
-
+			
+			<iframe class="map-top" width="598" height="450"
+				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
+				&q=<s:property value="placeetparc.nomLieu" />,<s:property value="placeetparc.villeAdres" />">
+			</iframe>
+			
 		</div>
 		<div class="col-md-1"></div>
 	</div>
