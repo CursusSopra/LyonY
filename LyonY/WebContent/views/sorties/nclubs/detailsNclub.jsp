@@ -21,6 +21,7 @@
 			<div>
 				Nom du Night Club :
 				<s:property value="nclub.nomnightclub" />
+				 (<s:property value="nclub.notemoy" />)
 			</div>
 			<div>
 				Quartier :
