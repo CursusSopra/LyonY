@@ -19,7 +19,7 @@
 						</thead>
 						<tbody>
 							<s:iterator value="listeDesPlaceetparcs">
-								<s:url action="detailsPlaceetparcs" var="dpp">
+								<s:url action="detailsPlaceetparc" var="dpp">
 									<s:param name="idPlaceetparc">
 										<s:property value="idPlaceetparc"/>
 									</s:param>

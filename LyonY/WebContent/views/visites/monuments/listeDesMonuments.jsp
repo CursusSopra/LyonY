@@ -19,7 +19,7 @@
 						</thead>
 						<tbody>
 							<s:iterator value="listeDesMonuments">
-								<s:url action="detailsMonuments" var="dm">
+								<s:url action="detailsMonument" var="dm">
 									<s:param name="idMonument">
 										<s:property value="idMonument"/>
 									</s:param>
@@ -28,11 +28,11 @@
 									<td><a href="<s:property value='#dm'/>"><s:property value="nomLieu"/></a></td>
 									<td><s:property value="typeVisite"/></td>
 									<td>
-										<s:if test='<s:property value="nbavis"/> != 0'>
-											String.format("%f - %d avis", <s:property value="notemoy"/>, <s:property value="nbavis"/>);
+										<s:if test='%{nbavis == 0}'>
+											Aucun avis, <a href="">soyez le premier !</a>
 										</s:if>
 										<s:else>
-											Aucun avis, <a href="">soyez le premier !</a>
+											<s:property value="notemoy"/> - <s:property value="nbavis"/> avis
 										</s:else>
 									</td>
 									<td><s:property value="nomQuartier"/></td>
