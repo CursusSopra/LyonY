@@ -19,7 +19,7 @@ public class SortiesAction extends ActionGeneral {
 		return listeDesHorairesDuneSortie;
 	}
 	public SortiesAction() {
-		listeBreadcrumbs.add(new Breadcrumbs("Les sorties", "listeProduits", null));
+		listeBreadcrumbs.add(new Breadcrumbs("Les sorties", "sorties", null));
 	}
 
 

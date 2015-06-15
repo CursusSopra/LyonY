@@ -20,7 +20,8 @@ public class DetailsBarAction extends SortiesAction {
 	}
 
 	public DetailsBarAction() {
-		listeBreadcrumbs.add(new Breadcrumbs("Les Bars", "listeProduits", null));
+		super();
+		listeBreadcrumbs.add(new Breadcrumbs("Les Bars", "listeDesBars", null));
 	}
 
 	public String execute() {
