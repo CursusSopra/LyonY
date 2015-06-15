@@ -1,53 +1,35 @@
 package fr.cursusSopra.action.sorties;
 
 import java.sql.SQLException;
-import java.util.List;
-
 import fr.cursusSopra.model.Bar;
 import fr.cursusSopra.tech.Breadcrumbs;
 
-public class DetailsBarAction extends ListeDesBarsAction {
+public class DetailsBarAction extends SortiesAction {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Bar> listeDesBars;
-
-	public List<Bar> getListeDesBars() {
-
-		return listeDesBars;
-
-	}
-
 	public DetailsBarAction() {
-		super();
-		listeBreadcrumbs.add(new Breadcrumbs("Bars", "listeDesBars", null));
-	}
-
-	public String execute() {
-
-		return SUCCESS;
-	}
-
-	private int idbar;
-	private Bar bar;
-
-	public void setIdbar(int idbar) {
-		this.idbar = idbar;
-	}
-
-	public Bar getBar() {
-		return bar;
+		listeBreadcrumbs.add(new Breadcrumbs("Sorties", "sorties", null));
 	}
 
 	public String executeDetailsBar() {
 		try {
-			bar = new Bar(idbar);
-			executeGetListeDesHorairesDuneSortie(idbar);
+			bar = new Bar(idBar);
 			return SUCCESS;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return ERROR;
 		}
+	}
+
+	private int idBar;
+	
+	public void setIdBar(int idBar) {
+		this.idBar = idBar;
+	}
+	
+	private Bar bar;
+
+	public Bar getBar() {
+		return bar;
 	}
 }

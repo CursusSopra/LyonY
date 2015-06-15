@@ -52,11 +52,11 @@
 					</tr>
 				</thead>
 				<tbody>
-						<s:iterator value="liste">
+						<s:iterator value="bar.listeDesHoraires">
 						<tr>
-							<td><s:property /></td>
-							<td><s:property /></td>
-							<td><s:property /></td>
+							<td><s:property value="jour"/></td>
+							<td><s:property value="plageHoraire.heureDebut"/></td>
+							<td><s:date name="plageHoraire.heureFin" format="HH:mm" /></td>
 						</tr>
 					</s:iterator>
 						

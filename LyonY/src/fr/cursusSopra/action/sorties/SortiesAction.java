@@ -1,12 +1,9 @@
 package fr.cursusSopra.action.sorties;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import fr.cursusSopra.action.general.ActionGeneral;
 import fr.cursusSopra.model.Horaire;
-import fr.cursusSopra.model.Sortie;
-import fr.cursusSopra.tech.Breadcrumbs;
 
 
 public class SortiesAction extends ActionGeneral {
