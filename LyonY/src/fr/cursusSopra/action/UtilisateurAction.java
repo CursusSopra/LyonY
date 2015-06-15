@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.JRadioButton;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.cursusSopra.model.Utilisateur;
@@ -23,8 +25,15 @@ public class UtilisateurAction extends ActionSupport {
 	private String email;
 	private int idadresse;
 	private String avatar;
+	private JRadioButton male;
 	
-
+	
+	public JRadioButton getMale() {
+		return male;
+	}
+	public void setMale(JRadioButton male) {
+		this.male = male;
+	}
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
