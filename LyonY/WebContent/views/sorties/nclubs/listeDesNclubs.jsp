@@ -26,8 +26,8 @@
 					<s:iterator value="listeDesNclubs">
 						<tr>
 							<s:url action="detailsNclub" var="dn">
-								<s:param name="idnightclub">
-									<s:property value="idnightclub" />
+								<s:param name="idNightclub">
+									<s:property value="idNightclub" />
 								</s:param>
 							</s:url>
 
