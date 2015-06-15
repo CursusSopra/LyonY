@@ -24,6 +24,8 @@ public class Monument {
 	private String villeAdres;
 	private String nomQuartier;
 	private String typeVisite;
+	private float notemoy;
+	private int nbavis;
 	
 	//Getters
 	public int getIdMonument() {
@@ -65,7 +67,12 @@ public class Monument {
 	public String getTypeVisite() {
 		return typeVisite;
 	}
-
+	public float getNotemoy() {
+		return notemoy;
+	}
+	public int getNbavis() {
+		return nbavis;
+	}
 	//CTORS
     public Monument(){
     };
@@ -121,17 +128,20 @@ public class Monument {
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
 		String query  = "SELECT "
-							+ "l.nom AS nomL, l.description, l.accessibilite, "
-							+ "a.numero, a.voie, a.codepostal, a.ville, "
+							+ "l.nom AS nomL, "
 							+ "q.nom AS nomQ, "
 							+ "t.libtypevisite, "
-							+ "m.anneeconstruction, m.anneefinconstruction, m.idmonument "
+							+ "m.idmonument, "
+							+ "AVG(av.note) AS notemoy, "
+							+ "COUNT(av.note) AS nbavis "
 						+ "FROM monuments m "
 							+ "INNER JOIN visites v USING (idvisite) "
 							+ "INNER JOIN lieux l USING (idlieu) "
 							+ "INNER JOIN adresses a USING (idadresse) "
 							+ "INNER JOIN quartiers q USING (idquartier) "
 							+ "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
+							+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+						+ "GROUP BY l.nom, q.nom, t.libtypevisite, m.idmonument "
 						+ "ORDER BY l.nom;"	;
 		// Obtention de l'ensemble résultat
 		ResultSet rs = stmt.executeQuery(query);
@@ -139,18 +149,11 @@ public class Monument {
 		while(rs.next()){
 			Monument m = new Monument();
 			m.idMonument = rs.getInt("idmonument");
-			m.annCons = rs.getInt("anneeconstruction");
-			m.annFinCons = rs.getInt("anneefinconstruction");
 			m.nomLieu = rs.getString("nomL");
-			m.descriptionLieu = rs.getString("description");
-			m.accessibiliteLieu = rs.getString("accessibilite");
-			m.numAdres = rs.getInt("numero");
-			m.voieAdres = rs.getString("voie");
-			m.cpAdres = rs.getString("codepostal");
-			m.villeAdres = rs.getString("ville");
 			m.nomQuartier = rs.getString("nomQ");
 			m.typeVisite = rs.getString("libtypevisite");
-			
+			m.notemoy = rs.getFloat("notemoy");
+			m.nbavis = rs.getInt("nbavis");
 
 			listeDesMonuments.add(m);
 		}

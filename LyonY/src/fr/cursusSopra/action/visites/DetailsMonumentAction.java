@@ -1,4 +1,4 @@
-package fr.cursusSopra.action;
+package fr.cursusSopra.action.visites;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import fr.cursusSopra.model.Monument;
 
-public class DetailsMonumentAction extends ActionSupport{
+public class DetailsMonumentAction extends VisitesAction {
 
 	private static final long serialVersionUID = 1L;
 	

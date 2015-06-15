@@ -1,4 +1,4 @@
-package fr.cursusSopra.action;
+package fr.cursusSopra.action.visites;
 
 import java.sql.*;
 import java.util.List;
@@ -6,8 +6,9 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.cursusSopra.model.Monument;
+import fr.cursusSopra.tech.Breadcrumbs;
 
-public class ListeDesMonumentsAction extends ActionSupport {
+public class ListeDesMonumentsAction extends VisitesAction {
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,7 +19,7 @@ public class ListeDesMonumentsAction extends ActionSupport {
 	}
 
 	public ListeDesMonumentsAction() {
-
+		listeBreadcrumbs.add(new Breadcrumbs("Visites", "visites", null));
 	}
 
 	public String execute() {

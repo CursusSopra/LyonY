@@ -1,7 +1,5 @@
 
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
     
 	<h1>Liste des Places et Parcs</h1>
 		
@@ -14,9 +12,9 @@
 						<thead>
 							<tr>
 								<th>Nom</th>
-								<th>Adresse</th>
-								<th>Quartier</th>
 								<th>Type d'endroit</th>
+								<th>Popularité</th>
+								<th>Quartier</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -28,9 +26,16 @@
 								</s:url>
 								<tr>
 									<td><a href="<s:property value='#dpp'/>"><s:property value="nomLieu"/></a></td>
-									<td><s:property value="cpAdres"/>&nbsp;<s:property value="villeAdres"/></td>
-									<td><s:property value="nomQuartier"/></td>
 									<td><s:property value="typeVisite"/></td>
+									<td>
+										<s:if test='%{nbavis == 0}'>
+											Aucun avis, <a href="">soyez le premier !</a>
+										</s:if>
+										<s:else>
+											<s:property value="notemoy"/> - <s:property value="nbavis"/> avis
+										</s:else>
+									</td>
+									<td><s:property value="nomQuartier"/></td>
 								</tr>
 							</s:iterator>
 						</tbody>

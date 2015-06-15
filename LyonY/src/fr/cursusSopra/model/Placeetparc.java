@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.istack.internal.Nullable;
+
 import fr.cursusSopra.tech.PostgresConnection;
 
 public class Placeetparc {
@@ -20,6 +22,8 @@ public class Placeetparc {
 	private String villeAdres;
 	private String nomQuartier;
 	private String typeVisite;
+	private float notemoy;
+	private int nbavis;
 	
 	// GETS SETS
 	public int getIdPlaceetparc() {
@@ -46,11 +50,19 @@ public class Placeetparc {
 	public String getTypeVisite() {
 		return typeVisite;
 	}
+	public float getNotemoy() {
+		return notemoy;
+	}
+	public int getNbavis() {
+		return nbavis;
+	}
 
 
 	//CTORS
-	
-	
+	public Placeetparc () {
+		
+	}
+
 	// METHODES STATIQUES
 	private static List<Placeetparc> listeDesPlaceetparcs;
 	
@@ -63,17 +75,20 @@ public class Placeetparc {
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
 		String query  = "SELECT "
-							+ "l.nom AS nomL, l.description, l.accessibilite, "
-							+ "a.codepostal, a.ville, "
-							+ "q.nom AS nomQ, "
+							+ "l.nom AS nomL, "
 							+ "t.libtypevisite, "
-							+ "p.idplaceetparc "
+							+ "q.nom AS nomQ, "
+							+ "p.idplaceetparc, "
+							+ "AVG(av.note) AS notemoy, "
+							+ "COUNT(av.note) AS nbavis "
 						+ "FROM placeetparcs p "
 							+ "INNER JOIN visites v USING (idvisite) "
 							+ "INNER JOIN lieux l USING (idlieu) "
 							+ "INNER JOIN adresses a USING (idadresse) "
 							+ "INNER JOIN quartiers q USING (idquartier) "
 							+ "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
+							+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+						+ "GROUP BY l.nom, t.libtypevisite, q.nom, p.idplaceetparc "
 						+ "ORDER BY l.nom;"	;
 		// Obtention de l'ensemble résultat
 		ResultSet rs = stmt.executeQuery(query);
@@ -82,12 +97,10 @@ public class Placeetparc {
 			Placeetparc p = new Placeetparc();
 			p.idPlaceetparc = rs.getInt("idplaceetparc");
 			p.nomLieu = rs.getString("nomL");
-			p.descriptionLieu = rs.getString("description");
-			p.accessibiliteLieu = rs.getString("accessibilite");
-			p.cpAdres = rs.getString("codepostal");
-			p.villeAdres = rs.getString("ville");
 			p.nomQuartier = rs.getString("nomQ");
 			p.typeVisite = rs.getString("libtypevisite");
+			p.notemoy = rs.getFloat("notemoy");
+			p.nbavis = rs.getInt("nbavis");
 			
 
 			listeDesPlaceetparcs.add(p);

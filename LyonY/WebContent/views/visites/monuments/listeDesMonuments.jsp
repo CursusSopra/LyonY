@@ -1,7 +1,5 @@
 
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
     
 	<h1>Liste des Monuments</h1>
 		
@@ -14,10 +12,9 @@
 						<thead>
 							<tr>
 								<th>Nom</th>
-								<th>Adresse</th>
-								<th>Quartier</th>
 								<th>Type de monument</th>
-								<th>Années de construction</th>
+								<th>Popularité</th>
+								<th>Quartier</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -29,10 +26,16 @@
 								</s:url>
 								<tr>
 									<td><a href="<s:property value='#dm'/>"><s:property value="nomLieu"/></a></td>
-									<td><s:property value="numAdres"/>&nbsp;<s:property value="voieAdres"/>, &nbsp;<s:property value="cpAdres"/>&nbsp;<s:property value="villeAdres"/></td>
-									<td><s:property value="nomQuartier"/></td>
 									<td><s:property value="typeVisite"/></td>
-									<td><s:property value="annCons"/>&nbsp;-&nbsp;<s:property value="annFinCons"/></td>
+									<td>
+										<s:if test='<s:property value="nbavis"/> != 0'>
+											String.format("%f - %d avis", <s:property value="notemoy"/>, <s:property value="nbavis"/>);
+										</s:if>
+										<s:else>
+											Aucun avis, <a href="">soyez le premier !</a>
+										</s:else>
+									</td>
+									<td><s:property value="nomQuartier"/></td>
 								</tr>
 							</s:iterator>
 						</tbody>
