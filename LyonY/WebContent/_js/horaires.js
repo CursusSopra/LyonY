@@ -13,25 +13,30 @@ $(function() {
 		$("#slider-range"+i).slider({
 			range : true,
 			min : 0,
-			max : 1425,
-			values : [ 540, 1020 ],
-			step : 15,
+			max : 47,
+			values : [ 20, 40 ],
+			step : 1,
 			slide : slideTime
 		});
 	}
 });
 
  // Fonction pour modifier les données des sliders
+
 function slideTime(event, ui) {
 	var $spanTime = $(ui.handle).parent().parent().next().children('span').first();
 	var rang = $spanTime.data('rang');
-	var val0 = $("#slider-range" + rang).slider("values", 0), val1 = $("#slider-range" + rang)
-			.slider("values", 1), minutes0 = parseInt(val0 % 60, 10), hours0 = parseInt(
-			val0 / 60 % 24, 10), minutes1 = parseInt(val1 % 60, 10), hours1 = parseInt(
-			val1 / 60 % 24, 10);
+	
+//	var val0 = $("#slider-range" + rang).slider("values", 0), minutes0 = parseInt(val0 % 60, 10), hours0 = parseInt(
+//			val0 / 60 % 24, 10);
+//	var val1 = $("#slider-range" + rang).slider("values", 1), minutes1 = parseInt(val1 % 60, 10), hours1 = parseInt(
+//			val1 / 60 % 24, 10);
+	// Quel plot du slider a été activé, le premier fils span du parent 
+	var val0 = $("#slider-range" + rang).slider("values", 0), int0 = parseInt(val0, 10), minutes0 = int0 % 2, hours0 = Math.floor(int0 / 2);
+	var val1 = $("#slider-range" + rang).slider("values", 1), int1 = parseInt(val1, 10), minutes1 = int1 % 2, hours1 = Math.floor(int1 / 2);
 
-	startTime = getTime(hours0, minutes0);
-	endTime = getTime(hours1, minutes1);
+	startTime = getTime(hours0, 30*minutes0);
+	endTime = getTime(hours1, 30*minutes1);
 	$spanTime.text(startTime + ' - ' + endTime);
 }
 
