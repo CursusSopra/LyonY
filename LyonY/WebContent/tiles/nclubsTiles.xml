@@ -8,7 +8,7 @@
 
 	<!-- NIGTH CLUBS -->
 	<definition name="listeDesNclubs" extends="baseLayout">
-		<put-attribute name="title" value="Liste des Night Clubs" />
+		<put-attribute name="title" value="Night Clubs" />
 		<put-attribute name="body" value="/views/sorties/nclubs/listeDesNclubs.jsp" />
 	</definition>
 	

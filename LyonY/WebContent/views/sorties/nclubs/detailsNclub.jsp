@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <a href="<s:url action='index'/>">Retour à la page d'accueil</a>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+
 <h1>Détails du Night Club</h1>
 
 <div class="container-fluid">
