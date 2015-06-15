@@ -26,6 +26,7 @@ public class Placeetparc {
 	private String typeVisite;
 	private float notemoy;
 	private int nbavis;
+	private ArrayList<String> listeDesAvis; 
 	
 	// GETS SETS
 	public int getIdPlaceetparc() {
@@ -51,7 +52,7 @@ public class Placeetparc {
 	public String getVoieAdres() {
 		return voieAdres;
 	}
-	
+
 	public String getCpAdres() {
 		return cpAdres;
 	}
@@ -70,6 +71,10 @@ public class Placeetparc {
 	public int getNbavis() {
 		return nbavis;
 	}
+	
+	public ArrayList<String> getListeDesAvis() {
+		return listeDesAvis;
+	}
 
 
 	//CTORS
@@ -77,8 +82,8 @@ public class Placeetparc {
 		
 	}
 
-	// METHODES STATIQUES
-	  
+	//// METHODES PUBLIQUES
+	
     public Placeetparc(int idp) throws SQLException {
         idPlaceetparc = idp;
         // connexion à la BDD PostGresSQL
@@ -87,7 +92,7 @@ public class Placeetparc {
         // Objet instruction SQL
         Statement stmt = cnx.createStatement();
         // Requête à exécuter
-            String queryNomCompl  = "SELECT "
+        String queryPPCompl  = "SELECT "
                             + "l.nom AS nomL, l.description, l.accessibilite, "
                             + "a.numero, a.voie, a.codepostal, a.ville, "
                             + "q.nom AS nomQ, "
@@ -101,21 +106,35 @@ public class Placeetparc {
                             + "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
                         + "WHERE p.idPlaceetparc=" + idPlaceetparc ;
         // Obtention de l'ensemble résultat
-        ResultSet rsM = stmt.executeQuery(queryNomCompl);
+        ResultSet rsPP = stmt.executeQuery(queryPPCompl);
         // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
-        if(rsM.next()){
-            nomLieu = rsM.getString("nomL");
-            descriptionLieu = rsM.getString("description");
-            accessibiliteLieu = rsM.getString("accessibilite");
-            numAdres = rsM.getInt("numero");
-            voieAdres = rsM.getString("voie");
-            cpAdres = rsM.getString("codepostal");
-            villeAdres = rsM.getString("ville");
-            nomQuartier = rsM.getString("nomQ");
-            typeVisite = rsM.getString("libtypevisite");
+        if(rsPP.next()){
+            nomLieu = rsPP.getString("nomL");
+            descriptionLieu = rsPP.getString("description");
+            accessibiliteLieu = rsPP.getString("accessibilite");
+            numAdres = rsPP.getInt("numero");
+            voieAdres = rsPP.getString("voie");
+            cpAdres = rsPP.getString("codepostal");
+            villeAdres = rsPP.getString("ville");
+            nomQuartier = rsPP.getString("nomQ");
+            typeVisite = rsPP.getString("libtypevisite");
         }
+        
+        
+        String queryAvis = "SELECT nom, pseudo, note, message FROM avis "
+        		+ "INNER JOIN lieux USING (idlieu) "
+        		+ "INNER JOIN utilisateurs USING (idutilisateur) "
+        		+ "WHERE idlieu =" + idPlaceetparc;
+        
+        ResultSet rs = stmt.executeQuery(queryAvis);
+        
+        while (rs.next()) {		
+        	listeDesAvis.add(rs.getString("message"));
+		}
     }
 	
+    
+ // METHODES STATIQUES
 	private static List<Placeetparc> listeDesPlaceetparcs;
 	
 	public static List<Placeetparc> getListeDesPlaceetparcs() throws SQLException{
@@ -144,7 +163,7 @@ public class Placeetparc {
 						+ "ORDER BY l.nom;"	;
 		// Obtention de l'ensemble résultat
 		ResultSet rs = stmt.executeQuery(query);
-		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+		// Parcourt l'ensemble des résultats et crée objets Placeetparc puis màj la liste
 		while(rs.next()){
 			Placeetparc p = new Placeetparc();
 			p.idPlaceetparc = rs.getInt("idplaceetparc");
