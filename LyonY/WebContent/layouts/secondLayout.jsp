@@ -51,12 +51,7 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
-					<strong>Email: </strong>info@yourdomain.com &nbsp;&nbsp; <strong>Support:
-					</strong>+90-897-678-44
-				</div>
-
-				<div class="col-md-8">
+				<div class="col-md-offset-4 col-md-8">
 					<form class="form-inline"  id="idConnexion" name="Connexion" method="POST" action="<s:url action='ConnexionUtilisateur' />">
 	  					<div class="form-group">
 	    					<label for="exampleInputName2">Identifiant</label>
@@ -68,16 +63,6 @@
 					  	</div>
 					  	<button type="submit" class="btn btn-default">Connexion</button>
 					</form>
-				
-				
-				
-				
-<%-- 				<form id="idConnexion" name="Connexion" method="POST" action="<s:url action='ConnexionUtilisateur' />"> --%>
-<!-- 			Identifiant:<input type="text" name="pseudo" required -->
-<!-- 				placeholder="Identifiant" /> Mot de passe:<input type="password" -->
-<!-- 				name="motDePasse" required placeholder="Mot de passe" /> <input -->
-<!-- 				type="submit" value="Connexion" /> -->
-<!-- 		</form> -->
 					<a href='<s:url action="FormCreationUtilisateur"/>'>Inscription</a>
 				</div>
 			</div>
@@ -141,11 +126,11 @@
 				<div class="col-md-12">
 					<div class="navbar-collapse collapse ">
 						<ul id="menu-top" class="nav navbar-nav navbar-right">
-							<li><a class="menu-top-active" href="index.html">Lyon'Y ...</a></li>
-							<li><a href="ui.html">Lyon'Y Sort</a></li>
+							<li><a class="menu-top-active" href="<s:url action='index' />">Lyon'Y ...</a></li>
+							<li><a href="<s:url action='sorties' />">Lyon'Y Sort</a></li>
 							<li><a href="table.html">Lyon'Y Mange</a></li>
 							<li><a href="forms.html">Lyon'Y Boit</a></li>
-							<li><a href="login.html">Lyon'Y Visite</a></li>
+							<li><a href="<s:url action='sorties' />">Lyon'Y Visite</a></li>
 							<li><a href="blank.html">Lyon'Y Danse</a></li>
 
 						</ul>

@@ -3,10 +3,10 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-	<display-name>Hello World Struts 2</display-name>
+	<display-name>LyonY</display-name>
 	
 	<welcome-file-list>
-		<welcome-file>index.action</welcome-file>
+		<welcome-file>index</welcome-file>
 	</welcome-file-list>
 	
 	
