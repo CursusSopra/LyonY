@@ -97,7 +97,7 @@ public class Monument {
                             + "INNER JOIN adresses a USING (idadresse) "
                             + "INNER JOIN quartiers q USING (idquartier) "
                             + "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
-                        + "WHERE m.idmonument=" + idm    ;
+                        + "WHERE m.idmonument=" + idMonument ;
         // Obtention de l'ensemble résultat
         ResultSet rsM = stmt.executeQuery(queryNomCompl);
         // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste

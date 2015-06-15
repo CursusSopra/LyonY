@@ -6,42 +6,42 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.cursusSopra.model.Monument;
+import fr.cursusSopra.tech.Breadcrumbs;
 
-public class DetailsMonumentAction extends VisitesAction {
+public class DetailsMonumentAction extends ListeDesMonumentsAction {
 
 	private static final long serialVersionUID = 1L;
 	
-	private List<Monument> listeDesMonuments;
-
-	public List<Monument> getListeDesMonuments() {
-		return listeDesMonuments;
-	}
-
-	public DetailsMonumentAction() {
-	}
-	
-	public String execute() {
-		return SUCCESS;
-	}
-	
-	private int idmonument;
+	private int idMonument;
 	private Monument monument;
-
+	
+	// GETSETS
 	public Monument getMonument() {
 		return monument;
 	}
-
-	public void setIdmonument(int idmonument) {
-		this.idmonument = idmonument;
+	public void setMonument(Monument monument) {
+		this.monument = monument;
+	}
+	public void setIdMonument(int idMonument) {
+		this.idMonument = idMonument;
+	}
+	
+	//CTOR
+	public DetailsMonumentAction() {
+		listeBreadcrumbs.add(new Breadcrumbs("Monuments", "listeDesMonuments", null));
+	}
+	
+	// METHODES PUBLIQUES
+	public String execute() {
+		return SUCCESS;
 	}
 
 	public String executeDetailsMonument(){
 		
 		try {
-			monument = new Monument(idmonument);
+			monument = new Monument(idMonument);
 			return SUCCESS;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return 	ERROR;
 		}
