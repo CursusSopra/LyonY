@@ -108,7 +108,7 @@ public class UtilisateurAction extends ActionSupport {
 	 * ==========================================================================
 	 * ======================
 	 */
-	public String executeCreation() {
+	public String executeCreation() throws SQLException {
 		Connection cnx = PostgresConnection.getConnexion();
 
 		Utilisateur uti = new Utilisateur();
@@ -121,14 +121,8 @@ public class UtilisateurAction extends ActionSupport {
 		try {
 			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd")
 					.parse(dateNaissance));
-			return uti.create(cnx) != 0 ? SUCCESS : ERROR;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ERROR;
-		}
-
-		catch (ParseException e) {
+			return uti.create(cnx) ? SUCCESS : ERROR;
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ERROR;
@@ -154,6 +148,7 @@ public class UtilisateurAction extends ActionSupport {
 		try {
 			if (uti.checkExists(cnx)) {
 				this.email = uti.getEmail();
+				this.idUtilisateur = uti.getIdUtilisateur();
 				return SUCCESS;
 			}
 		} catch (SQLException e) {
@@ -253,9 +248,28 @@ public class UtilisateurAction extends ActionSupport {
 		return ERROR;
 	}
 	
+	
 	/* Fin de modification du compte */
 	/*
 	 * ==========================================================================
 	 * ======================
 	 */
+	
+	// Liste des avis
+	public String executeDisplayAvis() {
+
+		Utilisateur uti = new Utilisateur();
+		uti.setIdUtilisateur(idUtilisateur);
+		uti.setPseudo(pseudo);
+
+		try {
+			return uti.getListeDesAvis().size() != 0 ? SUCCESS : ERROR;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ERROR;
+	}
+	 
+	 
 }

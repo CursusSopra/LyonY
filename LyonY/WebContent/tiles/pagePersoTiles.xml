@@ -28,5 +28,10 @@
 		<put-attribute name="title" value="Suppression du profil" />
 		<put-attribute name="body" value="/views/utilisateurs/supprimeProfilReussi.jsp" />
 	</definition>
+	
+	<definition name="mesavis" extends="baseLayout">
+		<put-attribute name="title" value="Liste de mes avis" />
+		<put-attribute name="body" value="/views/utilisateurs/mesavis.jsp" />
+	</definition>
 
 </tiles-definitions>
