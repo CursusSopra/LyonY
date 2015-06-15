@@ -147,10 +147,17 @@ public class UtilisateurAction extends ActionSupport {
 /* ================================================================================================ */
 	public String executeDemandeSuppression(){
 		Utilisateur uti = new Utilisateur();
+		uti.setIdadresse(idUtilisateur);
 		uti.setPseudo(pseudo);
+		uti.setPseudo(motDePasse);
+		uti.setPseudo(email);
+		uti.setPseudo(avatar);
 		return SUCCESS;
 	}
 	
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
+	}
 	public String executeSuppression(){
 		Connection cnx = PostgresConnection.getConnexion();
 		Utilisateur uti = new Utilisateur();
@@ -172,7 +179,11 @@ public class UtilisateurAction extends ActionSupport {
 	
 	public String modification(){
 		Utilisateur uti = new Utilisateur();
+		uti.setIdUtilisateur(idUtilisateur);
 		uti.setPseudo(pseudo);
+		uti.setMotDePasse(motDePasse);
+		uti.setEmail(email);
+		uti.setAvatar(avatar);
 		return SUCCESS;
 	}
 	

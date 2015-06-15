@@ -29,7 +29,7 @@
 		
 		<!-- Afficher le formulaire de modification du compte -->
 		<action name="FormModifUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
-			method="execute">
+			method="modification">
 			<result name="success" type="tiles">modification</result>
 		</action>
 		

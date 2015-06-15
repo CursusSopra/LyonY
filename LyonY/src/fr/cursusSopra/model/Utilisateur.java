@@ -143,6 +143,14 @@ public class Utilisateur {
 		return ps.executeUpdate();
 	}
 	
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
+	}
+	public static void setListeDesUtilisateurs(
+			List<Utilisateur> listeDesUtilisateurs) {
+		Utilisateur.listeDesUtilisateurs = listeDesUtilisateurs;
+	}
+
 	/* Liste des utilisateurs*/
 /* =================================================================================== */
 	private static List<Utilisateur> listeDesUtilisateurs;
