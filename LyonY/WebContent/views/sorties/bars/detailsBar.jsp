@@ -52,20 +52,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<s:iterator value="listeDesHorairesDuneSortie">
+						<s:iterator value="liste">
 						<tr>
-							<td><s:property value="jour" /></td>
-							<td><s:date name="heuredebut" format="hh:mm" /></td>
-							<td><s:date name="heurefin" format="hh:mm" /></td>
+							<td><s:property /></td>
+							<td><s:property /></td>
+							<td><s:property /></td>
 						</tr>
 					</s:iterator>
-					
+						
+
 				</tbody>
 			</table>
-			
-			
+
+
 			<iframe class="map-top" width="598" height="450"
-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
+				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
 &q=<s:property value="bar.nombar" />,<s:property value="bar.numero" />+<s:property value="bar.voie" />,<s:property value="bar.ville" />"></iframe>
 
 

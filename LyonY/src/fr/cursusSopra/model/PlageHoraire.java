@@ -1,15 +1,11 @@
 package fr.cursusSopra.model;
 
 import java.util.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class PlageHoraire {
 	
 	private Date heureDebut;
 	private Date heureFin;
-	private DateFormat df = new SimpleDateFormat("HH:mm");
 	
 	public Date getHeureDebut() {
 		return heureDebut;
@@ -28,11 +24,4 @@ public class PlageHoraire {
 	}
 	
 }
-
-//		try {			
-//			heureDebut = df.parse("09:00");
-//			heureFin = df.parse("20:00");
-//			
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}				
+			
