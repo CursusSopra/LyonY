@@ -1,7 +1,7 @@
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<h1>Détails du parc ou de la palce</h1>
+<h1>Détails du parc ou de la place</h1>
 
 <div class="container-fluid">
 	<div class="row">
@@ -10,50 +10,45 @@
 
 			<div>
 				Nom du parc ou de la place :
-				<s:property value="nomLieu" />
+				<s:property value="placeetparc.nomLieu" />
 			</div>
 			<div>
 				Quartier :
-				<s:property value="nomQuartier" />
+				<s:property value="placeetparc.nomQuartier" />
 			</div>
 			<div>
 				Adresse :
-				<s:property value="numAdres" />
-				<s:property value="voieAdres" />
-				<s:property value="villeAdres" />
+				<s:property value="placeetparc.cpAdres" />
+				<s:property value="placeetparc.villeAdres" />
 			</div>
 			<div>
 				Description :
-				<s:property value="descriptionLieu" />
-			</div>
-			<div>
-				Construction :
-				<s:property value="annCons"/> &nbsp;-<s:property value="annFinCons"/>
+				<s:property value="placeetparc.descriptionLieu" />
 			</div>
 
 			<div>
 				Accessibilité :
-				<s:property value="accessibiliteLieu" />
+				<s:property value="placeetparc.accessibiliteLieu" />
 			</div>
 			
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>Jour de la semaine</th>
-						<th>Heure d'ouverture</th>
-						<th>Heure de fermeture</th>
-					</tr>
-				</thead>
-				<tbody>
-					<s:iterator value="listeDesHorairesDuneSortie">
-						<tr>
-							<td><s:property value="jour" /></td>
-							<td><s:date name="heuredebut" format="hh:mm" /></td>
-							<td><s:date name="heurefin" format="hh:mm" /></td>
-						</tr>
-					</s:iterator>
-				</tbody>
-			</table>
+<!-- 			<table class="table table-striped table-hover"> -->
+<!-- 				<thead> -->
+<!-- 					<tr> -->
+<!-- 						<th>Jour de la semaine</th> -->
+<!-- 						<th>Heure d'ouverture</th> -->
+<!-- 						<th>Heure de fermeture</th> -->
+<!-- 					</tr> -->
+<!-- 				</thead> -->
+<!-- 				<tbody> -->
+<%-- 					<s:iterator value="listeDesHorairesDuneSortie"> --%>
+<!-- 						<tr> -->
+<%-- 							<td><s:property value="jour" /></td> --%>
+<%-- 							<td><s:date name="heuredebut" format="hh:mm" /></td> --%>
+<%-- 							<td><s:date name="heurefin" format="hh:mm" /></td> --%>
+<!-- 						</tr> -->
+<%-- 					</s:iterator> --%>
+<!-- 				</tbody> -->
+<!-- 			</table> -->
 
 
 		</div>
