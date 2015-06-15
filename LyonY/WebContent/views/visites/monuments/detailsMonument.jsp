@@ -13,30 +13,30 @@
 
 			<div>
 				Nom du monument :
-				<s:property value="monument.nomLieu" />
+				<s:property value="nomLieu" />
 			</div>
 			<div>
 				Quartier :
-				<s:property value="monument.nomQuartier" />
+				<s:property value="nomQuartier" />
 			</div>
 			<div>
 				Adresse :
-				<s:property value="monument.numAdres" />
-				<s:property value="monument.voieAdres" />
-				<s:property value="monument.villeAdres" />
+				<s:property value="numAdres" />
+				<s:property value="voieAdres" />
+				<s:property value="villeAdres" />
 			</div>
 			<div>
 				Description :
-				<s:property value="monument.descriptionLieu" />
+				<s:property value="descriptionLieu" />
 			</div>
 			<div>
 				Construction :
-				<s:property value="monument.annCons"/> &nbsp;-<s:property value="monument.annFinCons"/>
+				<s:property value="annCons"/> &nbsp;-<s:property value="annFinCons"/>
 			</div>
 
 			<div>
 				Accessibilité :
-				<s:property value="monument.accessibiliteLieu" />
+				<s:property value="accessibiliteLieu" />
 			</div>
 			
 			<table class="table table-striped table-hover">
@@ -62,6 +62,7 @@
 		</div>
 		<div class="col-md-1"></div>
 	</div>
+
 
 
 </div>
