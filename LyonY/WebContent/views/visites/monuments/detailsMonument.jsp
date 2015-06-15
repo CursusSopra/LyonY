@@ -5,7 +5,14 @@
 <%-- <a href="<s:url action='index'/>">Retour à la page d'accueil</a> --%>
 
 <h1>Détails du monument</h1>
-
+<div>
+	<s:url action="modifMonument" var="mm">
+		<s:param name="idMonument">
+			<s:property value="monument.idMonument"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#mm'/>">Modifier les informations</a>
+</div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-1"></div>
@@ -61,14 +68,6 @@
 				&q=<s:property value="monument.nomLieu" />,<s:property value="monument.numAdres" />+<s:property value="monument.voieAdres" />,<s:property value="monument.villeAdres" />">
 			</iframe>
 			
-			<div>
-				<s:url action="modifMonument" var="mm">
-					<s:param name="idMonument">
-						<s:property value="monument.idMonument"/>
-					</s:param>
-				</s:url>
-				<a href="<s:property value='#mm'/>">Modifier les informations</a>
-			</div>
 		</div>
 		<div class="col-md-1"></div>
 	</div>
