@@ -159,7 +159,6 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<tiles:insertAttribute name="menuConnexion" />
 					<tiles:insertAttribute name="body" />
 				</div>
 

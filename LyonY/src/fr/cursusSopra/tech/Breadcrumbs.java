@@ -10,7 +10,6 @@ public class Breadcrumbs {
 	private String queryString;
 
 	public Breadcrumbs(String nom, String action, String queryString) {
-		super();
 		this.nom = nom;
 		this.action = action;
 		this.queryString = queryString;
