@@ -13,7 +13,7 @@
 
 	<definition name="detailsPlaceetparc" extends="baseLayout">
 		<put-attribute name="title" value="Détails" />
-		<put-attribute name="body" value="/views/visites/monuments/detailsPlaceetparc.jsp" />
+		<put-attribute name="body" value="/views/visites/placeetparcs/detailsPlaceetparc.jsp" />
 	</definition>
 	
 </tiles-definitions>

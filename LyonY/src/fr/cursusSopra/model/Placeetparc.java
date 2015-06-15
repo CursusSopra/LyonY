@@ -18,6 +18,8 @@ public class Placeetparc {
 	private String nomLieu;
 	private String descriptionLieu;
 	private String accessibiliteLieu;
+	private int numAdres;
+	private String voieAdres; 
 	private String cpAdres;
 	private String villeAdres;
 	private String nomQuartier;
@@ -29,6 +31,11 @@ public class Placeetparc {
 	public int getIdPlaceetparc() {
 		return idPlaceetparc;
 	}
+	
+	public void setIdPlaceetparc(int idPlaceetparc) {
+		this.idPlaceetparc = idPlaceetparc;
+	}
+	
 	public String getNomLieu() {
 		return nomLieu;
 	}
@@ -38,6 +45,13 @@ public class Placeetparc {
 	public String getAccessibiliteLieu() {
 		return accessibiliteLieu;
 	}
+	public int getNumAdres() {
+		return numAdres;
+	}
+	public String getVoieAdres() {
+		return voieAdres;
+	}
+	
 	public String getCpAdres() {
 		return cpAdres;
 	}
@@ -64,6 +78,44 @@ public class Placeetparc {
 	}
 
 	// METHODES STATIQUES
+	  
+    public Placeetparc(int idp) throws SQLException {
+        idPlaceetparc = idp;
+        // connexion à la BDD PostGresSQL
+        Connection cnx = null;
+        cnx = PostgresConnection.getConnexion();
+        // Objet instruction SQL
+        Statement stmt = cnx.createStatement();
+        // Requête à exécuter
+            String queryNomCompl  = "SELECT "
+                            + "l.nom AS nomL, l.description, l.accessibilite, "
+                            + "a.numero, a.voie, a.codepostal, a.ville, "
+                            + "q.nom AS nomQ, "
+                            + "t.libtypevisite, "
+                            + "p.idPlaceetparc "
+                        + "FROM placeetparcs p "
+                            + "INNER JOIN visites v USING (idvisite) "
+                            + "INNER JOIN lieux l USING (idlieu) "
+                            + "INNER JOIN adresses a USING (idadresse) "
+                            + "INNER JOIN quartiers q USING (idquartier) "
+                            + "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
+                        + "WHERE p.idPlaceetparc=" + idPlaceetparc ;
+        // Obtention de l'ensemble résultat
+        ResultSet rsM = stmt.executeQuery(queryNomCompl);
+        // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+        if(rsM.next()){
+            nomLieu = rsM.getString("nomL");
+            descriptionLieu = rsM.getString("description");
+            accessibiliteLieu = rsM.getString("accessibilite");
+            numAdres = rsM.getInt("numero");
+            voieAdres = rsM.getString("voie");
+            cpAdres = rsM.getString("codepostal");
+            villeAdres = rsM.getString("ville");
+            nomQuartier = rsM.getString("nomQ");
+            typeVisite = rsM.getString("libtypevisite");
+        }
+    }
+	
 	private static List<Placeetparc> listeDesPlaceetparcs;
 	
 	public static List<Placeetparc> getListeDesPlaceetparcs() throws SQLException{

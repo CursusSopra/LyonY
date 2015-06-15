@@ -1,17 +1,17 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
-
 
 <style>
-    #slider-range{width:200px;}
-</style>
-<table id="Horaires" >
-	<s:iterator value="{1,2,3}" status="idx">
+    #slider{width:200px;}
+</style> 
+
+<table id="Horaires">
+	<s:iterator value="{1,2,3,4,5,6,7}" status="idx">
 		<tr>
-			<th style="width:100px"> <s:property value = "#idx.count"/> </th>
-			<th style="width:250px"><div class="slider" id="slider-range"></div></th>
-			<th style="width:100px"> <span id="time"></span> </th>
+			<td><span id="num${idx.count}" style="visibility:hidden"><s:property value = "#idx.count"/></span></td>
+			<td style="width:100px"><s:property value = "#idx.count"/> </td>
+			<td style="width:250px"><div id="slider-range${idx.count}"></div></td>
+			<td style="width:100px"><span id="time${idx.count}" data-rang="<s:property value = "#idx.count"/>"></span> </td>
 		</tr>
 	</s:iterator>
 </table>
