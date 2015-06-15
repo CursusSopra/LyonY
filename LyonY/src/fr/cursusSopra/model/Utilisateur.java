@@ -5,7 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JRadioButton;
 
@@ -135,7 +138,43 @@ public class Utilisateur {
 		ps.setString(2, email);
 		ps.setString(3, avatar);
 		ps.setString(4, motDePasse);
+		ps.setInt(5, idUtilisateur);
 				
 		return ps.executeUpdate();
+	}
+	
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
+	}
+	public static void setListeDesUtilisateurs(
+			List<Utilisateur> listeDesUtilisateurs) {
+		Utilisateur.listeDesUtilisateurs = listeDesUtilisateurs;
+	}
+
+	/* Liste des utilisateurs*/
+/* =================================================================================== */
+	private static List<Utilisateur> listeDesUtilisateurs;
+	public static List<Utilisateur> getListeDesUtilisateurs() throws SQLException {
+		listeDesUtilisateurs = new ArrayList<Utilisateur>();
+		// connexion a la base de donnees postgresSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		// requete à executer
+		String query = "SELECT (idutilisateur, pseudo, datenaissance, sexe, email, avatar, motdepasse) "
+				+ "FROM utilisateurs" ;
+		// obtention de l'ensemble resultat
+		ResultSet rs = stmt.executeQuery(query);// rs demande les valeur pour un ligne, ligne par ligne
+		while (rs.next()) {
+			Utilisateur u = new Utilisateur();
+			u.idUtilisateur = rs.getInt("idutilisateur");
+			u.pseudo= rs.getString("pseudo");
+			u.dateNaissance = rs.getDate("datenaissance");
+			u.sexe = rs.getString("sexe");
+			u.avatar = rs.getString("avatar");
+			u.motDePasse = rs.getString("motdepasse");
+			listeDesUtilisateurs.add(u);
+		}
+		return listeDesUtilisateurs;
 	}
 }
