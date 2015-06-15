@@ -2,7 +2,7 @@
 
 <a href="<s:url action='index'/>">Retour à la page d'accueil</a>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
-<h1>Détails du Bar</h1>
+<h1>Détails du Night Club</h1>
 
 <div class="container-fluid">
 	<div class="row">
@@ -10,37 +10,37 @@
 		<div class="col-md-10">
 
 			<div>
-				Nom du bar :
-				<s:property value="bar.nomnightclub" />
+				Nom du Night Club :
+				<s:property value="nclub.nomnightclub" />
 			</div>
 			<div>
 				Quartier :
-				<s:property value="bar.nomquartier" />
+				<s:property value="nclub.nomquartier" />
 			</div>
 			<div>
 				Ambiance :
-				<s:property value="bar.libambiance" />
+				<s:property value="nclub.libambiance" />
 			</div>
 			<div>
 				Adresse :
-				<s:property value="bar.numero" />
-				<s:property value="bar.voie" />
-				<s:property value="bar.ville" />
+				<s:property value="nclub.numero" />
+				<s:property value="nclub.voie" />
+				<s:property value="nclub.ville" />
 			</div>
 			<div>
 				Description :
-				<s:property value="bar.description" />
+				<s:property value="nclub.description" />
 			</div>
 			<div>
 				Budget :
-				<s:property value="bar.prixmin" /> - <s:property value="bar.prixmax" /> &euro;
+				<s:property value="nclub.prixmin" /> - <s:property value="nclub.prixmax" /> &euro;
 			</div>
 			
 			<div>
 			
 			<iframe class="map-top" width="598" height="450"
 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
-&q=<s:property value="bar.nomnightclub" />,<s:property value="bar.numero" />+<s:property value="bar.voie" />,<s:property value="bar.ville" />"></iframe>
+&q=<s:property value="nclub.nomnightclub" />,<s:property value="nclub.numero" />+<s:property value="nclub.voie" />,<s:property value="nclub.ville" />"></iframe>
 			</div>
 
 

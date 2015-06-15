@@ -52,7 +52,7 @@ public class Nclub {
 		return idnightclub;
 	}
 
-	public void setIdbar(int idnightclub) {
+	public void setIdnightclub(int idnightclub) {
 		this.idnightclub = idnightclub;
 	}
 
@@ -121,14 +121,14 @@ public class Nclub {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, "
+		String query = "SELECT n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description "
 				+ "FROM nightclubs n "
-				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
+				+ "INNER JOIN sorties s ON s.idsortie=n.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "WHERE n.idnightclub = "+ idnightclub;
+				+ "WHERE n.idnightclub ="+ idnightclub; 
 
 	// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);

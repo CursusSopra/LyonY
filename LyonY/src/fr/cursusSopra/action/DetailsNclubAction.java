@@ -6,16 +6,17 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.cursusSopra.model.Bar;
+import fr.cursusSopra.model.Nclub;
 
 public class DetailsNclubAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Bar> listeDesBars;
+	private List<Bar> listeDesNclubs;
 
-	public List<Bar> getListeDesBars() {
+	public List<Bar> getListeDesNclubs() {
 
-		return listeDesBars;
+		return listeDesNclubs;
 
 	}
 
@@ -27,20 +28,20 @@ public class DetailsNclubAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	private int idbar;
-	private Bar bar;
+	private int idnightclub;
+	private Nclub nclub;
 
-	public void setIdbar(int idbar) {
-		this.idbar = idbar;
+	public void setIdnightclub(int idnightclub) {
+		this.idnightclub = idnightclub;
 	}
 
-	public Bar getBar() {
-		return bar;
+	public Nclub getNclub() {
+		return nclub;
 	}
 
 	public String executeDetailsNclub() {
 		try {
-			bar = new Bar(idbar);
+			nclub = new Nclub(idnightclub);
 			return SUCCESS;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

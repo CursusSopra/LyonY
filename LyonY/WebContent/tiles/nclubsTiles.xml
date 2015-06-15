@@ -16,7 +16,7 @@
 	<definition name="detailsNclub" extends="baseLayout">
 		<put-attribute name="title" value="Détails du Night Club" />
 		<put-attribute name="body"
-			value="/views/sorties/bars/detailsNclub.jsp" />
+			value="/views/sorties/nclubs/detailsNclub.jsp" />
 	</definition>
 
 </tiles-definitions>
