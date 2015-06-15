@@ -116,6 +116,21 @@ public class Monument {
         }
     }
 	
+//	public int modifMm() throws SQLException {
+		
+//		Connection cnx = PostgresConnection.getConnexion();
+//		String query = "UPDATE candidats SET nom = ?, prenom = ?, datenaissance = ? WHERE idcandidat = ?";
+//		PreparedStatement ps = cnx.prepareStatement(query);
+//		ps.setString(1, nom);
+//		ps.setString(2, prenom);
+//		ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
+//		ps.setInt(4, idCand);
+		
+//		return ps.executeUpdate();
+		
+//	}
+    
+    
 	// METHODES STATIQUES
 	private static List<Monument> listeDesMonuments;
 	

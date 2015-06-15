@@ -52,7 +52,8 @@ CREATE TABLE utilisateurs (
 	idadresse            integer  NOT NULL,
 	motdepasse           varchar(30)  NOT NULL,
 	CONSTRAINT pk_utilisateurs PRIMARY KEY ( idutilisateur ),
-	CONSTRAINT ct_unique_pseudo UNIQUE ( pseudo )  
+	CONSTRAINT ct_unique_pseudo UNIQUE ( pseudo ) ,
+	CONSTRAINT ct_unique_pseudo UNIQUE ( email )  
  );
 
 CREATE TABLE avis ( 

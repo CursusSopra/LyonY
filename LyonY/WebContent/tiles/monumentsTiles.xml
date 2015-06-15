@@ -16,4 +16,9 @@
 		<put-attribute name="body" value="/views/visites/monuments/detailsMonument.jsp" />
 	</definition>
 
+	<definition name="modifMonument" extends="baseLayout">
+		<put-attribute name="title" value="Modification" />
+		<put-attribute name="body" value="/views/visites/monuments/formModifMonument.jsp" />
+	</definition>
+	
 </tiles-definitions>

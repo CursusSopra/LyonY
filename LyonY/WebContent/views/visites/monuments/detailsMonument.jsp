@@ -24,12 +24,12 @@
 				<s:property value="monument.numAdres" />&nbsp;<s:property value="monument.voieAdres" />,&nbsp;<s:property value="monument.cpAdres" />&nbsp;<s:property value="monument.villeAdres" />
 			</div>
 			<div>
-				Description :
-				<s:property value="monument.descriptionLieu" />
-			</div>
-			<div>
 				Construction :
 				<s:property value="monument.annCons"/>&nbsp;-&nbsp;<s:property value="monument.annFinCons"/>
+			</div>
+			<div>
+				Description :
+				<s:property value="monument.descriptionLieu" />
 			</div>
 
 			<div>
@@ -58,8 +58,17 @@
 
 			<iframe class="map-top" width="598" height="450"
 				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
-				&q=<s:property value="monument.nomLieu" />,<s:property value="monument.numAdres" />+<s:property value="monument.voieAdres" />,<s:property value="monument.villeAdres" />"></iframe>
-
+				&q=<s:property value="monument.nomLieu" />,<s:property value="monument.numAdres" />+<s:property value="monument.voieAdres" />,<s:property value="monument.villeAdres" />">
+			</iframe>
+			
+			<div>
+				<s:url action="modifMonument" var="mm">
+					<s:param name="idMonument">
+						<s:property value="monument.idMonument"/>
+					</s:param>
+				</s:url>
+				<a href="<s:property value='#mm'/>">Modifier les informations</a>
+			</div>
 		</div>
 		<div class="col-md-1"></div>
 	</div>
