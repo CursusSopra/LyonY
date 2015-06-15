@@ -1,22 +1,21 @@
-package fr.cursusSopra.action;
+package fr.cursusSopra.action.sorties;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import fr.cursusSopra.action.sorties.SortiesAction;
 import fr.cursusSopra.model.Bar;
 import fr.cursusSopra.model.Restaurant;
 import fr.cursusSopra.tech.Breadcrumbs;
 
-public class DetailsRestaurantAction extends SortiesAction {
+public class DetailsRestaurantAction extends ListeDesRestaurantsAction {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Bar> listeDesRestaurants;
+	private List<Restaurant> listeDesRestaurants;
 
-	public List<Bar> getListeDesRestaurants() {
+	public List<Restaurant> getListeDesRestaurants() {
 
 		return listeDesRestaurants;
 
@@ -24,7 +23,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 
 	public DetailsRestaurantAction() {
 		super();
-		listeBreadcrumbs.add(new Breadcrumbs("Les restaurants", "listeDesRestaurants", null));
+		listeBreadcrumbs.add(new Breadcrumbs("Restaurants", "listeDesRestaurants", null));
 	}
 
 	public String execute() {
