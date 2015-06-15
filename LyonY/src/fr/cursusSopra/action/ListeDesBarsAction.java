@@ -5,9 +5,10 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import fr.cursusSopra.action.sorties.SortiesAction;
 import fr.cursusSopra.model.Bar;
 
-public class ListeDesBarsAction extends ActionSupport {
+public class ListeDesBarsAction extends SortiesAction {
 
 	private static final long serialVersionUID = 1L;
 

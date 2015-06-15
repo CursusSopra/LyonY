@@ -24,7 +24,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 
 	public DetailsRestaurantAction() {
 		super();
-		listeBreadcrumbs.add(new Breadcrumbs("Les Restaurants", "listeProduits", null));
+		listeBreadcrumbs.add(new Breadcrumbs("Les restaurants", "listeDesRestaurants", null));
 	}
 
 	public String execute() {
