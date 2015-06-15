@@ -16,7 +16,7 @@ import fr.cursusSopra.tech.PostgresConnection;
 public class UtilisateurAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private int idUtilisateur;
 	private String pseudo;
 	private String dateNaissance;
@@ -26,126 +26,157 @@ public class UtilisateurAction extends ActionSupport {
 	private int idadresse;
 	private String avatar;
 	private JRadioButton male;
-	
-	
+
 	public JRadioButton getMale() {
 		return male;
 	}
+
 	public void setMale(JRadioButton male) {
 		this.male = male;
 	}
+
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
+
 	public String getAvatar() {
 		return avatar;
 	}
+
 	public String getDateNaissance() {
 		return dateNaissance;
 	}
+
 	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public int getIdadresse() {
 		return idadresse;
 	}
+
 	public void setIdadresse(int idadresse) {
 		this.idadresse = idadresse;
 	}
+
 	public String getPseudo() {
 		return pseudo;
 	}
+
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
+
 	public String getMotDePasse() {
 		return motDePasse;
 	}
+
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
+
 	public String getSexe() {
 		return sexe;
 	}
+
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
+
 	public int getIdUtilisateur() {
 		return idUtilisateur;
 	}
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	public String execute(){
+
+	public String execute() {
 		return SUCCESS;
 	}
-	
-	
+
 	/* Création d'un compte utilisateur Candidat */
-/* ================================================================================================ */
-	public String executeCreation(){
+	/*
+	 * ==========================================================================
+	 * ======================
+	 */
+	public String executeCreation() {
 		Connection cnx = PostgresConnection.getConnexion();
-		
+
 		Utilisateur uti = new Utilisateur();
 		uti.setPseudo(pseudo);
 		uti.setMotDePasse(motDePasse);
 		uti.setEmail(email);
 		uti.setAvatar(avatar);
 		uti.setSexe(sexe);
-		
+
 		try {
-			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd").parse(dateNaissance));
+			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd")
+					.parse(dateNaissance));
 			return uti.create(cnx) != 0 ? SUCCESS : ERROR;
-		}
-		 catch (SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ERROR;
-		 }
+		}
 
-					 catch (ParseException e) {
+		catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ERROR;
 		}
 	}
+
 	/* Fin de création */
-/* ================================================================================================ */
-		
-	/* Connection au compte utilisateur*/
-/* ================================================================================================ */
-	public String executeConnexion(){
+	/*
+	 * ==========================================================================
+	 * ======================
+	 */
+
+	/* Connection au compte utilisateur */
+	/*
+	 * ==========================================================================
+	 * ======================
+	 */
+	public String executeConnexion() {
 		Connection cnx = PostgresConnection.getConnexion();
 		Utilisateur uti = new Utilisateur();
 		uti.setPseudo(pseudo);
 		uti.setMotDePasse(motDePasse);
 		try {
-			if(uti.checkExists(cnx)){
-				this.email=uti.getEmail();
+			if (uti.checkExists(cnx)) {
+				this.email = uti.getEmail();
 				return SUCCESS;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ERROR;
-		}	
-		
+		}
+
 		return "erreurIdentification";
 	}
+
 	/* Fin de connection */
-/* ================================================================================================ */
-	
-	/* Supression du compte*/
-/* ================================================================================================ */
-	public String executeDemandeSuppression(){
+	/*
+	 * ==========================================================================
+	 * ======================
+	 */
+
+	/* Supression du compte */
+	/*
+	 * ==========================================================================
+	 * ======================
+	 */
+	public String executeDemandeSuppression() {
 		Utilisateur uti = new Utilisateur();
 		uti.setIdadresse(idUtilisateur);
 		uti.setPseudo(pseudo);
@@ -154,11 +185,12 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setPseudo(avatar);
 		return SUCCESS;
 	}
-	
+
 	public void setIdUtilisateur(int idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
-	public String executeSuppression(){
+
+	public String executeSuppression() {
 		Connection cnx = PostgresConnection.getConnexion();
 		Utilisateur uti = new Utilisateur();
 		uti.setPseudo(pseudo);
@@ -171,12 +203,19 @@ public class UtilisateurAction extends ActionSupport {
 		}
 		return ERROR;
 	}
-	/* Fin de supression */
-/* ================================================================================================ */
 
-	/* Modification du compte*/
-/* ================================================================================================ */
-	
+	/* Fin de supression */
+	/*
+	 * ==========================================================================
+	 * ======================
+	 */
+
+	/* Modification du compte */
+	/*
+	 * ==========================================================================
+	 * ======================
+	 */
+
 	public String modification() {
 
 		try {
@@ -194,17 +233,17 @@ public class UtilisateurAction extends ActionSupport {
 			return ERROR;
 		}
 	}
-	
-	public String executeModif () {
+
+	public String executeModif() {
 		Connection cnx = PostgresConnection.getConnexion();
-		
+
 		Utilisateur uti = new Utilisateur();
 		uti.setIdUtilisateur(idUtilisateur);
 		uti.setPseudo(pseudo);
 		uti.setAvatar(avatar);
 		uti.setMotDePasse(motDePasse);
 		uti.setEmail(email);
-		
+
 		try {
 			return uti.modif(cnx) != 0 ? SUCCESS : ERROR;
 		} catch (SQLException e) {
@@ -212,7 +251,11 @@ public class UtilisateurAction extends ActionSupport {
 			e.printStackTrace();
 		}
 		return ERROR;
-		}
-	/* Fin de modification du compte*/
-/* ================================================================================================ */
+	}
+	
+	/* Fin de modification du compte */
+	/*
+	 * ==========================================================================
+	 * ======================
+	 */
 }

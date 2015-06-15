@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -102,18 +103,28 @@ public class Utilisateur {
 	 * ==========================================================================
 	 * =========
 	 */
-	public int create(Connection cnx) throws SQLException {
+	public boolean create(Connection cnx) {
 
 		String query = "INSERT INTO utilisateurs (pseudo, datenaissance, sexe, email, avatar, motdepasse) VALUES (?, ?, ?, ?, ?, ?)";
-		PreparedStatement ps = cnx.prepareStatement(query);
-		ps.setString(1, pseudo);
-		ps.setDate(2, new java.sql.Date(dateNaissance.getTime()));
-		ps.setString(3, sexe);
-		ps.setString(4, email);
-		ps.setString(5, avatar);
-		ps.setString(6, motDePasse);
+		PreparedStatement ps;
+		try {
+			ps = cnx.prepareStatement(query);
+			ps.setString(1, pseudo);
+			ps.setDate(2, new java.sql.Date(dateNaissance.getTime()));
+			ps.setString(3, sexe);
+			ps.setString(4, email);
+			ps.setString(5, avatar);
+			ps.setString(6, motDePasse);
 
-		return ps.executeUpdate();
+			ps.executeUpdate();
+
+			return true;
+
+		} catch (SQLIntegrityConstraintViolationException e) {
+			return false;
+		} catch (SQLException e) {
+			return false;
+		}
 	}
 
 	/* Vérification si le pseudo est déjà uitilisé */
