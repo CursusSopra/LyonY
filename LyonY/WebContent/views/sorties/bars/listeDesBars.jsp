@@ -25,7 +25,7 @@
 					<s:iterator value="listeDesBars">
 						<tr>
 							<s:url action="detailsBar" var="db">
-								<s:param name="idbar">
+								<s:param name="idBar">
 									<s:property value="idbar" />
 								</s:param>
 							</s:url>

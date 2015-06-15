@@ -28,11 +28,15 @@
 			<result name="success" type="tiles">listeDesPlaceetparcs</result>
 		</action>
 		
-		<!-- Affichage des détails d'un monument -->
-		<action name="detailsMonument" class="fr.cursusSopra.action.visites.DetailsMonumentAction" method="executeDetailsMonument">
-			<result name="success" type="tiles">detailsMonument</result>
-		</action>
+ 		<!-- Affichage des détails d'un monument -->
+<!-- 		<action name="detailsMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeDetailsMonument"> -->
+<!-- 			<result name="success" type="tiles">detailsMonument</result> -->
+<!-- 		</action> -->
 		
+		<!-- Affichage des détails d'une place ou d'un parc -->
+		<action name="detailsPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeDetailsPlaceetparc">
+			<result name="success" type="tiles">detailsPlaceetparc</result>
+		</action>
 		
 		
 	</package>
