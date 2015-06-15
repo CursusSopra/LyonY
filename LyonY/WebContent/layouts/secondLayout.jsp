@@ -130,7 +130,7 @@
 							<li><a href="<s:url action='sorties' />">Lyon'Y Sort</a></li>
 							<li><a href="table.html">Lyon'Y Mange</a></li>
 							<li><a href="forms.html">Lyon'Y Boit</a></li>
-							<li><a href="<s:url action='sorties' />">Lyon'Y Visite</a></li>
+							<li><a href="<s:url action='visites' />">Lyon'Y Visite</a></li>
 							<li><a href="blank.html">Lyon'Y Danse</a></li>
 
 						</ul>
