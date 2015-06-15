@@ -1,10 +1,7 @@
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-
-<%-- <a href="<s:url action='index'/>">Retour à la page d'accueil</a> --%>
-
-<h1>Détails du monument</h1>
+<h1>Détails du parc ou de la palce</h1>
 
 <div class="container-fluid">
 	<div class="row">
@@ -12,31 +9,31 @@
 		<div class="col-md-10">
 
 			<div>
-				Nom du monument :
-				<s:property value="monument.nomLieu" />
+				Nom du parc ou de la place :
+				<s:property value="nomLieu" />
 			</div>
 			<div>
 				Quartier :
-				<s:property value="monument.nomQuartier" />
+				<s:property value="nomQuartier" />
 			</div>
 			<div>
 				Adresse :
-				<s:property value="monument.numAdres" />
-				<s:property value="monument.voieAdres" />
-				<s:property value="monument.villeAdres" />
+				<s:property value="numAdres" />
+				<s:property value="voieAdres" />
+				<s:property value="villeAdres" />
 			</div>
 			<div>
 				Description :
-				<s:property value="monument.descriptionLieu" />
+				<s:property value="descriptionLieu" />
 			</div>
 			<div>
 				Construction :
-				<s:property value="monument.annCons"/> &nbsp;-<s:property value="monument.annFinCons"/>
+				<s:property value="annCons"/> &nbsp;-<s:property value="annFinCons"/>
 			</div>
 
 			<div>
 				Accessibilité :
-				<s:property value="monument.accessibiliteLieu" />
+				<s:property value="accessibiliteLieu" />
 			</div>
 			
 			<table class="table table-striped table-hover">
