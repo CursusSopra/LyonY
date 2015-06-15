@@ -37,7 +37,7 @@
 		<action name="sendModifUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
 			method="executeModif">
 			<result name="success" type="tiles">index</result>
-			<result name="error" type="tiles">indexerror</result>
+			<result name="error" type="tiles">errormodif</result>
 		</action>
 		
 		
