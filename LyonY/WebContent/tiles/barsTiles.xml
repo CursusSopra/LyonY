@@ -19,5 +19,10 @@
 			value="/views/sorties/bars/detailsBar.jsp" />
 	</definition>
 	
+	<definition name="formCreationBar" extends="baseLayout">
+		<put-attribute name="title" value="Ajout d'un bar" />
+		<put-attribute name="body" value="/views/sorties/bars/formCreationBar.jsp" />
+	</definition>
+	
 
 </tiles-definitions>
