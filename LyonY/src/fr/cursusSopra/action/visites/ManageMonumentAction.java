@@ -6,6 +6,7 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.cursusSopra.model.Monument;
+import fr.cursusSopra.model.Quartier;
 import fr.cursusSopra.tech.Breadcrumbs;
 
 public class ManageMonumentAction extends VisitesAction {
@@ -14,6 +15,7 @@ public class ManageMonumentAction extends VisitesAction {
 	
 	private int idMonument;
 	private Monument monument;
+	private List<Quartier> listeDesQuartiers;
 	
 	// GETSETS
 	public Monument getMonument() {
@@ -25,6 +27,9 @@ public class ManageMonumentAction extends VisitesAction {
 	public void setIdMonument(int idMonument) {
 		this.idMonument = idMonument;
 	}
+	public List<Quartier> getListeDesQuartiers() {
+		return listeDesQuartiers;
+	}
 	
 	//CTOR
 	public ManageMonumentAction() {
@@ -34,7 +39,13 @@ public class ManageMonumentAction extends VisitesAction {
 	
 	// METHODES PUBLIQUES
 	public String execute() {
-		return SUCCESS;
+		try {
+			listeDesQuartiers = Quartier.getListeDesQuartiers();
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 
 	public String executeDetailsMonument(){

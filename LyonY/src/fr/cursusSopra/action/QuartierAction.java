@@ -1,7 +1,6 @@
 package fr.cursusSopra.action;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -15,7 +14,6 @@ public class QuartierAction extends ActionSupport {
 	private String nom;
 	private int budgetMoyen;
 	private int distanceCentreVille;
-	public List<Quartier> listeDesQuartiers;
 	
 	// GETSETS
 	public int getIdquartier() {
@@ -42,19 +40,8 @@ public class QuartierAction extends ActionSupport {
 	public void setIdquartier(int idquartier) {
 		this.idquartier = idquartier;
 	}
-	public List<Quartier> getListeDesQuartiers() {
-		return listeDesQuartiers;
-	}
+	
 	// METHODES EXECUTE() 
-	public String execute() {
-		try {
-			listeDesQuartiers = Quartier.getListeDesQuartiers();
-			return SUCCESS;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return ERROR;
-		}
-	}
 
 	public String executeCreation() {
 
