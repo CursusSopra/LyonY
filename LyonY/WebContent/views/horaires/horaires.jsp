@@ -12,14 +12,14 @@
 }
 </style>
 
+
 <table id="Horaires">
-	<s:iterator value="{1,2,3,4,5,6,7}" status="idx">
+	<s:iterator value="jours" status="idx">
 		<tr>
-			<td style="width: 100px" align="center"><s:property
-					value="#idx.count" /></td>
+			<td style="width: 100px" align="center"><s:property /></td>
 			<td style="width: 250px"><div id="slider-range${idx.count}"></div></td>
 			<td style="width: 200px" align="center"><span
-				id="time${idx.count}" data-rang="<s:property value = "#idx.count"/>"></span>
+				id="time" data-rang="<s:property value = "#idx.count"/>"></span>
 			</td>
 		</tr>
 	</s:iterator>

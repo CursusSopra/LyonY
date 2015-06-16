@@ -13,6 +13,12 @@ public class HoraireAction extends ActionSupport {
 	
 	public List<Horaire> listeDesHorairesTest;
 	
+	private String[] jours = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
+	
+	public String[] getJours() {
+		return jours;
+	}
+	
 	public String execute() throws SQLException {
 		return SUCCESS;
 	}
