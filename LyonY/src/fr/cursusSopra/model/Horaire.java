@@ -40,7 +40,7 @@ public class Horaire {
 
 		// Il n'existe pas encore, on le crée
 		PreparedStatement psHoraire = cnx.prepareStatement(
-				"IINSERT INTO horaires(jour, idplagehoraire) VALUES (?, ?)",
+				"INSERT INTO horaires(jour, idplagehoraire) VALUES (?, ?)",
 				Statement.RETURN_GENERATED_KEYS);
 
 		psHoraire.setString(1, jour);
