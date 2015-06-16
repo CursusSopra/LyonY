@@ -16,6 +16,8 @@
 		<div class="col-md-10">
 
 			<div>
+				<td><input  id="input-5b" class="rating"  data-symbol="&#xf1bb;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="placeetparc.notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+			
 				Nom du parc ou de la place :
 				<s:property value="placeetparc.nomLieu" />
 			</div>
@@ -65,12 +67,13 @@
 			
 			<div>
 				Avis :
-				<table class="table table-striped table-hover">
+				<table class="table table-striped table-hover" >
 				<s:iterator value="placeetparc.listeDesAvisDunLieu"> 
 					<tr> 
-					<td><s:property value="pseudo"/>&nbsp;</td> 
+					<td ><s:property value="pseudo"/>&nbsp;</td> 
 					
-					<td><s:property value="note"/>&nbsp;</td> 
+					<td><input data-size="xxs" id="input-5b" class="rating"  data-symbol="&#xf1bb;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="note" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+					</td> 
 					
 					<td><s:property value="message"/>&nbsp;</td>
 					</tr>
