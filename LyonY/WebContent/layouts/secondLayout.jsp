@@ -182,7 +182,7 @@
 	<!-- CORE JQUERY SCRIPTS -->
 	<script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="_theme/js/bootstrap.js"></script>
+	<script src="js/bootstrap.js"></script>
 	
 	<!-- ================================================== -->
 	<!--                  Extra JavaScript                  -->
