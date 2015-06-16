@@ -95,18 +95,23 @@ public class Placeetparc  {
         Statement stmt = cnx.createStatement();
         // Requête à exécuter
         String queryPPCompl  = "SELECT "
-                            + "l.idlieu, l.nom AS nomL, l.description, l.accessibilite, "
-                            + "a.numero, a.voie, a.codepostal, a.ville, "
-                            + "q.nom AS nomQ, "
-                            + "t.libtypevisite, "
-                            + "p.idPlaceetparc "
-                        + "FROM placeetparcs p "
-                            + "INNER JOIN visites v USING (idvisite) "
-                            + "INNER JOIN lieux l USING (idlieu) "
-                            + "INNER JOIN adresses a USING (idadresse) "
-                            + "INNER JOIN quartiers q USING (idquartier) "
-                            + "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
-                        + "WHERE p.idPlaceetparc=" + idPlaceetparc ;
+        		+ "l.idlieu, l.nom AS nomL, l.description, l.accessibilite, "
+        		+ "a.numero, a.voie, a.codepostal, a.ville, "
+        		+ "q.nom AS nomQ, "
+        		+ "t.libtypevisite, "
+        		+ "p.idPlaceetparc, "
+        		+ "AVG(av.note) AS notemoy "
+        	+ "FROM placeetparcs p "
+        		+ "INNER JOIN visites v USING (idvisite) "
+        		+ "INNER JOIN lieux l USING (idlieu) "
+        		+ "INNER JOIN adresses a USING (idadresse) "
+        		+ "INNER JOIN quartiers q USING (idquartier) "
+        		+ "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
+        		+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+        		+ "WHERE p.idPlaceetparc= "+ idPlaceetparc
+        		+ "GROUP BY  l.idlieu, nomL, l.description, l.accessibilite, "
+        		+ "a.numero, a.voie, a.codepostal, a.ville, nomQ, t.libtypevisite, "
+        		+ "p.idPlaceetparc";
         // Obtention de l'ensemble résultat
         ResultSet rsPP = stmt.executeQuery(queryPPCompl);
         // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
@@ -121,6 +126,7 @@ public class Placeetparc  {
             villeAdres = rsPP.getString("ville");
             nomQuartier = rsPP.getString("nomQ");
             typeVisite = rsPP.getString("libtypevisite");
+            notemoy = rsPP.getFloat("notemoy");
             idl = rsPP.getInt("idlieu");
         }
         
@@ -130,11 +136,6 @@ public class Placeetparc  {
         
         
     }
-
-
-
-
-
 
 
 	// METHODES STATIQUES
