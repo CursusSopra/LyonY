@@ -16,6 +16,7 @@ public class Nclub extends Sortie {
 	private String libambiance;
 	private int numero;
 	private String voie;
+	private int codepostal;
 	private String ville;
 	private String description;
 	private float notemoy;
@@ -35,7 +36,7 @@ public class Nclub extends Sortie {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT n.idsortie, n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
+		String query = "SELECT n.idsortie, n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM nightclubs n "
 				+ "INNER JOIN sorties s ON s.idsortie=n.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
@@ -44,7 +45,7 @@ public class Nclub extends Sortie {
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
 				+ "WHERE n.idnightclub =" + idNightclub
-				+ " GROUP BY n.idnightclub, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, ville, description";
+				+ " GROUP BY n.idnightclub, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
 		
 		
 		
@@ -61,6 +62,7 @@ public class Nclub extends Sortie {
 			prixmax = rs.getInt("prixmax");
 			numero = rs.getInt("numero");
 			voie = rs.getString("voie");
+			codepostal = rs.getInt("codepostal");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
 			notemoy = rs.getFloat("notemoy");
@@ -108,6 +110,14 @@ public class Nclub extends Sortie {
 	public void setVoie(String voie) {
 		this.voie = voie;
 	}
+	public int getCodepostal() {
+		return codepostal;
+	}
+
+	public void setCodepostal(int codepostal) {
+		this.codepostal = codepostal;
+	}
+
 	public String getVille() {
 		return ville;
 	}
@@ -199,13 +209,16 @@ public class Nclub extends Sortie {
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query = "SELECT n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax "
+		String query = "SELECT n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, AVG(av.note) AS notemoy, "
+				+ "COUNT (av.note) AS nbavis "
 				+ "FROM nightclubs n  "
 				+ "INNER JOIN sorties s ON s.idsortie=n.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
-				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance";
+				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+				+ "GROUP BY nomnightclub, nomquartier, libambiance, n.idnightclub, prixmin, prixmax;";
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
@@ -217,6 +230,8 @@ public class Nclub extends Sortie {
 			n.libambiance = rs.getString("libambiance");
 			n.prixmin = rs.getInt("prixmin");
 			n.prixmax = rs.getInt("prixmax");
+			n.notemoy = rs.getFloat("notemoy");
+			n.nbavis = rs.getInt("nbavis");
 			listeDesNightclubs.add(n);
 		}
 		return listeDesNightclubs;

@@ -17,6 +17,7 @@ public class Bar extends Sortie {
 	private String libambiance;
 	private int numero;
 	private String voie;
+	private int codepostal;
 	private String ville;
 	private String description;
 	private float notemoy;
@@ -34,7 +35,7 @@ public class Bar extends Sortie {
 		Statement stmt = cnx.createStatement();
 
 		// Requête à exécuter
-		String query = "SELECT b.idsortie, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, happyhour, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
+		String query = "SELECT b.idsortie, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, happyhour, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM bars b "
 				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
@@ -57,6 +58,7 @@ public class Bar extends Sortie {
 			prixmax = rs.getInt("prixmax");
 			numero = rs.getInt("numero");
 			voie = rs.getString("voie");
+			codepostal = rs.getInt("codepostal");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
 			notemoy = rs.getFloat("notemoy");
@@ -110,6 +112,14 @@ public class Bar extends Sortie {
 	public void setVoie(String voie) {
 		this.voie = voie;
 	}
+	public int getCodepostal() {
+		return codepostal;
+	}
+
+	public void setCodepostal(int codepostal) {
+		this.codepostal = codepostal;
+	}
+
 	public String getVille() {
 		return ville;
 	}
@@ -200,13 +210,16 @@ public class Bar extends Sortie {
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query = "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax "
-				+ "FROM bars b  "
-				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
-				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
-				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
-				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
-				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance";
+		String query = "SELECT b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, AVG(av.note) AS notemoy, "
+				+ "COUNT (av.note) AS nbavis "
+				+ "FROM bars b "
+				+ "INNER JOIN sorties s USING (idsortie) "
+				+ "INNER JOIN lieux l USING (idlieu) "
+				+ "INNER JOIN adresses a USING (idadresse) "
+				+ "INNER JOIN quartiers q USING (idquartier) "
+				+ "INNER JOIN ambiances am USING (idambiance) "
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+				+ "GROUP BY nombar, nomquartier, libambiance, b.idbar, prixmin, prixmax;" ;
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
@@ -218,6 +231,8 @@ public class Bar extends Sortie {
 			b.libambiance = rs.getString("libambiance");
 			b.prixmin = rs.getInt("prixmin");
 			b.prixmax = rs.getInt("prixmax");
+			b.notemoy = rs.getFloat("notemoy");
+			b.nbavis = rs.getInt("nbavis");
 			listeDesBars.add(b);
 		}
 		return listeDesBars;

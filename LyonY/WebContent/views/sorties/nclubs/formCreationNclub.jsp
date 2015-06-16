@@ -96,7 +96,7 @@
 		<label for="idDescription" class="col-sm-2 control-label">Description</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<TEXTAREA name="description" rows=4 cols=40>Décrivez le bar : spécialités, activités...</TEXTAREA>
+				<TEXTAREA name="description" rows=4 cols=40 placeholder="Décrivez le nclub : spécialités, activités..."></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

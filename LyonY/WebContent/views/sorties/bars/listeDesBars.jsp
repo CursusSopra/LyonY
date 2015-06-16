@@ -33,12 +33,16 @@
 								</s:param>
 							</s:url>
 
-
-							<td><a href="<s:property value='#db'/>"> <s:property value="nombar" /></a></td>
+							<td><a href="<s:property value='#db'/>"> <s:property
+										value="nombar" /></a></td>
 							<td><s:property value="libambiance" /></td>
 							<td><s:property value="prixmin" /></td>
 							<td><s:property value="prixmax" /></td>
-							<td><s:property value="" /></td>
+							<td><s:if test='%{nbavis == 0}'>
+									Aucun avis, <a href="">soyez le premier !</a>
+								</s:if> <s:else>
+									<s:property value="notemoy" /> - <s:property value="nbavis" /> avis
+								</s:else></td>
 							<td><s:property value="nomquartier" /></td>
 						</tr>
 

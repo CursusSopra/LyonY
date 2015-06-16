@@ -4,7 +4,8 @@
 <h1>Restaurants de Lyon</h1>
 
 <div>
-	<a href="<s:url action='formCreationRestaurant'/>">Ajouter un restaurant</a>
+	<a href="<s:url action='formCreationRestaurant'/>">Ajouter un
+		restaurant</a>
 </div>
 
 <div class="container-fluid">
@@ -27,19 +28,22 @@
 				<tbody>
 					<s:iterator value="listeDesRestaurants">
 						<tr>
-							<s:url action="detailsRestaurant" var="dr"> 
-								<s:param name="idrestaurant"> 
-								<s:property value="idRestaurant" /> 
-							</s:param> 
-						</s:url> 
+							<s:url action="detailsRestaurant" var="dr">
+								<s:param name="idrestaurant">
+									<s:property value="idRestaurant" />
+								</s:param>
+							</s:url>
 
-
-							<td><a href="<s:property value='#dr'/>"> <s:property value="nomrestaurant" /></a></td>
-<%-- 							<td><s:property value="nomrestaurant" /></td> --%>
+							<td><a href="<s:property value='#dr'/>"> <s:property
+										value="nomrestaurant" /></a></td>
 							<td><s:property value="libambiance" /></td>
 							<td><s:property value="prixmin" /></td>
 							<td><s:property value="prixmax" /></td>
-							<td><s:property value="" /></td>
+							<td><s:if test='%{nbavis == 0}'>
+									Aucun avis, <a href="">soyez le premier !</a>
+								</s:if> <s:else>
+									<s:property value="notemoy" /> - <s:property value="nbavis" /> avis
+								</s:else></td>
 							<td><s:property value="nomquartier" /></td>
 						</tr>
 
