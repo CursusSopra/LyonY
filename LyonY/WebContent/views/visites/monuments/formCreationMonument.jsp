@@ -8,16 +8,16 @@
 <form class="form-horizontal" method="post" id="idFormCreationMonument" action="<s:url action='creationMonument'/>">
 
 	<div id="idFormAlertError" class="alert alert-danger hidden" role="alert">
-		Le formulaire contient des erreurs. Veuillezréessayer
+		Le formulaire contient des erreurs. Veuillez réessayer.
 	</div>
 
 
 	<legend>Identification</legend>
 	<div class="form-group">
-		<label for="idNom" class="col-sm-2 control-label">Nom du monument</label>
+		<label for="idNom" class="col-sm-2 control-label">Nom du monument *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNom" name="nomL" />
+				<input type="text" class="form-control" id="idNom" name="nomL" placeholder="Exemple : Le Factory"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -25,7 +25,7 @@
 
 
 	<div class="form-group">
-		<label for="idTypevisite" class="col-sm-2 control-label">Type de monument</label>
+		<label for="idTypevisite" class="col-sm-2 control-label">Type de monument *</label>
 		<div class="col-sm-3">
 			<div class="row">				
 				<select id="idTypevisite">
@@ -34,16 +34,16 @@
 					</s:iterator>
 				</select>
 			</div>
-			<div class = "row">
-				<a href="<s:url action='creationTypevisite'/>">Ajouter un type de monument</a>
-			</div>
+<!-- 			<div class = "row"> -->
+<%-- 				<a href="<s:url action='creationTypevisite'/>">Ajouter un type de monument</a> --%>
+<!-- 			</div> -->
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
 
 
 	<div class="form-group">
-		<label for="idQuartier" class="col-sm-2 control-label">Quartier</label>
+		<label for="idQuartier" class="col-sm-2 control-label">Quartier *</label>
 		<div class="col-sm-3">
 			<div class="row">
 				<select id="idQuartier">
@@ -62,7 +62,7 @@
 		<label for="idNumero" class="col-sm-2 control-label">Numéro</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNumero" name="numero" />
+				<input type="text" class="form-control" id="idNumero" name="numero" placeholder="Exemple : 66" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -72,28 +72,27 @@
 		<label for="idVoie" class="col-sm-2 control-label">Voie</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idVoie" name="voie" />
+				<input type="text" class="form-control" id="idVoie" name="voie" placeholder="Exemple : cours Charlemagne"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="idCodepostal" class="col-sm-2 control-label">Code
-			postal</label>
+		<label for="idCodepostal" class="col-sm-2 control-label">Code postal *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idCodepostal" name="codePostal" />
+				<input type="text" class="form-control" id="idCodepostal" name="codePostal" placeholder="Exemple : 69002" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="idVille" class="col-sm-2 control-label">Ville</label>
+		<label for="idVille" class="col-sm-2 control-label">Ville *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idVille" name="ville" />
+				<input type="text" class="form-control" id="idVille" name="ville" value="Lyon" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -105,7 +104,7 @@
 		<label for="idAnnCons" class="col-sm-2 control-label">Année de début de construction</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idAnnCons" name="annCons" />
+				<input type="text" class="form-control" id="idAnnCons" name="annCons" placeholder="Exemple : 1988"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -115,7 +114,7 @@
 		<label for="idAnnFinCons" class="col-sm-2 control-label">Année de fin de construction</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idAnnFinCons" name="annFinCons" />
+				<input type="text" class="form-control" id="idAnnFinCons" name="annFinCons" placeholder="Exemple : 1991"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -143,6 +142,12 @@
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
+			<div class="row">(* : champ obligatoire)</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
 			<div class="row">
 				<button type="reset" class="btn btn-default">Etat initial</button>
 				<button type="submit" class="btn btn-default">Ajouter ce monument</button>
@@ -155,69 +160,52 @@
 <script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
 
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-
-
-						//Validation/refus selon le remplissage du formulaire
-						$('#idFormAjouterBar')
-								.submit(
-										function(e) {
-											var $nom = $('#idNom');
-											var $prenom = $('#idPrenom');
-											var valNom = $nom.val();
-											var valPrenom = $prenom.val();
-											//Par défaut le formulaire est OK
-											var formOK = true;
-											//console.log(valNom);
-											//Si champ obligatoire non rempli
-											if (valNom == '') {
-												formOK &= false;
-												$nom.parent().parent().parent()
-														.addClass('has-error');
-												$nom
-														.parent()
-														.next('span')
-														.html(
-																'Vous devez fournir le nom du candidat');
-											} else {
-												$nom.parent().parent().parent()
-														.removeClass(
-																'has-error');
-												$nom.parent().next('span')
-														.html('');
-											}
-
-											if (valPrenom == '') {
-												formOK &= false;
-												$prenom.parent().parent()
-														.parent().addClass(
-																'has-error');
-												$prenom
-														.parent()
-														.next('span')
-														.html(
-																'Vous devez fournir le prénom du candidat');
-
-											} else {
-												$prenom.parent().parent()
-														.parent().removeClass(
-																'has-error');
-												$prenom.parent().next('span')
-														.html('');
-											}
-
-											if (!formOK) {
-												$('#idFormAlertError')
-														.removeClass('hidden');
-												$('#idFormAlertError').fadeTo(
-														2000, 500).slideUp(500);
-												e.preventDefault();
-											} else {
-												$('#idFormAlertError')
-														.addClass('hidden');
-											}
-										});
+	$(document).ready(
+			function() {
+			//Validation/refus selon le remplissage du formulaire
+				$('#idFormCreationMonument').submit(
+					function(e) {
+						var $nom = $('#idNom');
+						var $cp = $('#idCodepostal');
+						var $ville = $('#idVille');
+						var valNom = $nom.val();
+						var valCp = $cp.val();
+						var valVille = $ville.val();
+						//Par défaut le formulaire est OK
+						var formOK = true;
+						//Si champ obligatoire non rempli
+						if (valNom == '') {
+							formOK &= false;
+							$nom.parent().parent().parent().addClass('has-error');
+							$nom.parent().next('span').html('Vous devez fournir le nom du monument');
+						} else {
+							$nom.parent().parent().parent().removeClass('has-error');
+							$nom.parent().next('span').html('');
+						}
+						var rx = new RegExp('[0-9]{5}');
+						if (valCp == '' || !rx.test(valCp)) {
+							formOK &= false;
+							$cp.parent().parent().parent().addClass('has-error');
+							$cp.parent().next('span').html('Vous devez fournir un code postal valide');
+						} else {
+							$cp.parent().parent().parent().removeClass('has-error');
+							$cp.parent().next('span').html('');
+						}
+						if (valVille == '') {
+							formOK &= false;
+							$ville.parent().parent().parent().addClass('has-error');
+							$ville.parent().next('span').html('Vous devez fournir un nom de ville');
+						} else {
+							$ville.parent().parent().parent().removeClass('has-error');
+							$ville.parent().next('span').html('');
+						}
+						if (!formOK) {
+							$('#idFormAlertError').removeClass('hidden');
+							$('#idFormAlertError').fadeTo(10000, 500).slideUp(500);
+							e.preventDefault();
+						} else {
+							$('#idFormAlertError').addClass('hidden');
+						}
 					});
+				});
 </script>
