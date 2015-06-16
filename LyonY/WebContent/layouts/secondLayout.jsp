@@ -63,7 +63,7 @@
 					  	</div>
 					  	<button type="submit" class="btn btn-default">Connexion</button>
 					</form>
-					<a href='<s:url action="FormCreationUtilisateur"/>'>Inscription</a>
+					<a href='<s:url action="formCreationUtilisateur"/>'>Inscription</a>
 				</div>
 			</div>
 		</div>

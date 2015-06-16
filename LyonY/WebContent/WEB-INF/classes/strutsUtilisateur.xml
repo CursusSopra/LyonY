@@ -13,13 +13,13 @@
 		
 		
 		<!-- Afficher le formulaire de création d'un utilisateur -->
-		<action name="FormCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+		<action name="formCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
 			method="execute">
 			<result name="success" type="tiles">creation</result>
 		</action>
 		
 		<!-- Envoyer le formulaire de creation -->
-		<action name="SendCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+		<action name="sendCreationUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
 			method="executeCreation">
 			<result name="success" type="tiles">index</result>
 			<result name="error" type="tiles">indexerror</result>
@@ -68,6 +68,14 @@
 			method="executeDisplayAvis">
 			<result name="success" type="tiles">mesavis</result>
 			<result name="error" type="tiles">index</result>
+		</action>
+	</package>
+	
+	
+<!--  JSON pour tester si le pseudio est unique -->
+	<package name="jsonAction" extends="json-default">
+		<action name="getJSONpseudo" class="fr.cursusSopra.json.JSONUtilisateurAction">
+			<result type="json" />
 		</action>
 	</package>
 </struts>

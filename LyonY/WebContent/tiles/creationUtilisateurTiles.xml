@@ -9,27 +9,26 @@
 	<!-- INDEX -->
 	<definition name="creation" extends="baseLayout">
 		<put-attribute name="title" value="creation" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
-		<put-attribute name="body" value="/views/utilisateurs/FormCreationUtilisateur.jsp" />
+		<put-attribute name="body" value="/views/utilisateurs/formCreationUtilisateur.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/creationUtilisateur.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 	
 	<definition name="indexerror" extends="baseLayout">
 		<put-attribute name="title" value="creation" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
-		<put-attribute name="body" value="/views/utilisateurs/FormCreationUtilisateur.jsp" />
+		<put-attribute name="body" value="/views/utilisateurs/formCreationUtilisateur.jsp" />
 	</definition>
 	
 	<definition name="modification" extends="baseLayout">
 		<put-attribute name="title" value="ModificationProfil" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
 		<put-attribute name="body" value="/views/utilisateurs/FormModifUtilisateur.jsp" />
 	</definition>
 	
 	<definition name="errormodif" extends="baseLayout">
 		<put-attribute name="title" value="creation" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
 		<put-attribute name="body" value="/views/utilisateurs/FormModifUtilisateur.jsp" />
-	</definition>
-	
+	</definition>	
 
 </tiles-definitions>

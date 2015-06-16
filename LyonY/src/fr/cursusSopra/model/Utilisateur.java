@@ -99,10 +99,7 @@ public class Utilisateur {
 	}
 
 	/* Création d'un compte utilisateur Candidat */
-	/*
-	 * ==========================================================================
-	 * =========
-	 */
+/* =================================================================================== */
 	public boolean create(Connection cnx) {
 
 		String query = "INSERT INTO utilisateurs (pseudo, datenaissance, sexe, email, avatar, motdepasse) VALUES (?, ?, ?, ?, ?, ?)";
@@ -128,10 +125,7 @@ public class Utilisateur {
 	}
 
 	/* Vérification si le pseudo est déjà uitilisé */
-	/*
-	 * ==========================================================================
-	 * =========
-	 */
+/* =================================================================================== */
 	public boolean checkExists(Connection cnx) throws SQLException {
 
 		String query = "SELECT pseudo, motdepasse, email, idutilisateur FROM utilisateurs WHERE pseudo=? AND motdepasse=?";
@@ -149,10 +143,7 @@ public class Utilisateur {
 	}
 
 	/* Supression du compte */
-	/*
-	 * ==========================================================================
-	 * =========
-	 */
+/* =================================================================================== */
 	public int delete(Connection cnx) throws SQLException {
 
 		String query = "DELETE FROM utilisateurs WHERE pseudo=?";
@@ -163,10 +154,7 @@ public class Utilisateur {
 	}
 
 	/* Modification du compte */
-	/*
-	 * ==========================================================================
-	 * =========
-	 */
+/* =================================================================================== */
 	public int modif(Connection cnx) throws SQLException {
 
 		String query = "UPDATE utilisateurs SET pseudo=?, email=?, avatar=?, motdepasse=?  WHERE idutilisateur=?";
@@ -181,6 +169,8 @@ public class Utilisateur {
 		return ps.executeUpdate();
 	}
 
+	/* Liste des utilisateurs */
+/* =================================================================================== */
 	public void setIdUtilisateur(int idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
@@ -189,12 +179,7 @@ public class Utilisateur {
 			List<Utilisateur> listeDesUtilisateurs) {
 		Utilisateur.listeDesUtilisateurs = listeDesUtilisateurs;
 	}
-
-	/* Liste des utilisateurs */
-	/*
-	 * ==========================================================================
-	 * =========
-	 */
+	
 	private static List<Utilisateur> listeDesUtilisateurs;
 
 	public static List<Utilisateur> getListeDesUtilisateurs()
@@ -223,6 +208,8 @@ public class Utilisateur {
 		return listeDesUtilisateurs;
 	}
 
+	/* Modification du compte
+/* =================================================================================== */
 	public void detailsModif() throws SQLException {
 		// Connexion à la base de données postgresSQL
 		Connection cnx = PostgresConnection.getConnexion();
@@ -242,6 +229,8 @@ public class Utilisateur {
 		}
 	}
 
+	/* Liste des avis */
+/* =================================================================================== */
 	private List<Avis> listeDesAvis;
 
 	public List<Avis> getListeDesAvis() throws SQLException {
