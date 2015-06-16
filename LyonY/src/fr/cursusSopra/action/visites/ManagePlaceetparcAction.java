@@ -56,5 +56,4 @@ public class ManagePlaceetparcAction extends VisitesAction {
 		return SUCCESS;
 	}
 
-
 }
