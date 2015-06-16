@@ -38,8 +38,11 @@
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idQuartier"
-					name="nomquartier" />
+				<select id="idQuartier">
+					<s:iterator value="listeDesQuartiers">
+						<option value="<s:property value="idquartier" />"><s:property value="nom" /></option>
+					</s:iterator>
+				</select>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -96,7 +99,7 @@
 		<label for="idDescription" class="col-sm-2 control-label">Description</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<TEXTAREA name="description" rows=4 cols=40>Décrivez le bar : spécialités, activités...</TEXTAREA>
+				<TEXTAREA name="description" rows=4 cols=40 placeholder="Décrivez le bar : spécialités, activités..."></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -123,6 +126,8 @@
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
+	
+	<legend>Horaires</legend>
 	
 
 	<!-- 			<div class="form-group"> -->

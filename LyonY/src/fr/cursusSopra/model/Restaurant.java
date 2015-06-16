@@ -267,13 +267,16 @@ public class Restaurant extends Sortie {
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query = "SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, libambiance, prixmin, prixmax "
+		String query = "SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, libambiance, prixmin, prixmax, AVG(av.note) AS notemoy, "
+				+ "COUNT (av.note) AS nbavis "
 				+ "FROM restaurants r "
 				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
-				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance ";
+				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+				+ "GROUP BY nomrestaurant, nomquartier, libambiance, r.idrestaurant, prixmin, prixmax;";
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
@@ -285,6 +288,8 @@ public class Restaurant extends Sortie {
 			r.libambiance = rs.getString("libambiance");
 			r.prixmin = rs.getInt("prixmin");
 			r.prixmax = rs.getInt("prixmax");
+			r.notemoy = rs.getFloat("notemoy");
+			r.nbavis = rs.getInt("nbavis");
 			listeDesRestaurants.add(r);
 		}
 

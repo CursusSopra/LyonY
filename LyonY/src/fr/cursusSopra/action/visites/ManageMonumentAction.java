@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import fr.cursusSopra.model.Monument;
 import fr.cursusSopra.tech.Breadcrumbs;
 
-public class ManageMonumentAction extends ListeDesMonumentsAction {
+public class ManageMonumentAction extends VisitesAction {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,6 +28,7 @@ public class ManageMonumentAction extends ListeDesMonumentsAction {
 	
 	//CTOR
 	public ManageMonumentAction() {
+		listeBreadcrumbs.add(new Breadcrumbs("Visites", "visites", null));
 		listeBreadcrumbs.add(new Breadcrumbs("Monuments", "listeDesMonuments", null));
 	}
 	

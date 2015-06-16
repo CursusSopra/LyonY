@@ -31,8 +31,11 @@
 		</action>
 		
  		<!-- Formulaire de création d'un monument -->
-		<action name="formCreationMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeCreationMonument">
+		<action name="formCreationMonument" class="fr.cursusSopra.action.QuartierAction" method="execute">
 			<result name="success" type="tiles">formCreationMonument</result>
+		</action>
+		<action name="creationMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeCreationMonument">
+			<result name="success" type="tiles">listeDesMonuments</result>
 		</action>
 		
  		<!-- Formulaire de modification d'un monument -->

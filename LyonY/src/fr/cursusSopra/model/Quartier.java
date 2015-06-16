@@ -118,7 +118,7 @@ public class Quartier {
 		Statement stmt = cnx.createStatement();
 		// requete à executer
 		String query = "SELECT idquartier, nom, budgetMoyen, distanceCentreVille "
-				+ "	FROM quartiers ";
+				+ "	FROM quartiers ORDER BY nom";
 
 		// obtention de l'ensemble resultat
 		ResultSet rs = stmt.executeQuery(query);// rs demande les valeur pour un

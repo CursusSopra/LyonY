@@ -31,4 +31,14 @@ public class DetailsBarAction extends SortiesAction {
 			return ERROR;
 		}
 	}
+	
+	public String executeCreationBar(){
+
+		return SUCCESS;
+	}
+	
+	public String executeModifBar(){
+
+		return SUCCESS;
+	}
 }
