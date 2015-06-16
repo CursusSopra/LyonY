@@ -1,6 +1,9 @@
 package fr.cursusSopra.model;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -52,8 +55,8 @@ public class PlageHoraire {
 						"INSERT INTO plagehoraires(heuredebut, heurefin) VALUES (?, ?)",
 						Statement.RETURN_GENERATED_KEYS);
 
-		psPlageHoraire.setDate(1, (java.sql.Date) heureDebut);
-		psPlageHoraire.setDate(2, (java.sql.Date) heureFin);
+		psPlageHoraire.setTime(1, new java.sql.Time(heureDebut.getTime()));
+		psPlageHoraire.setTime(2, new java.sql.Time(heureFin.getTime()));
 
 		psPlageHoraire.executeUpdate();
 		ResultSet rs = psPlageHoraire.getGeneratedKeys();

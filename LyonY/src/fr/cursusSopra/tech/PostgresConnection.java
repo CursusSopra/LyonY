@@ -12,11 +12,11 @@ public class PostgresConnection {
 		String bdd = "lyony";
 		
 		HostnameConnection hostnameConnexion = HostnameConnection.getInstance();
-		if(!hostnameConnexion.getHostName().equals("localhost")) {
-			server = "s2.neggruda.net";
-			user = "cursussopra";
-			passwd = "cursussopra";			
-		}
+//		if(!hostnameConnexion.getHostName().equals("localhost")) {
+//			server = "s2.neggruda.net";
+//			user = "cursussopra";
+//			passwd = "cursussopra";			
+//		}
         try {
             Class.forName("org.postgresql.Driver");
             String url = String.format("jdbc:postgresql://%s/%s", server, bdd);
