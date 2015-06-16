@@ -25,8 +25,12 @@ public class Lieu {
 
 	// Adresse du lieu
 	private Adresse adresse;
+	
+	
 
-	// Constructeur vide non accessible
+
+
+	// Constructeur vide non accessible 
 	private Lieu() {};
 
 	// Constructeur à partir du nom
@@ -59,6 +63,8 @@ public class Lieu {
 		} else {
 			throw new SQLException();
 		}
+		
+		
 	}
 
 	// Rentre un lieu dans la base de donnée
@@ -137,6 +143,39 @@ public class Lieu {
 		return listeDesLieux;
 	}
 	
+	
+	//Liste des avis pour un seul lieu
+	private List<Avis> listeDesAvisDunLieu;
+	
+	public List<Avis> getListeDesAvisDunLieu() throws SQLException {
+		listeDesAvisDunLieu = new ArrayList<Avis>();
+		// connexion à la BDD PostGresSQL
+		Connection cnx = null;
+		cnx = PostgresConnection.getConnexion();
+		// Objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		
+		// Requête à exécuter
+		String queryAvis = "SELECT pseudo, note, message FROM avis "
+        		+ "INNER JOIN lieux USING (idlieu) "
+        		+ "INNER JOIN utilisateurs USING (idutilisateur) "
+        		+ "WHERE idlieu =" +idLieu ;
+    
+		// Obtention de l'ensemble résultat
+		ResultSet rs = stmt.executeQuery(queryAvis);
+		
+		while(rs.next()){
+			Avis a = new Avis(); 
+			a.setNote(rs.getInt("note"));
+			a.setMessage (rs.getString("message"));
+			a.setPseudo (rs.getString("pseudo"));
+			
+			listeDesAvisDunLieu.add(a);
+		}
+		
+		return listeDesAvisDunLieu;
+	}
+
 	// Setters And Getters
 	public String getNom() {
 		return nom;
@@ -172,10 +211,9 @@ public class Lieu {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
-
+	
 	public static void setListeDesLieux(List<Lieu> listeDesLieux) {
 		Lieu.listeDesLieux = listeDesLieux;
 	}
-
+	
 }

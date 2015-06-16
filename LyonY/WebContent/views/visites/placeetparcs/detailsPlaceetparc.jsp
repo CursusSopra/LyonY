@@ -63,6 +63,22 @@
 				&q=<s:property value="placeetparc.nomLieu" />,<s:property value="placeetparc.villeAdres" />">
 			</iframe>
 			
+			<div>
+				Avis :
+				<table class="table table-striped table-hover">
+				<s:iterator value="placeetparc.listeDesAvisDunLieu"> 
+					<tr> 
+					<td><s:property value="pseudo"/>&nbsp;</td> 
+					
+					<td><s:property value="note"/>&nbsp;</td> 
+					
+					<td><s:property value="message"/>&nbsp;</td>
+					</tr>
+				</s:iterator>
+				</table>
+				
+			</div>
+			
 		</div>
 		<div class="col-md-1"></div>
 	</div>
