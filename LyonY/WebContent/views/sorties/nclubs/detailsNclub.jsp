@@ -3,7 +3,7 @@
 <h1>Détails du Night Club</h1>
 
 <div>
-	<s:url action="modifNclub" var="mn">
+	<s:url action="formModifNclub" var="mn">
 		<s:param name="idNclub">
 			<s:property value="nclub.idNclub"/>
 		</s:param>
@@ -36,6 +36,7 @@
 				Adresse :
 				<s:property value="nclub.numero" />
 				<s:property value="nclub.voie" />
+				<s:property value="nclub.codepostal" />
 				<s:property value="nclub.ville" />
 			</div>
 			<div>

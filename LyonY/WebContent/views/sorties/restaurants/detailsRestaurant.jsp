@@ -1,10 +1,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
+
 <h1>Détails du Restaurant</h1>
 
 <div>
-	<s:url action="modifRestaurant" var="mr">
+	<s:url action="formModifRestaurant" var="mr">
 		<s:param name="idRestaurant">
 			<s:property value="restaurant.idRestaurant"/>
 		</s:param>

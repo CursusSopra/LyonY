@@ -35,6 +35,12 @@
 		<put-attribute name="body"
 			value="/views/sorties/bars/formCreationBar.jsp" />
 	</definition>
+	
+	<definition name="formModifBar" extends="baseLayout">
+		<put-attribute name="title" value="Modification d'un bar" />
+		<put-attribute name="body"
+			value="/views/sorties/bars/formModifBar.jsp" />
+	</definition>
 
 
 </tiles-definitions>

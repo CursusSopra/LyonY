@@ -43,6 +43,11 @@
 			<result name="success" type="tiles">listeDesRestaurants</result>
 		</action>
 		
+		 	<!-- Formulaire de modification -->
+		<action name="formModifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeModifRestaurant">
+			<result name="success" type="tiles">formModifRestaurant</result>
+		</action>
+		
 		
 		<!-- NIGHT CLUBS -->
 		
@@ -68,6 +73,11 @@
 			<result name="success" type="tiles">listeDesNclubs</result>
 		</action>
 		
+		<!-- Formulaire de modification -->
+		<action name="formModifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="executeModifNclub">
+			<result name="success" type="tiles">formModifNclub</result>
+		</action>
+		
 		
 		<!-- BARS -->
 		
@@ -91,6 +101,11 @@
 		</action>
 		<action name="creationBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="executeCreationBar">
 			<result name="success" type="tiles">listeDesBars</result>
+		</action>
+		
+		<!-- Formulaire de modification -->
+		<action name="formModifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="executeModifBar">
+			<result name="success" type="tiles">formModifBar</result>
 		</action>
 
 

@@ -1,11 +1,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
 
 <h1>Détails du Bar</h1>
 
 <div>
-	<s:url action="modifBar" var="mb">
+	<s:url action="formModifBar" var="mb">
 		<s:param name="idBar">
 			<s:property value="bar.idBar"/>
 		</s:param>
@@ -37,6 +36,7 @@
 				Adresse :
 				<s:property value="bar.numero" />
 				<s:property value="bar.voie" />
+				<s:property value="bar.codepostal" />
 				<s:property value="bar.ville" />
 			</div>
 			<div>
