@@ -35,7 +35,7 @@
 <tiles:useAttribute name="moreStyles" scope="request" ignore="true" />
 <c:if test="${not empty moreStyles}">
 	<c:forEach items="${moreStyles}" var="cssFile">
-		<link href="/./${cssFile}" media="all" rel="stylesheet" type="text/css" />
+		<link href="/${cssFile}" media="all" rel="stylesheet" type="text/css" />
 	</c:forEach>
 </c:if>
 
@@ -196,7 +196,7 @@
 	<tiles:useAttribute name="moreScripts" scope="request" ignore="true" />
 	<c:if test="${not empty moreScripts}">
 		<c:forEach items="${moreScripts}" var="jsFile">
-			<script type="text/javascript" src="./${jsFile}"></script>
+			<script type="text/javascript" src="/${jsFile}"></script>
 		</c:forEach>
 	</c:if>	
 	<!-- ================================================== -->
