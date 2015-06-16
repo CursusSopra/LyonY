@@ -62,5 +62,12 @@
 			<result name="success" type="tiles">valideSuppression</result>
 			<result name="error" type="tiles">index</result>
 		</action>
+		
+		<!-- Affichage des avsi de l'utilisateur -->
+		<action name="displayAvisUtilisateur" class="fr.cursusSopra.action.UtilisateurAction"
+			method="executeDisplayAvis">
+			<result name="success" type="tiles">mesavis</result>
+			<result name="error" type="tiles">index</result>
+		</action>
 	</package>
 </struts>

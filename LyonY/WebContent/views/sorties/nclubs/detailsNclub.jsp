@@ -1,8 +1,17 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <a href="<s:url action='index'/>">Retour à la page d'accueil</a>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+
 <h1>Détails du Night Club</h1>
+
+<div>
+	<s:url action="modifNclub" var="mn">
+		<s:param name="idNclub">
+			<s:property value="nclub.idNclub"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#mn'/>">Modifier les informations</a>
+</div>
 
 <div class="container-fluid">
 	<div class="row">
@@ -12,6 +21,13 @@
 			<div>
 				Nom du Night Club :
 				<s:property value="nclub.nomnightclub" />
+				<s:iterator begin="1" end="nclub.notemoy">
+						
+						<img src="/icons/star.png" />	
+						
+
+					</s:iterator>
+				 (<s:property value="nclub.notemoy" />)
 			</div>
 			<div>
 				Quartier :

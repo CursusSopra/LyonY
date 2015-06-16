@@ -2,7 +2,14 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <h1>Détails du parc ou de la place</h1>
-
+<div>
+	<s:url action="formModifPlaceetparc" var="mp">
+		<s:param name="idPlaceetparc">
+			<s:property value="placeetparc.idPlaceetparc"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#mp'/>">Modifier les informations</a>
+</div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-1"></div>
@@ -50,7 +57,12 @@
 <!-- 				</tbody> -->
 <!-- 			</table> -->
 
-
+			
+			<iframe class="map-top" width="598" height="450"
+				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
+				&q=<s:property value="placeetparc.nomLieu" />,<s:property value="placeetparc.villeAdres" />">
+			</iframe>
+			
 		</div>
 		<div class="col-md-1"></div>
 	</div>

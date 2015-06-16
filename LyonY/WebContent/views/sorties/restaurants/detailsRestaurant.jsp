@@ -1,8 +1,16 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <a href="<s:url action='index'/>">Retour à la page d'accueil</a>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
 <h1>Détails du Restaurant</h1>
+
+<div>
+	<s:url action="modifRestaurant" var="mr">
+		<s:param name="idRestaurant">
+			<s:property value="restaurant.idRestaurant"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#mr'/>">Modifier les informations</a>
+</div>
 
 <div class="container-fluid">
 	<div class="row">
@@ -12,6 +20,7 @@
 			<div>
 				Nom du restaurant :
 				<s:property value="restaurant.nomrestaurant" />
+				 (<s:property value="restaurant.notemoy" />)
 			</div>
 			<div>
 				Quartier :

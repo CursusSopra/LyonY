@@ -18,6 +18,10 @@ public class Nclub extends Sortie {
 	private String voie;
 	private String ville;
 	private String description;
+	private float notemoy;
+	private int nbavis;
+
+
 
 	public Nclub() {
 	}
@@ -31,14 +35,19 @@ public class Nclub extends Sortie {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT n.idsortie, n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description "
+		String query = "SELECT n.idsortie, n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, ville, description, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM nightclubs n "
 				+ "INNER JOIN sorties s ON s.idsortie=n.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "WHERE n.idnightclub =" + idNightclub;
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+				+ "WHERE n.idnightclub =" + idNightclub
+				+ " GROUP BY n.idnightclub, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, ville, description";
+		
+		
+		
 		
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
@@ -54,6 +63,8 @@ public class Nclub extends Sortie {
 			voie = rs.getString("voie");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
+			notemoy = rs.getFloat("notemoy");
+			nbavis = rs.getInt("nbavis");
 		}
 		// Construction de la liste des horaires - Méthode de la classe mère
 		getListeDesHoraires();
@@ -108,6 +119,22 @@ public class Nclub extends Sortie {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public float getNotemoy() {
+		return notemoy;
+	}
+
+	public void setNotemoy(float notemoy) {
+		this.notemoy = notemoy;
+	}
+
+	public int getNbavis() {
+		return nbavis;
+	}
+
+	public void setNbavis(int nbavis) {
+		this.nbavis = nbavis;
 	}
 
 

@@ -1,9 +1,6 @@
 package fr.cursusSopra.action.sorties;
 
-import java.util.List;
-
 import fr.cursusSopra.action.general.ActionGeneral;
-import fr.cursusSopra.model.Horaire;
 
 
 public class SortiesAction extends ActionGeneral {
@@ -19,19 +16,6 @@ public class SortiesAction extends ActionGeneral {
 	public void setIdSortie(int idSortie) {
 		this.idSortie = idSortie;
 	}
-	
-	private List<Horaire> listeDesHorairesDuneSortie;
-	
-	public List<Horaire> getListeDesHorairesDuneSortie() {
-		return listeDesHorairesDuneSortie;
-	}
 	public SortiesAction() {
 	}
-
-
-	public String executeGetListeDesHorairesDuneSortie(int idSortie) {		
-		listeDesHorairesDuneSortie = getListeDesHorairesDuneSortie();
-		return SUCCESS;
-	}
-
 }

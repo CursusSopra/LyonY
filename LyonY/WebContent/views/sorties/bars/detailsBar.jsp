@@ -4,6 +4,15 @@
 
 <h1>Détails du Bar</h1>
 
+<div>
+	<s:url action="modifBar" var="mb">
+		<s:param name="idBar">
+			<s:property value="bar.idBar"/>
+		</s:param>
+	</s:url>
+	<a href="<s:property value='#mb'/>">Modifier les informations</a>
+</div>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-1"></div>
@@ -12,6 +21,7 @@
 			<div>
 				Nom du bar :
 				<s:property value="bar.nombar" />
+				 (<s:property value="bar.notemoy" />)
 			</div>
 			<div>
 				Quartier :

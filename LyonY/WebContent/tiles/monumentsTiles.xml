@@ -12,12 +12,17 @@
 	</definition>
 	
 	<definition name="detailsMonument" extends="baseLayout">
-		<put-attribute name="title" value="Détails" />
+		<put-attribute name="title" value="Détails de monument" />
 		<put-attribute name="body" value="/views/visites/monuments/detailsMonument.jsp" />
 	</definition>
+	
+	<definition name="formCreationMonument" extends="baseLayout">
+		<put-attribute name="title" value="Ajout d'un monument" />
+		<put-attribute name="body" value="/views/visites/monuments/formCreationMonument.jsp" />
+	</definition>
 
-	<definition name="modifMonument" extends="baseLayout">
-		<put-attribute name="title" value="Modification" />
+	<definition name="formModifMonument" extends="baseLayout">
+		<put-attribute name="title" value="Modification de monument" />
 		<put-attribute name="body" value="/views/visites/monuments/formModifMonument.jsp" />
 	</definition>
 	

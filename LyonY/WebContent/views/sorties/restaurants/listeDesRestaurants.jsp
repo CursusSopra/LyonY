@@ -1,9 +1,11 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
-
 <h1>Restaurants de Lyon</h1>
+
+<div>
+	<a href="<s:url action='formCreationRestaurant'/>">Ajouter un restaurant</a>
+</div>
 
 <div class="container-fluid">
 	<div class="row">
@@ -27,7 +29,7 @@
 						<tr>
 							<s:url action="detailsRestaurant" var="dr"> 
 								<s:param name="idrestaurant"> 
-								<s:property value="idrestaurant" /> 
+								<s:property value="idRestaurant" /> 
 							</s:param> 
 						</s:url> 
 

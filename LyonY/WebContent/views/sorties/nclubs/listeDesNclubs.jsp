@@ -1,9 +1,13 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
+
 
 <h1>Discothèques de Lyon</h1>
+
+<div>
+	<a href="<s:url action='formCreationNclub'/>">Ajouter une discothèque</a>
+</div>
 
 <div class="container-fluid">
 	<div class="row">
@@ -26,8 +30,8 @@
 					<s:iterator value="listeDesNclubs">
 						<tr>
 							<s:url action="detailsNclub" var="dn">
-								<s:param name="idnightclub">
-									<s:property value="idnightclub" />
+								<s:param name="idNightclub">
+									<s:property value="idNightclub" />
 								</s:param>
 							</s:url>
 

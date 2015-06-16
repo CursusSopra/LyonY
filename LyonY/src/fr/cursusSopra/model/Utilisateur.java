@@ -134,7 +134,7 @@ public class Utilisateur {
 	 */
 	public boolean checkExists(Connection cnx) throws SQLException {
 
-		String query = "SELECT pseudo, motdepasse, email FROM utilisateurs WHERE pseudo=? AND motdepasse=?";
+		String query = "SELECT pseudo, motdepasse, email, idutilisateur FROM utilisateurs WHERE pseudo=? AND motdepasse=?";
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setString(1, pseudo);
 		ps.setString(2, motDePasse);
@@ -142,6 +142,7 @@ public class Utilisateur {
 		ResultSet rs = ps.getResultSet();
 		if (rs.next()) {
 			this.email = rs.getString("email");
+			this.idUtilisateur = rs.getInt("idutilisateur");
 			return true;
 		}
 		return false;
@@ -240,5 +241,42 @@ public class Utilisateur {
 			this.avatar = rs.getString("avatar");
 		}
 	}
+
+	private List<Avis> listeDesAvis;
+
+	public List<Avis> getListeDesAvis() throws SQLException {
+		listeDesAvis = new ArrayList<Avis>();
+		// connexion a la base de donnees postgresSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// objet instruction SQL
+		try {
+			Statement stmt = cnx.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// requete à executer
+		String query = "SELECT message "
+				+ "FROM utilisateurs "
+				+ "INNER JOIN avis USING (idUtilisateur) "
+				+ "WHERE idutilisateur = ?";
+		// obtention de l'ensemble resultat
+		PreparedStatement ps = cnx.prepareStatement(query);
+		ps.setInt(1, idUtilisateur);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			Avis a = Avis(rs.getString("message"));
+			listeDesAvis.add(a);
+			System.out.println("un avis");
+		}
+		return listeDesAvis;
+	}
+
+	private Avis Avis(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

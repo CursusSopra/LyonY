@@ -2,16 +2,25 @@
 
 
 <style>
-    #slider{width:200px;}
-</style> 
+#slider {
+	width: 200px;
+}
+
+.ui-slider .ui-slider-handle { //for horizontal 
+	width:200px;
+	margin-left: -15px;
+}
+</style>
 
 <table id="Horaires">
 	<s:iterator value="{1,2,3,4,5,6,7}" status="idx">
 		<tr>
-			<td><span id="num${idx.count}" style="visibility:hidden"><s:property value = "#idx.count"/></span></td>
-			<td style="width:100px"><s:property value = "#idx.count"/> </td>
-			<td style="width:250px"><div id="slider-range${idx.count}"></div></td>
-			<td style="width:100px"><span id="time${idx.count}" data-rang="<s:property value = "#idx.count"/>"></span> </td>
+			<td style="width: 100px" align="center"><s:property
+					value="#idx.count" /></td>
+			<td style="width: 250px"><div id="slider-range${idx.count}"></div></td>
+			<td style="width: 200px" align="center"><span
+				id="time${idx.count}" data-rang="<s:property value = "#idx.count"/>"></span>
+			</td>
 		</tr>
 	</s:iterator>
 </table>
