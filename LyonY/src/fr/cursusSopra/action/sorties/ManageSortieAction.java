@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import fr.cursusSopra.action.HoraireAction;
 import fr.cursusSopra.model.Horaire;
 import fr.cursusSopra.model.Ouverture;
 import fr.cursusSopra.model.PlageHoraire;
@@ -31,8 +32,7 @@ public class ManageSortieAction extends ActionSupport {
 	// Création des horaires d'une sortie puis appel de la méthode de
 	// Sortie.java qui les ajoute dans la DB
 	public String executeInsert() {
-		String[] arrayJours = { "lundi", "mardi", "mercredi", "jeudi",
-				"vendredi", "samedi", "dimanche" };
+		String[] arrayJours = HoraireAction.getJours();
 		Connection cnx = PostgresConnection.getConnexion();
 
 		try {
