@@ -6,18 +6,20 @@
 <h1>Sélectionnez votre type de sortie</h1>
 
 <div>
-	<div>
+	
+	<br/>
+	
 		<a href="<s:url action='listeDesBars'/>"><img
 			src="/icons/256_icons/bar.png" /></a>
-	</div>
-	
-	<div>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+
 		<a href="<s:url action='listeDesRestaurants'/>"><img
 			src="/icons/256_icons/restau.png" /></a>
-	</div>
-	
-	<div>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+
 		<a href="<s:url action='listeDesNclubs'/>"><img
 			src="/icons/256_icons/disco.png" /></a>
-	</div>
+	
 </div>
