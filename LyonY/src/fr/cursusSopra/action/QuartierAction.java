@@ -14,46 +14,34 @@ public class QuartierAction extends ActionSupport {
 	private String nom;
 	private int budgetMoyen;
 	private int distanceCentreVille;
-
+	
+	// GETSETS
 	public int getIdquartier() {
 		return idquartier;
 	}
-
 	public String getNom() {
 		return nom;
 	}
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
 	public int getBudgetMoyen() {
 		return budgetMoyen;
 	}
-
 	public void setBudgetMoyen(int budgetMoyen) {
 		this.budgetMoyen = budgetMoyen;
 	}
-
 	public int getDistanceCentreVille() {
 		return distanceCentreVille;
 	}
-
 	public void setDistanceCentreVille(int distanceCentreVille) {
 		this.distanceCentreVille = distanceCentreVille;
 	}
-
 	public void setIdquartier(int idquartier) {
 		this.idquartier = idquartier;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public String execute() {
-		return SUCCESS;
-	}
+	
+	// METHODES EXECUTE() 
 
 	public String executeCreation() {
 

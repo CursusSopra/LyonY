@@ -6,7 +6,7 @@ import fr.cursusSopra.model.Monument;
 import fr.cursusSopra.model.Placeetparc;
 import fr.cursusSopra.tech.Breadcrumbs;
 
-public class ManagePlaceetparcAction extends ListeDesPlaceetparcsAction {
+public class ManagePlaceetparcAction extends VisitesAction {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,6 +26,7 @@ public class ManagePlaceetparcAction extends ListeDesPlaceetparcsAction {
 	
 	//CTOR
 	public ManagePlaceetparcAction() {
+		listeBreadcrumbs.add(new Breadcrumbs("Visites", "visites", null));
 		listeBreadcrumbs.add(new Breadcrumbs("Places et parcs", "listeDesPlaceetparcs", null));
 	}
 
@@ -54,6 +55,5 @@ public class ManagePlaceetparcAction extends ListeDesPlaceetparcsAction {
 		
 		return SUCCESS;
 	}
-
 
 }

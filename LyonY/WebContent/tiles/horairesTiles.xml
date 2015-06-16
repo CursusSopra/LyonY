@@ -9,8 +9,23 @@
 	<!--  -->
 	<definition name="horaire" extends="baseLayout">
 		<put-attribute name="title" value="Horaires" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
 		<put-attribute name="body" value="/views/horaires/horaires.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/horaires.js"></add-attribute>
+			<add-attribute
+				value="./js/jQueryUI.1.11.4/jquery-ui.min.js"></add-attribute>
+		</put-list-attribute>
+		
+		<put-list-attribute name="moreStyles">
+			<add-attribute
+				value="./js/jQueryUI.1.11.4/jquery-ui.min.css"></add-attribute>
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="horaireBis" extends="baseLayout">
+		<put-attribute name="title" value="Horaires" />
+		<put-attribute name="body" value="/views/horaires/horairesBis.jsp" />
 		
 		<put-list-attribute name="moreScripts">
 			<add-attribute value="_js/horaires.js"></add-attribute>

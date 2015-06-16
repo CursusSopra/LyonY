@@ -13,10 +13,6 @@ public class Sortie {
 	protected int idSortie;	
 	
 	public static List<Horaire> listeDesHoraires;
-	public String jourString;
-	public String heureDebutString;
-	public String heureFinString;	
-
 
 	public int getIdSortie() {
 		return idSortie;
@@ -26,7 +22,7 @@ public class Sortie {
 		this.idSortie = idSortie;
 	}
 
-	// Recupère les 7 horaires d'un bar
+	// Recupère les 7 horaires d'une sortie
 	public List<Horaire> getListeDesHoraires() throws SQLException {
 		listeDesHoraires = new ArrayList<Horaire>();
 		// Connexion à la base de données postgreSQL
@@ -46,11 +42,13 @@ public class Sortie {
 
 		while (rs.next()) {
 			Horaire h = new Horaire();
-			h.setJour(rs.getString("jour"));
-			h.getPlageHoraire().setHeureDebut(rs.getTime("heuredebut"));
-			h.getPlageHoraire().setHeureFin(rs.getTime("heureFin"));
+			PlageHoraire ph = new PlageHoraire();
+			h.setJour(rs.getString("jour"));			
+			h.setPlageHoraire(ph);
+			ph.setHeureDebut(rs.getTime("heuredebut"));			
+			ph.setHeureFin(rs.getTime("heureFin"));
 			
-			listeDesHoraires.add(h);						
+			listeDesHoraires.add(h);	
 		}
 			
 		return listeDesHoraires;			

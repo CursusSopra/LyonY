@@ -1,7 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
-
 <h1>Détails du Night Club</h1>
 
 <div>
@@ -19,15 +17,12 @@
 		<div class="col-md-10">
 
 			<div>
+			<input id="input-5b" class="rating"  data-symbol="&#xf001;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="nclub.notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+			
 				Nom du Night Club :
 				<s:property value="nclub.nomnightclub" />
-				<s:iterator begin="1" end="nclub.notemoy">
-						
-						<img src="/icons/star.png" />	
-						
 
-					</s:iterator>
-				 (<s:property value="nclub.notemoy" />)
+				 
 			</div>
 			<div>
 				Quartier :

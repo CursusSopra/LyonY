@@ -1,0 +1,1559 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN' 'http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' >
+<head>
+<title>public</title>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+<style type='text/css'>
+body {
+    font-family: 'trebuchet MS', 'Lucida sans', Dialog;
+    font-size: 12px;
+    color: #444;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc;
+    -moz-box-shadow: 0 1px 1px #ccc;
+    box-shadow: 0 1px 1px #ccc;
+}
+
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 4px;
+    text-align: left;
+}
+
+.bordered th {
+    background-color: #d7d7ea;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4fb), to(#d7d7ea));
+    background-image: -webkit-linear-gradient(top, #f4f4fb, #d7d7ea);
+    background-image:    -moz-linear-gradient(top, #f4f4fb, #d7d7ea);
+    background-image:     -ms-linear-gradient(top, #f4f4fb, #d7d7ea);
+    background-image:      -o-linear-gradient(top, #f4f4fb, #d7d7ea);
+    background-image:         linear-gradient(top, #f4f4fb, #d7d7ea);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+</style>
+</head>
+
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   width='1710' height='935' viewbox='0 0 1710 935' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ document.getElementById(el[i]).setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ document.getElementById(el[i]).setAttribute('class','scene'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: Dialog, 'Trebuchet MS', Dialog; font-size:12px; }
+  text:hover          { fill:#a00000; font-size:13px; }
+  text.highlight      { fill:#a00000; font-size:13px; }
+  text.colType        { fill:#b3b3b3; }
+  path                { stroke:#54402e; stroke-width:1.15; fill:none; }
+  path.scene          { stroke-width:10; opacity:0;}
+  path.highlight      { stroke-width:10; stroke:blue; opacity:0.1;}
+  rect.table          { fill:#ffffff; stroke:#101010; stroke-width:0.2; filter:url(#shadow); }
+  line.table          { stroke:#222; stroke-width:0.2; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; filter: url(#shadow);}
+  rect.grp            { stroke:#b1b1b1; stroke-width:1.7; }
+</style>
+<defs>
+  <pattern patternUnits='userSpaceOnUse' id='layoutBgA' width='10' height='20' x='0' y='0' viewBox='0 0 5 10'>  
+     <line x1='-2' y1='1' x2='7' y2='10' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='6' x2='7' y2='15' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='-4' x2='7' y2='5' stroke='#f3f3f3' stroke-width='.5'/>  
+  </pattern>  
+  <radialGradient id='layoutBgB' gradientUnits='userSpaceOnUse' cx='50%' cy='50%' r='75%' fx='46%' fy='22%'>
+     <stop offset='0%' stop-opacity='.2' stop-color='#f0f0f0' />  
+     <stop offset='100%' stop-color='#e7e7e7' />  
+  </radialGradient>
+  <linearGradient id='tableHeaderGradient2' x1='0%' y1='0%' x2='0%' y2='90%' >
+          <stop offset='-50%' stop-color='#c8f5bf'/> 
+          <stop offset='20%' stop-color='#fafafa'/> 
+          <stop offset='100%' stop-color='#c8f5bf'/> 
+   </linearGradient>
+  <linearGradient id='tableHeaderGradient0' x1='0%' y1='0%' x2='0%' y2='90%' >
+          <stop offset='-50%' stop-color='#bfd4f5'/> 
+          <stop offset='20%' stop-color='#fafafa'/> 
+          <stop offset='100%' stop-color='#bfd4f5'/> 
+   </linearGradient>
+  <linearGradient id='tableHeaderGradient1' x1='0%' y1='0%' x2='0%' y2='90%' >
+          <stop offset='-50%' stop-color='#bfbff5'/> 
+          <stop offset='20%' stop-color='#fafafa'/> 
+          <stop offset='100%' stop-color='#bfbff5'/> 
+   </linearGradient>
+  <linearGradient id='tableHeaderGradient3' x1='0%' y1='0%' x2='0%' y2='90%' >
+          <stop offset='-50%' stop-color='#f5ddbf'/> 
+          <stop offset='20%' stop-color='#fafafa'/> 
+          <stop offset='100%' stop-color='#f5ddbf'/> 
+   </linearGradient>
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+          <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/> 
+          <stop offset='100%' stop-color='#999999' stop-opacity='0' /> 
+   </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+	   <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id='shadow' width='120%' height='120%'> 
+      <feOffset result='offOut' in='SourceGraphic' dx='2' dy='2' /> 
+      <feColorMatrix result='matrixOut' in='offOut' type='matrix' 
+      values='0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.5 0' /> 
+      <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='2' /> 
+      <feBlend in='SourceGraphic' in2='blurOut' mode='normal' /> 
+    </filter> 
+  <filter id='fkShadow' height='130%'> 
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' fx='5%' fy='5%' r='75%' spreadMethod='pad'>
+          <stop offset='0%' stop-color='#eaeef6' stop-opacity='1'/> 
+          <stop offset='100%' stop-color='#cad2e3' stop-opacity='1' /> 
+   </radialGradient>
+  <symbol id='calloutArrowDown' overflow='visible' >
+      <path d='M 0,0 L 7,11 L 15,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+      <path d='M 0,0 L 7,11 L 15,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' overflow='visible' >
+      <path d='M 0,15 L 7,3 L 15,15 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+      <path d='M 0,15 L 7,3 L 15,15' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <path style='fill:#fbea8e;stroke:#763f17;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;'
+        d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+     <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+        style='fill:#ffe5a5;fill-opacity:1;stroke:#854e31;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='unq' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#e07554;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.5' y='7.7' style='font-size:8px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#e07554;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+      d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' overflow='visible' >
+  <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <marker id='arrow01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 15.000,3.750 L 7.500,2.500 L 7.500,7.500 L 15.000,3.750 z' style='fill:#5e554d;' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 15.000,3.750 L 7.500,2.500 L 7.500,7.500 L 15.000,3.750 z' style='fill:#5e554d;' />
+  </marker>
+  <marker id='foot01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <circle cx='11.25' cy='3.75' r='2.50' style='fill:white;stroke:#5e554d;' />
+    <path d='M 3.75,0.00 L 3.75, 7.50 z' />
+  </marker>
+  <marker id='foot0p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <circle cx='11.25' cy='3.75' r='2.50' style='fill:white;stroke:#5e554d;' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 7.50,0.00 L 7.50, 7.50 z' />
+    <path d='M 3.75,0.00 L 3.75, 7.50 z' />
+  </marker>
+  <marker id='foot1p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 7.50,0.00 L 7.50, 7.50 z' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+</defs>
+
+<!-- ============= Desktop ============= -->
+<rect x='1' y='1' width='1708' height='933' rx='7' ry='7' style='fill:url(#layoutBgA); stroke:#333333; stroke-width:0.5;' />
+<rect x='1' y='1' width='1708' height='933' rx='7' ry='7' style='fill:url(#layoutBgB)'/>
+
+<!-- ============= Legend ============= -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='260' height='64' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='20' y='30'><tspan>Project</tspan> PostgreSQL @ <a xlink:href='http://www.dbschema.com' text-decoration='underline'>DbSchema.com</a></text> 
+  <text x='20' y='44'><tspan>Layout</tspan> public</text> 
+  <text x='20' y='58' style='fill:#777'><tspan>Column comments as mouse-over tooltips.</tspan></text> 
+</g>
+
+<g transform='translate(0,110)'>
+<!-- ============= Fk 'bars_fk_bars_plagehoraires' ============= -->
+<path id='bars_fk_bars_plagehoraires'  onmouseover="hghl(['bars_fk_bars_plagehoraires','public.bars.happyhour','public.plagehoraires.idplagehoraire'])" onmouseout="uhghl(['bars_fk_bars_plagehoraires','public.bars.happyhour','public.plagehoraires.idplagehoraire'])" transform='translate(7,0)' class='scene' d='M 645 720 L 180,720' >
+	<title>Fk fk_bars_plagehoraires
+bars ref plagehoraires ( happyhour -> idplagehoraire )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 645 720 L 180,720' ></path>
+<text x='587' y='715' transform='rotate(0 587,715)' title='Fk fk_bars_plagehoraires
+bars ref plagehoraires ( happyhour -> idplagehoraire )' style='fill:#a1a0a0;'>happyhour</text>
+<!-- ============= Fk 'bars_fk_bars_sorties' ============= -->
+<path id='bars_fk_bars_sorties'  onmouseover="hghl(['bars_fk_bars_sorties','public.bars.idsortie','public.sorties.idsortie'])" onmouseout="uhghl(['bars_fk_bars_sorties','public.bars.idsortie','public.sorties.idsortie'])" transform='translate(7,0)' class='scene' d='M 750 705 L 952,705 Q 960,705 960,697 L 960,352 Q 960,345 952,345 L 945,345' >
+	<title>Fk fk_bars_sorties
+bars ref sorties ( idsortie )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 750 705 L 952,705 Q 960,705 960,697 L 960,352 Q 960,345 952,345 L 945,345' ></path>
+<text x='757' y='700' transform='rotate(0 757,700)' title='Fk fk_bars_sorties
+bars ref sorties ( idsortie )' style='fill:#a1a0a0;'>idsortie</text>
+<!-- ============= Fk 'lieux_fk_lieux_adresses' ============= -->
+<path id='lieux_fk_lieux_adresses'  onmouseover="hghl(['lieux_fk_lieux_adresses','public.lieux.idadresse','public.adresses.idadresse'])" onmouseout="uhghl(['lieux_fk_lieux_adresses','public.lieux.idadresse','public.adresses.idadresse'])" transform='translate(7,0)' class='scene' d='M 600 270 L 1012,270 Q 1020,270 1020,277 L 1020,337 Q 1020,345 1027,345 L 1222,345 Q 1230,345 1230,352 L 1230,360' >
+	<title>Fk fk_lieux_adresses
+lieux ref adresses ( idadresse )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)'     d='M 600 270 L 1012,270 Q 1020,270 1020,277 L 1020,337 Q 1020,345 1027,345 L 1222,345 Q 1230,345 1230,352 L 1230,360' ></path>
+<text x='607' y='265' transform='rotate(0 607,265)' title='Fk fk_lieux_adresses
+lieux ref adresses ( idadresse )' style='fill:#a1a0a0;'>idadresse</text>
+<!-- ============= Fk 'utilisateurs_fk_utilisateurs_adresses' ============= -->
+<path id='utilisateurs_fk_utilisateurs_adresses'  onmouseover="hghl(['utilisateurs_fk_utilisateurs_adresses','public.utilisateurs.idadresse','public.adresses.idadresse'])" onmouseout="uhghl(['utilisateurs_fk_utilisateurs_adresses','public.utilisateurs.idadresse','public.adresses.idadresse'])" transform='translate(7,0)' class='scene' d='M 1335 315 L 1237,315 Q 1230,315 1230,322 L 1230,502 Q 1230,510 1237,510 L 1245,510' >
+	<title>Fk fk_utilisateurs_adresses
+utilisateurs ref adresses ( idadresse )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1335 315 L 1237,315 Q 1230,315 1230,322 L 1230,502 Q 1230,510 1237,510 L 1245,510' ></path>
+<text x='1280' y='310' transform='rotate(0 1280,310)' title='Fk fk_utilisateurs_adresses
+utilisateurs ref adresses ( idadresse )' style='fill:#a1a0a0;'>idadresse</text>
+<!-- ============= Fk 'avis_fk_avis_lieux' ============= -->
+<path id='avis_fk_avis_lieux'  onmouseover="hghl(['avis_fk_avis_lieux','public.avis.idlieu','public.lieux.idlieu'])" onmouseout="uhghl(['avis_fk_avis_lieux','public.avis.idlieu','public.lieux.idlieu'])" transform='translate(7,0)' class='scene' d='M 1035 255 L 622,255 Q 615,255 615,247 L 615,247 Q 615,240 607,240 L 600,240' >
+	<title>Fk fk_avis_lieux
+avis ref lieux ( idlieu )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1035 255 L 622,255 Q 615,255 615,247 L 615,247 Q 615,240 607,240 L 600,240' ></path>
+<text x='1007' y='250' transform='rotate(0 1007,250)' title='Fk fk_avis_lieux
+avis ref lieux ( idlieu )' style='fill:#a1a0a0;'>idlieu</text>
+<!-- ============= Fk 'avis_fk_avis_utilisateurs' ============= -->
+<path id='avis_fk_avis_utilisateurs'  onmouseover="hghl(['avis_fk_avis_utilisateurs','public.avis.idutilisateur','public.utilisateurs.idutilisateur'])" onmouseout="uhghl(['avis_fk_avis_utilisateurs','public.avis.idutilisateur','public.utilisateurs.idutilisateur'])" transform='translate(7,0)' class='scene' d='M 1155 300 L 1312,300 Q 1320,300 1320,292 L 1320,232 Q 1320,225 1327,225 L 1335,225' >
+	<title>Fk fk_avis_utilisateurs
+avis ref utilisateurs ( idutilisateur )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1155 300 L 1312,300 Q 1320,300 1320,292 L 1320,232 Q 1320,225 1327,225 L 1335,225' ></path>
+<text x='1162' y='295' transform='rotate(0 1162,295)' title='Fk fk_avis_utilisateurs
+avis ref utilisateurs ( idutilisateur )' style='fill:#a1a0a0;'>idutilisateur</text>
+<!-- ============= Fk 'ouvertures_fk_ouvertures_horaires' ============= -->
+<path id='ouvertures_fk_ouvertures_horaires'  onmouseover="hghl(['ouvertures_fk_ouvertures_horaires','public.ouvertures.idhoraire','public.horaires.idhoraire'])" onmouseout="uhghl(['ouvertures_fk_ouvertures_horaires','public.ouvertures.idhoraire','public.horaires.idhoraire'])" transform='translate(7,0)' class='scene' d='M 75 90 L 22,90 Q 15,90 15,97 L 15,307 Q 15,315 22,315 L 30,315' >
+	<title>Fk fk_ouvertures_horaires
+ouvertures ref horaires ( idhoraire )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 75 90 L 22,90 Q 15,90 15,97 L 15,307 Q 15,315 22,315 L 30,315' ></path>
+<text x='26' y='85' transform='rotate(0 26,85)' title='Fk fk_ouvertures_horaires
+ouvertures ref horaires ( idhoraire )' style='fill:#a1a0a0;'>idhoraire</text>
+<!-- ============= Fk 'ouvertures_fk_ouvertures_sorties' ============= -->
+<path id='ouvertures_fk_ouvertures_sorties'  onmouseover="hghl(['ouvertures_fk_ouvertures_sorties','public.ouvertures.idsortie','public.sorties.idsortie'])" onmouseout="uhghl(['ouvertures_fk_ouvertures_sorties','public.ouvertures.idsortie','public.sorties.idsortie'])" transform='translate(7,0)' class='scene' d='M 180 75 L 802,75 Q 810,75 810,82 L 810,337 Q 810,345 817,345 L 825,345' >
+	<title>Fk fk_ouvertures_sorties
+ouvertures ref sorties ( idsortie )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 180 75 L 802,75 Q 810,75 810,82 L 810,337 Q 810,345 817,345 L 825,345' ></path>
+<text x='187' y='70' transform='rotate(0 187,70)' title='Fk fk_ouvertures_sorties
+ouvertures ref sorties ( idsortie )' style='fill:#a1a0a0;'>idsortie</text>
+<!-- ============= Fk 'horaires_fk_horaires_plagehoraires' ============= -->
+<path id='horaires_fk_horaires_plagehoraires'  onmouseover="hghl(['horaires_fk_horaires_plagehoraires','public.horaires.idplagehoraire','public.plagehoraires.idplagehoraire'])" onmouseout="uhghl(['horaires_fk_horaires_plagehoraires','public.horaires.idplagehoraire','public.plagehoraires.idplagehoraire'])" transform='translate(7,0)' class='scene' d='M 30 345 L 22,345 Q 15,345 15,352 L 15,712 Q 15,720 22,720 L 45,720' >
+	<title>Fk fk_horaires_plagehoraires
+horaires ref plagehoraires ( idplagehoraire )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 30 345 L 22,345 Q 15,345 15,352 L 15,712 Q 15,720 22,720 L 45,720' ></path>
+<text x='-50' y='340' transform='rotate(0 -50,340)' title='Fk fk_horaires_plagehoraires
+horaires ref plagehoraires ( idplagehoraire )' style='fill:#a1a0a0;'>idplagehoraire</text>
+<!-- ============= Fk 'monuments_fk_monuments_visites' ============= -->
+<path id='monuments_fk_monuments_visites'  onmouseover="hghl(['monuments_fk_monuments_visites','public.monuments.idvisite','public.visites.idvisite'])" onmouseout="uhghl(['monuments_fk_monuments_visites','public.monuments.idvisite','public.visites.idvisite'])" transform='translate(7,0)' class='scene' d='M 525 510 L 457,510 Q 450,510 450,502 L 450,472 Q 450,465 442,465 L 435,465' >
+	<title>Fk fk_monuments_visites
+monuments ref visites ( idvisite )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 525 510 L 457,510 Q 450,510 450,502 L 450,472 Q 450,465 442,465 L 435,465' ></path>
+<text x='487' y='505' transform='rotate(0 487,505)' title='Fk fk_monuments_visites
+monuments ref visites ( idvisite )' style='fill:#a1a0a0;'>idvisite</text>
+<!-- ============= Fk 'liens_fk_liens_lieux' ============= -->
+<path id='liens_fk_liens_lieux'  onmouseover="hghl(['liens_fk_liens_lieux','public.liens.idlieu','public.lieux.idlieu'])" onmouseout="uhghl(['liens_fk_liens_lieux','public.liens.idlieu','public.lieux.idlieu'])" transform='translate(7,0)' class='scene' d='M 315 210 L 457,210 Q 465,210 465,217 L 465,232 Q 465,240 472,240 L 480,240' >
+	<title>Fk fk_liens_lieux
+liens ref lieux ( idlieu )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 315 210 L 457,210 Q 465,210 465,217 L 465,232 Q 465,240 472,240 L 480,240' ></path>
+<text x='322' y='205' transform='rotate(0 322,205)' title='Fk fk_liens_lieux
+liens ref lieux ( idlieu )' style='fill:#a1a0a0;'>idlieu</text>
+<!-- ============= Fk 'visites_fk_visites_lieux' ============= -->
+<path id='visites_fk_visites_lieux'  onmouseover="hghl(['visites_fk_visites_lieux','public.visites.idlieu','public.lieux.idlieu'])" onmouseout="uhghl(['visites_fk_visites_lieux','public.visites.idlieu','public.lieux.idlieu'])" transform='translate(7,0)' class='scene' d='M 435 480 L 457,480 Q 465,480 465,472 L 465,247 Q 465,240 472,240 L 480,240' >
+	<title>Fk fk_visites_lieux
+visites ref lieux ( idlieu )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)'     d='M 435 480 L 457,480 Q 465,480 465,472 L 465,247 Q 465,240 472,240 L 480,240' ></path>
+<text x='442' y='475' transform='rotate(0 442,475)' title='Fk fk_visites_lieux
+visites ref lieux ( idlieu )' style='fill:#a1a0a0;'>idlieu</text>
+<!-- ============= Fk 'visites_fk_visites_typevisites' ============= -->
+<path id='visites_fk_visites_typevisites'  onmouseover="hghl(['visites_fk_visites_typevisites','public.visites.idtypevisite','public.typevisites.idtypevisite'])" onmouseout="uhghl(['visites_fk_visites_typevisites','public.visites.idtypevisite','public.typevisites.idtypevisite'])" transform='translate(7,0)' class='scene' d='M 315 495 L 307,495 Q 300,495 300,502 L 300,622 Q 300,630 307,630 L 315,630' >
+	<title>Fk fk_visites_typevisites
+visites ref typevisites ( idtypevisite )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 315 495 L 307,495 Q 300,495 300,502 L 300,622 Q 300,630 307,630 L 315,630' ></path>
+<text x='253' y='490' transform='rotate(0 253,490)' title='Fk fk_visites_typevisites
+visites ref typevisites ( idtypevisite )' style='fill:#a1a0a0;'>idtypevisite</text>
+<!-- ============= Fk 'photos_fk_photos_lieux' ============= -->
+<path id='photos_fk_photos_lieux'  onmouseover="hghl(['photos_fk_photos_lieux','public.photos.idlieu','public.lieux.idlieu'])" onmouseout="uhghl(['photos_fk_photos_lieux','public.photos.idlieu','public.lieux.idlieu'])" transform='translate(7,0)' class='scene' d='M 315 345 L 322,345 Q 330,345 330,337 L 330,217 Q 330,210 337,210 L 345,210' >
+	<title>Fk fk_photos_lieux
+photos ref lieux ( idlieu )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)'     d='M 315 345 L 322,345 Q 330,345 330,337 L 330,217 Q 330,210 337,210 L 345,210' ></path>
+<text x='322' y='340' transform='rotate(0 322,340)' title='Fk fk_photos_lieux
+photos ref lieux ( idlieu )' style='fill:#a1a0a0;'>idlieu</text>
+<!-- ============= Fk 'placeetparcs_fk_placeetparcs_visites' ============= -->
+<path id='placeetparcs_fk_placeetparcs_visites'  onmouseover="hghl(['placeetparcs_fk_placeetparcs_visites','public.placeetparcs.idvisite','public.visites.idvisite'])" onmouseout="uhghl(['placeetparcs_fk_placeetparcs_visites','public.placeetparcs.idvisite','public.visites.idvisite'])" transform='translate(7,0)' class='scene' d='M 240 450 L 292,450 Q 300,450 300,457 L 300,457 Q 300,465 307,465 L 315,465' >
+	<title>Fk fk_placeetparcs_visites
+placeetparcs ref visites ( idvisite )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 240 450 L 292,450 Q 300,450 300,457 L 300,457 Q 300,465 307,465 L 315,465' ></path>
+<text x='247' y='445' transform='rotate(0 247,445)' title='Fk fk_placeetparcs_visites
+placeetparcs ref visites ( idvisite )' style='fill:#a1a0a0;'>idvisite</text>
+<!-- ============= Fk 'nightclubs_fk_nightclubs_sorties' ============= -->
+<path id='nightclubs_fk_nightclubs_sorties'  onmouseover="hghl(['nightclubs_fk_nightclubs_sorties','public.nightclubs.idsortie','public.sorties.idsortie'])" onmouseout="uhghl(['nightclubs_fk_nightclubs_sorties','public.nightclubs.idsortie','public.sorties.idsortie'])" transform='translate(7,0)' class='scene' d='M 1020 540 L 967,540 Q 960,540 960,532 L 960,525' >
+	<title>Fk fk_nightclubs_sorties
+nightclubs ref sorties ( idsortie )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)'     d='M 1020 540 L 967,540 Q 960,540 960,532 L 960,525' ></path>
+<text x='979' y='535' transform='rotate(0 979,535)' title='Fk fk_nightclubs_sorties
+nightclubs ref sorties ( idsortie )' style='fill:#a1a0a0;'>idsortie</text>
+<!-- ============= Fk 'sorties_fk_sorties_ambiances' ============= -->
+<path id='sorties_fk_sorties_ambiances'  onmouseover="hghl(['sorties_fk_sorties_ambiances','public.sorties.idambiance','public.ambiances.idambiance'])" onmouseout="uhghl(['sorties_fk_sorties_ambiances','public.sorties.idambiance','public.ambiances.idambiance'])" transform='translate(7,0)' class='scene' d='M 945 405 L 967,405 Q 975,405 975,412 L 975,487 Q 975,495 967,495 L 810,495' >
+	<title>Fk fk_sorties_ambiances
+sorties ref ambiances ( idambiance )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 945 405 L 967,405 Q 975,405 975,412 L 975,487 Q 975,495 967,495 L 810,495' ></path>
+<text x='952' y='400' transform='rotate(0 952,400)' title='Fk fk_sorties_ambiances
+sorties ref ambiances ( idambiance )' style='fill:#a1a0a0;'>idambiance</text>
+<!-- ============= Fk 'sorties_fk_sorties_lieux' ============= -->
+<path id='sorties_fk_sorties_lieux'  onmouseover="hghl(['sorties_fk_sorties_lieux','public.sorties.idlieu','public.lieux.idlieu'])" onmouseout="uhghl(['sorties_fk_sorties_lieux','public.sorties.idlieu','public.lieux.idlieu'])" transform='translate(7,0)' class='scene' d='M 825 360 L 472,360 Q 465,360 465,352 L 465,345' >
+	<title>Fk fk_sorties_lieux
+sorties ref lieux ( idlieu )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)'     d='M 825 360 L 472,360 Q 465,360 465,352 L 465,345' ></path>
+<text x='797' y='355' transform='rotate(0 797,355)' title='Fk fk_sorties_lieux
+sorties ref lieux ( idlieu )' style='fill:#a1a0a0;'>idlieu</text>
+<!-- ============= Fk 'restaurants_fk_restaurants_sorties' ============= -->
+<path id='restaurants_fk_restaurants_sorties'  onmouseover="hghl(['restaurants_fk_restaurants_sorties','public.restaurants.idsortie','public.sorties.idsortie'])" onmouseout="uhghl(['restaurants_fk_restaurants_sorties','public.restaurants.idsortie','public.sorties.idsortie'])" transform='translate(7,0)' class='scene' d='M 1065 705 L 967,705 Q 960,705 960,697 L 960,690' >
+	<title>Fk fk_restaurants_sorties
+restaurants ref sorties ( idsortie )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)'     d='M 1065 705 L 967,705 Q 960,705 960,697 L 960,690' ></path>
+<text x='1024' y='700' transform='rotate(0 1024,700)' title='Fk fk_restaurants_sorties
+restaurants ref sorties ( idsortie )' style='fill:#a1a0a0;'>idsortie</text>
+<!-- ============= Fk 'adresses_fk_adresses_quartiers' ============= -->
+<path id='adresses_fk_adresses_quartiers'  onmouseover="hghl(['adresses_fk_adresses_quartiers','public.adresses.idquartier','public.quartiers.idquartier'])" onmouseout="uhghl(['adresses_fk_adresses_quartiers','public.adresses.idquartier','public.quartiers.idquartier'])" transform='translate(7,0)' class='scene' d='M 1365 585 L 1492,585 Q 1500,585 1500,577 L 1500,517 Q 1500,510 1507,510 L 1515,510' >
+	<title>Fk fk_adresses_quartiers
+adresses ref quartiers ( idquartier )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1365 585 L 1492,585 Q 1500,585 1500,577 L 1500,517 Q 1500,510 1507,510 L 1515,510' ></path>
+<text x='1372' y='580' transform='rotate(0 1372,580)' title='Fk fk_adresses_quartiers
+adresses ref quartiers ( idquartier )' style='fill:#a1a0a0;'>idquartier</text>
+<!-- ============= Table 'bars' ============= -->
+<rect class='table' x='660' y='653' width='90' height='90' rx='7' ry='7' />
+<path d='M 660.50 679.50 L 660.50 660.50 Q 660.50 653.50 667.50 653.50 L 742.50 653.50 Q 749.50 653.50 749.50 660.50 L 749.50 679.50 L660.50 679.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#bars'><text x='689' y='671'>bars</text><title>Table public.bars</title></a>
+  <use id='nn' x='662' y='687' xlink:href='#nn'/><a xlink:href='#bars.idbar'><use id='pk' x='662' y='686' xlink:href='#pk'/><title>Pk pk_bars ( idbar ) </title></a>
+<a xlink:href='#bars.idbar'><text id='public.bars.idbar' x='678' y='697'>idbar</text><title>idbar
+* serial</title></a>
+  <use id='nn' x='662' y='702' xlink:href='#nn'/><a xlink:href='#bars.idsortie'><text id='public.bars.idsortie' x='678' y='712' onmouseover="hghl(['bars_fk_bars_sorties'])" onmouseout="uhghl(['bars_fk_bars_sorties'])">idsortie</text><title>idsortie
+* integer</title></a>
+<a xlink:href='#bars.idsortie'><use id='fk' x='738' y='701' xlink:href='#fk'/><title>References sorties ( idsortie ) </title></a>
+  <a xlink:href='#bars.happyhour'><text id='public.bars.happyhour' x='678' y='727' onmouseover="hghl(['bars_fk_bars_plagehoraires'])" onmouseout="uhghl(['bars_fk_bars_plagehoraires'])">happyhour</text><title>happyhour
+integer</title></a>
+<a xlink:href='#bars.happyhour'><use id='fk' x='738' y='716' xlink:href='#fk'/><title>References plagehoraires ( happyhour -> idplagehoraire ) </title></a>
+
+<!-- ============= Table 'lieux' ============= -->
+<rect class='table' x='495' y='203' width='105' height='120' rx='7' ry='7' />
+<path d='M 495.50 229.50 L 495.50 210.50 Q 495.50 203.50 502.50 203.50 L 592.50 203.50 Q 599.50 203.50 599.50 210.50 L 599.50 229.50 L495.50 229.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#lieux'><text x='531' y='221'>lieux</text><title>Table public.lieux</title></a>
+  <use id='nn' x='497' y='237' xlink:href='#nn'/><a xlink:href='#lieux.idlieu'><use id='pk' x='497' y='236' xlink:href='#pk'/><title>Pk pk_lieux ( idlieu ) </title></a>
+<a xlink:href='#lieux.idlieu'><text id='public.lieux.idlieu' x='513' y='247' onmouseover="hghl(['avis_fk_avis_lieux','liens_fk_liens_lieux','photos_fk_photos_lieux','sorties_fk_sorties_lieux','visites_fk_visites_lieux'])" onmouseout="uhghl(['avis_fk_avis_lieux','liens_fk_liens_lieux','photos_fk_photos_lieux','sorties_fk_sorties_lieux','visites_fk_visites_lieux'])">idlieu</text><title>idlieu
+* serial</title></a>
+<a xlink:href='#lieux.idlieu'><use id='ref' x='588' y='236' xlink:href='#ref'/><title>Referred by avis ( idlieu ) 
+Referred by liens ( idlieu ) 
+Referred by photos ( idlieu ) 
+Referred by sorties ( idlieu ) 
+Referred by visites ( idlieu ) </title></a>
+  <use id='nn' x='497' y='252' xlink:href='#nn'/><a xlink:href='#lieux.nom'><text id='public.lieux.nom' x='513' y='262'>nom</text><title>nom
+* varchar&#40;40&#41;</title></a>
+  <use id='nn' x='497' y='267' xlink:href='#nn'/><a xlink:href='#lieux.idadresse'><text id='public.lieux.idadresse' x='513' y='277' onmouseover="hghl(['lieux_fk_lieux_adresses'])" onmouseout="uhghl(['lieux_fk_lieux_adresses'])">idadresse</text><title>idadresse
+* integer</title></a>
+<a xlink:href='#lieux.idadresse'><use id='fk' x='588' y='266' xlink:href='#fk'/><title>References adresses ( idadresse ) </title></a>
+  <a xlink:href='#lieux.description'><text id='public.lieux.description' x='513' y='292'>description</text><title>description
+text</title></a>
+  <a xlink:href='#lieux.accessibilite'><text id='public.lieux.accessibilite' x='513' y='307'>accessibilite</text><title>accessibilite
+text</title></a>
+
+<!-- ============= Table 'utilisateurs' ============= -->
+<rect class='table' x='1350' y='188' width='120' height='165' rx='7' ry='7' />
+<path d='M 1350.50 214.50 L 1350.50 195.50 Q 1350.50 188.50 1357.50 188.50 L 1462.50 188.50 Q 1469.50 188.50 1469.50 195.50 L 1469.50 214.50 L1350.50 214.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#utilisateurs'><text x='1375' y='206'>utilisateurs</text><title>Table public.utilisateurs</title></a>
+  <use id='nn' x='1352' y='222' xlink:href='#nn'/><a xlink:href='#utilisateurs.idutilisateur'><use id='pk' x='1352' y='221' xlink:href='#pk'/><title>Pk pk_utilisateurs ( idutilisateur ) </title></a>
+<a xlink:href='#utilisateurs.idutilisateur'><text id='public.utilisateurs.idutilisateur' x='1368' y='232' onmouseover="hghl(['avis_fk_avis_utilisateurs'])" onmouseout="uhghl(['avis_fk_avis_utilisateurs'])">idutilisateur</text><title>idutilisateur
+* serial</title></a>
+<a xlink:href='#utilisateurs.idutilisateur'><use id='ref' x='1458' y='221' xlink:href='#ref'/><title>Referred by avis ( idutilisateur ) </title></a>
+  <use id='nn' x='1352' y='237' xlink:href='#nn'/><a xlink:href='#utilisateurs.pseudo'><use id='unq' x='1352' y='236' xlink:href='#unq'/><title>Unq ct_unique_pseudo ( pseudo ) </title></a>
+<a xlink:href='#utilisateurs.pseudo'><text id='public.utilisateurs.pseudo' x='1368' y='247'>pseudo</text><title>pseudo
+* varchar&#40;20&#41;</title></a>
+  <use id='nn' x='1352' y='252' xlink:href='#nn'/><a xlink:href='#utilisateurs.datenaissance'><text id='public.utilisateurs.datenaissance' x='1368' y='262'>datenaissance</text><title>datenaissance
+* date</title></a>
+  <use id='nn' x='1352' y='267' xlink:href='#nn'/><a xlink:href='#utilisateurs.sexe'><text id='public.utilisateurs.sexe' x='1368' y='277'>sexe</text><title>sexe
+* char&#40;1&#41;</title></a>
+  <use id='nn' x='1352' y='282' xlink:href='#nn'/><a xlink:href='#utilisateurs.email'><use id='unq' x='1352' y='281' xlink:href='#unq'/><title>Unq ct_unique_email ( email ) </title></a>
+<a xlink:href='#utilisateurs.email'><text id='public.utilisateurs.email' x='1368' y='292'>email</text><title>email
+* varchar&#40;30&#41;</title></a>
+  <a xlink:href='#utilisateurs.avatar'><text id='public.utilisateurs.avatar' x='1368' y='307'>avatar</text><title>avatar
+varchar&#40;30&#41;</title></a>
+  <use id='nn' x='1352' y='312' xlink:href='#nn'/><a xlink:href='#utilisateurs.idadresse'><text id='public.utilisateurs.idadresse' x='1368' y='322' onmouseover="hghl(['utilisateurs_fk_utilisateurs_adresses'])" onmouseout="uhghl(['utilisateurs_fk_utilisateurs_adresses'])">idadresse</text><title>idadresse
+* integer</title></a>
+<a xlink:href='#utilisateurs.idadresse'><use id='fk' x='1458' y='311' xlink:href='#fk'/><title>References adresses ( idadresse ) </title></a>
+  <use id='nn' x='1352' y='327' xlink:href='#nn'/><a xlink:href='#utilisateurs.motdepasse'><text id='public.utilisateurs.motdepasse' x='1368' y='337'>motdepasse</text><title>motdepasse
+* varchar&#40;30&#41;</title></a>
+
+<!-- ============= Table 'avis' ============= -->
+<rect class='table' x='1050' y='203' width='105' height='120' rx='7' ry='7' />
+<path d='M 1050.50 229.50 L 1050.50 210.50 Q 1050.50 203.50 1057.50 203.50 L 1147.50 203.50 Q 1154.50 203.50 1154.50 210.50 L 1154.50 229.50 L1050.50 229.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#avis'><text x='1088' y='221'>avis</text><title>Table public.avis</title></a>
+  <use id='nn' x='1052' y='237' xlink:href='#nn'/><a xlink:href='#avis.idavis'><use id='pk' x='1052' y='236' xlink:href='#pk'/><title>Pk pk_avis ( idavis ) </title></a>
+<a xlink:href='#avis.idavis'><text id='public.avis.idavis' x='1068' y='247'>idavis</text><title>idavis
+* serial</title></a>
+  <use id='nn' x='1052' y='252' xlink:href='#nn'/><a xlink:href='#avis.idlieu'><text id='public.avis.idlieu' x='1068' y='262' onmouseover="hghl(['avis_fk_avis_lieux'])" onmouseout="uhghl(['avis_fk_avis_lieux'])">idlieu</text><title>idlieu
+* integer</title></a>
+<a xlink:href='#avis.idlieu'><use id='fk' x='1143' y='251' xlink:href='#fk'/><title>References lieux ( idlieu ) </title></a>
+  <use id='nn' x='1052' y='267' xlink:href='#nn'/><a xlink:href='#avis.note'><text id='public.avis.note' x='1068' y='277'>note</text><title>note
+* integer</title></a>
+  <a xlink:href='#avis.message'><text id='public.avis.message' x='1068' y='292'>message</text><title>message
+text</title></a>
+  <use id='nn' x='1052' y='297' xlink:href='#nn'/><a xlink:href='#avis.idutilisateur'><text id='public.avis.idutilisateur' x='1068' y='307' onmouseover="hghl(['avis_fk_avis_utilisateurs'])" onmouseout="uhghl(['avis_fk_avis_utilisateurs'])">idutilisateur</text><title>idutilisateur
+* serial</title></a>
+<a xlink:href='#avis.idutilisateur'><use id='fk' x='1143' y='296' xlink:href='#fk'/><title>References utilisateurs ( idutilisateur ) </title></a>
+
+<!-- ============= Table 'ouvertures' ============= -->
+<rect class='table' x='90' y='38' width='90' height='75' rx='7' ry='7' />
+<path d='M 90.50 64.50 L 90.50 45.50 Q 90.50 38.50 97.50 38.50 L 172.50 38.50 Q 179.50 38.50 179.50 45.50 L 179.50 64.50 L90.50 64.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#ouvertures'><text x='101' y='56'>ouvertures</text><title>Table public.ouvertures</title></a>
+  <use id='nn' x='92' y='72' xlink:href='#nn'/><a xlink:href='#ouvertures.idsortie'><use id='pk' x='92' y='71' xlink:href='#pk'/><title>Pk idx_ouvertures ( idsortie, idhoraire ) </title></a>
+<a xlink:href='#ouvertures.idsortie'><text id='public.ouvertures.idsortie' x='108' y='82' onmouseover="hghl(['ouvertures_fk_ouvertures_sorties'])" onmouseout="uhghl(['ouvertures_fk_ouvertures_sorties'])">idsortie</text><title>idsortie
+* integer</title></a>
+<a xlink:href='#ouvertures.idsortie'><use id='fk' x='168' y='71' xlink:href='#fk'/><title>References sorties ( idsortie ) </title></a>
+  <use id='nn' x='92' y='87' xlink:href='#nn'/><a xlink:href='#ouvertures.idhoraire'><use id='pk' x='92' y='86' xlink:href='#pk'/><title>Pk idx_ouvertures ( idsortie, idhoraire ) </title></a>
+<a xlink:href='#ouvertures.idhoraire'><text id='public.ouvertures.idhoraire' x='108' y='97' onmouseover="hghl(['ouvertures_fk_ouvertures_horaires'])" onmouseout="uhghl(['ouvertures_fk_ouvertures_horaires'])">idhoraire</text><title>idhoraire
+* integer</title></a>
+<a xlink:href='#ouvertures.idhoraire'><use id='fk' x='168' y='86' xlink:href='#fk'/><title>References horaires ( idhoraire ) </title></a>
+
+<!-- ============= Table 'horaires' ============= -->
+<rect class='table' x='45' y='278' width='120' height='90' rx='7' ry='7' />
+<path d='M 45.50 304.50 L 45.50 285.50 Q 45.50 278.50 52.50 278.50 L 157.50 278.50 Q 164.50 278.50 164.50 285.50 L 164.50 304.50 L45.50 304.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#horaires'><text x='78' y='296'>horaires</text><title>Table public.horaires</title></a>
+  <use id='nn' x='47' y='312' xlink:href='#nn'/><a xlink:href='#horaires.idhoraire'><use id='pk' x='47' y='311' xlink:href='#pk'/><title>Pk pk_horaires ( idhoraire ) </title></a>
+<a xlink:href='#horaires.idhoraire'><text id='public.horaires.idhoraire' x='63' y='322' onmouseover="hghl(['ouvertures_fk_ouvertures_horaires'])" onmouseout="uhghl(['ouvertures_fk_ouvertures_horaires'])">idhoraire</text><title>idhoraire
+* serial</title></a>
+<a xlink:href='#horaires.idhoraire'><use id='ref' x='153' y='311' xlink:href='#ref'/><title>Referred by ouvertures ( idhoraire ) </title></a>
+  <use id='nn' x='47' y='327' xlink:href='#nn'/><a xlink:href='#horaires.jour'><text id='public.horaires.jour' x='63' y='337'>jour</text><title>jour
+* varchar&#40;10&#41;</title></a>
+  <a xlink:href='#horaires.idplagehoraire'><text id='public.horaires.idplagehoraire' x='63' y='352' onmouseover="hghl(['horaires_fk_horaires_plagehoraires'])" onmouseout="uhghl(['horaires_fk_horaires_plagehoraires'])">idplagehoraire</text><title>idplagehoraire
+integer</title></a>
+<a xlink:href='#horaires.idplagehoraire'><use id='fk' x='153' y='341' xlink:href='#fk'/><title>References plagehoraires ( idplagehoraire ) </title></a>
+
+<!-- ============= Table 'plagehoraires' ============= -->
+<rect class='table' x='60' y='683' width='120' height='90' rx='7' ry='7' />
+<path d='M 60.50 709.50 L 60.50 690.50 Q 60.50 683.50 67.50 683.50 L 172.50 683.50 Q 179.50 683.50 179.50 690.50 L 179.50 709.50 L60.50 709.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#plagehoraires'><text x='77' y='701'>plagehoraires</text><title>Table public.plagehoraires</title></a>
+  <use id='nn' x='62' y='717' xlink:href='#nn'/><a xlink:href='#plagehoraires.idplagehoraire'><use id='pk' x='62' y='716' xlink:href='#pk'/><title>Pk pk_plagehoraires ( idplagehoraire ) </title></a>
+<a xlink:href='#plagehoraires.idplagehoraire'><text id='public.plagehoraires.idplagehoraire' x='78' y='727' onmouseover="hghl(['bars_fk_bars_plagehoraires','horaires_fk_horaires_plagehoraires'])" onmouseout="uhghl(['bars_fk_bars_plagehoraires','horaires_fk_horaires_plagehoraires'])">idplagehoraire</text><title>idplagehoraire
+* serial</title></a>
+<a xlink:href='#plagehoraires.idplagehoraire'><use id='ref' x='168' y='716' xlink:href='#ref'/><title>Referred by bars ( happyhour -> idplagehoraire ) 
+Referred by horaires ( idplagehoraire ) </title></a>
+  <use id='nn' x='62' y='732' xlink:href='#nn'/><a xlink:href='#plagehoraires.heuredebut'><text id='public.plagehoraires.heuredebut' x='78' y='742'>heuredebut</text><title>heuredebut
+* time</title></a>
+  <use id='nn' x='62' y='747' xlink:href='#nn'/><a xlink:href='#plagehoraires.heurefin'><text id='public.plagehoraires.heurefin' x='78' y='757'>heurefin</text><title>heurefin
+* time</title></a>
+
+<!-- ============= Table 'monuments' ============= -->
+<rect class='table' x='540' y='458' width='150' height='105' rx='7' ry='7' />
+<path d='M 540.50 484.50 L 540.50 465.50 Q 540.50 458.50 547.50 458.50 L 682.50 458.50 Q 689.50 458.50 689.50 465.50 L 689.50 484.50 L540.50 484.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#monuments'><text x='578' y='476'>monuments</text><title>Table public.monuments</title></a>
+  <use id='nn' x='542' y='492' xlink:href='#nn'/><a xlink:href='#monuments.idmonument'><use id='pk' x='542' y='491' xlink:href='#pk'/><title>Pk pk_monuments ( idmonument ) </title></a>
+<a xlink:href='#monuments.idmonument'><text id='public.monuments.idmonument' x='558' y='502'>idmonument</text><title>idmonument
+* serial</title></a>
+  <use id='nn' x='542' y='507' xlink:href='#nn'/><a xlink:href='#monuments.idvisite'><text id='public.monuments.idvisite' x='558' y='517' onmouseover="hghl(['monuments_fk_monuments_visites'])" onmouseout="uhghl(['monuments_fk_monuments_visites'])">idvisite</text><title>idvisite
+* integer</title></a>
+<a xlink:href='#monuments.idvisite'><use id='fk' x='678' y='506' xlink:href='#fk'/><title>References visites ( idvisite ) </title></a>
+  <a xlink:href='#monuments.anneeconstruction'><text id='public.monuments.anneeconstruction' x='558' y='532'>anneeconstruction</text><title>anneeconstruction
+integer</title></a>
+  <a xlink:href='#monuments.anneefinconstruction'><text id='public.monuments.anneefinconstruction' x='558' y='547'>anneefinconstruction</text><title>anneefinconstruction
+integer</title></a>
+
+<!-- ============= Table 'liens' ============= -->
+<rect class='table' x='240' y='143' width='75' height='105' rx='7' ry='7' />
+<path d='M 240.50 169.50 L 240.50 150.50 Q 240.50 143.50 247.50 143.50 L 307.50 143.50 Q 314.50 143.50 314.50 150.50 L 314.50 169.50 L240.50 169.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#liens'><text x='261' y='161'>liens</text><title>Table public.liens</title></a>
+  <use id='nn' x='242' y='177' xlink:href='#nn'/><a xlink:href='#liens.idlien'><use id='pk' x='242' y='176' xlink:href='#pk'/><title>Pk pk_liens ( idlien ) </title></a>
+<a xlink:href='#liens.idlien'><text id='public.liens.idlien' x='258' y='187'>idlien</text><title>idlien
+* serial</title></a>
+  <a xlink:href='#liens.liblien'><text id='public.liens.liblien' x='258' y='202'>liblien</text><title>liblien
+varchar&#40;20&#41;</title></a>
+  <use id='nn' x='242' y='207' xlink:href='#nn'/><a xlink:href='#liens.idlieu'><text id='public.liens.idlieu' x='258' y='217' onmouseover="hghl(['liens_fk_liens_lieux'])" onmouseout="uhghl(['liens_fk_liens_lieux'])">idlieu</text><title>idlieu
+* integer</title></a>
+<a xlink:href='#liens.idlieu'><use id='fk' x='303' y='206' xlink:href='#fk'/><title>References lieux ( idlieu ) </title></a>
+  <use id='nn' x='242' y='222' xlink:href='#nn'/><a xlink:href='#liens.url'><text id='public.liens.url' x='258' y='232'>url</text><title>url
+* varchar&#40;30&#41;</title></a>
+
+<!-- ============= Table 'typevisites' ============= -->
+<rect class='table' x='330' y='593' width='105' height='90' rx='7' ry='7' />
+<path d='M 330.50 619.50 L 330.50 600.50 Q 330.50 593.50 337.50 593.50 L 427.50 593.50 Q 434.50 593.50 434.50 600.50 L 434.50 619.50 L330.50 619.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#typevisites'><text x='349' y='611'>typevisites</text><title>Table public.typevisites</title></a>
+  <use id='nn' x='332' y='627' xlink:href='#nn'/><a xlink:href='#typevisites.idtypevisite'><use id='pk' x='332' y='626' xlink:href='#pk'/><title>Pk pk_typevisites ( idtypevisite ) </title></a>
+<a xlink:href='#typevisites.idtypevisite'><text id='public.typevisites.idtypevisite' x='348' y='637' onmouseover="hghl(['visites_fk_visites_typevisites'])" onmouseout="uhghl(['visites_fk_visites_typevisites'])">idtypevisite</text><title>idtypevisite
+* serial</title></a>
+<a xlink:href='#typevisites.idtypevisite'><use id='ref' x='423' y='626' xlink:href='#ref'/><title>Referred by visites ( idtypevisite ) </title></a>
+  <use id='nn' x='332' y='642' xlink:href='#nn'/><a xlink:href='#typevisites.libtypevisite'><text id='public.typevisites.libtypevisite' x='348' y='652'>libtypevisite</text><title>libtypevisite
+* varchar&#40;20&#41;</title></a>
+  <use id='nn' x='332' y='657' xlink:href='#nn'/><a xlink:href='#typevisites.typev'><text id='public.typevisites.typev' x='348' y='667'>typev</text><title>typev
+* char&#40;1&#41;</title></a>
+
+<!-- ============= Table 'visites' ============= -->
+<rect class='table' x='330' y='428' width='105' height='90' rx='7' ry='7' />
+<path d='M 330.50 454.50 L 330.50 435.50 Q 330.50 428.50 337.50 428.50 L 427.50 428.50 Q 434.50 428.50 434.50 435.50 L 434.50 454.50 L330.50 454.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#visites'><text x='361' y='446'>visites</text><title>Table public.visites</title></a>
+  <use id='nn' x='332' y='462' xlink:href='#nn'/><a xlink:href='#visites.idvisite'><use id='pk' x='332' y='461' xlink:href='#pk'/><title>Pk pk_visites ( idvisite ) </title></a>
+<a xlink:href='#visites.idvisite'><text id='public.visites.idvisite' x='348' y='472' onmouseover="hghl(['monuments_fk_monuments_visites','placeetparcs_fk_placeetparcs_visites'])" onmouseout="uhghl(['monuments_fk_monuments_visites','placeetparcs_fk_placeetparcs_visites'])">idvisite</text><title>idvisite
+* serial</title></a>
+<a xlink:href='#visites.idvisite'><use id='ref' x='423' y='461' xlink:href='#ref'/><title>Referred by monuments ( idvisite ) 
+Referred by placeetparcs ( idvisite ) </title></a>
+  <use id='nn' x='332' y='477' xlink:href='#nn'/><a xlink:href='#visites.idlieu'><text id='public.visites.idlieu' x='348' y='487' onmouseover="hghl(['visites_fk_visites_lieux'])" onmouseout="uhghl(['visites_fk_visites_lieux'])">idlieu</text><title>idlieu
+* integer</title></a>
+<a xlink:href='#visites.idlieu'><use id='fk' x='423' y='476' xlink:href='#fk'/><title>References lieux ( idlieu ) </title></a>
+  <a xlink:href='#visites.idtypevisite'><text id='public.visites.idtypevisite' x='348' y='502' onmouseover="hghl(['visites_fk_visites_typevisites'])" onmouseout="uhghl(['visites_fk_visites_typevisites'])">idtypevisite</text><title>idtypevisite
+integer</title></a>
+<a xlink:href='#visites.idtypevisite'><use id='fk' x='423' y='491' xlink:href='#fk'/><title>References typevisites ( idtypevisite ) </title></a>
+
+<!-- ============= Table 'photos' ============= -->
+<rect class='table' x='240' y='278' width='75' height='90' rx='7' ry='7' />
+<path d='M 240.50 304.50 L 240.50 285.50 Q 240.50 278.50 247.50 278.50 L 307.50 278.50 Q 314.50 278.50 314.50 285.50 L 314.50 304.50 L240.50 304.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#photos'><text x='255' y='296'>photos</text><title>Table public.photos</title></a>
+  <use id='nn' x='242' y='312' xlink:href='#nn'/><a xlink:href='#photos.idphoto'><use id='pk' x='242' y='311' xlink:href='#pk'/><title>Pk pk_photos ( idphoto ) </title></a>
+<a xlink:href='#photos.idphoto'><text id='public.photos.idphoto' x='258' y='322'>idphoto</text><title>idphoto
+* serial</title></a>
+  <use id='nn' x='242' y='327' xlink:href='#nn'/><a xlink:href='#photos.libphoto'><text id='public.photos.libphoto' x='258' y='337'>libphoto</text><title>libphoto
+* varchar&#40;20&#41;</title></a>
+  <use id='nn' x='242' y='342' xlink:href='#nn'/><a xlink:href='#photos.idlieu'><text id='public.photos.idlieu' x='258' y='352' onmouseover="hghl(['photos_fk_photos_lieux'])" onmouseout="uhghl(['photos_fk_photos_lieux'])">idlieu</text><title>idlieu
+* integer</title></a>
+<a xlink:href='#photos.idlieu'><use id='fk' x='303' y='341' xlink:href='#fk'/><title>References lieux ( idlieu ) </title></a>
+
+<!-- ============= Table 'placeetparcs' ============= -->
+<rect class='table' x='135' y='398' width='105' height='75' rx='7' ry='7' />
+<path d='M 135.50 424.50 L 135.50 405.50 Q 135.50 398.50 142.50 398.50 L 232.50 398.50 Q 239.50 398.50 239.50 405.50 L 239.50 424.50 L135.50 424.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#placeetparcs'><text x='148' y='416'>placeetparcs</text><title>Table public.placeetparcs</title></a>
+  <use id='nn' x='137' y='432' xlink:href='#nn'/><a xlink:href='#placeetparcs.idplaceetparc'><use id='pk' x='137' y='431' xlink:href='#pk'/><title>Pk pk_placeetparcs ( idplaceetparc ) </title></a>
+<a xlink:href='#placeetparcs.idplaceetparc'><text id='public.placeetparcs.idplaceetparc' x='153' y='442'>idplaceetparc</text><title>idplaceetparc
+* serial</title></a>
+  <use id='nn' x='137' y='447' xlink:href='#nn'/><a xlink:href='#placeetparcs.idvisite'><text id='public.placeetparcs.idvisite' x='153' y='457' onmouseover="hghl(['placeetparcs_fk_placeetparcs_visites'])" onmouseout="uhghl(['placeetparcs_fk_placeetparcs_visites'])">idvisite</text><title>idvisite
+* integer</title></a>
+<a xlink:href='#placeetparcs.idvisite'><use id='fk' x='228' y='446' xlink:href='#fk'/><title>References visites ( idvisite ) </title></a>
+
+<!-- ============= Table 'nightclubs' ============= -->
+<rect class='table' x='1035' y='488' width='90' height='75' rx='7' ry='7' />
+<path d='M 1035.50 514.50 L 1035.50 495.50 Q 1035.50 488.50 1042.50 488.50 L 1117.50 488.50 Q 1124.50 488.50 1124.50 495.50 L 1124.50 514.50 L1035.50 514.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#nightclubs'><text x='1048' y='506'>nightclubs</text><title>Table public.nightclubs</title></a>
+  <use id='nn' x='1037' y='522' xlink:href='#nn'/><a xlink:href='#nightclubs.idnightclub'><use id='pk' x='1037' y='521' xlink:href='#pk'/><title>Pk pk_nightclubs ( idnightclub ) </title></a>
+<a xlink:href='#nightclubs.idnightclub'><text id='public.nightclubs.idnightclub' x='1053' y='532'>idnightclub</text><title>idnightclub
+* serial</title></a>
+  <use id='nn' x='1037' y='537' xlink:href='#nn'/><a xlink:href='#nightclubs.idsortie'><text id='public.nightclubs.idsortie' x='1053' y='547' onmouseover="hghl(['nightclubs_fk_nightclubs_sorties'])" onmouseout="uhghl(['nightclubs_fk_nightclubs_sorties'])">idsortie</text><title>idsortie
+* integer</title></a>
+<a xlink:href='#nightclubs.idsortie'><use id='fk' x='1113' y='536' xlink:href='#fk'/><title>References sorties ( idsortie ) </title></a>
+
+<!-- ============= Table 'sorties' ============= -->
+<rect class='table' x='840' y='308' width='105' height='120' rx='7' ry='7' />
+<path d='M 840.50 334.50 L 840.50 315.50 Q 840.50 308.50 847.50 308.50 L 937.50 308.50 Q 944.50 308.50 944.50 315.50 L 944.50 334.50 L840.50 334.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#sorties'><text x='869' y='326'>sorties</text><title>Table public.sorties</title></a>
+  <use id='nn' x='842' y='342' xlink:href='#nn'/><a xlink:href='#sorties.idsortie'><use id='pk' x='842' y='341' xlink:href='#pk'/><title>Pk pk_sorties ( idsortie ) </title></a>
+<a xlink:href='#sorties.idsortie'><text id='public.sorties.idsortie' x='858' y='352' onmouseover="hghl(['bars_fk_bars_sorties','nightclubs_fk_nightclubs_sorties','ouvertures_fk_ouvertures_sorties','restaurants_fk_restaurants_sorties'])" onmouseout="uhghl(['bars_fk_bars_sorties','nightclubs_fk_nightclubs_sorties','ouvertures_fk_ouvertures_sorties','restaurants_fk_restaurants_sorties'])">idsortie</text><title>idsortie
+* serial</title></a>
+<a xlink:href='#sorties.idsortie'><use id='ref' x='933' y='341' xlink:href='#ref'/><title>Referred by bars ( idsortie ) 
+Referred by nightclubs ( idsortie ) 
+Referred by ouvertures ( idsortie ) 
+Referred by restaurants ( idsortie ) </title></a>
+  <use id='nn' x='842' y='357' xlink:href='#nn'/><a xlink:href='#sorties.idlieu'><text id='public.sorties.idlieu' x='858' y='367' onmouseover="hghl(['sorties_fk_sorties_lieux'])" onmouseout="uhghl(['sorties_fk_sorties_lieux'])">idlieu</text><title>idlieu
+* integer</title></a>
+<a xlink:href='#sorties.idlieu'><use id='fk' x='933' y='356' xlink:href='#fk'/><title>References lieux ( idlieu ) </title></a>
+  <a xlink:href='#sorties.prixmax'><text id='public.sorties.prixmax' x='858' y='382'>prixmax</text><title>prixmax
+integer</title></a>
+  <a xlink:href='#sorties.prixmin'><text id='public.sorties.prixmin' x='858' y='397'>prixmin</text><title>prixmin
+integer</title></a>
+  <a xlink:href='#sorties.idambiance'><text id='public.sorties.idambiance' x='858' y='412' onmouseover="hghl(['sorties_fk_sorties_ambiances'])" onmouseout="uhghl(['sorties_fk_sorties_ambiances'])">idambiance</text><title>idambiance
+integer</title></a>
+<a xlink:href='#sorties.idambiance'><use id='fk' x='933' y='401' xlink:href='#fk'/><title>References ambiances ( idambiance ) </title></a>
+
+<!-- ============= Table 'ambiances' ============= -->
+<rect class='table' x='705' y='458' width='105' height='90' rx='7' ry='7' />
+<path d='M 705.50 484.50 L 705.50 465.50 Q 705.50 458.50 712.50 458.50 L 802.50 458.50 Q 809.50 458.50 809.50 465.50 L 809.50 484.50 L705.50 484.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#ambiances'><text x='723' y='476'>ambiances</text><title>Table public.ambiances</title></a>
+  <use id='nn' x='707' y='492' xlink:href='#nn'/><a xlink:href='#ambiances.idambiance'><use id='pk' x='707' y='491' xlink:href='#pk'/><title>Pk pk_ambiances ( idambiance ) </title></a>
+<a xlink:href='#ambiances.idambiance'><text id='public.ambiances.idambiance' x='723' y='502' onmouseover="hghl(['sorties_fk_sorties_ambiances'])" onmouseout="uhghl(['sorties_fk_sorties_ambiances'])">idambiance</text><title>idambiance
+* serial</title></a>
+<a xlink:href='#ambiances.idambiance'><use id='ref' x='798' y='491' xlink:href='#ref'/><title>Referred by sorties ( idambiance ) </title></a>
+  <use id='nn' x='707' y='507' xlink:href='#nn'/><a xlink:href='#ambiances.libambiance'><text id='public.ambiances.libambiance' x='723' y='517'>libambiance</text><title>libambiance
+* varchar&#40;20&#41;</title></a>
+  <use id='nn' x='707' y='522' xlink:href='#nn'/><a xlink:href='#ambiances.types'><text id='public.ambiances.types' x='723' y='532'>types</text><title>types
+* char&#40;1&#41;</title></a>
+
+<!-- ============= Table 'restaurants' ============= -->
+<rect class='table' x='1080' y='653' width='105' height='105' rx='7' ry='7' />
+<path d='M 1080.50 679.50 L 1080.50 660.50 Q 1080.50 653.50 1087.50 653.50 L 1177.50 653.50 Q 1184.50 653.50 1184.50 660.50 L 1184.50 679.50 L1080.50 679.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#restaurants'><text x='1096' y='671'>restaurants</text><title>Table public.restaurants</title></a>
+  <use id='nn' x='1082' y='687' xlink:href='#nn'/><a xlink:href='#restaurants.idrestaurant'><use id='pk' x='1082' y='686' xlink:href='#pk'/><title>Pk pk_restaurants ( idrestaurant ) </title></a>
+<a xlink:href='#restaurants.idrestaurant'><text id='public.restaurants.idrestaurant' x='1098' y='697'>idrestaurant</text><title>idrestaurant
+* serial</title></a>
+  <use id='nn' x='1082' y='702' xlink:href='#nn'/><a xlink:href='#restaurants.idsortie'><text id='public.restaurants.idsortie' x='1098' y='712' onmouseover="hghl(['restaurants_fk_restaurants_sorties'])" onmouseout="uhghl(['restaurants_fk_restaurants_sorties'])">idsortie</text><title>idsortie
+* integer</title></a>
+<a xlink:href='#restaurants.idsortie'><use id='fk' x='1173' y='701' xlink:href='#fk'/><title>References sorties ( idsortie ) </title></a>
+  <a xlink:href='#restaurants.reservation'><text id='public.restaurants.reservation' x='1098' y='727'>reservation</text><title>reservation
+bool</title></a>
+  <a xlink:href='#restaurants.aemporter'><text id='public.restaurants.aemporter' x='1098' y='742'>aemporter</text><title>aemporter
+bool</title></a>
+
+<!-- ============= Table 'quartiers' ============= -->
+<rect class='table' x='1530' y='473' width='135' height='105' rx='7' ry='7' />
+<path d='M 1530.50 499.50 L 1530.50 480.50 Q 1530.50 473.50 1537.50 473.50 L 1657.50 473.50 Q 1664.50 473.50 1664.50 480.50 L 1664.50 499.50 L1530.50 499.50 ' style='fill:url(#tableHeaderGradient3); stroke:none;' />
+<a xlink:href='#quartiers'><text x='1568' y='491'>quartiers</text><title>Table public.quartiers</title></a>
+  <use id='nn' x='1532' y='507' xlink:href='#nn'/><a xlink:href='#quartiers.idquartier'><use id='pk' x='1532' y='506' xlink:href='#pk'/><title>Pk pk_quartiers ( idquartier ) </title></a>
+<a xlink:href='#quartiers.idquartier'><text id='public.quartiers.idquartier' x='1548' y='517' onmouseover="hghl(['adresses_fk_adresses_quartiers'])" onmouseout="uhghl(['adresses_fk_adresses_quartiers'])">idquartier</text><title>idquartier
+* serial</title></a>
+<a xlink:href='#quartiers.idquartier'><use id='ref' x='1653' y='506' xlink:href='#ref'/><title>Referred by adresses ( idquartier ) </title></a>
+  <use id='nn' x='1532' y='522' xlink:href='#nn'/><a xlink:href='#quartiers.nom'><text id='public.quartiers.nom' x='1548' y='532'>nom</text><title>nom
+* varchar&#40;30&#41;</title></a>
+  <a xlink:href='#quartiers.budgetmoyen'><text id='public.quartiers.budgetmoyen' x='1548' y='547'>budgetmoyen</text><title>budgetmoyen
+integer</title></a>
+  <a xlink:href='#quartiers.distancecentreville'><text id='public.quartiers.distancecentreville' x='1548' y='562'>distancecentreville</text><title>distancecentreville
+integer</title></a>
+
+<!-- ============= Table 'adresses' ============= -->
+<rect class='table' x='1260' y='473' width='105' height='135' rx='7' ry='7' />
+<path d='M 1260.50 499.50 L 1260.50 480.50 Q 1260.50 473.50 1267.50 473.50 L 1357.50 473.50 Q 1364.50 473.50 1364.50 480.50 L 1364.50 499.50 L1260.50 499.50 ' style='fill:url(#tableHeaderGradient3); stroke:none;' />
+<a xlink:href='#adresses'><text x='1282' y='491'>adresses</text><title>Table public.adresses</title></a>
+  <use id='nn' x='1262' y='507' xlink:href='#nn'/><a xlink:href='#adresses.idadresse'><use id='pk' x='1262' y='506' xlink:href='#pk'/><title>Pk pk_adresses ( idadresse ) </title></a>
+<a xlink:href='#adresses.idadresse'><text id='public.adresses.idadresse' x='1278' y='517' onmouseover="hghl(['lieux_fk_lieux_adresses','utilisateurs_fk_utilisateurs_adresses'])" onmouseout="uhghl(['lieux_fk_lieux_adresses','utilisateurs_fk_utilisateurs_adresses'])">idadresse</text><title>idadresse
+* serial</title></a>
+<a xlink:href='#adresses.idadresse'><use id='ref' x='1353' y='506' xlink:href='#ref'/><title>Referred by lieux ( idadresse ) 
+Referred by utilisateurs ( idadresse ) </title></a>
+  <a xlink:href='#adresses.numero'><text id='public.adresses.numero' x='1278' y='532'>numero</text><title>numero
+integer</title></a>
+  <a xlink:href='#adresses.voie'><text id='public.adresses.voie' x='1278' y='547'>voie</text><title>voie
+varchar&#40;30&#41;</title></a>
+  <use id='nn' x='1262' y='552' xlink:href='#nn'/><a xlink:href='#adresses.codepostal'><text id='public.adresses.codepostal' x='1278' y='562'>codepostal</text><title>codepostal
+* char&#40;5&#41;</title></a>
+  <use id='nn' x='1262' y='567' xlink:href='#nn'/><a xlink:href='#adresses.ville'><text id='public.adresses.ville' x='1278' y='577'>ville</text><title>ville
+* varchar&#40;30&#41;</title></a>
+  <use id='nn' x='1262' y='582' xlink:href='#nn'/><a xlink:href='#adresses.idquartier'><text id='public.adresses.idquartier' x='1278' y='592' onmouseover="hghl(['adresses_fk_adresses_quartiers'])" onmouseout="uhghl(['adresses_fk_adresses_quartiers'])">idquartier</text><title>idquartier
+* integer</title></a>
+<a xlink:href='#adresses.idquartier'><use id='fk' x='1353' y='581' xlink:href='#fk'/><title>References quartiers ( idquartier ) </title></a>
+
+</g></svg>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='bars'>Table bars</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='bars.idbar'>idbar</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='bars.idsortie'>idsortie</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='bars.happyhour'>happyhour</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;bars</td>
+		<td> ON idbar</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_bars_plagehoraires</td>
+		<td > ( happyhour ) ref <a href='#plagehoraires'>plagehoraires</a> (idplagehoraire) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_bars_sorties</td>
+		<td > ( idsortie ) ref <a href='#sorties'>sorties</a> (idsortie) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='lieux'>Table lieux</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='lieux.idlieu'>idlieu</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='lieux.nom'>nom</a></td>
+		<td> varchar&#40; 40 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='lieux.idadresse'>idadresse</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='lieux.description'>description</a></td>
+		<td> text   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='lieux.accessibilite'>accessibilite</a></td>
+		<td> text   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;lieux</td>
+		<td> ON idlieu</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_lieux_adresses</td>
+		<td > ( idadresse ) ref <a href='#adresses'>adresses</a> (idadresse) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='utilisateurs'>Table utilisateurs</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='utilisateurs.idutilisateur'>idutilisateur</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='utilisateurs.pseudo'>pseudo</a></td>
+		<td> varchar&#40; 20 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='utilisateurs.datenaissance'>datenaissance</a></td>
+		<td> date   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='utilisateurs.sexe'>sexe</a></td>
+		<td> char&#40; 1 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='utilisateurs.email'>email</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='utilisateurs.avatar'>avatar</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='utilisateurs.idadresse'>idadresse</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='utilisateurs.motdepasse'>motdepasse</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;utilisateurs</td>
+		<td> ON idutilisateur</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td>U</td><td>ct&#95;unique&#95;pseudo</td>
+		<td> ON pseudo</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td>U</td><td>ct&#95;unique&#95;email</td>
+		<td> ON email</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_utilisateurs_adresses</td>
+		<td > ( idadresse ) ref <a href='#adresses'>adresses</a> (idadresse) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='avis'>Table avis</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='avis.idavis'>idavis</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='avis.idlieu'>idlieu</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='avis.note'>note</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='avis.message'>message</a></td>
+		<td> text   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='avis.idutilisateur'>idutilisateur</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;avis</td>
+		<td> ON idavis</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_avis_lieux</td>
+		<td > ( idlieu ) ref <a href='#lieux'>lieux</a> (idlieu) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_avis_utilisateurs</td>
+		<td > ( idutilisateur ) ref <a href='#utilisateurs'>utilisateurs</a> (idutilisateur) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='ouvertures'>Table ouvertures</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='ouvertures.idsortie'>idsortie</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='ouvertures.idhoraire'>idhoraire</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>idx&#95;ouvertures</td>
+		<td> ON idsortie&#44; idhoraire</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_ouvertures_horaires</td>
+		<td > ( idhoraire ) ref <a href='#horaires'>horaires</a> (idhoraire) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_ouvertures_sorties</td>
+		<td > ( idsortie ) ref <a href='#sorties'>sorties</a> (idsortie) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='horaires'>Table horaires</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='horaires.idhoraire'>idhoraire</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='horaires.jour'>jour</a></td>
+		<td> varchar&#40; 10 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='horaires.idplagehoraire'>idplagehoraire</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;horaires</td>
+		<td> ON idhoraire</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_horaires_plagehoraires</td>
+		<td > ( idplagehoraire ) ref <a href='#plagehoraires'>plagehoraires</a> (idplagehoraire) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='plagehoraires'>Table plagehoraires</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='plagehoraires.idplagehoraire'>idplagehoraire</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='plagehoraires.heuredebut'>heuredebut</a></td>
+		<td> time   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='plagehoraires.heurefin'>heurefin</a></td>
+		<td> time   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;plagehoraires</td>
+		<td> ON idplagehoraire</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='monuments'>Table monuments</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='monuments.idmonument'>idmonument</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='monuments.idvisite'>idvisite</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='monuments.anneeconstruction'>anneeconstruction</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='monuments.anneefinconstruction'>anneefinconstruction</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;monuments</td>
+		<td> ON idmonument</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_monuments_visites</td>
+		<td > ( idvisite ) ref <a href='#visites'>visites</a> (idvisite) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='liens'>Table liens</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='liens.idlien'>idlien</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='liens.liblien'>liblien</a></td>
+		<td> varchar&#40; 20 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='liens.idlieu'>idlieu</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='liens.url'>url</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;liens</td>
+		<td> ON idlien</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_liens_lieux</td>
+		<td > ( idlieu ) ref <a href='#lieux'>lieux</a> (idlieu) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='typevisites'>Table typevisites</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='typevisites.idtypevisite'>idtypevisite</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='typevisites.libtypevisite'>libtypevisite</a></td>
+		<td> varchar&#40; 20 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='typevisites.typev'>typev</a></td>
+		<td> char&#40; 1 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;typevisites</td>
+		<td> ON idtypevisite</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='visites'>Table visites</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='visites.idvisite'>idvisite</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='visites.idlieu'>idlieu</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='visites.idtypevisite'>idtypevisite</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;visites</td>
+		<td> ON idvisite</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_visites_lieux</td>
+		<td > ( idlieu ) ref <a href='#lieux'>lieux</a> (idlieu) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_visites_typevisites</td>
+		<td > ( idtypevisite ) ref <a href='#typevisites'>typevisites</a> (idtypevisite) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='photos'>Table photos</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='photos.idphoto'>idphoto</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='photos.libphoto'>libphoto</a></td>
+		<td> varchar&#40; 20 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='photos.idlieu'>idlieu</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;photos</td>
+		<td> ON idphoto</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_photos_lieux</td>
+		<td > ( idlieu ) ref <a href='#lieux'>lieux</a> (idlieu) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='placeetparcs'>Table placeetparcs</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='placeetparcs.idplaceetparc'>idplaceetparc</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='placeetparcs.idvisite'>idvisite</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;placeetparcs</td>
+		<td> ON idplaceetparc</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_placeetparcs_visites</td>
+		<td > ( idvisite ) ref <a href='#visites'>visites</a> (idvisite) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='nightclubs'>Table nightclubs</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='nightclubs.idnightclub'>idnightclub</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='nightclubs.idsortie'>idsortie</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;nightclubs</td>
+		<td> ON idnightclub</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_nightclubs_sorties</td>
+		<td > ( idsortie ) ref <a href='#sorties'>sorties</a> (idsortie) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='sorties'>Table sorties</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='sorties.idsortie'>idsortie</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='sorties.idlieu'>idlieu</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='sorties.prixmax'>prixmax</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='sorties.prixmin'>prixmin</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='sorties.idambiance'>idambiance</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;sorties</td>
+		<td> ON idsortie</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_sorties_ambiances</td>
+		<td > ( idambiance ) ref <a href='#ambiances'>ambiances</a> (idambiance) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_sorties_lieux</td>
+		<td > ( idlieu ) ref <a href='#lieux'>lieux</a> (idlieu) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='ambiances'>Table ambiances</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='ambiances.idambiance'>idambiance</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='ambiances.libambiance'>libambiance</a></td>
+		<td> varchar&#40; 20 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='ambiances.types'>types</a></td>
+		<td> char&#40; 1 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;ambiances</td>
+		<td> ON idambiance</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='restaurants'>Table restaurants</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='restaurants.idrestaurant'>idrestaurant</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='restaurants.idsortie'>idsortie</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='restaurants.reservation'>reservation</a></td>
+		<td> bool   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='restaurants.aemporter'>aemporter</a></td>
+		<td> bool   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;restaurants</td>
+		<td> ON idrestaurant</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_restaurants_sorties</td>
+		<td > ( idsortie ) ref <a href='#sorties'>sorties</a> (idsortie) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='quartiers'>Table quartiers</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='quartiers.idquartier'>idquartier</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='quartiers.nom'>nom</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='quartiers.budgetmoyen'>budgetmoyen</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='quartiers.distancecentreville'>distancecentreville</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;quartiers</td>
+		<td> ON idquartier</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='adresses'>Table adresses</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='adresses.idadresse'>idadresse</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='adresses.numero'>numero</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='adresses.voie'>voie</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='adresses.codepostal'>codepostal</a></td>
+		<td> char&#40; 5 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='adresses.ville'>ville</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='adresses.idquartier'>idquartier</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#95;adresses</td>
+		<td> ON idadresse</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_adresses_quartiers</td>
+		<td > ( idquartier ) ref <a href='#quartiers'>quartiers</a> (idquartier) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</body></html>

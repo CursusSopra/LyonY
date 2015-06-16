@@ -2,8 +2,8 @@
 
 <h1>Entrez les informations sur le nouveau Bar :</h1>
 
-<form class="form-horizontal" method="post" id="idFormAjouterBar"
-	action="<s:url action='ajouterBar'/>">
+<form class="form-horizontal" method="post" id="idFormCreationBar"
+	action="<s:url action='creationBar'/>">
 
 	<div id="idFormAlertError" class="alert alert-danger hidden"
 		role="alert">Le formulaire contient des erreurs. Veuillez
@@ -21,25 +21,34 @@
 		</div>
 	</div>
 
-
+	
 	<div class="form-group">
-		<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
+	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
 		<div class="col-sm-3">
-			<div class="row">
-				<input type="text" class="form-control" id="idAmbiance"
-					name="libambiance" />
+			<div class="row">				
+				<select id="idAmbiance">
+					<s:iterator value="listeDesAmbiances">
+						<option value="<s:property value="idambiance" />"><s:property value="libambiance" /></option>
+					</s:iterator>
+				</select>
+			</div>
+			<div class = "row">
+				<a href="<s:url action='creationAmbiance'/>">Ajouter une ambiance</a>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
 
-
 	<div class="form-group">
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idQuartier"
-					name="nomquartier" />
+				<select id="idQuartier">
+					<s:iterator value="listeDesQuartiers">
+						<option value="<s:property value="idquartier" />"><s:property
+								value="nom" /></option>
+					</s:iterator>
+				</select>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -83,27 +92,40 @@
 		<label for="idVille" class="col-sm-2 control-label">Ville</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idVille"
-					name="ville" />
+				<input type="text" class="form-control" id="idVille" name="ville" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
-	
+
 	<legend>Caractéristiques</legend>
-	
+
 	<div class="form-group">
 		<label for="idDescription" class="col-sm-2 control-label">Description</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<TEXTAREA name="description" rows=4 cols=40>Décrivez le bar : spécialités, activités...</TEXTAREA>
+				<TEXTAREA name="description" rows=4 cols=40
+					placeholder="Décrivez le bar : spécialités, activités..."></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
-	
-		<div class="form-group">
-		<label for="idPrixmin" class="col-sm-2 control-label">Prix mini</label>
+
+	<div class="form-group">
+		<label for="idAccessibilité" class="col-sm-2 control-label">Comment
+			y accéder ?</label>
+		<div class="col-sm-3">
+			<div class="row">
+				<TEXTAREA id="idAccessibilité" name="accessibilite" rows=4 cols=40
+					placeholder="Expliquez comment l'on peut s'y rendre"></TEXTAREA>
+			</div>
+			<span class="col-lg-20 control-label">&nbsp;</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idPrixmin" class="col-sm-2 control-label">Prix
+			mini</label>
 		<div class="col-sm-3">
 			<div class="row">
 				<input type="text" class="form-control" id="idPrixmin"
@@ -112,9 +134,10 @@
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
-	
-		<div class="form-group">
-		<label for="idPrixmax" class="col-sm-2 control-label">Prix maxi</label>
+
+	<div class="form-group">
+		<label for="idPrixmax" class="col-sm-2 control-label">Prix
+			maxi</label>
 		<div class="col-sm-3">
 			<div class="row">
 				<input type="text" class="form-control" id="idPrixmax"
@@ -123,29 +146,20 @@
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
-	
 
-	<!-- 			<div class="form-group"> -->
-	<!-- 				<label for="idRegionNaissance" class="col-sm-2 control-label">Région -->
-	<!-- 					de naissance</label> -->
-	<!-- 				<div class="col-sm-3"> -->
-	<!-- 					<div class="row"> -->
-	<%-- 						<select id="idRegionNaissance"> --%>
+	<legend>Horaires</legend>
 
-	<%-- 							<s:iterator value="listeDesRegions"> --%>
-
-	<%-- 								<option value="<s:property value="reg" />"> --%>
-	<%-- 									<s:property value="nccenr" /> --%>
-	<!-- 								</option> -->
-
-	<%-- 							</s:iterator> --%>
-
-	<%-- 						</select> --%>
-	<!-- 					</div> -->
-	<%-- 					<span class="col-lg-20 control-label">&nbsp;</span> --%>
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-
+	<div class="form-group">
+		<label for="idHappyHour" class="col-sm-2 control-label">Happy
+			hour</label>
+		<div class="col-sm-3">
+			<div class="row">
+				<input type="text" class="form-control" id="idHappyHour"
+					name="happyhour" />
+			</div>
+			<span class="col-lg-20 control-label">&nbsp;</span>
+		</div>
+	</div>
 
 
 
@@ -170,7 +184,6 @@
 	$(document)
 			.ready(
 					function() {
-
 
 						//Validation/refus selon le remplissage du formulaire
 						$('#idFormAjouterBar')

@@ -7,11 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.istack.internal.Nullable;
-
 import fr.cursusSopra.tech.PostgresConnection;
 
-public class Placeetparc {
+public class Placeetparc  {
+
+	public Placeetparc() {
+		
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	//Variables
 	private int idPlaceetparc;
@@ -26,7 +31,8 @@ public class Placeetparc {
 	private String typeVisite;
 	private float notemoy;
 	private int nbavis;
-	private ArrayList<String> listeDesAvis; 
+	private List<Avis> listeDesAvisDunLieu;
+	
 	
 	// GETS SETS
 	public int getIdPlaceetparc() {
@@ -71,16 +77,12 @@ public class Placeetparc {
 	public int getNbavis() {
 		return nbavis;
 	}
+	public List<Avis> getListeDesAvisDunLieu() {
+		return listeDesAvisDunLieu;
+	}
 	
-	public ArrayList<String> getListeDesAvis() {
-		return listeDesAvis;
-	}
 
-
-	//CTORS
-	public Placeetparc () {
-		
-	}
+	
 
 	//// METHODES PUBLIQUES
 	
@@ -93,7 +95,7 @@ public class Placeetparc {
         Statement stmt = cnx.createStatement();
         // Requête à exécuter
         String queryPPCompl  = "SELECT "
-                            + "l.nom AS nomL, l.description, l.accessibilite, "
+                            + "l.idlieu, l.nom AS nomL, l.description, l.accessibilite, "
                             + "a.numero, a.voie, a.codepostal, a.ville, "
                             + "q.nom AS nomQ, "
                             + "t.libtypevisite, "
@@ -108,6 +110,7 @@ public class Placeetparc {
         // Obtention de l'ensemble résultat
         ResultSet rsPP = stmt.executeQuery(queryPPCompl);
         // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+        int idl=0;
         if(rsPP.next()){
             nomLieu = rsPP.getString("nomL");
             descriptionLieu = rsPP.getString("description");
@@ -118,23 +121,23 @@ public class Placeetparc {
             villeAdres = rsPP.getString("ville");
             nomQuartier = rsPP.getString("nomQ");
             typeVisite = rsPP.getString("libtypevisite");
+            idl = rsPP.getInt("idlieu");
         }
         
         
-        String queryAvis = "SELECT nom, pseudo, note, message FROM avis "
-        		+ "INNER JOIN lieux USING (idlieu) "
-        		+ "INNER JOIN utilisateurs USING (idutilisateur) "
-        		+ "WHERE idlieu =" + idPlaceetparc;
+        Lieu lieu = new Lieu(idl);
+        listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
+        Lieu lieu2 = new Lieu(idl);
         
-        ResultSet rs = stmt.executeQuery(queryAvis);
-        
-        while (rs.next()) {		
-        	listeDesAvis.add(rs.getString("message"));
-		}
     }
-	
-    
- // METHODES STATIQUES
+
+
+
+
+
+
+
+	// METHODES STATIQUES
 	private static List<Placeetparc> listeDesPlaceetparcs;
 	
 	public static List<Placeetparc> getListeDesPlaceetparcs() throws SQLException{

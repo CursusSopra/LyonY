@@ -6,7 +6,8 @@
 <h1>Discothèques de Lyon</h1>
 
 <div>
-	<a href="<s:url action='formCreationNclub'/>">Ajouter une discothèque</a>
+	<a href="<s:url action='formCreationNclub'/>">Ajouter une
+		discothèque</a>
 </div>
 
 <div class="container-fluid">
@@ -35,12 +36,16 @@
 								</s:param>
 							</s:url>
 
-
-							<td><a href="<s:property value='#dn'/>"> <s:property value="nomnightclub" /></a></td>
+							<td><a href="<s:property value='#dn'/>"> <s:property
+										value="nomnightclub" /></a></td>
 							<td><s:property value="libambiance" /></td>
 							<td><s:property value="prixmin" /></td>
 							<td><s:property value="prixmax" /></td>
-							<td><s:property value="" /></td>
+							<td><s:if test='%{nbavis == 0}'>
+									Aucun avis, <a href="">soyez le premier !</a>
+								</s:if> <s:else>
+									<s:property value="notemoy" /> - <s:property value="nbavis" /> avis
+								</s:else></td>
 							<td><s:property value="nomquartier" /></td>
 						</tr>
 
