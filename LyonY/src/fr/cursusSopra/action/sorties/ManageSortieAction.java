@@ -12,10 +12,13 @@ import fr.cursusSopra.tech.PostgresConnection;
 
 public class ManageSortieAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
-	// À supprimer
+	
+	// Valeurs de Tests -  À supprimer
+	//	-------------------------
 	private String[] heureDebut = { "08:00" };
 	private String[] heureFin = { "12:00" };
 	private int idSortie = 10;
+	//	-------------------------
 
 	// public void setHeureDebut(String[] heureDebut) {
 	// this.heureDebut = heureDebut;
