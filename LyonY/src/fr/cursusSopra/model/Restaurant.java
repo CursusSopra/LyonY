@@ -21,6 +21,7 @@ public class Restaurant extends Sortie {
 	private String description;
 	private boolean reservation;
 	private boolean aemporter;
+	private String ambiance;
 	private float notemoy;
 	private int nbavis;
 
@@ -238,6 +239,14 @@ public class Restaurant extends Sortie {
 	//
 	// }
 
+	public String getAmbiance() {
+		return ambiance;
+	}
+
+	public void setAmbiance(String ambiance) {
+		this.ambiance = ambiance;
+	}
+
 	public float getNotemoy() {
 		return notemoy;
 	}
@@ -254,6 +263,36 @@ public class Restaurant extends Sortie {
 		this.nbavis = nbavis;
 	}
 
+	
+	// LISTE DES TYPES DE RESTAURANT
+    private static List<Ambiance> listeDesAmbiancesDeRestaurant;
+    
+	public static List<Ambiance> getListeDesAmbiancesDeRestaurant() throws SQLException{
+		listeDesAmbiancesDeRestaurant = new ArrayList<Ambiance>();
+		// connexion à la BDD PostGresSQL
+		Connection cnx = null;
+		cnx = PostgresConnection.getConnexion();
+		// Objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		// Requête à exécuter
+		String query  = "SELECT idambiance, types, libambiance "
+				+ "FROM ambiances "
+				+ "WHERE types='R' "
+				+ "ORDER BY libambiance;";
+		// Obtention de l'ensemble résultat
+		ResultSet rs = stmt.executeQuery(query);
+		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+		while(rs.next()){
+			Ambiance a = new Ambiance();
+			a.setIdambiance(rs.getInt("idambiance"));
+			a.setTypes(rs.getString("types"));
+			a.setLibambiance(rs.getString("libambiance"));
+
+			listeDesAmbiancesDeRestaurant.add(a);
+		}
+				
+		return listeDesAmbiancesDeRestaurant;
+	}
 
 	/* Membres statiques */
 	public static List<Restaurant> listeDesRestaurants;

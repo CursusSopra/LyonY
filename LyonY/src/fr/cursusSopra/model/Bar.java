@@ -20,6 +20,7 @@ public class Bar extends Sortie {
 	private int codepostal;
 	private String ville;
 	private String description;
+	private String ambiance;
 	private float notemoy;
 	private int nbavis;
 
@@ -182,6 +183,14 @@ public class Bar extends Sortie {
 	//
 	// }
 
+	public String getAmbiance() {
+		return ambiance;
+	}
+
+	public void setAmbiance(String ambiance) {
+		this.ambiance = ambiance;
+	}
+
 	public float getNotemoy() {
 		return notemoy;
 	}
@@ -196,6 +205,37 @@ public class Bar extends Sortie {
 
 	public void setNbavis(int nbavis) {
 		this.nbavis = nbavis;
+	}
+	
+	
+	 // LISTE DES TYPES DE BAR
+    private static List<Ambiance> listeDesAmbiancesDeBar;
+    
+	public static List<Ambiance> getListeDesAmbiancesDeBar() throws SQLException{
+		listeDesAmbiancesDeBar = new ArrayList<Ambiance>();
+		// connexion à la BDD PostGresSQL
+		Connection cnx = null;
+		cnx = PostgresConnection.getConnexion();
+		// Objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		// Requête à exécuter
+		String query  = "SELECT idambiance, types, libambiance "
+				+ "FROM ambiances "
+				+ "WHERE types='B' "
+				+ "ORDER BY libambiance;";
+		// Obtention de l'ensemble résultat
+		ResultSet rs = stmt.executeQuery(query);
+		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+		while(rs.next()){
+			Ambiance a = new Ambiance();
+			a.setIdambiance(rs.getInt("idambiance"));
+			a.setTypes(rs.getString("types"));
+			a.setLibambiance(rs.getString("libambiance"));
+
+			listeDesAmbiancesDeBar.add(a);
+		}
+				
+		return listeDesAmbiancesDeBar;
 	}
 
 	/* Membres statiques */

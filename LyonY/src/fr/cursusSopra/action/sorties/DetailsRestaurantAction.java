@@ -3,6 +3,8 @@ package fr.cursusSopra.action.sorties;
 import java.sql.SQLException;
 import java.util.List;
 
+import fr.cursusSopra.model.Ambiance;
+import fr.cursusSopra.model.Bar;
 import fr.cursusSopra.model.Quartier;
 import fr.cursusSopra.model.Restaurant;
 import fr.cursusSopra.tech.Breadcrumbs;
@@ -13,6 +15,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 	private int idrestaurant;
 	private Restaurant restaurant;
 	private List<Quartier> listeDesQuartiers;
+	private List<Ambiance> listeDesAmbiances;
 
 	public void setIdrestaurant(int idrestaurant) {
 		this.idrestaurant = idrestaurant;
@@ -24,6 +27,9 @@ public class DetailsRestaurantAction extends SortiesAction {
 	public List<Quartier> getListeDesQuartiers() {
 		return listeDesQuartiers;
 	}
+	public List<Ambiance> getListeDesAmbiances() {
+		return listeDesAmbiances;
+	}
 	
 	public DetailsRestaurantAction() {
 		listeBreadcrumbs.add(new Breadcrumbs("Sorties", "sorties", null));
@@ -34,6 +40,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 	public String execute() {
 		try {
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
+			listeDesAmbiances = Restaurant.getListeDesAmbiancesDeRestaurant();
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();

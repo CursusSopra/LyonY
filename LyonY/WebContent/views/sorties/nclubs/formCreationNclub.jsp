@@ -20,13 +20,18 @@
 		</div>
 	</div>
 
-
 	<div class="form-group">
-		<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
+	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
 		<div class="col-sm-3">
-			<div class="row">
-				<input type="text" class="form-control" id="idAmbiance"
-					name="libambiance" />
+			<div class="row">				
+				<select id="idAmbiance">
+					<s:iterator value="listeDesAmbiances">
+						<option value="<s:property value="idambiance" />"><s:property value="libambiance" /></option>
+					</s:iterator>
+				</select>
+			</div>
+			<div class = "row">
+				<a href="<s:url action='creationAmbiance'/>">Ajouter une ambiance</a>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

@@ -3,6 +3,8 @@ package fr.cursusSopra.action.sorties;
 import java.sql.SQLException;
 import java.util.List;
 
+import fr.cursusSopra.model.Ambiance;
+import fr.cursusSopra.model.Bar;
 import fr.cursusSopra.model.Nclub;
 import fr.cursusSopra.model.Quartier;
 import fr.cursusSopra.tech.Breadcrumbs;
@@ -13,6 +15,7 @@ public class DetailsNclubAction extends SortiesAction {
 	private int idNightclub;
 	private Nclub nclub;
 	private List<Quartier> listeDesQuartiers;
+	private List<Ambiance> listeDesAmbiances;
 
 	public void setIdNightclub(int idNightclub) {
 		this.idNightclub = idNightclub;
@@ -22,6 +25,9 @@ public class DetailsNclubAction extends SortiesAction {
 	}
 	public List<Quartier> getListeDesQuartiers() {
 		return listeDesQuartiers;
+	}
+	public List<Ambiance> getListeDesAmbiances() {
+		return listeDesAmbiances;
 	}
 
 	public DetailsNclubAction() {
@@ -34,6 +40,7 @@ public class DetailsNclubAction extends SortiesAction {
 	public String execute() {
 		try {
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
+			listeDesAmbiances = Nclub.getListeDesAmbiancesDeNclub();
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();

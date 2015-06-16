@@ -19,6 +19,7 @@ public class Nclub extends Sortie {
 	private int codepostal;
 	private String ville;
 	private String description;
+	private String ambiance;
 	private float notemoy;
 	private int nbavis;
 
@@ -131,6 +132,14 @@ public class Nclub extends Sortie {
 		this.description = description;
 	}
 	
+	public String getAmbiance() {
+		return ambiance;
+	}
+
+	public void setAmbiance(String ambiance) {
+		this.ambiance = ambiance;
+	}
+
 	public float getNotemoy() {
 		return notemoy;
 	}
@@ -196,6 +205,36 @@ public class Nclub extends Sortie {
 	// return ret;
 	//
 	// }
+	
+	 // LISTE DES TYPES DE NCLUB
+    private static List<Ambiance> listeDesAmbiancesDeNclub;
+    
+	public static List<Ambiance> getListeDesAmbiancesDeNclub() throws SQLException{
+		listeDesAmbiancesDeNclub = new ArrayList<Ambiance>();
+		// connexion à la BDD PostGresSQL
+		Connection cnx = null;
+		cnx = PostgresConnection.getConnexion();
+		// Objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		// Requête à exécuter
+		String query  = "SELECT idambiance, types, libambiance "
+				+ "FROM ambiances "
+				+ "WHERE types='N' "
+				+ "ORDER BY libambiance;";
+		// Obtention de l'ensemble résultat
+		ResultSet rs = stmt.executeQuery(query);
+		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+		while(rs.next()){
+			Ambiance a = new Ambiance();
+			a.setIdambiance(rs.getInt("idambiance"));
+			a.setTypes(rs.getString("types"));
+			a.setLibambiance(rs.getString("libambiance"));
+
+			listeDesAmbiancesDeNclub.add(a);
+		}
+				
+		return listeDesAmbiancesDeNclub;
+	}
 
 	/* Membres statiques */
 	public static List<Nclub> listeDesNightclubs;
