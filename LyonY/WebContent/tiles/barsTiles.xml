@@ -19,12 +19,10 @@
 
 		<put-list-attribute name="moreScripts">
 			<add-attribute value="./_plugins/Star_rating/js/star-rating.min.js"></add-attribute>
-			<add-attribute value="./js/jQueryUI.1.11.4/jquery-ui.min.js"></add-attribute>
 		</put-list-attribute>
 
 		<put-list-attribute name="moreStyles">
 			<add-attribute value="./_plugins/Star_rating/css/star-rating.min.css"></add-attribute>
-			<add-attribute value="./css/bootstrap.min.css"></add-attribute>
 			<add-attribute value="./fonts/font-awesome-4.3.0/css/font-awesome.min.css"></add-attribute>
 
 		</put-list-attribute>

@@ -17,7 +17,7 @@
 		<div class="col-md-10">
 
 			<div>
-			<input id="input-5b" class="rating"  data-symbol="&#xf001;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="nclub.notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+			<input id="input-5b" data-size="sm" class="rating"  data-symbol="&#xf001;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="nclub.notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
 			
 				Nom du Night Club :
 				<s:property value="nclub.nomnightclub" />

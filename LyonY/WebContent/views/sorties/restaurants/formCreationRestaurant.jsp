@@ -14,7 +14,7 @@
 	<legend>Identification du Restaurant</legend>
 	<div class="form-group">
 		<label for="idNom" class="col-sm-2 control-label">Nom du
-			Restaurant</label>
+			Restaurant *</label>
 		<div class="col-sm-3">
 			<div class="row">
 				<input type="text" class="form-control" id="idNom"
@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="form-group">
-	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
+	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance *</label>
 		<div class="col-sm-3">
 			<div class="row">				
 				<select id="idAmbiance">
@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="idQuartier" class="col-sm-2 control-label">Quartier</label>
+		<label for="idQuartier" class="col-sm-2 control-label">Quartier *</label>
 		<div class="col-sm-3">
 			<div class="row">
 				<select id="idQuartier">
@@ -80,7 +80,7 @@
 
 	<div class="form-group">
 		<label for="idCodepostal" class="col-sm-2 control-label">Code
-			postal</label>
+			postal *</label>
 		<div class="col-sm-3">
 			<div class="row">
 				<input type="text" class="form-control" id="idCodepostal"
@@ -91,7 +91,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="idVille" class="col-sm-2 control-label">Ville</label>
+		<label for="idVille" class="col-sm-2 control-label">Ville *</label>
 		<div class="col-sm-3">
 			<div class="row">
 				<input type="text" class="form-control" id="idVille" name="ville" />
@@ -176,7 +176,12 @@
 		</div>
 	</div>
 
-
+		
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<div class="row">(* : champ obligatoire)</div>
+		</div>
+	</div>
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
@@ -193,68 +198,52 @@
 <script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
 
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-
-						//Validation/refus selon le remplissage du formulaire
-						$('#idFormAjouterBar')
-								.submit(
-										function(e) {
-											var $nom = $('#idNom');
-											var $prenom = $('#idPrenom');
-											var valNom = $nom.val();
-											var valPrenom = $prenom.val();
-											//Par défaut le formulaire est OK
-											var formOK = true;
-											//console.log(valNom);
-											//Si champ obligatoire non rempli
-											if (valNom == '') {
-												formOK &= false;
-												$nom.parent().parent().parent()
-														.addClass('has-error');
-												$nom
-														.parent()
-														.next('span')
-														.html(
-																'Vous devez fournir le nom du candidat');
-											} else {
-												$nom.parent().parent().parent()
-														.removeClass(
-																'has-error');
-												$nom.parent().next('span')
-														.html('');
-											}
-
-											if (valPrenom == '') {
-												formOK &= false;
-												$prenom.parent().parent()
-														.parent().addClass(
-																'has-error');
-												$prenom
-														.parent()
-														.next('span')
-														.html(
-																'Vous devez fournir le prénom du candidat');
-
-											} else {
-												$prenom.parent().parent()
-														.parent().removeClass(
-																'has-error');
-												$prenom.parent().next('span')
-														.html('');
-											}
-
-											if (!formOK) {
-												$('#idFormAlertError')
-														.removeClass('hidden');
-												$('#idFormAlertError').fadeTo(
-														2000, 500).slideUp(500);
-												e.preventDefault();
-											} else {
-												$('#idFormAlertError')
-														.addClass('hidden');
-											}
-										});
-					});
+$(document).ready(
+		function() {
+		//Validation/refus selon le remplissage du formulaire
+			$('#idFormCreationRestaurant').submit(
+				function(e) {
+					var $nom = $('#idNom');
+					var $cp = $('#idCodepostal');
+					var $ville = $('#idVille');
+					var valNom = $nom.val();
+					var valCp = $cp.val();
+					var valVille = $ville.val();
+					//Par défaut le formulaire est OK
+					var formOK = true;
+					//Si champ obligatoire non rempli
+					if (valNom == '') {
+						formOK &= false;
+						$nom.parent().parent().parent().addClass('has-error');
+						$nom.parent().next('span').html('Vous devez fournir le nom du restaurant');
+					} else {
+						$nom.parent().parent().parent().removeClass('has-error');
+						$nom.parent().next('span').html('');
+					}
+					var rx = new RegExp('[0-9]{5}');
+					if (valCp == '' || !rx.test(valCp)) {
+						formOK &= false;
+						$cp.parent().parent().parent().addClass('has-error');
+						$cp.parent().next('span').html('Vous devez fournir un code postal valide');
+					} else {
+						$cp.parent().parent().parent().removeClass('has-error');
+						$cp.parent().next('span').html('');
+					}
+					if (valVille == '') {
+						formOK &= false;
+						$ville.parent().parent().parent().addClass('has-error');
+						$ville.parent().next('span').html('Vous devez fournir un nom de ville');
+					} else {
+						$ville.parent().parent().parent().removeClass('has-error');
+						$ville.parent().next('span').html('');
+					}
+					if (!formOK) {
+						$('#idFormAlertError').removeClass('hidden');
+						$('#idFormAlertError').fadeTo(10000, 500).slideUp(500);
+						e.preventDefault();
+					} else {
+						$('#idFormAlertError').addClass('hidden');
+					}
+				});
+			});
 </script>

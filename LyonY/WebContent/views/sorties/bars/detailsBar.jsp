@@ -18,7 +18,7 @@
 		<div class="col-md-10">
 
 			<div>
-				<input id="input-5b" class="rating"  data-symbol="&#xf0fc;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="bar.notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+				<input data-size="sm" id="input-5b" class="rating"  data-symbol="&#xf0fc;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="bar.notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
 			
 				Nom du bar :
 				<s:property value="bar.nombar" />
