@@ -9,7 +9,6 @@
 	<!--  -->
 	<definition name="horaire" extends="baseLayout">
 		<put-attribute name="title" value="Horaires" />
-		<put-attribute name="menuConnexion" value="/views/menuConnexion.jsp"/>
 		<put-attribute name="body" value="/views/horaires/horaires.jsp" />
 		
 		<put-list-attribute name="moreScripts">
