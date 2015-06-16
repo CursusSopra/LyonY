@@ -43,6 +43,7 @@ public class DetailsBarAction extends SortiesAction {
 	
 	public String execute() {
 		try {
+			bar = new Bar(idBar);
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Bar.getListeDesAmbiancesDeBar();
 			return SUCCESS;

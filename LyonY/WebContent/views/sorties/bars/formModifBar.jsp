@@ -18,7 +18,7 @@
 		<label for="idNom" class="col-sm-2 control-label">Nom du Bar</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNom" name="nombar" value="<s:property value = "nombar"/>"/>
+				<input type="text" class="form-control" id="idNom" name="nombar" value="<s:property value = "bar.nombar"/>"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -31,7 +31,7 @@
 			<div class="row">				
 				<select id="idAmbiance">
 					<s:iterator value="listeDesAmbiances">
-						<option value="<s:property value="bar.idambiance" />"><s:property value="libambiance" /></option>
+						<option value="<s:property value="idambiance" />"><s:property value="libambiance" /></option>
 					</s:iterator>
 				</select>
 			</div>
