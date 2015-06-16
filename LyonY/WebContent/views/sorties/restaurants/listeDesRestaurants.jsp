@@ -1,17 +1,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
-
 <h1>Restaurants de Lyon</h1>
 
 <div>
-	<s:url action="formAjoutRestaurant" var="far">
-		<s:param name="idRestaurant">
-			<s:property value="restaurant.idRestaurant"/>
-		</s:param>
-	</s:url>
-	<a href="<s:property value='#far'/>">Ajouter un restaurant</a>
+	<a href="<s:url action='formCreationRestaurant'/>">Ajouter un restaurant</a>
 </div>
 
 <div class="container-fluid">

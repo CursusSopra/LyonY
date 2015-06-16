@@ -1,16 +1,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
 
 <h1>Bars de Lyon</h1>
 
 <div>
-	<s:url action="formAjoutBar" var="fab">
-		<s:param name="idBar">
-			<s:property value="bar.idBar"/>
-		</s:param>
-	</s:url>
-	<a href="<s:property value='#fab'/>">Ajouter un bar</a>
+	<a href="<s:url action='formCreationBar'/>">Ajouter un bar</a>
 </div>
 
 <div class="container-fluid">

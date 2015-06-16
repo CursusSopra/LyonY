@@ -1,17 +1,12 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 
-<a href="<s:url action='index'/>">Retour à la page d'accueil</a>
+
 
 <h1>Discothèques de Lyon</h1>
 
 <div>
-	<s:url action="formAjoutNclub" var="fan">
-		<s:param name="idNclub">
-			<s:property value="nclub.idNclub"/>
-		</s:param>
-	</s:url>
-	<a href="<s:property value='#fan'/>">Ajouter une discothèque</a>
+	<a href="<s:url action='formCreationNclub'/>">Ajouter une discothèque</a>
 </div>
 
 <div class="container-fluid">
