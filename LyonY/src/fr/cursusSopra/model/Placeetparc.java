@@ -127,7 +127,7 @@ public class Placeetparc  {
         
         Lieu lieu = new Lieu(idl);
         listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
-        Lieu lieu2 = new Lieu(idl);
+        
         
     }
 

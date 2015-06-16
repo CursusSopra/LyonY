@@ -23,6 +23,9 @@ public class Bar extends Sortie {
 	private String ambiance;
 	private float notemoy;
 	private int nbavis;
+	private List<Avis> listeDesAvisDunLieu;
+
+	
 
 	public Bar() {
 	}
@@ -36,7 +39,7 @@ public class Bar extends Sortie {
 		Statement stmt = cnx.createStatement();
 
 		// Requête à exécuter
-		String query = "SELECT b.idsortie, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, happyhour, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
+		String query = "SELECT l.idlieu, b.idsortie, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, happyhour, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM bars b "
 				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
@@ -45,10 +48,11 @@ public class Bar extends Sortie {
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
 				+ "WHERE b.idbar = " + idBar
-				+ " GROUP BY b.idbar, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
+				+ " GROUP BY l.idlieu, b.idbar, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
+		int idl = 0;
 		if (rs.next()) {
 			idBar = rs.getInt("idbar");
 			idSortie = rs.getInt("idsortie");
@@ -64,9 +68,13 @@ public class Bar extends Sortie {
 			description = rs.getString("description");
 			notemoy = rs.getFloat("notemoy");
 			nbavis = rs.getInt("nbavis");
+			idl = rs.getInt("idlieu");
 		}
 		// Construction de la liste des horaires - Méthode de la classe mère
 		getListeDesHoraires();
+		
+		Lieu lieu = new Lieu(idl);
+        listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
 	}
 
 	// Getters and Setters
@@ -132,6 +140,9 @@ public class Bar extends Sortie {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public List<Avis> getListeDesAvisDunLieu() {
+		return listeDesAvisDunLieu;
 	}
 
 	// public int save() throws SQLException {

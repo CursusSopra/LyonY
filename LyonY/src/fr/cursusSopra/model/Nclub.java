@@ -22,6 +22,7 @@ public class Nclub extends Sortie {
 	private String ambiance;
 	private float notemoy;
 	private int nbavis;
+	private List<Avis> listeDesAvisDunLieu;
 
 
 
@@ -37,7 +38,7 @@ public class Nclub extends Sortie {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT n.idsortie, n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
+		String query = "SELECT l.idlieu, n.idsortie, n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM nightclubs n "
 				+ "INNER JOIN sorties s ON s.idsortie=n.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
@@ -46,13 +47,14 @@ public class Nclub extends Sortie {
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
 				+ "WHERE n.idnightclub =" + idNightclub
-				+ " GROUP BY n.idnightclub, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
+				+ " GROUP BY l.idlieu, n.idnightclub, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
 		
 		
 		
 		
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
+		int idl = 0;
 		if (rs.next()) {
 			idNightclub = rs.getInt("idnightclub");
 			idSortie = rs.getInt("idsortie");
@@ -68,9 +70,13 @@ public class Nclub extends Sortie {
 			description = rs.getString("description");
 			notemoy = rs.getFloat("notemoy");
 			nbavis = rs.getInt("nbavis");
+			idl = rs.getInt("idlieu");
 		}
 		// Construction de la liste des horaires - Méthode de la classe mère
 		getListeDesHoraires();
+		
+		Lieu lieu = new Lieu(idl);
+        listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
 	}
 
 	// Getters and Setters
@@ -154,6 +160,10 @@ public class Nclub extends Sortie {
 
 	public void setNbavis(int nbavis) {
 		this.nbavis = nbavis;
+	}
+	
+	public List<Avis> getListeDesAvisDunLieu() {
+		return listeDesAvisDunLieu;
 	}
 
 

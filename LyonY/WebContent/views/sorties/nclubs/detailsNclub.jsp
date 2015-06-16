@@ -78,6 +78,23 @@
 					src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
 &q=<s:property value="nclub.nomnightclub" />,<s:property value="nclub.numero" />+<s:property value="nclub.voie" />,<s:property value="nclub.ville" />"></iframe>
 			</div>
+			
+			<div>
+				Avis :
+				<table class="table table-striped table-hover" >
+				<s:iterator value="nclub.listeDesAvisDunLieu"> 
+					<tr> 
+					<td ><s:property value="pseudo"/>&nbsp;</td> 
+					
+					<td><input data-size="xxs" id="input-5b" class="rating"  data-symbol="&#xf001;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="note" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+					</td> 
+					
+					<td><s:property value="message"/>&nbsp;</td>
+					</tr>
+				</s:iterator>
+				</table>
+				
+			</div>
 
 
 		</div>

@@ -103,6 +103,23 @@
 					src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
 &q=<s:property value="restaurant.nomrestaurant" />,<s:property value="restaurant.numero" />+<s:property value="restaurant.voie" />,<s:property value="restaurant.ville" />"></iframe>
 			</div>
+			
+			<div>
+				Avis :
+				<table class="table table-striped table-hover" >
+				<s:iterator value="restaurant.listeDesAvisDunLieu"> 
+					<tr> 
+					<td ><s:property value="pseudo"/>&nbsp;</td> 
+					
+					<td><input data-size="xxs" id="input-5b" class="rating"  data-symbol="&#xf0f5;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="note" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+					</td> 
+					
+					<td><s:property value="message"/>&nbsp;</td>
+					</tr>
+				</s:iterator>
+				</table>
+				
+			</div>
 
 
 		</div>

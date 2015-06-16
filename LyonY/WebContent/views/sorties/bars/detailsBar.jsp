@@ -82,6 +82,23 @@
 &q=<s:property value="bar.nombar" />,<s:property value="bar.numero" />+<s:property value="bar.voie" />,<s:property value="bar.ville" />"></iframe>
 
 
+			<div>
+				Avis :
+				<table class="table table-striped table-hover" >
+				<s:iterator value="bar.listeDesAvisDunLieu"> 
+					<tr> 
+					<td ><s:property value="pseudo"/>&nbsp;</td> 
+					
+					<td><input data-size="xxs" id="input-5b" class="rating"  data-symbol="&#xf0fc;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="note" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+					</td> 
+					
+					<td><s:property value="message"/>&nbsp;</td>
+					</tr>
+				</s:iterator>
+				</table>
+				
+			</div>
+
 		</div>
 		<div class="col-md-1"></div>
 	</div>
