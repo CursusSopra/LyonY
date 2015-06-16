@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.cursusSopra.model.Typevisite;
+
 import fr.cursusSopra.tech.PostgresConnection;
 
 public class Monument {
@@ -130,7 +132,36 @@ public class Monument {
 		
 //	}
     
+    // LISTE DES TYPES DE MONUMENT
+    private static List<Typevisite> listeDesTypevisitesDeMonument;
     
+	public static List<Typevisite> getListeDesTypevisitesDeMonument() throws SQLException{
+		listeDesTypevisitesDeMonument = new ArrayList<Typevisite>();
+		// connexion à la BDD PostGresSQL
+		Connection cnx = null;
+		cnx = PostgresConnection.getConnexion();
+		// Objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		// Requête à exécuter
+		String query  = "SELECT idtypevisite, typev, libtypevisite "
+						+ "FROM typevisites "
+						+ "WHERE typev='M' "
+						+ "ORDER BY libtypevisite;"	;
+		// Obtention de l'ensemble résultat
+		ResultSet rs = stmt.executeQuery(query);
+		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+		while(rs.next()){
+			Typevisite tv = new Typevisite();
+			tv.setIdtypevisite(rs.getInt("idtypevisite"));
+			tv.setTypev(rs.getString("typev"));
+			tv.setLibtypevisite(rs.getString("libtypevisite"));
+
+			listeDesTypevisitesDeMonument.add(tv);
+		}
+				
+		return listeDesTypevisitesDeMonument;
+	}
+
 	// METHODES STATIQUES
 	private static List<Monument> listeDesMonuments;
 	

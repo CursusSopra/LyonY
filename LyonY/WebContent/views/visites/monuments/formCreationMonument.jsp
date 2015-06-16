@@ -17,7 +17,7 @@
 		<label for="idNom" class="col-sm-2 control-label">Nom du monument</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNom" name="nomL" placeholder="Respectez Kiki ! La casse bien sûr..."/>
+				<input type="text" class="form-control" id="idNom" name="nomL" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -27,8 +27,15 @@
 	<div class="form-group">
 		<label for="idTypevisite" class="col-sm-2 control-label">Type de monument</label>
 		<div class="col-sm-3">
-			<div class="row">
-				<input type="text" class="form-control" id="idTypevisite" name="libTypevisite" placeholder="il faut Bichonnier ses monuments"/>
+			<div class="row">				
+				<select id="idTypevisite">
+					<s:iterator value="listeDesTypevisites">
+						<option value="<s:property value="idtypevisite" />"><s:property value="libtypevisite" /></option>
+					</s:iterator>
+				</select>
+			</div>
+			<div class = "row">
+				<a href="<s:url action='creationTypevisite'/>">Ajouter un type de monument</a>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
