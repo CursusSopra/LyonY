@@ -30,7 +30,12 @@
 			<add-attribute value="./fonts/font-awesome-4.3.0/css/font-awesome.min.css"></add-attribute>
 
 		</put-list-attribute>
-
+	</definition>
+	
+	<definition name="formCreationNclub" extends="baseLayout">
+		<put-attribute name="title" value="Ajout d'un night club" />
+		<put-attribute name="body"
+			value="/views/sorties/nclubs/formCreationNclub.jsp" />
 	</definition>
 
 </tiles-definitions>

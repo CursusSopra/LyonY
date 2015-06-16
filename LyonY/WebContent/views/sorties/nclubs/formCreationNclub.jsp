@@ -1,21 +1,20 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<h1>Entrez les informations sur le nouveau Bar :</h1>
+<h1>Entrez les informations sur le nouveau Night Club :</h1>
 
-<form class="form-horizontal" method="post" id="idFormAjouterBar"
-	action="<s:url action='ajouterBar'/>">
+<form class="form-horizontal" method="post" id="idFormCreationNclub"	action="<s:url action='creationNclub'/>">
 
 	<div id="idFormAlertError" class="alert alert-danger hidden"
 		role="alert">Le formulaire contient des erreurs. Veuillez
 		réessayer</div>
 
 
-	<legend>Identification du Bar</legend>
+	<legend>Identification du Night Club</legend>
 	<div class="form-group">
-		<label for="idNom" class="col-sm-2 control-label">Nom du Bar</label>
+		<label for="idNom" class="col-sm-2 control-label">Nom du Night Club</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNom" name="nombar" />
+				<input type="text" class="form-control" id="idNom" name="nomnclub" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -38,8 +37,11 @@
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idQuartier"
-					name="nomquartier" />
+				<select id="idQuartier">
+					<s:iterator value="listeDesQuartiers">
+						<option value="<s:property value="idquartier" />"><s:property value="nom" /></option>
+					</s:iterator>
+				</select>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -96,7 +98,17 @@
 		<label for="idDescription" class="col-sm-2 control-label">Description</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<TEXTAREA name="description" rows=4 cols=40 placeholder="Décrivez le nclub : spécialités, activités..."></TEXTAREA>
+				<TEXTAREA name="description" rows=4 cols=40 placeholder="Décrivez le Night Club : spécialités, activités..."></TEXTAREA>
+			</div>
+			<span class="col-lg-20 control-label">&nbsp;</span>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idAccessibilité" class="col-sm-2 control-label">Comment y accéder ?</label>
+		<div class="col-sm-3">
+			<div class="row">
+				<TEXTAREA id="idAccessibilité" name="accessibilite" rows=4 cols=40 placeholder="Expliquez comment l'on peut s'y rendre"></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -124,31 +136,6 @@
 		</div>
 	</div>
 	
-
-	<!-- 			<div class="form-group"> -->
-	<!-- 				<label for="idRegionNaissance" class="col-sm-2 control-label">Région -->
-	<!-- 					de naissance</label> -->
-	<!-- 				<div class="col-sm-3"> -->
-	<!-- 					<div class="row"> -->
-	<%-- 						<select id="idRegionNaissance"> --%>
-
-	<%-- 							<s:iterator value="listeDesRegions"> --%>
-
-	<%-- 								<option value="<s:property value="reg" />"> --%>
-	<%-- 									<s:property value="nccenr" /> --%>
-	<!-- 								</option> -->
-
-	<%-- 							</s:iterator> --%>
-
-	<%-- 						</select> --%>
-	<!-- 					</div> -->
-	<%-- 					<span class="col-lg-20 control-label">&nbsp;</span> --%>
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-
-
-
-
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">

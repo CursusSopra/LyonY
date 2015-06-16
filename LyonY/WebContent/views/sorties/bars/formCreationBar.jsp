@@ -2,8 +2,7 @@
 
 <h1>Entrez les informations sur le nouveau Bar :</h1>
 
-<form class="form-horizontal" method="post" id="idFormAjouterBar"
-	action="<s:url action='ajouterBar'/>">
+<form class="form-horizontal" method="post" id="idFormCreationBar"	action="<s:url action='creationBar'/>">
 
 	<div id="idFormAlertError" class="alert alert-danger hidden"
 		role="alert">Le formulaire contient des erreurs. Veuillez
@@ -105,6 +104,16 @@
 		</div>
 	</div>
 	
+	<div class="form-group">
+		<label for="idAccessibilité" class="col-sm-2 control-label">Comment y accéder ?</label>
+		<div class="col-sm-3">
+			<div class="row">
+				<TEXTAREA id="idAccessibilité" name="accessibilite" rows=4 cols=40 placeholder="Expliquez comment l'on peut s'y rendre"></TEXTAREA>
+			</div>
+			<span class="col-lg-20 control-label">&nbsp;</span>
+		</div>
+	</div>
+	
 		<div class="form-group">
 		<label for="idPrixmin" class="col-sm-2 control-label">Prix mini</label>
 		<div class="col-sm-3">
@@ -129,28 +138,6 @@
 	
 	<legend>Horaires</legend>
 	
-
-	<!-- 			<div class="form-group"> -->
-	<!-- 				<label for="idRegionNaissance" class="col-sm-2 control-label">Région -->
-	<!-- 					de naissance</label> -->
-	<!-- 				<div class="col-sm-3"> -->
-	<!-- 					<div class="row"> -->
-	<%-- 						<select id="idRegionNaissance"> --%>
-
-	<%-- 							<s:iterator value="listeDesRegions"> --%>
-
-	<%-- 								<option value="<s:property value="reg" />"> --%>
-	<%-- 									<s:property value="nccenr" /> --%>
-	<!-- 								</option> -->
-
-	<%-- 							</s:iterator> --%>
-
-	<%-- 						</select> --%>
-	<!-- 					</div> -->
-	<%-- 					<span class="col-lg-20 control-label">&nbsp;</span> --%>
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-
 
 
 

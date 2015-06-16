@@ -30,5 +30,11 @@
 
 		</put-list-attribute>
 	</definition>
+	
+		<definition name="formCreationRestaurant" extends="baseLayout">
+		<put-attribute name="title" value="Ajout d'un restaurant" />
+		<put-attribute name="body"
+			value="/views/sorties/restaurants/formCreationRestaurant.jsp" />
+	</definition>
 
 </tiles-definitions>
