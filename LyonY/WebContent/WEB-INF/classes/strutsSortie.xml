@@ -44,7 +44,10 @@
 		</action>
 		
 		 	<!-- Formulaire de modification -->
-		<action name="formModifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeModifRestaurant">
+		<action name="modifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeModifRestaurant">
+			<result name="success" type="tiles">listeDesRestaurants</result>
+		</action>
+			<action name="formModifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="execute">
 			<result name="success" type="tiles">formModifRestaurant</result>
 		</action>
 		
@@ -74,10 +77,12 @@
 		</action>
 		
 		<!-- Formulaire de modification -->
-		<action name="formModifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="executeModifNclub">
+		<action name="modifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="executeModifNclub">
+			<result name="success" type="tiles">listeDesNclubs</result>
+		</action>
+		<action name="formModifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="execute">
 			<result name="success" type="tiles">formModifNclub</result>
 		</action>
-		
 		
 		<!-- BARS -->
 		
@@ -104,8 +109,11 @@
 		</action>
 		
 		<!-- Formulaire de modification -->
-		<action name="formModifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="executeModifBar">
+		<action name="formModifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="execute">
 			<result name="success" type="tiles">formModifBar</result>
+		</action>
+		<action name="modifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="executeModifBar">
+			<result name="success" type="tiles">listeDesBars</result>
 		</action>
 
 
