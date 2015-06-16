@@ -7,7 +7,7 @@
 # eclipse specific git ignore
 .project
 .metadata
-build/**
+build/classes/*.class
 bin/**
 tmp/**
 tmp/**/*
