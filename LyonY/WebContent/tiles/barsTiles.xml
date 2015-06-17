@@ -7,7 +7,7 @@
 <tiles-definitions>
 
 	<!-- BARS -->
-	<definition name="index" extends="baseLayout">
+	<definition name="indexBars" extends="baseLayout">
 		<put-attribute name="title" value="Bars" />
 		<put-attribute name="body"
 			value="/views/sorties/bars/index.jsp" />
