@@ -4,13 +4,16 @@
 
  // création des sliders
 var i = $('#num').html();
+var arrStartTime = [];
+var arrEndTime = [];
 
 // Création des sliders
 $(function() {
 	var nbSliders = $("#Horaires tr").length;
-	console.log(nbSliders);
 	var startTime;
 	var endTime;
+
+	
 	for(var i = 1; i <= nbSliders; i++) {
 		$("#slider-range"+i).slider({
 			range : true,
@@ -37,7 +40,11 @@ function slideTime(event, ui) {
 	var val1 = $("#slider-range" + rang).slider("values", 1), int1 = parseInt(val1, 10), minutes1 = int1 % 2, hours1 = Math.floor(int1 / 2);
 
 	startTime = getTime(hours0, 30*minutes0);
+	arrStartTime[rang-1]=startTime;
+	
 	endTime = getTime(hours1, 30*minutes1);
+	arrEndTime[rang-1]=endTime;
+	
 	$spanTime.text(startTime + ' - ' + endTime);
 }
 
@@ -62,10 +69,7 @@ function getTime(hours, minutes) {
 $("#scheduleSubmit").on(
 		'click',
 		function() {
-			console.log(startTime);
-			console.log(endTime);
-			$('#Schedule tbody').append(
-					'<tr>' + '<td>' + startTime + '</td>' + '<td>'
-							+ endTime + '</td>' + '</tr>');
+			console.log(arrStartTime);
+			console.log(arrEndTime);
 });
 

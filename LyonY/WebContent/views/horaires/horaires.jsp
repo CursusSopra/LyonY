@@ -28,15 +28,6 @@
 <input type="submit" name="scheduleSubmit" value="Submit"
 	id="scheduleSubmit" class="ui-button ui-state-default ui-corner-all" />
 
-<table id="Schedule">
-	<thead>
-		<tr>
-			<th>Start Time</th>
-			<th>End Time</th>
-		</tr>
-	</thead>
-	<tbody>
-	</tbody>
-</table>
+
 
 
