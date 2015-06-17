@@ -161,7 +161,7 @@ public class Quartier {
 			a.idAdresse = rs.getInt("idadresse");
 			a.numero = rs.getInt("numero");
 			a.voie = rs.getString("voie");
-			a.codePostal = rs.getInt("codepostal");
+			a.codePostal = rs.getString("codepostal");
 			a.ville = rs.getString("ville");
 
 			listeDesAdressesDunQuartier.add(a);
