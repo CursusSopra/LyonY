@@ -117,7 +117,7 @@ public class Placeetparc  {
         		+ "q.nom AS nomQ, "
         		+ "t.libtypevisite, "
         		+ "p.idplaceetparc, p.avecfontaine, "
-        		+ "AVG(av.note) AS notemoy "
+        		+ "AVG(av.note) AS notemoy, COUNT(av.note) AS nbavis  "
         	+ "FROM placeetparcs p "
         		+ "INNER JOIN visites v USING (idvisite) "
         		+ "INNER JOIN lieux l USING (idlieu) "
@@ -147,6 +147,7 @@ public class Placeetparc  {
             notemoy = rsPP.getFloat("notemoy");
             idLieu = rsPP.getInt("idlieu");
             avecFontaine = rsPP.getBoolean("avecfontaine");
+            nbavis = rsPP.getInt("nbavis");
         }
         
         Lieu lieu = new Lieu(idLieu);
