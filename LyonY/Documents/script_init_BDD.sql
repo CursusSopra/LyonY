@@ -53,7 +53,7 @@ CREATE TABLE utilisateurs (
 	motdepasse           varchar(30)  NOT NULL,
 	CONSTRAINT pk_utilisateurs PRIMARY KEY ( idutilisateur ),
 	CONSTRAINT ct_unique_pseudo UNIQUE ( pseudo ) ,
-	CONSTRAINT ct_unique_email UNIQUE ( email )  
+	CONSTRAINT ct_unique_email UNIQUE ( email )
  );
 
 CREATE TABLE avis ( 
@@ -132,6 +132,7 @@ CREATE TABLE monuments (
 CREATE TABLE placeetparcs ( 
 	idplaceetparc        serial  NOT NULL,
 	idvisite             integer  NOT NULL,
+	avecfontaine		 bool DEFAULT FALSE , 
 	CONSTRAINT pk_placeetparcs PRIMARY KEY ( idplaceetparc )   
  );
 
@@ -325,11 +326,11 @@ INSERT INTO monuments
 	(200, 1492, 3);
 
 INSERT INTO placeetparcs
-	(idvisite)
+	(idvisite, avecfontaine)
 	VALUES
-	(4),
-	(5),
-	(6);
+	(4, false),
+	(5, true),
+	(6, true);
 
 INSERT INTO ambiances
 	(types, libambiance)
