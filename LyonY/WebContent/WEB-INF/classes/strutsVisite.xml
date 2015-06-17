@@ -56,8 +56,11 @@
 		</action>
 		
  		<!-- Formulaire de création d'une place ou d'un parc -->
-		<action name="formCreationPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeCreationPlaceetparc">
+		<action name="formCreationPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="execute">
 			<result name="success" type="tiles">formCreationPlaceetparc</result>
+		</action>
+		<action name="creationPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeCreationPlaceetparc">
+			<result name="success" type="redirectAction">listeDesPlaceetparcs</result>
 		</action>
 		
  		<!-- Formulaire de modification d'une place ou d'un parc -->

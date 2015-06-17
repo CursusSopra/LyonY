@@ -1,6 +1,7 @@
 package fr.cursusSopra.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,16 +12,10 @@ import fr.cursusSopra.tech.PostgresConnection;
 
 public class Placeetparc  {
 
-	public Placeetparc() {
-		
-		// TODO Auto-generated constructor stub
-	}
-
-
-
 	//Variables
 	private int idPlaceetparc;
 	private String nomLieu;
+	private int idLieu; 
 	private String descriptionLieu;
 	private String accessibiliteLieu;
 	private int numAdres;
@@ -31,20 +26,26 @@ public class Placeetparc  {
 	private String typeVisite;
 	private float notemoy;
 	private int nbavis;
-	private List<Avis> listeDesAvisDunLieu;
+	private int idVisite;
+	private boolean avecFontaine;
 	
+	private List<Avis> listeDesAvisDunLieu;
 	
 	// GETS SETS
 	public int getIdPlaceetparc() {
 		return idPlaceetparc;
 	}
-	
 	public void setIdPlaceetparc(int idPlaceetparc) {
 		this.idPlaceetparc = idPlaceetparc;
 	}
-	
 	public String getNomLieu() {
 		return nomLieu;
+	}
+	public int getIdLieu() {
+		return idLieu;
+	}
+	public void setIdLieu(int idLieu) {
+		this.idLieu = idLieu;
 	}
 	public String getDescriptionLieu() {
 		return descriptionLieu;
@@ -58,7 +59,6 @@ public class Placeetparc  {
 	public String getVoieAdres() {
 		return voieAdres;
 	}
-
 	public String getCpAdres() {
 		return cpAdres;
 	}
@@ -77,15 +77,32 @@ public class Placeetparc  {
 	public int getNbavis() {
 		return nbavis;
 	}
+	public int getIdVisite() {
+		return idVisite;
+	}
+	public void setIdVisite(int idVisite) {
+		this.idVisite = idVisite;
+	}
+	public boolean isAvecFontaine() {
+		return avecFontaine;
+	}
+	public void setAvecFontaine(boolean avecFontaine) {
+		this.avecFontaine = avecFontaine;
+	}
 	public List<Avis> getListeDesAvisDunLieu() {
 		return listeDesAvisDunLieu;
 	}
 	
-
+	// CTOR
+	public Placeetparc() {
+		
+	}
 	
+    public Placeetparc(int idVisite, boolean avecFontaine) {
+    	this.idVisite=idVisite;
+    	this.avecFontaine=avecFontaine;
+    }
 
-	//// METHODES PUBLIQUES
-	
     public Placeetparc(int idp) throws SQLException {
         idPlaceetparc = idp;
         // connexion à la BDD PostGresSQL
@@ -99,7 +116,7 @@ public class Placeetparc  {
         		+ "a.numero, a.voie, a.codepostal, a.ville, "
         		+ "q.nom AS nomQ, "
         		+ "t.libtypevisite, "
-        		+ "p.idPlaceetparc, "
+        		+ "p.idplaceetparc, p.avecfontaine, "
         		+ "AVG(av.note) AS notemoy "
         	+ "FROM placeetparcs p "
         		+ "INNER JOIN visites v USING (idvisite) "
@@ -108,14 +125,15 @@ public class Placeetparc  {
         		+ "INNER JOIN quartiers q USING (idquartier) "
         		+ "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
         		+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
-        		+ "WHERE p.idPlaceetparc= "+ idPlaceetparc
-        		+ "GROUP BY  l.idlieu, nomL, l.description, l.accessibilite, "
-        		+ "a.numero, a.voie, a.codepostal, a.ville, nomQ, t.libtypevisite, "
-        		+ "p.idPlaceetparc";
+    		+ "WHERE p.idplaceetparc = "+ idPlaceetparc
+    		+ "GROUP BY l.idlieu, nomL, l.description, l.accessibilite, "
+        		+ "a.numero, a.voie, a.codepostal, a.ville, "
+        		+ "nomQ, "
+        		+ "t.libtypevisite, "
+        		+ "p.idplaceetparc, p.avecfontaine;";
         // Obtention de l'ensemble résultat
         ResultSet rsPP = stmt.executeQuery(queryPPCompl);
         // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
-        int idl=0;
         if(rsPP.next()){
             nomLieu = rsPP.getString("nomL");
             descriptionLieu = rsPP.getString("description");
@@ -127,17 +145,35 @@ public class Placeetparc  {
             nomQuartier = rsPP.getString("nomQ");
             typeVisite = rsPP.getString("libtypevisite");
             notemoy = rsPP.getFloat("notemoy");
-            idl = rsPP.getInt("idlieu");
+            idLieu = rsPP.getInt("idlieu");
+            avecFontaine = rsPP.getBoolean("avecfontaine");
         }
         
-        
-        Lieu lieu = new Lieu(idl);
+        Lieu lieu = new Lieu(idLieu);
         listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
-        
         
     }
 
-
+	// METHODES PUBLIQUES
+    // INSERTION NV PLACE ET PARC EN BDD
+	public int save(Connection cnx) throws Exception {
+		String query = "INSERT INTO placeetparcs (idvisite,avecfontaine) VALUES (?,?)";
+		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, idVisite);
+		ps.setBoolean(2, avecFontaine);
+		
+		ps.executeUpdate();
+		
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.next()) {
+			idPlaceetparc = rs.getInt(1);
+		} else {
+			throw new Exception();
+		}
+		return idPlaceetparc;
+	}
+    
+    
 	// METHODES STATIQUES
 	private static List<Placeetparc> listeDesPlaceetparcs;
 	
@@ -183,4 +219,34 @@ public class Placeetparc  {
 		
 		return listeDesPlaceetparcs;
 	}
+
+	// LISTE DES TYPES DE PLACEETPARC
+    private static List<Typevisite> listeDesTypevisitesDePlaceetparc;
+    
+	public static List<Typevisite> getListeDesTypevisitesDePlaceetparc() throws SQLException{
+		listeDesTypevisitesDePlaceetparc = new ArrayList<Typevisite>();
+		// connexion à la BDD PostGresSQL
+		Connection cnx = null;
+		cnx = PostgresConnection.getConnexion();
+		// Objet instruction SQL
+		Statement stmt = cnx.createStatement();
+		// Requête à exécuter
+		String query  = "SELECT idtypevisite, typev, libtypevisite "
+						+ "FROM typevisites "
+						+ "WHERE typev='P' "
+						+ "ORDER BY libtypevisite;"	;
+		// Obtention de l'ensemble résultat
+		ResultSet rs = stmt.executeQuery(query);
+		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+		while(rs.next()){
+			Typevisite tv = new Typevisite();
+			tv.setIdTypevisite(rs.getInt("idtypevisite"));
+			tv.setLibtypevisite(rs.getString("libtypevisite"));
+
+			listeDesTypevisitesDePlaceetparc.add(tv);
+		}
+				
+		return listeDesTypevisitesDePlaceetparc;
+	}
+	
 }
