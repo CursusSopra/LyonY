@@ -1,6 +1,7 @@
 package fr.cursusSopra.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.cursusSopra.model.Typevisite;
-
 import fr.cursusSopra.tech.PostgresConnection;
 
 public class Monument {
@@ -28,6 +28,7 @@ public class Monument {
 	private String typeVisite;
 	private float notemoy;
 	private int nbavis;
+	private int idVisite;
 	
 	//Getters
 	public int getIdMonument() {
@@ -75,6 +76,13 @@ public class Monument {
 	public int getNbavis() {
 		return nbavis;
 	}
+	public int getIdVisite() {
+		return idVisite;
+	}
+	public void setIdVisite(int idVisite) {
+		this.idVisite=idVisite;
+	}
+	
 	//CTORS
     public Monument(){
     };
@@ -118,6 +126,31 @@ public class Monument {
         }
     }
 	
+    public Monument(int idVisite, int annCons, int annFinCons) {
+    	this.idVisite=idVisite;
+    	this.annCons=annCons;
+    	this.annFinCons=annFinCons;
+    }
+    
+    // METHODES PUBLIQUES
+	public int save(Connection cnx) throws Exception {
+		String query = " INSERT INTO monuments (idvisite,anneeconstruction,anneefinconstruction) VALUES (?,?,?)";
+		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, idVisite);
+		ps.setInt(2, annCons);
+		ps.setInt(3, annFinCons);
+		
+		ps.executeUpdate();
+		
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.next()) {
+			idMonument = rs.getInt(1);
+		} else {
+			throw new Exception();
+		}
+		return idMonument;
+	}
+	
 //	public int modifMm() throws SQLException {
 		
 //		Connection cnx = PostgresConnection.getConnexion();
@@ -152,8 +185,7 @@ public class Monument {
 		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
 		while(rs.next()){
 			Typevisite tv = new Typevisite();
-			tv.setIdtypevisite(rs.getInt("idtypevisite"));
-			tv.setTypev(rs.getString("typev"));
+			tv.setIdTypevisite(rs.getInt("idtypevisite"));
 			tv.setLibtypevisite(rs.getString("libtypevisite"));
 
 			listeDesTypevisitesDeMonument.add(tv);

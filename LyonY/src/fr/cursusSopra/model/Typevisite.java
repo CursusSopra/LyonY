@@ -2,15 +2,17 @@ package fr.cursusSopra.model;
 
 public class Typevisite {
 	
-	private int idtypevisite;
+	private int idTypevisite;
 	private String typev;
 	private String libtypevisite;
 	
-	public int getIdtypevisite() {
-		return idtypevisite;
+	
+	// GETSETS
+	public int getIdTypevisite() {
+		return idTypevisite;
 	}
-	public void setIdtypevisite(int idtypevisite) {
-		this.idtypevisite = idtypevisite;
+	public void setIdTypevisite(int idTypevisite) {
+		this.idTypevisite = idTypevisite;
 	}
 	public String getTypev() {
 		return typev;
@@ -25,4 +27,12 @@ public class Typevisite {
 		this.libtypevisite = libtypevisite;
 	}
 	
+	// CTOR
+	public Typevisite(){
+		
+	}
+	public Typevisite (String typev, String libtypevisite) {
+		this.typev = typev;
+		this.libtypevisite = libtypevisite;
+	}
 }

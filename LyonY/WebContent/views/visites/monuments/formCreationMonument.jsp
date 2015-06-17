@@ -28,9 +28,9 @@
 		<label for="idTypevisite" class="col-sm-2 control-label">Type de monument *</label>
 		<div class="col-sm-3">
 			<div class="row">				
-				<select id="idTypevisite">
+				<select id="idTypevisite" name="idTypevisite">
 					<s:iterator value="listeDesTypevisites">
-						<option value="<s:property value="idtypevisite" />"><s:property value="libtypevisite" /></option>
+						<option value="<s:property value="idTypevisite" />"><s:property value="libtypevisite" /></option>
 					</s:iterator>
 				</select>
 			</div>
@@ -41,12 +41,11 @@
 		</div>
 	</div>
 
-
 	<div class="form-group">
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<select id="idQuartier">
+				<select id="idQuartier" name="idQuartier">
 					<s:iterator value="listeDesQuartiers">
 						<option value="<s:property value="idquartier" />"><s:property value="nom" /></option>
 					</s:iterator>
