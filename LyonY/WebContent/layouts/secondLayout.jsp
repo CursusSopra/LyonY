@@ -18,11 +18,11 @@
         <![endif]-->
 <title>LyonY <tiles:getAsString name="title" /></title>
 <!-- BOOTSTRAP CORE STYLE  -->
-<link href="_theme/css/bootstrap.css" rel="stylesheet" />
+<link href="/_theme/css/bootstrap.css" rel="stylesheet" />
 <!-- FONT AWESOME ICONS  -->
-<link href="_theme/css/font-awesome.css" rel="stylesheet" />
+<link href="/_theme/css/font-awesome.css" rel="stylesheet" />
 <!-- CUSTOM STYLE  -->
-<link href="_theme/css/style.css" rel="stylesheet" />
+<link href="/_theme/css/style.css" rel="stylesheet" />
 <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
 <tiles:useAttribute name="moreStyles" scope="request" ignore="true" />
 <c:if test="${not empty moreStyles}">
 	<c:forEach items="${moreStyles}" var="cssFile">
-		<link href="./${cssFile}" media="all" rel="stylesheet" type="text/css" />
+		<link href="/${cssFile}" media="all" rel="stylesheet" type="text/css" />
 	</c:forEach>
 </c:if>
 
@@ -78,7 +78,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.html"> <img
-					src="_theme/img/logo.png" />
+					src="/_theme/img/logo.png" />
 				</a>
 
 			</div>
@@ -94,7 +94,7 @@
 							<div class="dropdown-menu dropdown-settings">
 								<div class="media">
 									<a class="media-left" href="#"> <img
-										src="_theme/img/64-64.jpg" alt="" class="img-rounded" />
+										src="/_theme/img/64-64.jpg" alt="" class="img-rounded" />
 									</a>
 									<div class="media-body">
 										<h4 class="media-heading">Jhon Deo Alex</h4>
@@ -180,9 +180,9 @@
 	<!-- FOOTER SECTION END-->
 	<!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 	<!-- CORE JQUERY SCRIPTS -->
-	<script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="/js/jQuery/jquery-2.1.1.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="js/bootstrap.js"></script>
+	<script src="/js/bootstrap.js"></script>
 	
 	<!-- ================================================== -->
 	<!--                  Extra JavaScript                  -->
@@ -196,7 +196,7 @@
 	<tiles:useAttribute name="moreScripts" scope="request" ignore="true" />
 	<c:if test="${not empty moreScripts}">
 		<c:forEach items="${moreScripts}" var="jsFile">
-			<script type="text/javascript" src="./${jsFile}"></script>
+			<script type="text/javascript" src="/${jsFile}"></script>
 		</c:forEach>
 	</c:if>	
 	<!-- ================================================== -->

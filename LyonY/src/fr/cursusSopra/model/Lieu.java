@@ -70,15 +70,23 @@ public class Lieu {
 	// Rentre un lieu dans la base de donnée
 	// Prend en paramètre une connection (synchronisation entre les classes
 	// métiers)
-	public int create(Connection cnx) throws SQLException {
+	public int save(Connection cnx) throws Exception {
 		String query = " INSERT INTO lieux(nom,idAdresse,description,accessibilite) VALUES (?,?,?,?)";
-		PreparedStatement ps = cnx.prepareStatement(query);
+		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		ps.setString(1, nom);
 		ps.setInt(2, adresse.getIdAdresse());
 		ps.setString(3, description);
 		ps.setString(4, accessibilite);
-		System.out.println(ps);
-		return ps.executeUpdate();
+		
+		ps.executeUpdate();
+		
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.next()) {
+			idLieu = rs.getInt(1);
+		} else {
+			throw new Exception();
+		}
+		return idLieu;
 	}
 
 	// Modifie un lieu dans la base de donnée

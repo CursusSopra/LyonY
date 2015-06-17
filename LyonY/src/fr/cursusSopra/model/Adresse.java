@@ -25,7 +25,7 @@ public class Adresse {
 	String ville;
 	
 	// Identitfiant du quartier
-	private Quartier quartier;
+	private int idQuartier;
 
 	// Constructeur vide
 	@SuppressWarnings("unused") Adresse(){};
@@ -36,7 +36,7 @@ public class Adresse {
 		this.voie = voie;
 		this.codePostal = codePostal;
 		this.ville = ville;
-		this.quartier = new Quartier(idQuartier);
+		this.idQuartier = idQuartier;
 	}
 
 	// Constructeur d'une adresse correspondant à partir d'un identifiant
@@ -65,15 +65,24 @@ public class Adresse {
 	// Rentre une adresse dans la base de donnée
 	// Prend en paramètre une connection (synchronisation entre les classes
 	// métiers)
-	public int create(Connection cnx) throws SQLException {
+	public int save(Connection cnx) throws Exception {
 		String query = " INSERT INTO adresses(numero, voie, codepostal, ville, idquartier) VALUES (?,?,?,?,?)";
-		PreparedStatement ps = cnx.prepareStatement(query);
+		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, numero);
 		ps.setString(2, voie);
 		ps.setInt(3, codePostal);
 		ps.setString(4, ville);
-		ps.setInt(5, quartier.getIdquartier());
-		return ps.executeUpdate();
+		ps.setInt(5, idQuartier);
+		
+		ps.executeUpdate();
+		
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.next()) {
+			idAdresse = rs.getInt(1);
+		} else {
+			throw new Exception();
+		}
+		return idAdresse;
 	}
 
 	// Modifie une adresse dans la base de donnée
@@ -140,13 +149,19 @@ public class Adresse {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-
-	public Quartier getQuartier() {
-		return quartier;
+	public int getIdQuartier() {
+		return idQuartier;
+	}
+	public void setIdQuartier(int idQuartier) {
+		this.idQuartier = idQuartier;
 	}
 
-	public void setQuartier(Quartier quartier) {
-		this.quartier = quartier;
-	}
+//	public Quartier getQuartier() {
+//		return quartier;
+//	}
+//
+//	public void setQuartier(Quartier quartier) {
+//		this.quartier = quartier;
+//	}
 	
 }
