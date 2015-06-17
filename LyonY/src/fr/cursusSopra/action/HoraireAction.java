@@ -13,9 +13,9 @@ public class HoraireAction extends ActionSupport {
 	
 	public List<Horaire> listeDesHorairesTest;
 	
-	private String[] jours = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
+	private static String[] jours = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
 	
-	public String[] getJours() {
+	public static String[] getJours() {
 		return jours;
 	}
 	

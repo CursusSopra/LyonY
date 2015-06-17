@@ -8,11 +8,11 @@
 	<fieldset>
 		<legend>Login</legend>
 		<div class="form-group">
-			<label for="idPseudo" class="col-lg-4 control-label">Pseudo</label>
+			<label for="idNewPseudo" class="col-lg-4 control-label">Pseudo</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
-						<input type="text" class="form-control" id="idPseudo"
+						<input type="text" class="form-control" id="idNewPseudo"
 							name="pseudo" placeholder="Pseudo" required />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
@@ -20,12 +20,12 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="idMotDePasse" class="col-lg-4 control-label">Mot
+			<label for="idNewMotDePasse" class="col-lg-4 control-label">Mot
 				de passe</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
-						<input type="password" class="form-control" id="idMotDePasse"
+						<input type="password" class="form-control" id="idNewMotDePasse"
 							name="motDePasse" placeholder="Mot de Passe" required />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
@@ -37,12 +37,12 @@
 	<fieldset>
 		<legend>Informations personnelles</legend>
 		<div class="form-group">
-			<label for="idEmail" class="col-lg-4 control-label">Adresse
+			<label for="idNewEmail" class="col-lg-4 control-label">Adresse
 				mail</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
-						<input type="text" class="form-control" id="idEmail" name="email"
+						<input type="text" class="form-control" id="idNewEmail" name="email"
 							placeholder="exemple.exemple@gmail.fr" required />
 					</div>
 					<span class="col-lg-6 control-label">&nbsp;</span>
