@@ -11,7 +11,8 @@ public class Horaire {
 	private String jour;
 	private PlageHoraire plageHoraire;
 	private int idPlageHoraire;
-
+	
+	
 	public String getJour() {
 		return jour;
 	}
@@ -24,12 +25,14 @@ public class Horaire {
 		return plageHoraire;
 	}
 
+	
 	public void setPlageHoraire(PlageHoraire plageHoraire) {
 		this.plageHoraire = plageHoraire;
 	}
 
 	public Horaire() {
 	}
+	
 	public Horaire(String jour, int idPlageHoraire) {
 		this.jour = jour;
 		this.idPlageHoraire = idPlageHoraire;

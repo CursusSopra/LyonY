@@ -4,7 +4,13 @@
 
  // création des sliders
 var i = $('#num').html();
+
+//Création d'un tableau avec les horaires de la semaine
+
+
 	
+
+// Création des sliders
 $(function() {
 	var nbSliders = $("#Horaires tr").length;
 	var startTime;
@@ -22,7 +28,6 @@ $(function() {
 });
 
  // Fonction pour modifier les données des sliders
-
 function slideTime(event, ui) {
 	var $spanTime = $(ui.handle).parent().parent().next().children('span').first();
 	var rang = $spanTime.data('rang');
@@ -55,6 +60,7 @@ function getTime(hours, minutes) {
 	}
 	return hours + ":" + minutes;
 }
+
 
 // Submit des horaires
 $("#scheduleSubmit").on(

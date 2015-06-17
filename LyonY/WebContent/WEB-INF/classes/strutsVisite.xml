@@ -35,7 +35,7 @@
 			<result name="success" type="tiles">formCreationMonument</result>
 		</action>
 		<action name="creationMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeCreationMonument">
-			<result name="success" type="tiles">listeDesMonuments</result>
+			<result name="success" type="redirectAction">listeDesMonuments</result>
 		</action>
 		
  		<!-- Formulaire de modification d'un monument -->
