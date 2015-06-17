@@ -211,6 +211,7 @@ public class ManageMonumentAction extends VisitesAction {
 			}
 
 	}
+	
 	public String executeModifMonument(){
 
 		return SUCCESS;
