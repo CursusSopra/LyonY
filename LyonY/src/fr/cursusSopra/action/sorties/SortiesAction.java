@@ -7,7 +7,7 @@ public class SortiesAction extends ActionGeneral {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int idSortie;
+	protected int idSortie;
 	
 	public int getIdSortie() {
 		return idSortie;

@@ -16,8 +16,8 @@
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 		
-		<action name="horaire" class="fr.cursusSopra.action.HoraireAction" method="execute">			
-			<result name="success" type="tiles">horaire</result>			
+		<action name="formCreationHoraire" class="fr.cursusSopra.action.HoraireAction" method="execute">			
+			<result name="success" type="tiles">formCreationHoraire</result>			
 		</action>
 		
 		<action name="horaireBis" class="fr.cursusSopra.action.HoraireAction" method="execute">			

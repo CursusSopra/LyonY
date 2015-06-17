@@ -7,10 +7,14 @@
 <tiles-definitions>
 
 	<!-- BARS -->
-	<definition name="index" extends="baseLayout">
+	<definition name="indexBars" extends="baseLayout">
 		<put-attribute name="title" value="Bars" />
 		<put-attribute name="body"
 			value="/views/sorties/bars/index.jsp" />
+
+		<put-list-attribute name="moreStyles">
+			<add-attribute value="_css/lyony.css"/>
+		</put-list-attribute>
 	</definition>
 	
 	<definition name="listeDesBars" extends="baseLayout">
@@ -24,13 +28,12 @@
 		<put-attribute name="body" value="/views/sorties/bars/detailsBar.jsp" />
 
 		<put-list-attribute name="moreScripts">
-			<add-attribute value="./_plugins/Star_rating/js/star-rating.min.js"></add-attribute>
+			<add-attribute value="_plugins/Star_rating/js/star-rating.min.js"></add-attribute>
 		</put-list-attribute>
 
 		<put-list-attribute name="moreStyles">
-			<add-attribute value="./_plugins/Star_rating/css/star-rating.min.css"></add-attribute>
-			<add-attribute value="./fonts/font-awesome-4.3.0/css/font-awesome.min.css"></add-attribute>
-
+			<add-attribute value="_plugins/Star_rating/css/star-rating.min.css"></add-attribute>
+			<add-attribute value="fonts/font-awesome-4.3.0/css/font-awesome.min.css"></add-attribute>
 		</put-list-attribute>
 	</definition>
 

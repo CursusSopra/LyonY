@@ -2,8 +2,7 @@
 
 <h1>Entrez les informations sur le nouveau Bar :</h1>
 
-<form class="form-horizontal" method="post" id="idFormCreationBar"
-	action="<s:url action='creationBar'/>">
+<form class="form-horizontal" method="post" id="idFormCreationBar" action="<s:url action='creationBar'/>">
 
 	<div id="idFormAlertError" class="alert alert-danger hidden"
 		role="alert">Le formulaire contient des erreurs. Veuillez
@@ -15,7 +14,7 @@
 		<label for="idNom" class="col-sm-2 control-label">Nom du Bar *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNom" name="nombar" />
+				<input type="text" class="form-control" id="idNom" name="nomL" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -26,9 +25,9 @@
 	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance *</label>
 		<div class="col-sm-3">
 			<div class="row">				
-				<select id="idAmbiance">
+				<select id="idAmbiance" name="idAmbiance">
 					<s:iterator value="listeDesAmbiances">
-						<option value="<s:property value="idambiance" />"><s:property value="libambiance" /></option>
+						<option value="<s:property value="idAmbiance" />"><s:property value="libambiance" /></option>
 					</s:iterator>
 				</select>
 			</div>
@@ -43,7 +42,7 @@
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<select id="idQuartier">
+				<select id="idQuartier" name="idQuartier">
 					<s:iterator value="listeDesQuartiers">
 						<option value="<s:property value="idquartier" />"><s:property
 								value="nom" /></option>
@@ -92,7 +91,7 @@
 		<label for="idVille" class="col-sm-2 control-label">Ville *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idVille" name="ville" />
+				<input type="text" class="form-control" id="idVille" name="ville" value="Lyon"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

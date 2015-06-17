@@ -72,16 +72,12 @@
 	</package>
 	
 	
-<!--  JSON pour tester si le pseudio est unique -->
+<!--  JSON pour tester si le pseudo ou email est unique -->
 	<package name="jsonAction" extends="json-default">
-		<action name="getJSONpseudo" class="fr.cursusSopra.json.JSONUtilisateurAction">
+		<action name="getJSONpseudo" class="fr.cursusSopra.json.JSONUtilisateurPseudoAction">
 			<result type="json" />
 		</action>
-	</package>
-	
-<!--  JSON pour tester si le email  unique -->
-	<package name="jsonAction" extends="json-default">
-		<action name="getJSONemail" class="fr.cursusSopra.json.JSONUtilisateurAction">
+		<action name="getJSONemail" class="fr.cursusSopra.json.JSONUtilisateurEmailAction">
 			<result type="json" />
 		</action>
 	</package>

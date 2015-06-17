@@ -9,7 +9,7 @@ import fr.cursusSopra.tech.PostgresConnection;
 public class Bar extends Sortie {
 
 	private int idBar;
-	private String happyhour;
+	private int happyhour;
 	private String nombar;
 	private String nomquartier;
 	private int prixmin;
@@ -20,62 +20,12 @@ public class Bar extends Sortie {
 	private int codepostal;
 	private String ville;
 	private String description;
+	private String accessibilite;
 	private String ambiance;
 	private float notemoy;
 	private int nbavis;
+	private int idSortie;
 	private List<Avis> listeDesAvisDunLieu;
-
-	
-
-	public Bar() {
-	}
-
-	public Bar(int id) throws SQLException {
-		idBar = id;
-
-		// Connexion à la BDD postgreSQL
-		Connection cnx = PostgresConnection.getConnexion();
-		// Object instruction SQL
-		Statement stmt = cnx.createStatement();
-
-		// Requête à exécuter
-		String query = "SELECT l.idlieu, b.idsortie, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, happyhour, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
-				+ "FROM bars b "
-				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
-				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
-				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
-				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
-				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
-				+ "WHERE b.idbar = " + idBar
-				+ " GROUP BY l.idlieu, b.idbar, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
-
-		// Obtention de l'ensemble résultats
-		ResultSet rs = stmt.executeQuery(query);
-		int idl = 0;
-		if (rs.next()) {
-			idBar = rs.getInt("idbar");
-			idSortie = rs.getInt("idsortie");
-			nombar = rs.getString("nombar");
-			nomquartier = rs.getString("nomquartier");
-			libambiance = rs.getString("libambiance");
-			prixmin = rs.getInt("prixmin");
-			prixmax = rs.getInt("prixmax");
-			numero = rs.getInt("numero");
-			voie = rs.getString("voie");
-			codepostal = rs.getInt("codepostal");
-			ville = rs.getString("ville");
-			description = rs.getString("description");
-			notemoy = rs.getFloat("notemoy");
-			nbavis = rs.getInt("nbavis");
-			idl = rs.getInt("idlieu");
-		}
-		// Construction de la liste des horaires - Méthode de la classe mère
-		getListeDesHoraires();
-		
-		Lieu lieu = new Lieu(idl);
-        listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
-	}
 
 	// Getters and Setters
 
@@ -94,13 +44,13 @@ public class Bar extends Sortie {
 	public int getIdBar() {
 		return idBar;
 	}
-	public void setIdBar(int idbar) {
-		this.idBar = idbar;
+	public void setIdBar(int idBar) {
+		this.idBar = idBar;
 	}
-	public String getHappyhour() {
+	public int getHappyhour() {
 		return happyhour;
 	}
-	public void setHappyhour(String happyhour) {
+	public void setHappyhour(int happyhour) {
 		this.happyhour = happyhour;
 	}
 	public String getLibambiance() {
@@ -124,11 +74,9 @@ public class Bar extends Sortie {
 	public int getCodepostal() {
 		return codepostal;
 	}
-
 	public void setCodepostal(int codepostal) {
 		this.codepostal = codepostal;
 	}
-
 	public String getVille() {
 		return ville;
 	}
@@ -141,88 +89,125 @@ public class Bar extends Sortie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getAccessibilite() {
+		return accessibilite;
+	}
+	public void setAccessibilite(String accessibilite) {
+		this.accessibilite = accessibilite;
+	}
+	public String getAmbiance() {
+		return ambiance;
+	}
+	public void setAmbiance(String ambiance) {
+		this.ambiance = ambiance;
+	}
+	public float getNotemoy() {
+		return notemoy;
+	}
+	public void setNotemoy(float notemoy) {
+		this.notemoy = notemoy;
+	}
+	public int getNbavis() {
+		return nbavis;
+	}
+	public void setNbavis(int nbavis) {
+		this.nbavis = nbavis;
+	}
+	public int getIdSortie() {
+		return idSortie;
+	}
+	public void setIdSortie(int idSortie) {
+		this.idSortie = idSortie;
+	}
 	public List<Avis> getListeDesAvisDunLieu() {
 		return listeDesAvisDunLieu;
 	}
 
-	// public int save() throws SQLException {
-	// Connection cnx = PostgresConnection.getConnexion();
-	// String query =
-	// "INSERT INTO candidats(nom, prenom, datenaissance, villenaissance) "
-	// + "VALUES (?, ?, ?, ?)";
-	// PreparedStatement ps = cnx.prepareStatement(query);
-	// ps.setString(1, nom);
-	// ps.setString(2, prenom);
-	// ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
-	// ps.setString(4, villeNaissance);
-	//
-	// int ret = ps.executeUpdate();
-	//
-	// return ret;
-	//
-	// }
-	//
-	// public int edit() throws SQLException {
-	// Connection cnx = PostgresConnection.getConnexion();
-	// String query =
-	// "UPDATE candidats SET nom=?, prenom=?, datenaissance=?, villenaissance=? "
-	// + "WHERE idCandidat=?";
-	// PreparedStatement ps = cnx.prepareStatement(query);
-	// ps.setString(1, nom);
-	// ps.setString(2, prenom);
-	// ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
-	// ps.setString(4, villeNaissance);
-	// ps.setInt(5, idCandidat);
-	//
-	//
-	// int ret = ps.executeUpdate();
-	//
-	// return ret;
-	//
-	// }
-	//
-	// public int delete() throws SQLException {
-	// Connection cnx = PostgresConnection.getConnexion();
-	// String query = "DELETE FROM candidats "
-	// + "WHERE idCandidat=?";
-	// PreparedStatement ps = cnx.prepareStatement(query);
-	// ps.setInt(1, idCandidat);
-	//
-	// int ret = ps.executeUpdate();
-	//
-	// return ret;
-	//
-	// }
+	// CTORS
 
-	public String getAmbiance() {
-		return ambiance;
+	public Bar() {
 	}
 
-	public void setAmbiance(String ambiance) {
-		this.ambiance = ambiance;
+	public Bar(int id) throws SQLException {
+		idBar = id;
+
+		// Connexion à la BDD postgreSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// Object instruction SQL
+		Statement stmt = cnx.createStatement();
+
+		// Requête à exécuter
+		String query = "SELECT l.idlieu, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, "
+				+ "prixmin, prixmax, numero, voie, codepostal, ville, description, l.accessibilite, happyhour, "
+				+ "AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
+				+ "FROM bars b "
+				+ "INNER JOIN sorties s ON s.idsortie=b.idsortie "
+				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
+				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
+				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
+				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+				+ "WHERE b.idbar = "
+				+ idBar
+				+ " GROUP BY l.idlieu, b.idbar, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, "
+				+ "description, l.accessibilite";
+
+		// Obtention de l'ensemble résultats
+		ResultSet rs = stmt.executeQuery(query);
+		int idl = 0;
+		if (rs.next()) {
+			idBar = rs.getInt("idbar");
+			nombar = rs.getString("nombar");
+			nomquartier = rs.getString("nomquartier");
+			libambiance = rs.getString("libambiance");
+			prixmin = rs.getInt("prixmin");
+			prixmax = rs.getInt("prixmax");
+			numero = rs.getInt("numero");
+			voie = rs.getString("voie");
+			codepostal = rs.getInt("codepostal");
+			ville = rs.getString("ville");
+			description = rs.getString("description");
+			accessibilite = rs.getString("accessibilite");
+			notemoy = rs.getFloat("notemoy");
+			nbavis = rs.getInt("nbavis");
+			idl = rs.getInt("idlieu");
+		}
+		// Construction de la liste des horaires - Méthode de la classe mère
+		getListeDesHoraires();
+
+		Lieu lieu = new Lieu(idl);
+		listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();
 	}
 
-	public float getNotemoy() {
-		return notemoy;
+	public Bar(int idSortie, int happyhour) {
+		this.setIdSortie(idSortie);
+		this.happyhour = happyhour;
 	}
 
-	public void setNotemoy(float notemoy) {
-		this.notemoy = notemoy;
+	// METHODES PUBLIQUES
+	public int save(Connection cnx) throws Exception {
+		String query = " INSERT INTO bars (idsortie, happyhour) VALUES (?,?)";
+		PreparedStatement ps = cnx.prepareStatement(query,
+				Statement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, idSortie);
+		ps.setInt(2, happyhour);
+
+		ps.executeUpdate();
+
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.next()) {
+			idBar = rs.getInt(1);
+		} else {
+			throw new Exception();
+		}
+		return idBar;
 	}
 
-	public int getNbavis() {
-		return nbavis;
-	}
+	// LISTE DES TYPES DE BAR
+	private static List<Ambiance> listeDesAmbiancesDeBar;
 
-	public void setNbavis(int nbavis) {
-		this.nbavis = nbavis;
-	}
-	
-	
-	 // LISTE DES TYPES DE BAR
-    private static List<Ambiance> listeDesAmbiancesDeBar;
-    
-	public static List<Ambiance> getListeDesAmbiancesDeBar() throws SQLException{
+	public static List<Ambiance> getListeDesAmbiancesDeBar()
+			throws SQLException {
 		listeDesAmbiancesDeBar = new ArrayList<Ambiance>();
 		// connexion à la BDD PostGresSQL
 		Connection cnx = null;
@@ -230,22 +215,22 @@ public class Bar extends Sortie {
 		// Objet instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query  = "SELECT idambiance, types, libambiance "
-				+ "FROM ambiances "
-				+ "WHERE types='B' "
+		String query = "SELECT idambiance, types, libambiance "
+				+ "FROM ambiances " + "WHERE types='B' "
 				+ "ORDER BY libambiance;";
 		// Obtention de l'ensemble résultat
 		ResultSet rs = stmt.executeQuery(query);
-		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
-		while(rs.next()){
+		// Parcourt l'ensemble des résultats et crée objets candidats puis màj
+		// la liste
+		while (rs.next()) {
 			Ambiance a = new Ambiance();
-			a.setIdambiance(rs.getInt("idambiance"));
+			a.setIdAmbiance(rs.getInt("idambiance"));
 			a.setTypes(rs.getString("types"));
 			a.setLibambiance(rs.getString("libambiance"));
 
 			listeDesAmbiancesDeBar.add(a);
 		}
-				
+
 		return listeDesAmbiancesDeBar;
 	}
 
@@ -270,7 +255,7 @@ public class Bar extends Sortie {
 				+ "INNER JOIN quartiers q USING (idquartier) "
 				+ "INNER JOIN ambiances am USING (idambiance) "
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
-				+ "GROUP BY nombar, nomquartier, libambiance, b.idbar, prixmin, prixmax;" ;
+				+ "GROUP BY nombar, nomquartier, libambiance, b.idbar, prixmin, prixmax;";
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);

@@ -293,7 +293,7 @@ public class Restaurant extends Sortie {
 		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
 		while(rs.next()){
 			Ambiance a = new Ambiance();
-			a.setIdambiance(rs.getInt("idambiance"));
+			a.setIdAmbiance(rs.getInt("idambiance"));
 			a.setTypes(rs.getString("types"));
 			a.setLibambiance(rs.getString("libambiance"));
 

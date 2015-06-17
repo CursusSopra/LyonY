@@ -109,7 +109,7 @@ public class Monument {
             		+ "a.numero, a.voie, a.codepostal, a.ville, "
             		+ "q.nom AS nomQ, "
             		+ "t.libtypevisite, m.anneeconstruction, m.anneefinconstruction, m.idmonument, "
-            		+ "AVG(av.note) AS notemoy "
+            		+ "AVG(av.note) AS notemoy, COUNT(av.note) AS nbavis  "
             	+ "FROM monuments m "
             		+ "INNER JOIN visites v USING (idvisite) "
             		+ "INNER JOIN lieux l USING (idlieu) "
@@ -138,6 +138,7 @@ public class Monument {
             typeVisite = rsM.getString("libtypevisite");
             notemoy = rsM.getFloat("notemoy");
             idLieu = rsM.getInt("idlieu");
+            nbavis = rsM.getInt("nbavis");
         }
         
         Lieu lieu = new Lieu(idLieu);

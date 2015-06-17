@@ -250,6 +250,4 @@ public class Utilisateur {
 		return null;
 	}
 
-
-
 }

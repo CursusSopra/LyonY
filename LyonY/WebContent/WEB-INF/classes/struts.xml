@@ -9,7 +9,7 @@
 
 	<constant name="struts.action.extension" value="," />
 
-	<package name="LyonY" extends="struts-default">
+	<package name="default" extends="struts-default">
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
@@ -37,13 +37,6 @@
 	<include file="strutsVisite.xml" />
 	<include file="strutsHoraire.xml" />
 	<include file="strutsLieu.xml" />
-
-	<!-- <include file="struts???.xml" /> -->
-
-	<!-- <package name="jsonAction" extends="json-default"> -->
-	<!-- <action name="getJSONDep" class="fr.cursusSopra.json.JSONDepAction"> -->
-	<!-- <result type="json" /> -->
-	<!-- </action> -->
-	<!-- </package> -->
+	<include file="strutsBar.xml" />
 
 </struts>

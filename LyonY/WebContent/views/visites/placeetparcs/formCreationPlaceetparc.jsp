@@ -25,10 +25,11 @@
 
 
 	<div class="form-group">
-		<label for="idTypevisite" class="col-sm-2 control-label">Type de monument *</label>
+		<label for="idTypevisite" class="col-sm-2 control-label">Type de lieu *</label>
 		<div class="col-sm-3">
 			<div class="row">				
 				<select id="idTypevisite" name="idTypevisite">
+					<option value="">Choisissez...</option>
 					<s:iterator value="listeDesTypevisites">
 						<option value="<s:property value="idTypevisite" />"><s:property value="libtypevisite" /></option>
 					</s:iterator>
@@ -46,6 +47,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<select id="idQuartier" name="idQuartier">
+					<option value="">Choisissez...</option>
 					<s:iterator value="listeDesQuartiers">
 						<option value="<s:property value="idquartier" />"><s:property value="nom" /></option>
 					</s:iterator>
@@ -61,7 +63,7 @@
 		<label for="idNumero" class="col-sm-2 control-label">Numéro</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNumero" name="numero" placeholder="Exemple : 0" />
+				<input type="text" class="form-control" id="idNumero" name="numero" placeholder="Exemple : 1" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -100,7 +102,7 @@
 	<legend>Caractéristiques</legend>
 	
 	<div class="form-group">
-		<label for="idAnnCons" class="col-sm-2 control-label">Y a-t-il une fontaine ?</label>
+		<label for="idAvecFontaine" class="col-sm-2 control-label">Y a-t-il une fontaine ?</label>
 		<div class="col-sm-3">
 			<div class="row">
 				Oui <input type="radio" class="form-align" id="idAvecFontaine" name="avecFontaine" value="true"> &nbsp;
@@ -156,9 +158,13 @@
 				$('#idFormCreationPlaceetparc').submit(
 					function(e) {
 						var $nom = $('#idNom');
+						var $typev = $('#idTypevisite');
+						var $quart = $('#idQuartier');
 						var $cp = $('#idCodepostal');
 						var $ville = $('#idVille');
 						var valNom = $nom.val();
+						var valTypev = $typev.val();
+						var valQuart = $quart.val();
 						var valCp = $cp.val();
 						var valVille = $ville.val();
 						//Par défaut le formulaire est OK
@@ -171,6 +177,22 @@
 						} else {
 							$nom.parent().parent().parent().removeClass('has-error');
 							$nom.parent().next('span').html('');
+						}
+						if (valTypev == '') {
+							formOK &= false;
+							$typev.parent().parent().parent().addClass('has-error');
+							$typev.parent().next('span').html('Vous devez renseigner le type');
+						} else {
+							$typev.parent().parent().parent().removeClass('has-error');
+							$typev.parent().next('span').html('');
+						}
+						if (valQuart == '') {
+							formOK &= false;
+							$quart.parent().parent().parent().addClass('has-error');
+							$quart.parent().next('span').html('Vous devez selectionner un quartier');
+						} else {
+							$quart.parent().parent().parent().removeClass('has-error');
+							$quart.parent().next('span').html('');
 						}
 						var rx = new RegExp('[0-9]{5}');
 						if (valCp == '' || !rx.test(valCp)) {

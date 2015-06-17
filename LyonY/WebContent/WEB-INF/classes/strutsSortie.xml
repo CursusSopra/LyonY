@@ -40,7 +40,7 @@
 			<result name="success" type="tiles">formCreationRestaurant</result>
 		</action>
 		<action name="creationRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeCreationRestaurant">
-			<result name="success" type="tiles">listeDesRestaurants</result>
+			<result name="success" type="redirectAction">listeDesRestaurants</result>
 		</action>
 		
 		 	<!-- Formulaire de modification -->
@@ -48,7 +48,7 @@
 			<result name="success" type="tiles">formModifRestaurant</result>
 		</action>
 		<action name="modifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeModifRestaurant">
-			<result name="success" type="tiles">listeDesRestaurants</result>
+			<result name="success" type="redirectAction">listeDesRestaurants</result>
 		</action>
 		
 		
@@ -74,12 +74,12 @@
 			<result name="success" type="tiles">formCreationNclub</result>
 		</action>
 		<action name="creationNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="executeCreationNclub">
-			<result name="success" type="tiles">listeDesNclubs</result>
+			<result name="success" type="redirectAction">listeDesNclubs</result>
 		</action>
 		
 		<!-- Formulaire de modification -->
 		<action name="modifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="executeModifNclub">
-			<result name="success" type="tiles">listeDesNclubs</result>
+			<result name="success" type="redirectAction">listeDesNclubs</result>
 		</action>
 		<action name="formModifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="execute">
 			<result name="success" type="tiles">formModifNclub</result>
@@ -106,7 +106,8 @@
 			<result name="success" type="tiles">formCreationBar</result>
 		</action>
 		<action name="creationBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="executeCreationBar">
-			<result name="success" type="tiles">listeDesBars</result>
+			<result name="success" type="redirectAction">listeDesBars</result>
+			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
 		
 		<!-- Formulaire de modification -->
@@ -114,7 +115,7 @@
 			<result name="success" type="tiles">formModifBar</result>
 		</action>
 		<action name="modifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="executeModifBar">
-			<result name="success" type="tiles">listeDesBars</result>
+			<result name="success" type="redirectAction">listeDesBars</result>
 		</action>
 
 
