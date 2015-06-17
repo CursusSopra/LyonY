@@ -4,8 +4,8 @@
 
 <div>
 	<s:url action="formModifNclub" var="mn">
-		<s:param name="idNclub">
-			<s:property value="nclub.idNclub"/>
+		<s:param name="idNightclub">
+			<s:property value="nclub.idNightclub"/>
 		</s:param>
 	</s:url>
 	<a href="<s:property value='#mn'/>">Modifier les informations</a>

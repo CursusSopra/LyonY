@@ -39,6 +39,7 @@ public class DetailsNclubAction extends SortiesAction {
 	
 	public String execute() {
 		try {
+			nclub = new Nclub(idNightclub);
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Nclub.getListeDesAmbiancesDeNclub();
 			return SUCCESS;
