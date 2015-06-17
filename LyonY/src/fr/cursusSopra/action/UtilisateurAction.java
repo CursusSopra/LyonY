@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.JRadioButton;
@@ -70,24 +69,40 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setSexe(sexe);
 		
 		try {
+			// On se met en mode 'transaction'
+			cnx.setAutoCommit(false);
+			
 			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd")
 					.parse(dateNaissance));
 
 			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
 			int idAdresse = adresse.save(cnx);
 			
-			uti.setIdadresse(idAdresse);
-			
-			return uti.create(cnx) ? SUCCESS : ERROR; 
-			
+			uti.setIdadresse(idAdresse);			
+			uti.create(cnx);		
+
+			return SUCCESS;			
 		} catch (ParseException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return ERROR;
 		} catch (Exception e) {
-			e.printStackTrace();
-			return ERROR;
-		}		
-		
+			try {
+				cnx.rollback();
+				//e.printStackTrace();
+				return ERROR;
+			} catch (SQLException e1) {
+				//e1.printStackTrace();
+			}
+		} finally {
+			try {
+				// On remet en mode 'auto-commit'
+				cnx.setAutoCommit(true);
+				cnx.close();
+			} catch (SQLException e) {
+				//e.printStackTrace();
+			}
+		}
+		return ERROR;		
 	}
 
 	/* Fin de création */
