@@ -12,13 +12,13 @@ import fr.cursusSopra.tech.Breadcrumbs;
 public class DetailsRestaurantAction extends SortiesAction {
 
 	private static final long serialVersionUID = 1L;
-	private int idrestaurant;
+	private int idRestaurant;
 	private Restaurant restaurant;
 	private List<Quartier> listeDesQuartiers;
 	private List<Ambiance> listeDesAmbiances;
 
-	public void setIdrestaurant(int idrestaurant) {
-		this.idrestaurant = idrestaurant;
+	public void setIdrestaurant(int idRestaurant) {
+		this.idRestaurant = idRestaurant;
 	}
 	
 	public Restaurant getRestaurant() {
@@ -39,6 +39,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 	//Méthodes publiques
 	public String execute() {
 		try {
+			restaurant = new Restaurant(idRestaurant);
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Restaurant.getListeDesAmbiancesDeRestaurant();
 			return SUCCESS;
@@ -50,7 +51,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 	
 	public String executeDetailsRestaurant() {
 		try {
-			restaurant = new Restaurant(idrestaurant);
+			restaurant = new Restaurant(idRestaurant);
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();

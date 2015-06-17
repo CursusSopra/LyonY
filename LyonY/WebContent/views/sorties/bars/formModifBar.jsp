@@ -31,7 +31,7 @@
 			<div class="row">				
 				<select id="idAmbiance">
 					<s:iterator value="listeDesAmbiances">
-						<option value="<s:property value="idambiance" />"><s:property value="libambiance" /></option>
+						<option value="<s:property value="idambiance" />" ${bar.libambiance == libambiance ? 'selected="selected"' : ''} ><s:property value="libambiance" /></option>
 					</s:iterator>
 				</select>
 			</div>
@@ -48,8 +48,11 @@
 			<div class="row">
 				<select id="idQuartier">
 					<s:iterator value="listeDesQuartiers">
-						<option value="<s:property value="idquartier" />"><s:property
-								value="nom" /></option>
+						<option value="<s:property value="idquartier" />" ${bar.nomquartier == nom ? 'selected="selected"' : ''} >
+						
+						
+							<s:property	value="nom" />
+						</option>
 					</s:iterator>
 				</select>
 			</div>
@@ -63,7 +66,7 @@
 		<label for="idNumero" class="col-sm-2 control-label">Numéro</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNumero" name="numero" />
+				<input type="text" class="form-control" id="idNumero" name="numero" value="<s:property value = "bar.numero"/>"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -73,7 +76,7 @@
 		<label for="idVoie" class="col-sm-2 control-label">Voie</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idVoie" name="voie" />
+				<input type="text" class="form-control" id="idVoie" name="voie" value="<s:property value = "bar.voie"/>" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -84,8 +87,7 @@
 			postal</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idCodepostal"
-					name="codepostal" />
+				<input type="text" class="form-control" id="idCodepostal" name="codepostal" value="<s:property value = "bar.codepostal"/>"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -95,7 +97,7 @@
 		<label for="idVille" class="col-sm-2 control-label">Ville</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idVille" name="ville" />
+				<input type="text" class="form-control" id="idVille" name="ville" value="<s:property value = "bar.ville"/>" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -108,7 +110,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<TEXTAREA name="description" rows=4 cols=40
-					placeholder="Décrivez le bar : spécialités, activités..."></TEXTAREA>
+					value="<s:property value = "bar.description"/>" ></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -120,7 +122,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<TEXTAREA id="idAccessibilité" name="accessibilite" rows=4 cols=40
-					placeholder="Expliquez comment l'on peut s'y rendre"></TEXTAREA>
+					value="<s:property value = "bar.accessiblite"/>" ></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -132,7 +134,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<input type="text" class="form-control" id="idPrixmin"
-					name="prixmin" />
+					name="prixmin" value="<s:property value = "bar.prixmin"/>" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -144,7 +146,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<input type="text" class="form-control" id="idPrixmax"
-					name="prixmax" />
+					name="prixmax" value="<s:property value = "bar.prixmax"/>" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -184,68 +186,52 @@
 <script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
 
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-
-						//Validation/refus selon le remplissage du formulaire
-						$('#idFormAjouterBar')
-								.submit(
-										function(e) {
-											var $nom = $('#idNom');
-											var $prenom = $('#idPrenom');
-											var valNom = $nom.val();
-											var valPrenom = $prenom.val();
-											//Par défaut le formulaire est OK
-											var formOK = true;
-											//console.log(valNom);
-											//Si champ obligatoire non rempli
-											if (valNom == '') {
-												formOK &= false;
-												$nom.parent().parent().parent()
-														.addClass('has-error');
-												$nom
-														.parent()
-														.next('span')
-														.html(
-																'Vous devez fournir le nom du candidat');
-											} else {
-												$nom.parent().parent().parent()
-														.removeClass(
-																'has-error');
-												$nom.parent().next('span')
-														.html('');
-											}
-
-											if (valPrenom == '') {
-												formOK &= false;
-												$prenom.parent().parent()
-														.parent().addClass(
-																'has-error');
-												$prenom
-														.parent()
-														.next('span')
-														.html(
-																'Vous devez fournir le prénom du candidat');
-
-											} else {
-												$prenom.parent().parent()
-														.parent().removeClass(
-																'has-error');
-												$prenom.parent().next('span')
-														.html('');
-											}
-
-											if (!formOK) {
-												$('#idFormAlertError')
-														.removeClass('hidden');
-												$('#idFormAlertError').fadeTo(
-														2000, 500).slideUp(500);
-												e.preventDefault();
-											} else {
-												$('#idFormAlertError')
-														.addClass('hidden');
-											}
-										});
-					});
+$(document).ready(
+		function() {
+		//Validation/refus selon le remplissage du formulaire
+			$('#idFormCreationBar').submit(
+				function(e) {
+					var $nom = $('#idNom');
+					var $cp = $('#idCodepostal');
+					var $ville = $('#idVille');
+					var valNom = $nom.val();
+					var valCp = $cp.val();
+					var valVille = $ville.val();
+					//Par défaut le formulaire est OK
+					var formOK = true;
+					//Si champ obligatoire non rempli
+					if (valNom == '') {
+						formOK &= false;
+						$nom.parent().parent().parent().addClass('has-error');
+						$nom.parent().next('span').html('Vous devez fournir le nom du bar');
+					} else {
+						$nom.parent().parent().parent().removeClass('has-error');
+						$nom.parent().next('span').html('');
+					}
+					var rx = new RegExp('[0-9]{5}');
+					if (valCp == '' || !rx.test(valCp)) {
+						formOK &= false;
+						$cp.parent().parent().parent().addClass('has-error');
+						$cp.parent().next('span').html('Vous devez fournir un code postal valide');
+					} else {
+						$cp.parent().parent().parent().removeClass('has-error');
+						$cp.parent().next('span').html('');
+					}
+					if (valVille == '') {
+						formOK &= false;
+						$ville.parent().parent().parent().addClass('has-error');
+						$ville.parent().next('span').html('Vous devez fournir un nom de ville');
+					} else {
+						$ville.parent().parent().parent().removeClass('has-error');
+						$ville.parent().next('span').html('');
+					}
+					if (!formOK) {
+						$('#idFormAlertError').removeClass('hidden');
+						$('#idFormAlertError').fadeTo(10000, 500).slideUp(500);
+						e.preventDefault();
+					} else {
+						$('#idFormAlertError').addClass('hidden');
+					}
+				});
+			});
 </script>

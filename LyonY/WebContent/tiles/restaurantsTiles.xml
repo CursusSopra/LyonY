@@ -38,7 +38,7 @@
 	</definition>
 	
 	<definition name="formModifRestaurant" extends="baseLayout">
-		<put-attribute name="title" value="Ajout d'un restaurant" />
+		<put-attribute name="title" value="Mdification d'un restaurant" />
 		<put-attribute name="body"
 			value="/views/sorties/restaurants/formModifRestaurant.jsp" />
 	</definition>
