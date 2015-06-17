@@ -1,5 +1,13 @@
 package fr.cursusSopra.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+//import com.sun.jndi.ldap.Connection;
+
 public class Avis {
 	
 	private float note;
@@ -50,6 +58,36 @@ public class Avis {
 	// CTOR
 	public Avis(){
 	}
+	
+    public Avis(int idLieu, float note,  String message, int idUtilisateur) {
+    	this.idLieu = idLieu;
+    	this.note=note;
+    	this.message =message;
+    	this.idUtilisateur=idUtilisateur;
+    }
+	
+    //Methodes publiques 
+
+    public int save(Connection cnx) throws Exception{
+		String queryAvis = "INSERT INTO avis (idlieu, note, message, idutilisateur) VALUES (?,?,?,?)";
+		PreparedStatement ps = cnx.prepareStatement(queryAvis, Statement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, idLieu);
+		ps.setFloat(2, note);
+		ps.setString(3, message);
+		ps.setInt(4, idUtilisateur);
+		
+		ps.executeUpdate();
+		
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.next()) {
+			idAvis = rs.getInt(1);
+		} else {
+			throw new Exception();
+		}
+		return idAvis;
+	
+	}
+	
 	
 //	public Avis(String message) {
 //		this.message = message;

@@ -31,7 +31,7 @@
 							<td><s:property value="typeVisite"/></td>
 							<td>
 								<s:if test='%{nbavis == 0}'>
-									Aucun avis, <a href="">soyez le premier !</a>
+									Aucun avis,<a href="<s:url action='formCreationAvis'/>">Soyer le premier</a>
 								</s:if>
 								<s:else>
 									<s:property value="notemoy"/> - <s:property value="nbavis"/> avis
