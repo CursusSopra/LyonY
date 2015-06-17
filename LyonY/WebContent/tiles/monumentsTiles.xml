@@ -14,6 +14,17 @@
 	<definition name="detailsMonument" extends="baseLayout">
 		<put-attribute name="title" value="Détails de monument" />
 		<put-attribute name="body" value="/views/visites/monuments/detailsMonument.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="./_plugins/Star_rating/js/star-rating.min.js"></add-attribute>
+		</put-list-attribute>
+
+		<put-list-attribute name="moreStyles">
+			<add-attribute value="./_plugins/Star_rating/css/star-rating.min.css"></add-attribute>
+			<add-attribute value="./fonts/font-awesome-4.3.0/css/font-awesome.min.css"></add-attribute>
+		</put-list-attribute>
+	
+	
 	</definition>
 	
 	<definition name="formCreationMonument" extends="baseLayout">

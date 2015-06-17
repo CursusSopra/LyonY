@@ -189,12 +189,11 @@ public class ManageMonumentAction extends VisitesAction {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return ERROR;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return ERROR;
 		}
-		
-		
-		return SUCCESS;
 	}
 	
 	// MODIFICATION
