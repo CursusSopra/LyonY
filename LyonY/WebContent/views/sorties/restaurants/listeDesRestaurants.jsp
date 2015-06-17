@@ -29,7 +29,7 @@
 					<s:iterator value="listeDesRestaurants">
 						<tr>
 							<s:url action="detailsRestaurant" var="dr">
-								<s:param name="idrestaurant">
+								<s:param name="idRestaurant">
 									<s:property value="idRestaurant" />
 								</s:param>
 							</s:url>

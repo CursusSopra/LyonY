@@ -44,12 +44,13 @@
 		</action>
 		
 		 	<!-- Formulaire de modification -->
+		 <action name="formModifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="execute">
+			<result name="success" type="tiles">formModifRestaurant</result>
+		</action>
 		<action name="modifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeModifRestaurant">
 			<result name="success" type="tiles">listeDesRestaurants</result>
 		</action>
-			<action name="formModifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="execute">
-			<result name="success" type="tiles">formModifRestaurant</result>
-		</action>
+		
 		
 		
 		<!-- NIGHT CLUBS -->
