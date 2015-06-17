@@ -197,6 +197,20 @@ public class ManageMonumentAction extends VisitesAction {
 	}
 	
 	// MODIFICATION
+	public String executeFormModifMonument(){
+
+			try {
+				listeDesQuartiers = Quartier.getListeDesQuartiers();
+				listeDesTypevisites = Monument.getListeDesTypevisitesDeMonument();
+				monument = new Monument(idMonument);
+				return SUCCESS;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ERROR;
+			}
+
+	}
 	public String executeModifMonument(){
 
 		return SUCCESS;

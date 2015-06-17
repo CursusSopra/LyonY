@@ -39,8 +39,11 @@
 		</action>
 		
  		<!-- Formulaire de modification d'un monument -->
-		<action name="formModifMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeModifMonument">
+		<action name="formModifMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeFormModifMonument">
 			<result name="success" type="tiles">formModifMonument</result>
+		</action>
+		<action name="modifMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeModifMonument">
+			<result name="success" type="redirectAction">detailsMonument</result>
 		</action>
 		
 		<!-- PLACEETPARCS -->

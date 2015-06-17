@@ -11,7 +11,12 @@
 			<s:property value="monument.idMonument"/>
 		</s:param>
 	</s:url>
-	<a href="<s:property value='#mm'/>">Modifier les informations</a>
+<%-- 	<s:url action="formSupprMonument" var="sm"> --%>
+<%-- 		<s:param name="idMonument"> --%>
+<%-- 			<s:property value="monument.idMonument"/> --%>
+<%-- 		</s:param> --%>
+<%-- 	</s:url> --%>
+	<a href="<s:property value='#mm'/>">Modifier les informations</a><!-- ou <a href="<s:property value='#sm'/>">supprimer ce monument</a>-->
 </div>
 <div class="container-fluid">
 	<div class="row">
