@@ -29,8 +29,11 @@ public class Monument {
 	private float notemoy;
 	private int nbavis;
 	private int idVisite;
+	private int idLieu;
+	private List<Avis> listeDesAvisDunLieu;
 	
-	//Getters
+
+	//Setters Getters 
 	public int getIdMonument() {
 		return idMonument;
 	}
@@ -82,6 +85,12 @@ public class Monument {
 	public void setIdVisite(int idVisite) {
 		this.idVisite=idVisite;
 	}
+	public int getIdLieu() {
+		return idLieu;
+	}
+	public List<Avis> getListeDesAvisDunLieu() {
+		return listeDesAvisDunLieu;
+	}
 	
 	//CTORS
     public Monument(){
@@ -96,18 +105,22 @@ public class Monument {
         Statement stmt = cnx.createStatement();
         // Requête à exécuter
             String queryNomCompl  = "SELECT "
-                            + "l.nom AS nomL, l.description, l.accessibilite, "
-                            + "a.numero, a.voie, a.codepostal, a.ville, "
-                            + "q.nom AS nomQ, "
-                            + "t.libtypevisite, "
-                            + "m.anneeconstruction, m.anneefinconstruction, m.idmonument "
-                        + "FROM monuments m "
-                            + "INNER JOIN visites v USING (idvisite) "
-                            + "INNER JOIN lieux l USING (idlieu) "
-                            + "INNER JOIN adresses a USING (idadresse) "
-                            + "INNER JOIN quartiers q USING (idquartier) "
-                            + "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
-                        + "WHERE m.idmonument=" + idMonument ;
+            		+ "l.idlieu, l.nom AS nomL, l.description, l.accessibilite, "
+            		+ "a.numero, a.voie, a.codepostal, a.ville, "
+            		+ "q.nom AS nomQ, "
+            		+ "t.libtypevisite, m.anneeconstruction, m.anneefinconstruction, m.idmonument, "
+            		+ "AVG(av.note) AS notemoy "
+            	+ "FROM monuments m "
+            		+ "INNER JOIN visites v USING (idvisite) "
+            		+ "INNER JOIN lieux l USING (idlieu) "
+            		+ "INNER JOIN adresses a USING (idadresse) "
+            		+ "INNER JOIN quartiers q USING (idquartier) "
+            		+ "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
+            		+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+            		+ "WHERE m.idmonument= "  + idMonument 
+            		+ "GROUP BY l.idlieu, nomL, l.description, l.accessibilite, a.numero, a.voie, a.codepostal, "
+            		+ "a.ville, nomQ, t.libtypevisite, m.anneeconstruction, m.anneefinconstruction, m.idmonument";
+
         // Obtention de l'ensemble résultat
         ResultSet rsM = stmt.executeQuery(queryNomCompl);
         // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
@@ -123,7 +136,14 @@ public class Monument {
             villeAdres = rsM.getString("ville");
             nomQuartier = rsM.getString("nomQ");
             typeVisite = rsM.getString("libtypevisite");
+            notemoy = rsM.getFloat("notemoy");
+            idLieu = rsM.getInt("idlieu");
         }
+        
+        Lieu lieu = new Lieu(idLieu);
+        listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
+           
+        
     }
 	
     public Monument(int idVisite, int annCons, int annFinCons) {
