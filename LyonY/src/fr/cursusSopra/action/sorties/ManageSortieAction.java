@@ -18,6 +18,7 @@ public class ManageSortieAction extends ActionSupport {
 	//	-------------------------
 	private String[] heureDebut = { "08:00" };
 	private String[] heureFin = { "12:00" };
+	private static String[] jours = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
 	private int idSortie = 10;
 	//	-------------------------
 
@@ -32,18 +33,17 @@ public class ManageSortieAction extends ActionSupport {
 	// Création des horaires d'une sortie puis appel de la méthode de
 	// Sortie.java qui les ajoute dans la DB
 	public String executeInsert() {
-		String[] arrayJours = HoraireAction.getJours();
 		Connection cnx = PostgresConnection.getConnexion();
 
 		try {
 			// On se met en mode 'transaction'
 			cnx.setAutoCommit(false);
 			
-			for (int i = 0; i < 1; i++) { // arrayJours.length				
+			for (int i = 0; i < 1; i++) { // jours.length				
 				PlageHoraire ph = new PlageHoraire(heureDebut[i], heureFin[1]);
 				int idPlageHoraire =  ph.save(cnx);
 				
-				Horaire h = new Horaire(arrayJours[i], idPlageHoraire);
+				Horaire h = new Horaire(jours[i], idPlageHoraire);
 				int idHoraire = h.save(cnx);
 				
 				Ouverture ouv = new Ouverture(idHoraire, idSortie);
