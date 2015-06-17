@@ -5,11 +5,14 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JRadioButton;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import fr.cursusSopra.model.Adresse;
+import fr.cursusSopra.model.Quartier;
 import fr.cursusSopra.model.Utilisateur;
 import fr.cursusSopra.tech.PostgresConnection;
 
@@ -26,64 +29,32 @@ public class UtilisateurAction extends ActionSupport {
 	private int idadresse;
 	private String avatar;
 	private JRadioButton male;
+	
+	private Adresse adresse;
+	private int numero;
+	private String voie;
+	private String codePostal;
+	private String ville;
+	// Pour normaliser vers la classe métier
+	private int idQuartier;
+	// Le champ normalisé avec la JSP
+	private int quartier;	
 
-	public JRadioButton getMale() {
-		return male;
-	}
-	public void setMale(JRadioButton male) {
-		this.male = male;
-	}
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
-	public String getAvatar() {
-		return avatar;
-	}
-	public String getDateNaissance() {
-		return dateNaissance;
-	}
-	public void setDateNaissance(String dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public int getIdadresse() {
-		return idadresse;
-	}
-	public void setIdadresse(int idadresse) {
-		this.idadresse = idadresse;
-	}
-	public String getPseudo() {
-		return pseudo;
-	}
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-	public String getMotDePasse() {
-		return motDePasse;
-	}
-	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
-	}
-	public String getSexe() {
-		return sexe;
-	}
-	public void setSexe(String sexe) {
-		this.sexe = sexe;
-	}
-	public int getIdUtilisateur() {
-		return idUtilisateur;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	private List<Quartier> listeDesQuartiers;
+	
+	public List<Quartier> getListeDesQuartiers() {
+		return listeDesQuartiers;
 	}
 
 	public String execute() {
-		return SUCCESS;
+
+		try {
+			listeDesQuartiers = Quartier.getListeDesQuartiers();
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 
 	/* Création d'un compte utilisateur Candidat */
@@ -97,16 +68,26 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setEmail(email);
 		uti.setAvatar(avatar);
 		uti.setSexe(sexe);
-
+		
 		try {
 			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd")
 					.parse(dateNaissance));
-			return uti.create(cnx) ? SUCCESS : ERROR;
+
+			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
+			int idAdresse = adresse.save(cnx);
+			
+			uti.setIdadresse(idAdresse);
+			
+			return uti.create(cnx) ? SUCCESS : ERROR; 
+			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ERROR;
-		}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}		
+		
 	}
 
 	/* Fin de création */
@@ -231,5 +212,96 @@ public class UtilisateurAction extends ActionSupport {
 		return ERROR;
 	}
 	 
+	
+	// Get-Set
+/* ================================================================================================ */
+	
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	public String getVoie() {
+		return voie;
+	}
+	public void setVoie(String voie) {
+		this.voie = voie;
+	}
+	public String getCodePostal() {
+		return codePostal;
+	}
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+	public String getVille() {
+		return ville;
+	}
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+	public JRadioButton getMale() {
+		return male;
+	}
+	public void setMale(JRadioButton male) {
+		this.male = male;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public String getDateNaissance() {
+		return dateNaissance;
+	}
+	public void setDateNaissance(String dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getIdadresse() {
+		return idadresse;
+	}
+	public void setIdadresse(int idadresse) {
+		this.idadresse = idadresse;
+	}
+	public String getPseudo() {
+		return pseudo;
+	}
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+	public String getSexe() {
+		return sexe;
+	}
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+	public int getIdUtilisateur() {
+		return idUtilisateur;
+	}
+	public int getQuartier() {
+		return quartier;
+	}
+	public void setQuartier(int quartier) {
+		this.quartier = idQuartier = quartier;
+	}
 	 
 }

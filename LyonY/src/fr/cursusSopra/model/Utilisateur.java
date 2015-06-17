@@ -26,58 +26,7 @@ public class Utilisateur {
 	private int idadresse;
 	private String avatar;
 	private JRadioButton male;
-
-	public JRadioButton getMale() {
-		return male;
-	}
-	public void setMale(JRadioButton male) {
-		this.male = male;
-	}
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
-	public String getAvatar() {
-		return avatar;
-	}
-	public String getSexe() {
-		return sexe;
-	}
-	public void setSexe(String sexe) {
-		this.sexe = sexe;
-	}
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public int getIdadresse() {
-		return idadresse;
-	}
-	public void setIdadresse(int idadresse) {
-		this.idadresse = idadresse;
-	}
-	public String getPseudo() {
-		return pseudo;
-	}
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-	public String getMotDePasse() {
-		return motDePasse;
-	}
-	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
-	}
-	public int getIdUtilisateur() {
-		return idUtilisateur;
-	}
+	private int idQuartier;
 
 	public Utilisateur() {
 	}
@@ -86,7 +35,7 @@ public class Utilisateur {
 /* =================================================================================== */
 	public boolean create(Connection cnx) {
 
-		String query = "INSERT INTO utilisateurs (pseudo, datenaissance, sexe, email, avatar, motdepasse) VALUES (?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO utilisateurs (pseudo, datenaissance, sexe, email, avatar, motdepasse, idadresse) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps;
 		try {
 			ps = cnx.prepareStatement(query);
@@ -96,6 +45,7 @@ public class Utilisateur {
 			ps.setString(4, email);
 			ps.setString(5, avatar);
 			ps.setString(6, motDePasse);
+			ps.setInt(7, idadresse);
 
 			ps.executeUpdate();
 
@@ -248,6 +198,66 @@ public class Utilisateur {
 	private Avis Avis(String string) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	// Get-Set
+/* =================================================================================== */
+	public JRadioButton getMale() {
+		return male;
+	}
+	public void setMale(JRadioButton male) {
+		this.male = male;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public String getSexe() {
+		return sexe;
+	}
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getIdadresse() {
+		return idadresse;
+	}
+	public void setIdadresse(int idadresse) {
+		this.idadresse = idadresse;
+	}
+	public String getPseudo() {
+		return pseudo;
+	}
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+	public int getIdUtilisateur() {
+		return idUtilisateur;
+	}
+	public int getIdQuartier() {
+		return idQuartier;
+	}
+	public void setIdQuartier(int idQuartier) {
+		this.idQuartier = idQuartier;
 	}
 
 }
