@@ -5,14 +5,10 @@
  // création des sliders
 var i = $('#num').html();
 
-//Création d'un tableau avec les horaires de la semaine
-
-
-	
-
 // Création des sliders
 $(function() {
 	var nbSliders = $("#Horaires tr").length;
+	console.log(nbSliders);
 	var startTime;
 	var endTime;
 	for(var i = 1; i <= nbSliders; i++) {
