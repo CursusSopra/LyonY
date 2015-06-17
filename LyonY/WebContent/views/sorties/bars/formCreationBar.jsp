@@ -19,7 +19,6 @@
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
-
 	
 	<div class="form-group">
 	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance *</label>
@@ -44,8 +43,7 @@
 			<div class="row">
 				<select id="idQuartier" name="idQuartier">
 					<s:iterator value="listeDesQuartiers">
-						<option value="<s:property value="idquartier" />"><s:property
-								value="nom" /></option>
+						<option value="<s:property value="idquartier" />"><s:property value="nom" /></option>
 					</s:iterator>
 				</select>
 			</div>

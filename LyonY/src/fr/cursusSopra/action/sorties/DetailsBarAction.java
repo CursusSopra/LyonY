@@ -134,7 +134,6 @@ public class DetailsBarAction extends SortiesAction {
 		this.happyhour = happyhour;
 	}
 	
-	
 	public int getPrixmin() {
 		return prixmin;
 	}

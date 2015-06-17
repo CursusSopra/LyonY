@@ -21,7 +21,6 @@ public class Bar extends Sortie {
 	private String ville;
 	private String description;
 	private String accessibilite;
-	private String ambiance;
 	private float notemoy;
 	private int nbavis;
 	private int idSortie;
@@ -95,12 +94,6 @@ public class Bar extends Sortie {
 	}
 	public void setAccessibilite(String accessibilite) {
 		this.accessibilite = accessibilite;
-	}
-	public String getAmbiance() {
-		return ambiance;
-	}
-	public void setAmbiance(String ambiance) {
-		this.ambiance = ambiance;
 	}
 	public float getNotemoy() {
 		return notemoy;
