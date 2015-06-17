@@ -49,16 +49,16 @@ function slideTime(event, ui) {
 
 // Transformation tableaux en une string pour transfère au java
 function toString(arrStartTime, arrEndTime) {
-	for (i = 0; i < 7; i++) {
-		if (i < 6) {
-			timeString += arrStartTime[i];
+	for (var a = 0; a < 7; a++) {
+		if (a < 6) {
+			timeString += arrStartTime[a];
 			timeString += "-";
-			timeString += arrEndTime[i];
+			timeString += arrEndTime[a];
 			timeString += "|";
 		} else {
-			timeString += arrStartTime[i];
+			timeString += arrStartTime[a];
 			timeString += "-";
-			timeString += arrEndTime[i];
+			timeString += arrEndTime[a];
 		}
 	}
 	return timeString;
@@ -81,6 +81,5 @@ function getTime(hours, minutes) {
 
 // Submit de la string des horaires
 $("#scheduleSubmit").on('click', function() {
-	toString(arrStartTime,arrEndTime);
-	console.log(timeString);
+	$('#idTimeString').val(toString(arrStartTime,arrEndTime));
 });

@@ -7,9 +7,9 @@
 <tiles-definitions>
 
 	<!--  -->
-	<definition name="horaire" extends="baseLayout">
+	<definition name="formCreationHoraire" extends="baseLayout">
 		<put-attribute name="title" value="Horaires" />
-		<put-attribute name="body" value="/views/horaires/horaires.jsp" />
+		<put-attribute name="body" value="/views/horaires/formCreationHoraire.jsp" />
 		
 		<put-list-attribute name="moreScripts">
 			<add-attribute
