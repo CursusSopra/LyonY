@@ -78,4 +78,11 @@
 			<result type="json" />
 		</action>
 	</package>
+	
+<!--  JSON pour tester si le email  unique -->
+	<package name="jsonAction" extends="json-default">
+		<action name="getJSONemail" class="fr.cursusSopra.json.JSONUtilisateurAction">
+			<result type="json" />
+		</action>
+	</package>
 </struts>

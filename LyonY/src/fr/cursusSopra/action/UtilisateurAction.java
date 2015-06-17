@@ -30,71 +30,54 @@ public class UtilisateurAction extends ActionSupport {
 	public JRadioButton getMale() {
 		return male;
 	}
-
 	public void setMale(JRadioButton male) {
 		this.male = male;
 	}
-
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-
 	public String getAvatar() {
 		return avatar;
 	}
-
 	public String getDateNaissance() {
 		return dateNaissance;
 	}
-
 	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public int getIdadresse() {
 		return idadresse;
 	}
-
 	public void setIdadresse(int idadresse) {
 		this.idadresse = idadresse;
 	}
-
 	public String getPseudo() {
 		return pseudo;
 	}
-
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-
 	public String getMotDePasse() {
 		return motDePasse;
 	}
-
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-
 	public String getSexe() {
 		return sexe;
 	}
-
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
-
 	public int getIdUtilisateur() {
 		return idUtilisateur;
 	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
