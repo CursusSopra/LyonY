@@ -1,11 +1,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <h1>Création de votre profil Lyon'Y</h1>
 
-<div id="idFormAlertError" class="alert alert-danger hidden"
-	role="alert">Alerte !</div>
-<form class="form-horizontal" method="post"
-	id="idSendCreationUtilisateur"
-	action="<s:url action='sendCreationUtilisateur'/>">
+<div id="idFormAlertError" class="alert alert-danger hidden" role="alert">Alerte !</div>
+<form class="form-horizontal" method="post" id="idSendCreationUtilisateur" action="<s:url action='sendCreationUtilisateur'/>">
 
 	<div class="form-group">
 		<div class="col-sm-offset-1 col-sm-10">
@@ -161,8 +158,8 @@
 
 	<div class="form-group">
 		<div class="row">
-			<input type="submit" value="Créer le compte" /> <input type="reset"
-				value="Etat initial" />
+			<input type="submit" value="Créer le compte" />
+			<input type="reset" value="Etat initial" />
 		</div>
 	</div>
 </form>
