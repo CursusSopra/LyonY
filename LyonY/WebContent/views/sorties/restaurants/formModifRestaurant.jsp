@@ -155,9 +155,9 @@
 		<div class="col-sm-3">
 			<div class="row">
 				Oui <input type="radio" class="form-align" id="idReservation"
-					name="reservation" value="true"> &nbsp; Non <input
+					name="reservation" value="true" ${restaurant.reservation == reservation ? 'selected="selected"' : ''} > &nbsp; Non <input
 					type="radio" class="form-align" id="idReservation"
-					name="reservation" value="false">
+					name="reservation" value="false" ${restaurant.reservation == reservation ? 'selected="selected"' : ''} >
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

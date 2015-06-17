@@ -17,7 +17,11 @@ public class DetailsRestaurantAction extends SortiesAction {
 	private List<Quartier> listeDesQuartiers;
 	private List<Ambiance> listeDesAmbiances;
 
-	public void setIdrestaurant(int idRestaurant) {
+	public int getIdRestaurant() {
+		return idRestaurant;
+	}
+
+	public void setIdRestaurant(int idRestaurant) {
 		this.idRestaurant = idRestaurant;
 	}
 	

@@ -3,8 +3,7 @@
 
 <h1>Modification d'un bar</h1>
 
-<form class="form-horizontal" method="post" id="idFormModifBar"
-	action="<s:url action='formModifBar'/>">
+<form class="form-horizontal" method="post" id="idFormModifBar" action="<s:url action='formModifBar'/>">
 	
 	<input type="hidden" id="idBar" name="idBar" value="<s:property value = "bar.idBar"/>"/>
 

@@ -87,8 +87,8 @@ public class Restaurant extends Sortie {
 		return idRestaurant;
 	}
 
-	public void setIdRestaurant(int idrestaurant) {
-		this.idRestaurant = idrestaurant;
+	public void setIdRestaurant(int idRestaurant) {
+		this.idRestaurant = idRestaurant;
 	}
 
 	public int getIdSortie() {
