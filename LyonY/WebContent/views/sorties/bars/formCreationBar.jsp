@@ -76,12 +76,12 @@
 	</div>
 
 	<div class="form-group">
-		<label for="idCodepostal" class="col-sm-2 control-label">Code
+		<label for="idCodePostal" class="col-sm-2 control-label">Code
 			postal *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idCodepostal"
-					name="codepostal" />
+				<input type="text" class="form-control" id="idCodePostal"
+					name="codePostal" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -192,7 +192,7 @@ $(document).ready(
 			$('#idFormCreationBar').submit(
 				function(e) {
 					var $nom = $('#idNom');
-					var $cp = $('#idCodepostal');
+					var $cp = $('#idCodePostal');
 					var $ville = $('#idVille');
 					var valNom = $nom.val();
 					var valCp = $cp.val();

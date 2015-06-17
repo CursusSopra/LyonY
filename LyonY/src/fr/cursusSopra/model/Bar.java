@@ -17,7 +17,7 @@ public class Bar extends Sortie {
 	private String libambiance;
 	private int numero;
 	private String voie;
-	private int codepostal;
+	private String codePostal;
 	private String ville;
 	private String description;
 	private String accessibilite;
@@ -71,11 +71,12 @@ public class Bar extends Sortie {
 	public void setVoie(String voie) {
 		this.voie = voie;
 	}
-	public int getCodepostal() {
-		return codepostal;
+	
+	public String getCodePostal() {
+		return codePostal;
 	}
-	public void setCodepostal(int codepostal) {
-		this.codepostal = codepostal;
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
 	}
 	public String getVille() {
 		return ville;
@@ -164,7 +165,7 @@ public class Bar extends Sortie {
 			prixmax = rs.getInt("prixmax");
 			numero = rs.getInt("numero");
 			voie = rs.getString("voie");
-			codepostal = rs.getInt("codepostal");
+			codePostal = rs.getString("codepostal");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
 			accessibilite = rs.getString("accessibilite");

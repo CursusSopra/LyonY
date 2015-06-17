@@ -16,7 +16,7 @@ public class Restaurant extends Sortie {
 	private String libambiance;
 	private int numero;
 	private String voie;
-	private int codepostal;
+	private String codePostal;
 	private String ville;
 	private String description;
 	private boolean reservation;
@@ -64,7 +64,7 @@ public class Restaurant extends Sortie {
 			prixmax = rs.getInt("prixmax");
 			numero = rs.getInt("numero");
 			voie = rs.getString("voie");
-			codepostal = rs.getInt("codepostal");
+			codePostal = rs.getString("codepostal");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
 			reservation = rs.getBoolean("reservation");
@@ -155,12 +155,14 @@ public class Restaurant extends Sortie {
 		this.voie = voie;
 	}
 
-	public int getCodepostal() {
-		return codepostal;
+
+
+	public String getCodePostal() {
+		return codePostal;
 	}
 
-	public void setCodepostal(int codepostal) {
-		this.codepostal = codepostal;
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
 	}
 
 	public String getVille() {
