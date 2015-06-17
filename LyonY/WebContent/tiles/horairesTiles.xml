@@ -13,24 +13,8 @@
 		
 		<put-list-attribute name="moreScripts">
 			<add-attribute
-				value="js/jQueryUI.1.11.4/jquery-ui.min.js"></add-attribute>
-			<add-attribute value="_js/horaires.js"></add-attribute>
-		</put-list-attribute>
-		
-		<put-list-attribute name="moreStyles">
-			<add-attribute
-				value="js/jQueryUI.1.11.4/jquery-ui.min.css"></add-attribute>
-		</put-list-attribute>
-	</definition>
-	
-	<definition name="horaireBis" extends="baseLayout">
-		<put-attribute name="title" value="Horaires" />
-		<put-attribute name="body" value="/views/horaires/horairesBis.jsp" />
-		
-		<put-list-attribute name="moreScripts">
-			<add-attribute value="_js/horairesBis.js"></add-attribute>
-			<add-attribute
-				value="_plugins/slider/jquery.nouislider.all.min.js"></add-attribute>
+				value="_js/horaires.js"></add-attribute>
+			<add-attribute value="_plugins/slider/jquery.nouislider.all.min.js"></add-attribute>
 		</put-list-attribute>
 		
 		<put-list-attribute name="moreStyles">

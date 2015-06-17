@@ -88,14 +88,14 @@ public class Adresse {
 	// Modifie une adresse dans la base de donnée
 	// Prend en paramètre une connection (synchronisation entre les classes
 	// métiers)
-	public int update(Connection cnx, int numero, String voie, int codePostal, String ville) throws SQLException {
+	public int update(Connection cnx, int numero, String voie, String codePostal, String ville) throws SQLException {
 		String query = " UPDATE adresses  SET numero=?, voie=?, codepostal=?, ville=? "
 				+ " WHERE idadresse=" + idAdresse;
 		System.out.println(query);
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, numero);
 		ps.setString(2, voie);
-		ps.setInt(3, codePostal);
+		ps.setString(3, codePostal);
 		ps.setString(4, ville);
 		return ps.executeUpdate();
 	}

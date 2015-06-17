@@ -41,6 +41,7 @@
 		</action>
 		<action name="creationRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeCreationRestaurant">
 			<result name="success" type="redirectAction">listeDesRestaurants</result>
+			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
 		
 		 	<!-- Formulaire de modification -->

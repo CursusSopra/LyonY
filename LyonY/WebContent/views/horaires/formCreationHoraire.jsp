@@ -2,12 +2,18 @@
 
 
 <style>
-#slider {
-	width: 200px;
-}
-
-.ui-slider .ui-slider-handle { //for horizontal width:200px;
-	margin-left: -15px;
+.tooltip {
+	display: block;
+	position: absolute;
+	border: 1px solid #D9D9D9;
+	font: 400 12px/12px Arial;
+	border-radius: 3px;
+	background: #fff;
+	top: -43px;
+	padding: 5px;
+	left: -9px;
+	text-align: center;
+	width: 50px;
 }
 </style>
 

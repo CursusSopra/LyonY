@@ -99,8 +99,29 @@ public class Utilisateur {
 		ps.setString(3, avatar);
 		ps.setString(4, motDePasse);
 		ps.setInt(5, idUtilisateur);
+		
 
 		return ps.executeUpdate();
+	}
+
+	public void detailsModif() throws SQLException {
+		// Connexion à la base de données postgresSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		// requête SQL
+		String query = "SELECT idutilisateur, email, motdepasse, avatar "
+				+ "FROM utilisateurs " + "WHERE pseudo=?";
+		// System.out.println(query);
+		// Obtention de l'ensemble résultat
+		PreparedStatement ps = cnx.prepareStatement(query);
+		ps.setString(1, pseudo);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			this.idUtilisateur = rs.getInt("idutilisateur");
+			this.email = rs.getString("email");
+			this.motDePasse = rs.getString("motdepasse");
+			this.avatar = rs.getString("avatar");
+			
+		}
 	}
 
 	/* Liste des utilisateurs */
@@ -141,28 +162,7 @@ public class Utilisateur {
 		}
 		return listeDesUtilisateurs;
 	}
-
-	/* Modification du compte
-/* =================================================================================== */
-	public void detailsModif() throws SQLException {
-		// Connexion à la base de données postgresSQL
-		Connection cnx = PostgresConnection.getConnexion();
-		// requête SQL
-		String query = "SELECT idutilisateur, email, motdepasse, avatar "
-				+ "FROM utilisateurs " + "WHERE pseudo=?";
-		// System.out.println(query);
-		// Obtention de l'ensemble résultat
-		PreparedStatement ps = cnx.prepareStatement(query);
-		ps.setString(1, pseudo);
-		ResultSet rs = ps.executeQuery();
-		while (rs.next()) {
-			this.idUtilisateur = rs.getInt("idutilisateur");
-			this.email = rs.getString("email");
-			this.motDePasse = rs.getString("motdepasse");
-			this.avatar = rs.getString("avatar");
-		}
-	}
-
+	
 	/* Liste des avis */
 /* =================================================================================== */
 	private List<Avis> listeDesAvis;

@@ -98,7 +98,7 @@ public class Sortie {
 
 	// METHODES PUBLIQUES
 	public int save(Connection cnx) throws Exception {
-		String query = " INSERT INTO sorties (idlieu,idambiance, prixmin, prixmax) VALUES (?,?,?,?) ";
+		String query = " INSERT INTO sorties (idlieu, idambiance, prixmin, prixmax) VALUES (?,?,?,?) ";
 		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, idLieu);
 		ps.setInt(2, idAmbiance);

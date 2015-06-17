@@ -26,6 +26,111 @@ public class Restaurant extends Sortie {
 	private int nbavis;
 	private List<Avis> listeDesAvisDunLieu;
 
+//////////////Getters and Setters////////////////////
+	public int getIdRestaurant() {
+		return idRestaurant;
+	}
+	public void setIdRestaurant(int idRestaurant) {
+		this.idRestaurant = idRestaurant;
+	}
+	public String getNomrestaurant() {
+		return nomrestaurant;
+	}
+	public void setNomrestaurant(String nomrestaurant) {
+		this.nomrestaurant = nomrestaurant;
+	}
+	public String getNomquartier() {
+		return nomquartier;
+	}
+	public void setNomquartier(String nomquartier) {
+		this.nomquartier = nomquartier;
+	}
+	public int getPrixmin() {
+		return prixmin;
+	}
+	public void setPrixmin(int prixmin) {
+		this.prixmin = prixmin;
+	}
+	public int getPrixmax() {
+		return prixmax;
+	}
+	public void setPrixmax(int prixmax) {
+		this.prixmax = prixmax;
+	}
+	public String getLibambiance() {
+		return libambiance;
+	}
+	public void setLibambiance(String libambiance) {
+		this.libambiance = libambiance;
+	}
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	public String getVoie() {
+		return voie;
+	}
+	public void setVoie(String voie) {
+		this.voie = voie;
+	}
+	public String getCodePostal() {
+		return codePostal;
+	}
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+	public String getVille() {
+		return ville;
+	}
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public boolean isReservation() {
+		return reservation;
+	}
+	public void setReservation(boolean reservation) {
+		this.reservation = reservation;
+	}
+	public boolean isAemporter() {
+		return aemporter;
+	}
+	public void setAemporter(boolean aemporter) {
+		this.aemporter = aemporter;
+	}
+	public String getAmbiance() {
+		return ambiance;
+	}
+	public void setAmbiance(String ambiance) {
+		this.ambiance = ambiance;
+	}
+	public float getNotemoy() {
+		return notemoy;
+	}
+	public void setNotemoy(float notemoy) {
+		this.notemoy = notemoy;
+	}
+	public int getNbavis() {
+		return nbavis;
+	}
+	public void setNbavis(int nbavis) {
+		this.nbavis = nbavis;
+	}
+	public void setListeDesAvisDunLieu(List<Avis> listeDesAvisDunLieu) {
+		this.listeDesAvisDunLieu = listeDesAvisDunLieu;
+	}
+	public List<Avis> getListeDesAvisDunLieu() {
+		return listeDesAvisDunLieu;
+	}
+
+	//CTORS
 	public Restaurant() {
 	}
 	
@@ -74,205 +179,42 @@ public class Restaurant extends Sortie {
 			idl = rs.getInt("idlieu");
 			
 		}
-		// Construction de la liste des horaires - Méthode de la classe mère
-		getListeDesHoraires();
-		
-		Lieu lieu = new Lieu(idl);
-        listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
+	
+	
+	
+	// Construction de la liste des horaires - Méthode de la classe mère
+	getListeDesHoraires();
+	
+	Lieu lieu = new Lieu(idl);
+    listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
+}
+
+	public Restaurant(int idSortie, boolean reservation, boolean aemporter) {
+		this.setIdSortie(idSortie);
+		this.setReservation(reservation);
+		this.setAemporter(aemporter);
 	}
 
-	// /////////////// Getters and Setters/////////////////////////////////////////////////////////////
+	// METHODES PUBLIQUES
+		public int save(Connection cnx) throws Exception {
+			String query = " INSERT INTO restaurants (idsortie, reservation, aemporter) VALUES (?,?,?)";
+			PreparedStatement ps = cnx.prepareStatement(query,
+					Statement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, idSortie);
+			ps.setBoolean(2, reservation);
+			ps.setBoolean(3, aemporter);
 
-	public int getIdRestaurant() {
-		return idRestaurant;
-	}
+			ps.executeUpdate();
 
-	public void setIdRestaurant(int idRestaurant) {
-		this.idRestaurant = idRestaurant;
-	}
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs != null && rs.next()) {
+				idRestaurant = rs.getInt(1);
+			} else {
+				throw new Exception();
+			}
+			return idRestaurant;
+		}
 
-	public int getIdSortie() {
-		return idSortie;
-	}
-
-	public void setIdSortie(int idsortie) {
-		this.idSortie = idsortie;
-	}
-
-	public String getNomrestaurant() {
-		return nomrestaurant;
-	}
-
-	public void setNomrestaurant(String nomrestaurant) {
-		this.nomrestaurant = nomrestaurant;
-	}
-
-	public String getNomquartier() {
-		return nomquartier;
-	}
-
-	public void setNomquartier(String nomquartier) {
-		this.nomquartier = nomquartier;
-	}
-
-	public int getPrixmin() {
-		return prixmin;
-	}
-
-	public void setPrixmin(int prixmin) {
-		this.prixmin = prixmin;
-	}
-
-	public int getPrixmax() {
-		return prixmax;
-	}
-
-	public void setPrixmax(int prixmax) {
-		this.prixmax = prixmax;
-	}
-
-	public String getLibambiance() {
-		return libambiance;
-	}
-
-	public void setLibambiance(String libambiance) {
-		this.libambiance = libambiance;
-	}
-
-	public int getNumero() {
-		return numero;
-	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-
-	public String getVoie() {
-		return voie;
-	}
-
-	public void setVoie(String voie) {
-		this.voie = voie;
-	}
-
-
-
-	public String getCodePostal() {
-		return codePostal;
-	}
-
-	public void setCodePostal(String codePostal) {
-		this.codePostal = codePostal;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public boolean isReservation() {
-		return reservation;
-	}
-
-	public void setReservation(boolean reservation) {
-		this.reservation = reservation;
-	}
-
-	public boolean isAemporter() {
-		return aemporter;
-	}
-
-	public void setAemporter(boolean aemporter) {
-		this.aemporter = aemporter;
-	}
-
-	public List<Avis> getListeDesAvisDunLieu() {
-		return listeDesAvisDunLieu;
-	}
-
-	// public int save() throws SQLException {
-	// Connection cnx = PostgresConnection.getConnexion();
-	// String query =
-	// "INSERT INTO candidats(nom, prenom, datenaissance, villenaissance) "
-	// + "VALUES (?, ?, ?, ?)";
-	// PreparedStatement ps = cnx.prepareStatement(query);
-	// ps.setString(1, nom);
-	// ps.setString(2, prenom);
-	// ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
-	// ps.setString(4, villeNaissance);
-	//
-	// int ret = ps.executeUpdate();
-	//
-	// return ret;
-	//
-	// }
-	//
-	// public int edit() throws SQLException {
-	// Connection cnx = PostgresConnection.getConnexion();
-	// String query =
-	// "UPDATE candidats SET nom=?, prenom=?, datenaissance=?, villenaissance=? "
-	// + "WHERE idCandidat=?";
-	// PreparedStatement ps = cnx.prepareStatement(query);
-	// ps.setString(1, nom);
-	// ps.setString(2, prenom);
-	// ps.setDate(3, new java.sql.Date(dateNaissance.getTime()));
-	// ps.setString(4, villeNaissance);
-	// ps.setInt(5, idCandidat);
-	//
-	//
-	// int ret = ps.executeUpdate();
-	//
-	// return ret;
-	//
-	// }
-	//
-	// public int delete() throws SQLException {
-	// Connection cnx = PostgresConnection.getConnexion();
-	// String query = "DELETE FROM candidats "
-	// + "WHERE idCandidat=?";
-	// PreparedStatement ps = cnx.prepareStatement(query);
-	// ps.setInt(1, idCandidat);
-	//
-	// int ret = ps.executeUpdate();
-	//
-	// return ret;
-	//
-	// }
-
-	public String getAmbiance() {
-		return ambiance;
-	}
-
-	public void setAmbiance(String ambiance) {
-		this.ambiance = ambiance;
-	}
-
-	public float getNotemoy() {
-		return notemoy;
-	}
-
-	public void setNotemoy(float notemoy) {
-		this.notemoy = notemoy;
-	}
-
-	public int getNbavis() {
-		return nbavis;
-	}
-
-	public void setNbavis(int nbavis) {
-		this.nbavis = nbavis;
-	}
 
 	
 	// LISTE DES TYPES DE RESTAURANT

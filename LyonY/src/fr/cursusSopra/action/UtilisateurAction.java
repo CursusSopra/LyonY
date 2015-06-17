@@ -28,7 +28,7 @@ public class UtilisateurAction extends ActionSupport {
 	private int idadresse;
 	private String avatar;
 	private JRadioButton male;
-	
+		
 	private Adresse adresse;
 	private int numero;
 	private String voie;
@@ -179,6 +179,7 @@ public class UtilisateurAction extends ActionSupport {
 			motDePasse = uti.getMotDePasse();
 			avatar = uti.getAvatar();
 			idUtilisateur = uti.getIdUtilisateur();
+			
 			return SUCCESS;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -197,11 +198,41 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setMotDePasse(motDePasse);
 		uti.setEmail(email);
 
-		try {
+		/*try {
 			return uti.modif(cnx) != 0 ? SUCCESS : ERROR;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		return ERROR;*/
+		
+		try {
+			// On se met en mode 'transaction'
+			cnx.setAutoCommit(false);
+			
+			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
+			int idAdresse = adresse.update(cnx, numero, voie, codePostal, ville);
+			
+			uti.setIdadresse(idAdresse);			
+			uti.modif(cnx);		
+
+			return SUCCESS;			
+		} catch (Exception e) {
+			try {
+				cnx.rollback();
+				//e.printStackTrace();
+				return ERROR;
+			} catch (SQLException e1) {
+				//e1.printStackTrace();
+			}
+		} finally {
+			try {
+				// On remet en mode 'auto-commit'
+				cnx.setAutoCommit(true);
+				cnx.close();
+			} catch (SQLException e) {
+				//e.printStackTrace();
+			}
 		}
 		return ERROR;
 	}
