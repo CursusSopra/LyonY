@@ -2,8 +2,7 @@
 
 <h1>Entrez les informations sur le nouveau Bar :</h1>
 
-<form class="form-horizontal" method="post" id="idFormCreationBar"
-	action="<s:url action='creationBar'/>">
+<form class="form-horizontal" method="post" id="idFormCreationBar" action="<s:url action='creationBar'/>">
 
 	<div id="idFormAlertError" class="alert alert-danger hidden"
 		role="alert">Le formulaire contient des erreurs. Veuillez

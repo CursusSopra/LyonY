@@ -2,16 +2,12 @@ package fr.cursusSopra.model;
 
 public class Ambiance {
 	
-	private int idambiance;
+	private int idAmbiance;
 	private String types;
 	private String libambiance;
 	
-	public int getIdambiance() {
-		return idambiance;
-	}
-	public void setIdambiance(int idambiance) {
-		this.idambiance = idambiance;
-	}
+///////////Getters & Setters///////////////
+
 	public String getTypes() {
 		return types;
 	}
@@ -24,5 +20,23 @@ public class Ambiance {
 	public void setLibambiance(String libambiance) {
 		this.libambiance = libambiance;
 	}
+	
+	public int getIdAmbiance() {
+		return idAmbiance;
+	}
+	public void setIdAmbiance(int idAmbiance) {
+		this.idAmbiance = idAmbiance;
+	}
+	
+	
+		// CTOR
+		public Ambiance(){
+			
+		}
+		
+		public Ambiance (String types, String libambiance) {
+			this.types = types;
+			this.libambiance = libambiance;
+		}
 	
 }

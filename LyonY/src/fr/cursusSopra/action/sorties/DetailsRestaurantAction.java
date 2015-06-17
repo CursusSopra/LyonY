@@ -43,7 +43,6 @@ public class DetailsRestaurantAction extends SortiesAction {
 	//Méthodes publiques
 	public String execute() {
 		try {
-			restaurant = new Restaurant(idRestaurant);
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Restaurant.getListeDesAmbiancesDeRestaurant();
 			return SUCCESS;
