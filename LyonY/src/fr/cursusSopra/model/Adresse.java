@@ -19,7 +19,7 @@ public class Adresse {
 	String voie;
 	
 	// Code Postal
-	int codePostal;
+	String codePostal;
 	
 	// Nom de la ville
 	String ville;
@@ -31,7 +31,7 @@ public class Adresse {
 	@SuppressWarnings("unused") Adresse(){};
 	
 	// Constructeur à partir du nom
-	public Adresse(int numero, String voie, int codePostal, String ville, int idQuartier) throws SQLException {
+	public Adresse(int numero, String voie, String codePostal, String ville, int idQuartier) throws SQLException {
 		this.numero = numero;
 		this.voie = voie;
 		this.codePostal = codePostal;
@@ -55,7 +55,7 @@ public class Adresse {
 		if (rs.next()) {
 			numero = rs.getInt("numero");
 			voie = rs.getString("voie");
-			codePostal = rs.getInt("codepostal");
+			codePostal = rs.getString("codepostal");
 			ville = rs.getString("ville");		
 		} else {
 			throw new SQLException();
@@ -70,7 +70,7 @@ public class Adresse {
 		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, numero);
 		ps.setString(2, voie);
-		ps.setInt(3, codePostal);
+		ps.setString(3, codePostal);
 		ps.setString(4, ville);
 		ps.setInt(5, idQuartier);
 		
@@ -137,10 +137,10 @@ public class Adresse {
 	public void setvoie(String voie) {
 		this.voie = voie;
 	}
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public String getVille() {
