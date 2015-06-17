@@ -30,13 +30,15 @@ public class DetailsBarAction extends SortiesAction {
 	private int idQuartier;
 	private int numero;
 	private String voie;
-	private int codePostal;
+	private String codePostal;
 	private String ville;
 	private String nomL;
 	private String description;
 	private String accessibilite;
 	private int idAmbiance;
 	private int happyhour;
+	private int prixmin;
+	private int prixmax;
 	
 	
 ////////////Getters & Setters//////////////////////
@@ -88,10 +90,11 @@ public class DetailsBarAction extends SortiesAction {
 	public void setVoie(String voie) {
 		this.voie = voie;
 	}
-	public int getCodePostal() {
+
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public String getVille() {
@@ -131,6 +134,19 @@ public class DetailsBarAction extends SortiesAction {
 		this.happyhour = happyhour;
 	}
 	
+	
+	public int getPrixmin() {
+		return prixmin;
+	}
+	public void setPrixmin(int prixmin) {
+		this.prixmin = prixmin;
+	}
+	public int getPrixmax() {
+		return prixmax;
+	}
+	public void setPrixmax(int prixmax) {
+		this.prixmax = prixmax;
+	}
 	
 	//CTOR
 	public DetailsBarAction() {
@@ -175,7 +191,7 @@ public class DetailsBarAction extends SortiesAction {
 				lieu = new Lieu(nomL, idAdresse, description, accessibilite);
 				int idLieu = lieu.save(cnx);
 				
-				sortie = new Sortie(idLieu, idAmbiance);
+				sortie = new Sortie(idLieu, idAmbiance, prixmin, prixmax);
 				int idSortie = sortie.save(cnx);
 				
 				bar = new Bar(idSortie, happyhour);

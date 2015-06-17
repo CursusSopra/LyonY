@@ -88,9 +88,11 @@ public class Sortie {
 	//CTOR
 	public Sortie(){
 	}
-	public Sortie(int idLieu, int idAmbiance) {
+	public Sortie(int idLieu, int idAmbiance, int prixmin, int prixmax) {
 		this.idLieu = idLieu;
 		this.idAmbiance = idAmbiance;
+		this.prixmin = prixmin;
+		this.prixmax = prixmax;
 	}
 	
 

@@ -11,7 +11,7 @@
 }
 </style>
 
-<form method="post" id="idFormCreationHoraire">
+<form method="post" id="idFormCreationHoraire" action="<s:url action='creationHoraire'/>">
 
 <!--  Affichage des sliders par jour -->
 	<table id="Horaires">
