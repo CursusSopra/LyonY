@@ -4,7 +4,7 @@
 <h1>Modification d'un night club</h1>
 
 
-<form class="form-horizontal" method="post" id="idFormModifNclub" action="<s:url action='formModifNclub'/>">
+<form class="form-horizontal" method="post" id="idFormModifNclub" action="<s:url action='modifNclub'/>">
 	
 	<input type="hidden" id="idNightclub" name="idNightclub" value="<s:property value = "nclub.idNightclub"/>"/>
 
@@ -29,9 +29,9 @@
 	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
 		<div class="col-sm-3">
 			<div class="row">				
-				<select id="idAmbiance">
+				<select id="idAmbiance" name="idAmbiance" >
 					<s:iterator value="listeDesAmbiances">
-						<option value="<s:property value="idambiance" />" ${nclub.libambiance == libambiance ? 'selected="selected"' : ''} ><s:property value="libambiance" /></option>
+						<option value="<s:property value="idAmbiance" />" ${nclub.libambiance == libambiance ? 'selected' : ''} ><s:property value="libambiance" /></option>
 					</s:iterator>
 				</select>
 			</div>
@@ -46,9 +46,9 @@
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<select id="idQuartier">
+				<select id="idQuartier" name="idquartier"">
 					<s:iterator value="listeDesQuartiers">
-						<option value="<s:property value="idquartier" />" ${nclub.nomquartier == nom ? 'selected="selected"' : ''} >
+						<option value="<s:property	value="idquartier" />" ${nclub.nomquartier == nom ? 'selected' : ''} >
 						
 						
 							<s:property	value="nom" />
@@ -122,7 +122,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<TEXTAREA id="idAccessibilité" name="accessibilite" rows=4 cols=40
-					value="<s:property value = "nclub.accessiblite"/>" ></TEXTAREA>
+					value="<s:property value = "nclub.accessibilite"/>" ></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

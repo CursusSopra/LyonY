@@ -236,7 +236,7 @@ public class Nclub extends Sortie {
 		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
 		while(rs.next()){
 			Ambiance a = new Ambiance();
-			a.setIdambiance(rs.getInt("idambiance"));
+			a.setIdAmbiance(rs.getInt("idambiance"));
 			a.setTypes(rs.getString("types"));
 			a.setLibambiance(rs.getString("libambiance"));
 
@@ -284,5 +284,67 @@ public class Nclub extends Sortie {
 			listeDesNightclubs.add(n);
 		}
 		return listeDesNightclubs;
+	}
+	
+	
+	
+	public static void modifNightclub(int idNightclub, String nomnightclub,int idambiance, int idquartier, int numero, String voie, int codepostal, String ville, String description, String accessibilite, int prixmin, int prixmax ) throws SQLException {
+
+		
+
+		// Connexion à la BDD postgreSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		
+		String withQuery = "WITH A AS "
+				+ "("
+				+ "select * FROM nightclubs "
+				+ "INNER JOIN sorties USING (idsortie) "
+				+ "INNER JOIN lieux USING (idlieu) "
+				+ "INNER JOIN adresses USING (idadresse) "
+				+ "INNER JOIN quartiers using (idquartier) "
+				+ "INNER JOIN ambiances USING (idambiance) "
+				+ "WHERE idnightclub = "+ idNightclub
+				+ ") ";
+		
+		// Requête à exécuter
+		String query1 ="UPDATE lieux l SET nom = ?,description = ?,accessibilite = ? FROM  A WHERE l.idlieu = A.idlieu ";
+		String query2 ="UPDATE adresses ad SET numero = ?,voie = ?,codepostal = ?,ville = ?,idquartier = ? FROM  A WHERE ad.idadresse = A.idadresse ";
+		String query3 ="UPDATE sorties s SET prixmin = ?, prixmax = ?, idambiance = ? FROM  A WHERE s.idsortie = A.idsortie ";
+				
+				
+
+		
+		// Object instruction SQL
+		PreparedStatement stmt = cnx.prepareStatement(withQuery + query1);
+		
+		stmt.setString(1,nomnightclub);
+		stmt.setString(2,description);
+		stmt.setString(3,accessibilite);
+		
+		// execution de la requete de mise à jour
+		stmt.executeUpdate();
+		
+		
+		
+		
+		
+		stmt = cnx.prepareStatement(withQuery + query2);
+		stmt.setInt(1,numero);
+		stmt.setString(2,voie);
+		stmt.setInt(3,codepostal);
+		stmt.setString(4,ville);
+		stmt.setInt(5,idquartier);
+		stmt.executeUpdate();
+		
+		
+		stmt = cnx.prepareStatement(withQuery + query3);
+		stmt.setInt(1,prixmin);
+		stmt.setInt(2,prixmax);
+		stmt.setInt(3,idambiance);
+		stmt.executeUpdate();
+		
+		
+
+
 	}
 }
