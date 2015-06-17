@@ -28,7 +28,7 @@ public class ManageMonumentAction extends VisitesAction {
 	private int idQuartier;
 	private int numero;
 	private String voie;
-	private int codePostal;
+	private String codePostal;
 	private String ville;
 	private String nomL;
 	private String description;
@@ -89,10 +89,10 @@ public class ManageMonumentAction extends VisitesAction {
 	public void setVoie(String voie) {
 		this.voie = voie;
 	}
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public String getVille() {

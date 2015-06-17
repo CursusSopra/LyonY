@@ -36,8 +36,9 @@
 			</div>
 			<div>
 				<strong>Adresse :</strong>
-				<s:property value="placeetparc.cpAdres" />
-				<s:property value="placeetparc.villeAdres" />
+				<s:if test="%{placeetparc.numAdres!=0}"><s:property value="placeetparc.numAdres" /></s:if>
+				<s:if test="%{placeetparc.voieAdres!=''}"><s:property value="placeetparc.voieAdres" />,</s:if>
+				<s:property value="placeetparc.cpAdres" />&nbsp;<s:property value="placeetparc.villeAdres" />
 			</div>
 			<div>
 				<strong>Description :</strong>

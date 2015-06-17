@@ -6,7 +6,6 @@ import java.util.List;
 
 import fr.cursusSopra.model.Adresse;
 import fr.cursusSopra.model.Lieu;
-import fr.cursusSopra.model.Monument;
 import fr.cursusSopra.model.Placeetparc;
 import fr.cursusSopra.model.Quartier;
 import fr.cursusSopra.model.Typevisite;
@@ -29,7 +28,7 @@ public class ManagePlaceetparcAction extends VisitesAction {
 	private int idQuartier;
 	private int numero;
 	private String voie;
-	private int codePostal;
+	private String codePostal;
 	private String ville;
 	private String nomL;
 	private String description;
@@ -99,10 +98,10 @@ public class ManagePlaceetparcAction extends VisitesAction {
 	public void setVoie(String voie) {
 		this.voie = voie;
 	}
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public String getVille() {
