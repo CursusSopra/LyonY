@@ -18,47 +18,36 @@
 			<div>
 				<td><input data-size="xs" id="input-5b"  class="rating"  data-symbol="&#xf1bb;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="placeetparc.notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
 			
-				Nom du parc ou de la place :
+				<strong>Nom du parc ou de la place :</strong>
 				<s:property value="placeetparc.nomLieu" />
 			</div>
 			<div>
-				Quartier :
+				<strong>Type :</strong>
+				<s:property value="placeetparc.typeVisite" />
+			</div>
+			<div>
+				<strong>Avec fontaine :</strong>
+				<s:if test="%{placeetparc.avecFontaine}">Oui</s:if>
+				<s:else>Non</s:else>
+			</div>
+			<div>
+				<strong>Quartier :</strong>
 				<s:property value="placeetparc.nomQuartier" />
 			</div>
 			<div>
-				Adresse :
+				<strong>Adresse :</strong>
 				<s:property value="placeetparc.cpAdres" />
 				<s:property value="placeetparc.villeAdres" />
 			</div>
 			<div>
-				Description :
+				<strong>Description :</strong>
 				<s:property value="placeetparc.descriptionLieu" />
 			</div>
 
 			<div>
-				Accessibilité :
+				<strong>Accessibilité :</strong>
 				<s:property value="placeetparc.accessibiliteLieu" />
 			</div>
-			
-<!-- 			<table class="table table-striped table-hover"> -->
-<!-- 				<thead> -->
-<!-- 					<tr> -->
-<!-- 						<th>Jour de la semaine</th> -->
-<!-- 						<th>Heure d'ouverture</th> -->
-<!-- 						<th>Heure de fermeture</th> -->
-<!-- 					</tr> -->
-<!-- 				</thead> -->
-<!-- 				<tbody> -->
-<%-- 					<s:iterator value="listeDesHorairesDuneSortie"> --%>
-<!-- 						<tr> -->
-<%-- 							<td><s:property value="jour" /></td> --%>
-<%-- 							<td><s:date name="heuredebut" format="hh:mm" /></td> --%>
-<%-- 							<td><s:date name="heurefin" format="hh:mm" /></td> --%>
-<!-- 						</tr> -->
-<%-- 					</s:iterator> --%>
-<!-- 				</tbody> -->
-<!-- 			</table> -->
-
 			
 			<iframe class="map-top" width="598" height="450"
 				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
@@ -66,7 +55,7 @@
 			</iframe>
 			
 			<div>
-				Avis :
+				<h3>Avis :</h3>
 				<table class="table table-striped table-hover" >
 				<s:iterator value="placeetparc.listeDesAvisDunLieu"> 
 					<tr> 

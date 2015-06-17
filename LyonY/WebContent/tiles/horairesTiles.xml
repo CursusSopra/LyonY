@@ -12,14 +12,14 @@
 		<put-attribute name="body" value="/views/horaires/horaires.jsp" />
 		
 		<put-list-attribute name="moreScripts">
-			<add-attribute value="_js/horaires.js"></add-attribute>
 			<add-attribute
-				value="./js/jQueryUI.1.11.4/jquery-ui.min.js"></add-attribute>
+				value="js/jQueryUI.1.11.4/jquery-ui.min.js"></add-attribute>
+			<add-attribute value="_js/horaires.js"></add-attribute>
 		</put-list-attribute>
 		
 		<put-list-attribute name="moreStyles">
 			<add-attribute
-				value="./js/jQueryUI.1.11.4/jquery-ui.min.css"></add-attribute>
+				value="js/jQueryUI.1.11.4/jquery-ui.min.css"></add-attribute>
 		</put-list-attribute>
 	</definition>
 	
