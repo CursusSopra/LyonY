@@ -3,47 +3,53 @@
  */
 
 // Variables globales
-var i = $('#num').html();
 var arrStartTime = [];
 var arrEndTime = [];
+var startTime;
+var endTime;
 var timeString = "";
 
 // Création des sliders
 $(function() {
 	var nbSliders = $("#Horaires tr").length;
-	var startTime;
-	var endTime;
 
 	for (var i = 1; i <= nbSliders; i++) {
-		$("#slider-range" + i).slider({
-			range : true,
-			min : 0,
-			max : 47,
-			values : [ 20, 40 ],
+		$("#slider-range" + i).noUiSlider({
+			start : [ 20, 38 ],
+			range : {
+				'min' : [ 0 ],
+				'max' : [ 48 ]
+			},
 			step : 1,
-			slide : slideTime
-		});
+			margin : 1,
+			behaviour : 'snap'
+		}).on({
+			slide : function() {
+				setTimeHolder($(this));
+			}
+		})
 	}
 });
 
 // Fonction pour modifier les données des sliders
-function slideTime(event, ui) {
-	var $spanTime = $(ui.handle).parent().parent().next().children('span')
-			.first();
+function setTimeHolder(moi) {
+	var $spanTime = moi.parent().next().children('span').first();
 	var rang = $spanTime.data('rang');
 
-	// Quel plot du slider a été activé, le premier fils span du parent
-	var val0 = $("#slider-range" + rang).slider("values", 0), int0 = parseInt(
-			val0, 10), minutes0 = int0 % 2, hours0 = Math.floor(int0 / 2);
-	var val1 = $("#slider-range" + rang).slider("values", 1), int1 = parseInt(
-			val1, 10), minutes1 = int1 % 2, hours1 = Math.floor(int1 / 2);
+	var val0 = moi.val()[0];
+	var int0 = parseInt(val0, 10), minutes0 = int0 % 2, hours0 = Math
+			.floor(int0 / 2);
 
-	startTime = getTime(hours0, 30 * minutes0);
+	var val1 = moi.val()[1];
+	var int1 = parseInt(val1, 10), minutes1 = int1 % 2, hours1 = Math
+			.floor(int1 / 2);
+
+	var startTime = getTime(hours0, 30 * minutes0);
 	arrStartTime[rang - 1] = startTime;
 
-	endTime = getTime(hours1, 30 * minutes1);
+	var endTime = getTime(hours1, 30 * minutes1);
 	arrEndTime[rang - 1] = endTime;
-
+	
 	$spanTime.text(startTime + ' - ' + endTime);
 }
 
@@ -81,5 +87,5 @@ function getTime(hours, minutes) {
 
 // Submit de la string des horaires
 $("#scheduleSubmit").on('click', function() {
-	$('#idTimeString').val(toString(arrStartTime,arrEndTime));
+	$('#idTimeString').val(toString(arrStartTime, arrEndTime));
 });

@@ -41,7 +41,7 @@ public class ManageSortieAction extends ActionSupport {
 	// Sortie.java qui les ajoute dans la DB
 
 	public String executeCreationHoraire() {
-		System.out.println(timeString);
+		System.out.println("timestring vaut" + timeString);
 		timeStringToArray(timeString);
 
 		Connection cnx = PostgresConnection.getConnexion();
@@ -103,12 +103,11 @@ public class ManageSortieAction extends ActionSupport {
 		
 		// On crée un tableau de "hd-hf"
 		String[] temp1 = timeString.split("\\|");
-		
 		for (int i = 0; i < temp1.length; i++) {
 
 			// On crée un tableau de "hd" et "hf"
 			String[] temp2 = temp1[i].split("\\-");
-			
+
 			// On valorise les tableaux heureDebut et heureFin
 			heureDebut[i] = temp2[0];
 			heureFin[i] = temp2[1];
