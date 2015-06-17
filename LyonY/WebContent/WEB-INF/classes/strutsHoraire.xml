@@ -19,6 +19,11 @@
 		<action name="formCreationHoraire" class="fr.cursusSopra.action.HoraireAction" method="execute">			
 			<result name="success" type="tiles">formCreationHoraire</result>			
 		</action>
+		<action name="creationHoraire" class="fr.cursusSopra.action.sorties.ManageSortieAction" method="executeCreationHoraire">			
+			<result name="success" type="tiles">index</result>			
+		</action>
+		
+		
 		
 		<action name="horaireBis" class="fr.cursusSopra.action.HoraireAction" method="execute">			
 			<result name="success" type="tiles">horaireBis</result>			
