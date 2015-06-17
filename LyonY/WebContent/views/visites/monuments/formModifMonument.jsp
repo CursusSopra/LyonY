@@ -68,7 +68,12 @@
 		<label for="idNumero" class="col-sm-2 control-label">Numéro</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNumero" name="numero" value="<s:property value="monument.numAdres" />" />
+				<s:if test="%{monument.numAdres == 0}">
+					<input type="text" class="form-control" id="idNumero" name="numero" />
+				</s:if>
+				<s:else>
+					<input type="text" class="form-control" id="idNumero" name="numero" value="<s:property value="monument.numAdres" />" />
+				</s:else>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

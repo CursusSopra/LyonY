@@ -43,7 +43,7 @@
 			<result name="success" type="tiles">formModifMonument</result>
 		</action>
 		<action name="modifMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeModifMonument">
-			<result name="success" type="redirectAction">detailsMonument</result>
+			<result name="success" type="redirectAction">listeDesMonuments</result>
 		</action>
 		
 		<!-- PLACEETPARCS -->
@@ -67,8 +67,11 @@
 		</action>
 		
  		<!-- Formulaire de modification d'une place ou d'un parc -->
-		<action name="formModifPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeModifPlaceetparc">
+		<action name="formModifPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeFormModifPlaceetparc">
 			<result name="success" type="tiles">formModifPlaceetparc</result>
+		</action>
+		<action name="modifPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeModifPlaceetparc">
+			<result name="success" type="redirectAction">listeDesPlaceetparcs</result>
 		</action>
 		
 	</package>

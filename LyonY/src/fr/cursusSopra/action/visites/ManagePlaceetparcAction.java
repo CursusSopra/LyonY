@@ -160,7 +160,8 @@ public class ManagePlaceetparcAction extends VisitesAction {
 			return ERROR;
 		}
 	}
-
+	
+	// DETAILS
 	public String executeDetailsPlaceetparc(){
 		
 		try {
@@ -172,6 +173,7 @@ public class ManagePlaceetparcAction extends VisitesAction {
 		}
 	}
 	
+	// CREATION
 	public String executeCreationPlaceetparc(){
 		Connection cnx = PostgresConnection.getConnexion();
 		
@@ -198,9 +200,26 @@ public class ManagePlaceetparcAction extends VisitesAction {
 		}
 	}
 	
+	// MODIFICATION
+	public String executeFormModifPlaceetparc(){
+
+			try {
+				listeDesQuartiers = Quartier.getListeDesQuartiers();
+				listeDesTypevisites = Placeetparc.getListeDesTypevisitesDePlaceetparc();
+				placeetparc = new Placeetparc(idPlaceetparc);
+				return SUCCESS;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ERROR;
+			}
+
+	}
+	
 	public String executeModifPlaceetparc(){
-		
+
 		return SUCCESS;
 	}
+	
 
 }
