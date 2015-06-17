@@ -15,7 +15,7 @@ public class ManageSortieAction extends ActionSupport {
 
 	// Valeurs de Tests - À supprimer
 	// -------------------------
-	private int idSortie = 7;
+	private int idSortie = 4;
 	// -------------------------
 
 	private String[] heureDebut = new String[7];
@@ -50,7 +50,7 @@ public class ManageSortieAction extends ActionSupport {
 			// On se met en mode 'transaction'
 			cnx.setAutoCommit(false);
 
-			for (int i = 0; i < 1; i++) { // jours.length
+			for (int i = 0; i < jours.length; i++) { // jours.length
 				PlageHoraire ph = new PlageHoraire(heureDebut[i], heureFin[1]);
 				int idPlageHoraire = ph.save(cnx);
 
@@ -64,8 +64,10 @@ public class ManageSortieAction extends ActionSupport {
 		} catch (Exception e) {
 			try {
 				cnx.rollback();
+				e.printStackTrace();
 				return ERROR;
 			} catch (SQLException e1) {
+				e1.printStackTrace();
 			}
 		} finally {
 			try {
@@ -73,6 +75,7 @@ public class ManageSortieAction extends ActionSupport {
 				cnx.setAutoCommit(true);
 				cnx.close();
 			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 		return ERROR;
