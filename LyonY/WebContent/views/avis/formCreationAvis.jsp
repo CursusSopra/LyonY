@@ -32,6 +32,9 @@
 			</div>
 		</div>
 		
+<!-- 		Input Hidden -->
+		<input type="hidden" name="idLieu" value="<s:property value="idLieu" />"/>
+		
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<div class="row">

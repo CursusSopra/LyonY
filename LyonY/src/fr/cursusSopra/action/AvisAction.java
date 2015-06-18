@@ -58,7 +58,7 @@ public class AvisAction extends ActionSupport{
 	}
 	
 	//Methodes executes
-	public String execute(){
+	public String executeFormCreationAvis(){
 		return SUCCESS;
 		
 	}
@@ -67,7 +67,7 @@ public class AvisAction extends ActionSupport{
 	
 			Connection cnx = PostgresConnection.getConnexion();
 
-			avis = new Avis(idLieu, note, message, idUtilisateur);
+			avis = new Avis(idLieu, note, message);
 		
 			try {
 				return avis.save(cnx) == 0 ? ERROR : SUCCESS ;

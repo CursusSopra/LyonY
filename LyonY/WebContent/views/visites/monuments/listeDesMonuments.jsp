@@ -40,6 +40,7 @@
 								</s:if>
 								<s:else>
 									<s:property value="notemoy"/> - <s:property value="nbavis"/> avis
+									&nbsp;&nbsp;&nbsp;<a href="<s:property value='#am'/>">Donner votre avis</a>
 								</s:else>
 							</td>
 							<td><s:property value="nomQuartier"/></td>
