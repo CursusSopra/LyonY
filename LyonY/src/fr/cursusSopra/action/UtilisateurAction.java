@@ -45,6 +45,9 @@ public class UtilisateurAction extends ActionSupport {
 		return listeDesQuartiers;
 	}
 
+	
+	/* Création d'un compte utilisateur Candidat */
+/* ================================================================================================ */
 	public String execute() {
 
 		try {
@@ -55,9 +58,7 @@ public class UtilisateurAction extends ActionSupport {
 			return ERROR;
 		}
 	}
-
-	/* Création d'un compte utilisateur Candidat */
-/* ================================================================================================ */
+	
 	public String executeCreation() throws SQLException {
 		Connection cnx = PostgresConnection.getConnexion();
 
@@ -182,7 +183,13 @@ public class UtilisateurAction extends ActionSupport {
 			idUtilisateur = uti.getIdUtilisateur();
 			
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
-			adresse = uti.getAdresse();
+//			adresse = uti.getAdresse();
+			numero = uti.getNumero();
+			voie = uti.getVoie();
+			ville = uti.getVille();
+			codePostal = uti.getCodePostal();
+			idadresse = uti.getIdadresse();
+			idQuartier = uti.getIdQuartier();
 			
 			return SUCCESS;
 		} catch (SQLException e) {

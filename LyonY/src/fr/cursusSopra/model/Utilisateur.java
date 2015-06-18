@@ -121,7 +121,7 @@ public class Utilisateur {
 		// Connexion à la base de données postgresSQL
 		Connection cnx = PostgresConnection.getConnexion();
 		// requête SQL
-		String query = "SELECT idutilisateur, email, motdepasse, avatar, numero, voie, codepostal, ville, nom, idquartier "
+		String query = "SELECT idutilisateur, email, motdepasse, avatar, numero, voie, codepostal, ville, idquartier "
 				+ "FROM utilisateurs "
 				+ "INNER JOIN adresses USING (idadresse)"
 				+ "INNER JOIN quartiers USING (idquartier)"
