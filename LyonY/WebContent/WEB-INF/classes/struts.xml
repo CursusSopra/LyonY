@@ -38,5 +38,6 @@
 	<include file="strutsHoraire.xml" />
 	<include file="strutsLieu.xml" />
 	<include file="strutsBar.xml" />
+	<include file="strutsAvis.xml" />
 
 </struts>
