@@ -59,8 +59,10 @@ public class Utilisateur {
 			return true;
 
 		} catch (SQLIntegrityConstraintViolationException e) {
+			e.printStackTrace();
 			return false;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
