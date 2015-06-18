@@ -143,7 +143,7 @@
 		<label for="idReservation" class="col-sm-2 control-label">Réservation</label>
 		<div class="col-sm-3">
 			<div class="row">
-				Oui <input type="radio" class="form-align" id="idReservation" name="reservation" value="true"> &nbsp; 
+				Oui <input type="radio" class="form-align" id="idReservation" name="reservation" value="true"> &nbsp; &nbsp; &nbsp; 
 				Non <input type="radio" class="form-align" id="idReservation" name="reservation" value="false">
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
