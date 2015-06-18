@@ -222,7 +222,7 @@ public class DetailsNclubAction extends SortiesAction {
 		try {
 			nclub = new Nclub(idNightclub);
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
-			listeDesAmbiances = Restaurant.getListeDesAmbiancesDeRestaurant();
+			listeDesAmbiances = Nclub.getListeDesAmbiancesDeNclub();
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();

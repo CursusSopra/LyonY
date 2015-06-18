@@ -1,5 +1,11 @@
 package fr.cursusSopra.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Typevisite {
 	
 	private int idTypevisite;
@@ -34,5 +40,23 @@ public class Typevisite {
 	public Typevisite (String typev, String libtypevisite) {
 		this.typev = typev;
 		this.libtypevisite = libtypevisite;
+	}
+	
+    // METHODES PUBLIQUES
+	public int save(Connection cnx) throws Exception {
+		String query = " INSERT INTO typevisites (typev, libtypevisite) VALUES (?,?)";
+		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, typev);
+		ps.setString(2, libtypevisite);
+		
+		ps.executeUpdate();
+		
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.next()) {
+			idTypevisite = rs.getInt(1);
+		} else {
+			throw new Exception();
+		}
+		return idTypevisite;
 	}
 }

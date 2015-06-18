@@ -17,6 +17,7 @@ public class Adresse {
 	private String ville;
 	private int idQuartier;
 
+	private Quartier quartier;
 	// Constructeur vide
 	public Adresse(){
 		
@@ -29,6 +30,7 @@ public class Adresse {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.idQuartier = idQuartier;
+		this.quartier = new Quartier(idQuartier);
 	}
 
 	// Constructeur d'une adresse correspondant à partir d'un identifiant

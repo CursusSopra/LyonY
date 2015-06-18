@@ -96,8 +96,18 @@ public class ManageSortieAction extends ActionSupport {
 		return ERROR;
 	}
 	
+//	Récupération des horaires d'une Sortie existante en vue de la modifier
+//	Appel de la methode getStringHoraires de Sortie.java
 	public String executeFormModifHoraire() {
-		return SUCCESS;
+		try {
+			Sortie s = new Sortie();
+			s.setIdSortie(idSortieTest);
+			s.getStringHoraires(idSortieTest);
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	
 	}
 

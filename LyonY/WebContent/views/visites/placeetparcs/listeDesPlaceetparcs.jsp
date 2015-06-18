@@ -10,7 +10,7 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			
-			<table class="table table-striped table-hover">
+			<table id ="listeDesPlaceetparcs" class="display table table-striped table-hover table-bordered">
 				<thead>
 					<tr>
 						<th>Nom</th>
@@ -26,15 +26,21 @@
 								<s:property value="idPlaceetparc"/>
 							</s:param>
 						</s:url>
+						<s:url action="formCreationAvis" var="am">
+							<s:param name="idLieu">
+								<s:property value="idLieu"/>
+							</s:param>
+						</s:url>
 						<tr>
 							<td><a href="<s:property value='#dpp'/>"><s:property value="nomLieu"/></a></td>
 							<td><s:property value="typeVisite"/></td>
 							<td>
 								<s:if test='%{nbavis == 0}'>
-									Aucun avis, <a href="">soyez le premier !</a>
+									Aucun avis, <a href="<s:property value='#am'/>">soyez le premier !</a>
 								</s:if>
 								<s:else>
 									<s:property value="notemoy"/> - <s:property value="nbavis"/> avis
+									&nbsp;/&nbsp;<a href="<s:property value='#am'/>">Donnez votre avis</a>
 								</s:else>
 							</td>
 							<td><s:property value="nomQuartier"/></td>
