@@ -53,7 +53,8 @@
 			/tiles/monumentsTiles.xml,
 			/tiles/placeetparcsTiles.xml,
 			/tiles/creationUtilisateurTiles.xml,
-			/tiles/pagePersoTiles.xml
+			/tiles/pagePersoTiles.xml,
+			/tiles/avisTiles.xml
 			
 		</param-value>
 	</context-param>
