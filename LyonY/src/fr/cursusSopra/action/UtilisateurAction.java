@@ -225,7 +225,7 @@ public class UtilisateurAction extends ActionSupport {
 			int idAdresse = adresse.update(cnx, numero, voie, codePostal, ville, idQuartier);
 			
 			uti.setIdadresse(idAdresse);			
-			uti.modif(cnx);		
+			uti.modif(cnx, idUtilisateur, email, avatar, pseudo, motDePasse, idadresse);		
 
 			return SUCCESS;			
 		} catch (Exception e) {
