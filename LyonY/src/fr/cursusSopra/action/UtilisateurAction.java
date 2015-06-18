@@ -183,13 +183,13 @@ public class UtilisateurAction extends ActionSupport {
 			idUtilisateur = uti.getIdUtilisateur();
 			
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
-//			adresse = uti.getAdresse();
-			numero = uti.getNumero();
-			voie = uti.getVoie();
-			ville = uti.getVille();
-			codePostal = uti.getCodePostal();
-			idadresse = uti.getIdadresse();
-			idQuartier = uti.getIdQuartier();
+			adresse = uti.getAdresse();
+//			numero = uti.getNumero();
+//			voie = uti.getVoie();
+//			ville = uti.getVille();
+//			codePostal = uti.getCodePostal();
+//			idadresse = uti.getIdadresse();
+//			idQuartier = uti.getIdQuartier();
 			
 			return SUCCESS;
 		} catch (SQLException e) {
