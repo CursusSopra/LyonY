@@ -34,6 +34,7 @@
 	<input type="submit" name="scheduleSubmit" value="Submit"
 		id="scheduleSubmit" class="ui-button ui-state-default ui-corner-all" />
 	<input type="hidden" id="idTimeString" name="timeString"/>
+	<input type="hidden" id="idIdSortie" name="idSortie" value="${idSortie}"/>
 </form>
 
 
