@@ -172,7 +172,7 @@ public class Nclub extends Sortie {
 			idl = rs.getInt("idlieu");
 		}
 		// Construction de la liste des horaires - Méthode de la classe mère
-		getListeDesHoraires();
+		getListeDesHoraires(idSortie);
 		
 		Lieu lieu = new Lieu(idl);
         listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();  
