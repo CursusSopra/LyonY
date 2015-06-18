@@ -10,16 +10,16 @@
 	<br/>
 	
 		<a href="<s:url action='listeDesBars'/>"><img
-			src="/icons/256_icons/bar.png" /></a>
+			src="icons/256_icons/bar.png" /></a>
 			
 			&nbsp;&nbsp;&nbsp;&nbsp;
 
 		<a href="<s:url action='listeDesRestaurants'/>"><img
-			src="/icons/256_icons/restau.png" /></a>
+			src="icons/256_icons/restau.png" /></a>
 			
 			&nbsp;&nbsp;&nbsp;&nbsp;
 
 		<a href="<s:url action='listeDesNclubs'/>"><img
-			src="/icons/256_icons/disco.png" /></a>
+			src="icons/256_icons/disco.png" /></a>
 	
 </div>
