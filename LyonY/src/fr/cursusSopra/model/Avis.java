@@ -59,13 +59,14 @@ public class Avis {
 	public Avis(){
 	}
 	
-    public Avis(int idLieu, float note,  String message, int idUtilisateur) {
+    public Avis(int idLieu, float note,  String message) {
     	this.idLieu = idLieu;
     	this.note=note;
-    	this.message =message;
-    	this.idUtilisateur=idUtilisateur;
+    	this.message = message;
+    	this.idUtilisateur= 2; // /!\ ATTENTION Utilisateur non géré ici, utilsateur 2 par defaut /!\
     }
 	
+
     //Methodes publiques 
 
     public int save(Connection cnx) throws Exception{

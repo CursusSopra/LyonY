@@ -11,6 +11,27 @@
 		<put-attribute name="title" value="Restaurants" />
 		<put-attribute name="body"
 			value="/views/sorties/restaurants/listeDesRestaurants.jsp" />
+			
+					
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_plugins/Star_rating/js/star-rating.min.js"></add-attribute>
+			<add-attribute value="_js/sorties/listeDesRestaurants.js"></add-attribute>
+		</put-list-attribute>
+			
+		<put-list-attribute name="moreStyles">
+			<add-attribute value="_plugins/Star_rating/css/star-rating.min.css"></add-attribute>
+			<add-attribute value="fonts/font-awesome-4.3.0/css/font-awesome.min.css"></add-attribute>
+
+		</put-list-attribute>
+		
+			<put-list-attribute name="moreHttpStyles">
+			<add-attribute value="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"></add-attribute>
+		</put-list-attribute>
+		
+				
+		<put-list-attribute name="moreHttpScripts">
+			<add-attribute value="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 
 	<definition name="detailsRestaurant" extends="baseLayout">
@@ -33,12 +54,20 @@
 		<put-attribute name="title" value="Ajout d'un restaurant" />
 		<put-attribute name="body"
 			value="/views/sorties/restaurants/formCreationRestaurant.jsp" />
+			
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formCreationRestaurant.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 	
 	<definition name="formModifRestaurant" extends="baseLayout">
 		<put-attribute name="title" value="Modification d'un restaurant" />
 		<put-attribute name="body"
 			value="/views/sorties/restaurants/formModifRestaurant.jsp" />
+			
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formModifRestaurant.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 
 </tiles-definitions>

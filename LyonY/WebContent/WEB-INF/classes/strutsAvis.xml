@@ -8,19 +8,19 @@
 
 	<constant name="struts.devMode" value="true" />
 	
-	<package name="lyonYVisites" extends="struts-default">
+	<package name="lyonYAvis" extends="struts-default">
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 		
 <!-- 		Formulaire de création d'un avis -->
-		<action name="formCreationAvis" class="fr.cursusSopra.action.AvisAction" method="execute">  
+		<action name="formCreationAvis" class="fr.cursusSopra.action.AvisAction" method="executeFormCreationAvis">  
  			<result name="success" type="tiles">formCreationAvis</result> 
  		</action> 
 		
 		<action name="creationAvis" class="fr.cursusSopra.action.AvisAction" method="executeCreationAvis">
-			<result name="success" type="redirectAction">listeDesMonuments</result>
+			<result name="success" type="redirectAction">index</result>
 		</action>
 
 	</package>

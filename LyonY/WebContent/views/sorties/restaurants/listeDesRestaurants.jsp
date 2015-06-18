@@ -13,7 +13,7 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 
-			<table class="table table-striped table-hover table-bordered">
+			<table id ="listeDesRestaurants" class="display table table-striped table-hover table-bordered">
 				<thead>
 					<tr>
 						<th>Nom du restaurant</th>
@@ -42,7 +42,8 @@
 							<td><s:if test='%{nbavis == 0}'>
 									Aucun avis, <a href="">soyez le premier !</a>
 								</s:if> <s:else>
-									<s:property value="notemoy" /> - <s:property value="nbavis" /> avis
+												<input id="input-5b" data-size="xxs" class="rating"  data-symbol="&#xf0f5;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
+(<s:property value="nbavis" /> avis)
 								</s:else></td>
 							<td><s:property value="nomquartier" /></td>
 						</tr>

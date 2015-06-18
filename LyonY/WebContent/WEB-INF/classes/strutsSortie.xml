@@ -43,13 +43,16 @@
 		</action>
 		<action name="creationRestaurant"
 			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeCreationRestaurant">
-			<result name="success" type="redirectAction">listeDesRestaurants</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">formCreationHoraire</param>
+				<param name="idSortie">${sortie.idSortie}</param>
+			</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
 
 		<!-- Formulaire de modification -->
 		<action name="formModifRestaurant"
-			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="execute">
+			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeFormModifRestaurant">
 			<result name="success" type="tiles">formModifRestaurant</result>
 		</action>
 		<action name="modifRestaurant"
@@ -82,7 +85,10 @@
 		</action>
 		<action name="creationNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction"
 			method="executeCreationNclub">
-			<result name="success" type="redirectAction">listeDesNclubs</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">formCreationHoraire</param>
+				<param name="idSortie">${sortie.idSortie}</param>
+			</result>
 		</action>
 
 		<!-- Formulaire de modification -->
@@ -91,7 +97,7 @@
 			<result name="success" type="redirectAction">listeDesNclubs</result>
 		</action>
 		<action name="formModifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction"
-			method="execute">
+			method="executeFormModifNclub">
 			<result name="success" type="tiles">formModifNclub</result>
 		</action>
 
@@ -127,7 +133,7 @@
 
 		<!-- Formulaire de modification -->
 		<action name="formModifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction"
-			method="execute">
+			method="executeFormModifBar">
 			<result name="success" type="tiles">formModifBar</result>
 		</action>
 		<action name="modifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction"

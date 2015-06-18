@@ -13,12 +13,13 @@
 	<fieldset>
 		<legend>Login</legend>
 		<div class="form-group">
-			<label for="idNewPseudo" class="col-lg-2 control-label">Pseudo
+			<label for="idNewPseudo" class="col-lg-2 control-label" >Pseudo
 				*</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
-						<input type="text" class="form-control" id="idNewPseudo" name="pseudo" placeholder="Pseudo" required />
+						<!--  data-valid indique si le pseudo est unique  -->
+						<input type="text" class="form-control" id="idNewPseudo" name="pseudo" placeholder="Pseudo" data-valid="false"  required />
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
@@ -69,7 +70,8 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-8">
-						<input type="text" class="form-control" id="idNewEmail" name="email" placeholder="exemple.exemple@gmail.fr" required />
+						<!--  data-valid indique si le mail est unique  -->
+						<input type="text" class="form-control" id="idNewEmail" name="email" placeholder="exemple.exemple@gmail.fr" data-valid = "false" required />
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
@@ -154,6 +156,23 @@
 				</div>
 			</div>
 		</div>
+	</fieldset>
+
+	<fieldset>
+	<legend> Envoi du formulaire</legend>
+		<div class="form-group">
+			<label for="idSubmit" class="col-lg-2 control-label"></label>
+			<div class="col-lg-4">
+				<div class="row">
+					<div id="idSubmit" class="alert alert-danger hidden" role="alert">
+					A cane non magno sæpe tenetur aper <br/>
+					« Souvent le sanglier est arrêté par le petit chien. » <br/>					
+					--> Votre pseduo ou vote courriel électronique est déjà utilisé par un autre utilisateur, veuillez proceder aux changements adéquats.
+					</div>
+					<span class="col-lg-15 control-label">&nbsp;</span>
+				</div>
+			</div>
+		</div> 
 	</fieldset>
 
 	<div class="form-group">

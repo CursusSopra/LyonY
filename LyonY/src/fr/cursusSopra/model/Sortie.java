@@ -17,7 +17,7 @@ public class Sortie {
 	private int prixmin;
 	private int prixmax;
 	
-	public static List<Horaire> listeDesHoraires;
+	public List<Horaire> listeDesHoraires;
 
 	
 ///////////Getters & Setters///////////////
@@ -53,7 +53,7 @@ public class Sortie {
 	}
 
 	// Recupère les 7 horaires d'une sortie
-	public List<Horaire> getListeDesHoraires() throws SQLException {
+	public List<Horaire> getListeDesHoraires(int idSortie) throws SQLException {
 		listeDesHoraires = new ArrayList<Horaire>();
 		// Connexion à la base de données postgreSQL
 		Connection cnx = PostgresConnection.getConnexion();

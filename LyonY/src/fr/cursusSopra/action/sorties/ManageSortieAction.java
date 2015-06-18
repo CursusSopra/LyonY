@@ -8,22 +8,30 @@ import com.opensymphony.xwork2.ActionSupport;
 import fr.cursusSopra.model.Horaire;
 import fr.cursusSopra.model.Ouverture;
 import fr.cursusSopra.model.PlageHoraire;
+import fr.cursusSopra.model.Sortie;
 import fr.cursusSopra.tech.PostgresConnection;
 
 public class ManageSortieAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
-	// Valeurs de Tests - À supprimer
-	// -------------------------
-	private int idSortie = 4;
-	// -------------------------
+	
+//	valeur de test - form modif horaire
+	private int idSortieTest = 7;
+//	--------------
 
+	private int idSortie;
 	private String[] heureDebut = new String[7];
 	private String[] heureFin = new String[7];
-	private static String[] jours = { "Lundi", "Mardi", "Mercredi", "Jeudi",
+	private String[] jours = { "Lundi", "Mardi", "Mercredi", "Jeudi",
 			"Vendredi", "Samedi", "Dimanche" };
 	private String timeString;
 
+	public int getIdSortie() {
+		return idSortie;
+	}
+	public void setIdSortie(int idSortie) {
+		this.idSortie = idSortie;
+	}
 	public void setHeureDebut(String[] heureDebut) {
 		this.heureDebut = heureDebut;
 	}
@@ -37,11 +45,18 @@ public class ManageSortieAction extends ActionSupport {
 		this.timeString = timeString;
 	}
 
+	public String[] getJours() {
+		return jours;
+	}
+	
+	public String execute() {
+		return SUCCESS;
+	}
+	
 	// Création des horaires d'une sortie puis appel de la méthode de
 	// Sortie.java qui les ajoute dans la DB
 
 	public String executeCreationHoraire() {
-		System.out.println("timestring vaut" + timeString);
 		timeStringToArray(timeString);
 
 		Connection cnx = PostgresConnection.getConnexion();
@@ -79,29 +94,18 @@ public class ManageSortieAction extends ActionSupport {
 			}
 		}
 		return ERROR;
-
-		// h.setJour(arrayJours[i]);
-		//
-		// h.setPlageHoraire(pH);
-		//
-		// pH.setHeureDebut(heureDebut);
-		// pH.setHeureFin(heureFin);
-		//
-		// try {
-		// return h.save() != 0 ? SUCCESS : ERROR;
-		// } catch (ParseException e1) {
-		// e1.printStackTrace();
-		// return ERROR;
-		// } catch (SQLException e) {
-		// return ERROR;
-		// }
-
+	}
+	
+	public String executeFormModifHoraire() {
+		return SUCCESS;
+	
 	}
 
 
 	private void timeStringToArray(String timeString) {
 		
 		// On crée un tableau de "hd-hf"
+		System.out.println(timeString);
 		String[] temp1 = timeString.split("\\|");
 		for (int i = 0; i < temp1.length; i++) {
 

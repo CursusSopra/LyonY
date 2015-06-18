@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC 
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<!-- Formulaire creation d'un avis-->
+	<definition name="formCreationAvis" extends="baseLayout">
+		<put-attribute name="title" value="Ajout d'un avis" />
+		<put-attribute name="body" value="/views/avis/formCreationAvis.jsp"/>
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/avis/formCreationAvis.js"></add-attribute>
+		</put-list-attribute>
+		
+	</definition>
+
+</tiles-definitions>

@@ -167,6 +167,7 @@ public class DetailsNclubAction extends SortiesAction {
 	// INITIALISATION FORMULAIRE CREATION
 	public String execute() {
 		try {
+
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Nclub.getListeDesAmbiancesDeNclub();
 			return SUCCESS;
@@ -215,6 +216,20 @@ public class DetailsNclubAction extends SortiesAction {
 
 
 	// MODIFICATION
+	
+	public String executeFormModifNclub() {
+
+		try {
+			nclub = new Nclub(idNightclub);
+			listeDesQuartiers = Quartier.getListeDesQuartiers();
+			listeDesAmbiances = Nclub.getListeDesAmbiancesDeNclub();
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+
+	}
 	public String executeModifNclub() {
 
 		try {
