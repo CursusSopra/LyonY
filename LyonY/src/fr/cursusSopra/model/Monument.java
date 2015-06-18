@@ -312,22 +312,19 @@ public class Monument {
 		// Objet instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query  = "SELECT "
-							+ "l.nom AS nomL, "
-							+ "q.nom AS nomQ, "
-							+ "t.libtypevisite, "
-							+ "m.idmonument, "
-							+ "AVG(av.note) AS notemoy, "
-							+ "COUNT(av.note) AS nbavis "
-						+ "FROM monuments m "
-							+ "INNER JOIN visites v USING (idvisite) "
-							+ "INNER JOIN lieux l USING (idlieu) "
-							+ "INNER JOIN adresses a USING (idadresse) "
-							+ "INNER JOIN quartiers q USING (idquartier) "
-							+ "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
-							+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
-						+ "GROUP BY l.nom, q.nom, t.libtypevisite, m.idmonument "
-						+ "ORDER BY l.nom;"	;
+		String query  = "SELECT l.nom AS nomL, l.idlieu AS idLieu, q.nom AS nomQ, "
+				+ "t.libtypevisite, m.idmonument, "
+				+ "AVG(av.note) AS notemoy, COUNT(av.note) AS nbavis "
+				+ "FROM monuments m "
+				+ "INNER JOIN visites v USING (idvisite) "
+				+ "INNER JOIN lieux l USING (idlieu) "
+				+ "INNER JOIN adresses a USING (idadresse) "
+				+ "INNER JOIN quartiers q USING (idquartier) "
+				+ "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
+				+ "GROUP BY l.nom, q.nom, t.libtypevisite, m.idmonument, l.idLieu "
+				+ "ORDER BY l.nom;";
+
 		// Obtention de l'ensemble résultat
 		ResultSet rs = stmt.executeQuery(query);
 		// Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
@@ -339,6 +336,7 @@ public class Monument {
 			m.typeVisite = rs.getString("libtypevisite");
 			m.notemoy = rs.getFloat("notemoy");
 			m.nbavis = rs.getInt("nbavis");
+			m.idLieu = rs.getInt("idLieu");
 
 			listeDesMonuments.add(m);
 		}

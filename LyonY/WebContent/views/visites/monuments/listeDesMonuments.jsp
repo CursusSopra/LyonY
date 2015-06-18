@@ -26,12 +26,17 @@
 								<s:property value="idMonument"/>
 							</s:param>
 						</s:url>
+						<s:url action="formCreationAvis" var="am">
+							<s:param name="idLieu">
+								<s:property value="idLieu"/>
+							</s:param>
+						</s:url>
 						<tr>
 							<td><a href="<s:property value='#dm'/>"><s:property value="nomLieu"/></a></td>
 							<td><s:property value="typeVisite"/></td>
 							<td>
 								<s:if test='%{nbavis == 0}'>
-									Aucun avis,<a href="<s:url action='formCreationAvis'/>">Soyer le premier</a>
+									Aucun avis, <a href="<s:property value='#am'/>">soyez le premier</a>
 								</s:if>
 								<s:else>
 									<s:property value="notemoy"/> - <s:property value="nbavis"/> avis
