@@ -73,7 +73,7 @@
 				Aucun avis, <a href="">soyez le premier !</a>
 				</s:if>
 					<s:else>
-						<a href="<s:property value='#am'/>">Donner votre avis</a>
+						<a href="<s:property value='#am'/>">Donnez votre avis</a>
 						<table class="table table-striped table-hover" >
 							<s:iterator value="monument.listeDesAvisDunLieu"> 
 								<tr> 
