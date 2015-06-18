@@ -6,14 +6,14 @@
 
 <tiles-definitions>
 
-	<!--  -->
+	<!-- Création des horaires -->
 	<definition name="formCreationHoraire" extends="baseLayout">
-		<put-attribute name="title" value="Horaires" />
+		<put-attribute name="title" value="Ajout des Horaires" />
 		<put-attribute name="body" value="/views/horaires/formCreationHoraire.jsp" />
 		
 		<put-list-attribute name="moreScripts">
 			<add-attribute
-				value="_js/horaires.js"></add-attribute>
+				value="_js/creationHoraires.js"></add-attribute>
 			<add-attribute value="_plugins/slider/jquery.nouislider.all.min.js"></add-attribute>
 		</put-list-attribute>
 		
@@ -22,5 +22,23 @@
 				value="_plugins/slider/jquery.nouislider.min.css"></add-attribute>
 		</put-list-attribute>
 	</definition>
+	
+<!-- 	Modification des horaires  -->
+	<definition name="formModifHoraire" extends="baseLayout">
+		<put-attribute name="title" value="Modification des Horaires" />
+		<put-attribute name="body" value="/views/horaires/formModifHoraire.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute
+				value="_js/modifHoraires.js"></add-attribute>
+			<add-attribute value="_plugins/slider/jquery.nouislider.all.min.js"></add-attribute>
+		</put-list-attribute>
+		
+		<put-list-attribute name="moreStyles">
+			<add-attribute
+				value="_plugins/slider/jquery.nouislider.min.css"></add-attribute>
+		</put-list-attribute>
+	</definition>
+
 
 </tiles-definitions>

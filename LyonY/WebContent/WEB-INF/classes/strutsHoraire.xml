@@ -16,11 +16,18 @@
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 		
+		
+<!-- 		Création d'horaires -->
 		<action name="formCreationHoraire" class="fr.cursusSopra.action.sorties.ManageSortieAction" method="execute">			
 			<result name="success" type="tiles">formCreationHoraire</result>			
 		</action>
 		<action name="creationHoraire" class="fr.cursusSopra.action.sorties.ManageSortieAction" method="executeCreationHoraire">			
 			<result name="success" type="tiles">index</result>			
+		</action>
+		
+<!-- 		Modification d'horaires -->
+		<action name="formModifHoraire" class="fr.cursusSopra.action.sorties.ManageSortieAction" method="executeFormModifHoraire">			
+			<result name="success" type="tiles">formModifHoraire</result>			
 		</action>
 		
 				

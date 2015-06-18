@@ -13,6 +13,10 @@ import fr.cursusSopra.tech.PostgresConnection;
 public class ManageSortieAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
+	
+//	valeur de test - form modif horaire
+	private int idSortieTest = 7;
+//	--------------
 
 	private int idSortie;
 	private String[] heureDebut = new String[7];
@@ -89,23 +93,12 @@ public class ManageSortieAction extends ActionSupport {
 			}
 		}
 		return ERROR;
-
-		// h.setJour(arrayJours[i]);
-		//
-		// h.setPlageHoraire(pH);
-		//
-		// pH.setHeureDebut(heureDebut);
-		// pH.setHeureFin(heureFin);
-		//
-		// try {
-		// return h.save() != 0 ? SUCCESS : ERROR;
-		// } catch (ParseException e1) {
-		// e1.printStackTrace();
-		// return ERROR;
-		// } catch (SQLException e) {
-		// return ERROR;
-		// }
-
+	}
+	
+	public String executeFormModifHoraire() {
+		
+		return SUCCESS;
+		
 	}
 
 
