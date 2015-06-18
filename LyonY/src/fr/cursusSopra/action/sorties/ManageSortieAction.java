@@ -21,6 +21,9 @@ public class ManageSortieAction extends ActionSupport {
 			"Vendredi", "Samedi", "Dimanche" };
 	private String timeString;
 
+	public int getIdSortie() {
+		return idSortie;
+	}
 	public void setIdSortie(int idSortie) {
 		this.idSortie = idSortie;
 	}
@@ -49,7 +52,6 @@ public class ManageSortieAction extends ActionSupport {
 	// Sortie.java qui les ajoute dans la DB
 
 	public String executeCreationHoraire() {
-		System.out.println("timestring vaut" + timeString);
 		timeStringToArray(timeString);
 
 		Connection cnx = PostgresConnection.getConnexion();

@@ -15,7 +15,7 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 
-			<table class="table table-striped table-hover table-bordered">
+			<table id ="listeDesNclubs" class="display table table-striped table-hover table-bordered">
 				<thead>
 					<tr>
 						<th>Nom du club</th>
