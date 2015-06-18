@@ -10,7 +10,7 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			
-			<table class="table table-striped table-hover">
+			<table id ="listeDesPlaceetparcs" class="display table table-striped table-hover table-bordered">
 				<thead>
 					<tr>
 						<th>Nom</th>
@@ -40,7 +40,7 @@
 								</s:if>
 								<s:else>
 									<s:property value="notemoy"/> - <s:property value="nbavis"/> avis
-									&nbsp;&nbsp;&nbsp;<a href="<s:property value='#am'/>">Donnez votre avis</a>
+									&nbsp;/&nbsp;<a href="<s:property value='#am'/>">Donnez votre avis</a>
 								</s:else>
 							</td>
 							<td><s:property value="nomQuartier"/></td>

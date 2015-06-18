@@ -74,5 +74,11 @@
 			<result name="success" type="redirectAction">listeDesPlaceetparcs</result>
 		</action>
 		
+		<!-- TYPEVISITES -->
+		
+		<action name="creationTypevisite" class="fr.cursusSopra.action.visites.ManageTypevisiteAction" method="executeCreationTypevisite">
+			<result name="success" type="tiles">visites</result>
+		</action>
+		
 	</package>
 </struts>
