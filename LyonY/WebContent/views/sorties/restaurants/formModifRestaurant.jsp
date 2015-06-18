@@ -29,7 +29,7 @@
 	</div>
 
 
-	<
+	
 	<div class="form-group">
 		<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
 		<div class="col-sm-3">
@@ -37,7 +37,7 @@
 				<select id="idAmbiance" name="idAmbiance">
 					<s:iterator value="listeDesAmbiances">
 						<option value="<s:property value="idAmbiance" />"
-							${nclub.libambiance == libambiance ? 'selected' : ''}><s:property
+							${restaurant.libambiance == libambiance ? 'selected' : ''}><s:property
 								value="libambiance" /></option>
 					</s:iterator>
 				</select>
@@ -57,7 +57,7 @@
 				<select id="idQuartier" name="idQuartier"">
 					<s:iterator value="listeDesQuartiers">
 						<option value="<s:property	value="idQuartier" />"
-							${nclub.nomquartier == nom ? 'selected' : ''}>
+							${restaurant.nomquartier == nom ? 'selected' : ''}>
 
 
 							<s:property value="nom" />
@@ -136,7 +136,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<TEXTAREA id="idAccessibilité" name="accessibilite" rows=4 cols=40
-					><s:property value = "restaurant.accessiblite"/></TEXTAREA>
+					><s:property value = "restaurant.accessibilite"/></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

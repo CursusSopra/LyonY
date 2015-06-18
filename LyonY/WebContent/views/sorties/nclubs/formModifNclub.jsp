@@ -110,7 +110,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<TEXTAREA name="description" rows=4 cols=40
-					value="<s:property value = "nclub.description"/>" ></TEXTAREA>
+					 ><s:property value = "nclub.description"/></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -122,7 +122,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<TEXTAREA id="idAccessibilité" name="accessibilite" rows=4 cols=40
-					value="<s:property value = "nclub.accessibilite"/>" ></TEXTAREA>
+					 ><s:property value = "nclub.accessibilite"/></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

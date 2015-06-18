@@ -3,7 +3,7 @@
 
 <h1>Modification d'un bar</h1>
 
-<form class="form-horizontal" method="post" id="idFormModifBar" action="<s:url action='formModifBar'/>">
+<form class="form-horizontal" method="post" id="idFormModifBar" action="<s:url action='modifBar'/>">
 	
 	<input type="hidden" id="idBar" name="idBar" value="<s:property value = "bar.idBar"/>"/>
 
@@ -25,17 +25,20 @@
 
 	
 	<div class="form-group">
-	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
+		<label for="idAmbiance" class="col-sm-2 control-label">Ambiance</label>
 		<div class="col-sm-3">
-			<div class="row">				
-				<select id="idAmbiance">
+			<div class="row">
+				<select id="idAmbiance" name="idAmbiance">
 					<s:iterator value="listeDesAmbiances">
-						<option value="<s:property value="idambiance" />" ${bar.libambiance == libambiance ? 'selected="selected"' : ''} ><s:property value="libambiance" /></option>
+						<option value="<s:property value="idAmbiance" />"
+							${bar.libambiance == libambiance ? 'selected' : ''}><s:property
+								value="libambiance" /></option>
 					</s:iterator>
 				</select>
 			</div>
-			<div class = "row">
-				<a href="<s:url action='creationAmbiance'/>">Ajouter une ambiance</a>
+			<div class="row">
+				<a href="<s:url action='creationAmbiance'/>">Ajouter une
+					ambiance</a>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -45,12 +48,13 @@
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<select id="idQuartier">
+				<select id="idQuartier" name="idQuartier"">
 					<s:iterator value="listeDesQuartiers">
-						<option value="<s:property value="idquartier" />" ${bar.nomquartier == nom ? 'selected="selected"' : ''} >
-						
-						
-							<s:property	value="nom" />
+						<option value="<s:property	value="idQuartier" />"
+							${bar.nomquartier == nom ? 'selected' : ''}>
+
+
+							<s:property value="nom" />
 						</option>
 					</s:iterator>
 				</select>
@@ -86,7 +90,7 @@
 			postal</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idCodepostal" name="codepostal" value="<s:property value = "bar.codepostal"/>"/>
+				<input type="text" class="form-control" id="idCodepostal" name="codePostal" value="<s:property value = "bar.codePostal"/>"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -109,7 +113,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<TEXTAREA name="description" rows=4 cols=40
-					value="<s:property value = "bar.description"/>" ></TEXTAREA>
+					 ><s:property value = "bar.description"/></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -121,7 +125,7 @@
 		<div class="col-sm-3">
 			<div class="row">
 				<TEXTAREA id="idAccessibilité" name="accessibilite" rows=4 cols=40
-					value="<s:property value = "bar.accessiblite"/>" ></TEXTAREA>
+					 ><s:property value = "bar.accessibilite"/></TEXTAREA>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
