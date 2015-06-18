@@ -76,7 +76,7 @@
 				<span class="col-lg-20 control-label">&nbsp;</span>
 			</div>
 		</div>
-<div></div>
+
 		<div class="form-group">
 			<label for="idQuartier" class="col-lg-2 control-label">Quartier</label>
 			<div class="col-lg-4">
