@@ -249,7 +249,7 @@ public class DetailsBarAction extends SortiesAction {
 		try {
 			bar = new Bar(idBar);
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
-			listeDesAmbiances = Restaurant.getListeDesAmbiancesDeRestaurant();
+			listeDesAmbiances = Bar.getListeDesAmbiancesDeBar();
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
