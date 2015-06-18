@@ -30,7 +30,7 @@ public class Adresse {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.idQuartier = idQuartier;
-		this.quartier = new Quartier(idQuartier);
+		this.setQuartier(new Quartier(idQuartier));
 	}
 
 	// Constructeur d'une adresse correspondant à partir d'un identifiant
@@ -158,6 +158,14 @@ public class Adresse {
 	}
 	public void setIdQuartier(int idQuartier) {
 		this.idQuartier = idQuartier;
+	}
+
+	public Quartier getQuartier() {
+		return quartier;
+	}
+
+	public void setQuartier(Quartier quartier) {
+		this.quartier = quartier;
 	}
 
 //	public Quartier getQuartier() {

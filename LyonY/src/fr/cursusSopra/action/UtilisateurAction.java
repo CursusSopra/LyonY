@@ -75,8 +75,6 @@ public class UtilisateurAction extends ActionSupport {
 			
 			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd")
 					.parse(dateNaissance));
-			
-			System.out.println("av création adresse" + numero + idQuartier);
 			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
 			int idAdresse = adresse.save(cnx);
 			
@@ -184,13 +182,7 @@ public class UtilisateurAction extends ActionSupport {
 			
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			adresse = uti.getAdresse();
-//			numero = uti.getNumero();
-//			voie = uti.getVoie();
-//			ville = uti.getVille();
-//			codePostal = uti.getCodePostal();
-//			idadresse = uti.getIdadresse();
-//			idQuartier = uti.getIdQuartier();
-			
+						
 			return SUCCESS;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
