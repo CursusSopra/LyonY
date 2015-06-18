@@ -57,7 +57,7 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-5">
-						<input type="text" class="form-control" id="idNumero" name="numero" placeholder="Exemple : 66" />
+						<input type="text" class="form-control" id="idNumero" name="numero" value="<s:property value='numero' />" />
 					</div>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
@@ -69,7 +69,7 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-10">
-						<input type="text" class="form-control" id="idVoie" name="voie" placeholder="Exemple : cours Charlemagne" />
+						<input type="text" class="form-control" id="idVoie" name="voie" value="<s:property value='voie' />" />
 					</div>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
@@ -96,7 +96,7 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-5">
-						<input type="text" class="form-control" id="idCodepostal" name="codePostal" placeholder="Exemple : 69002" />
+						<input type="text" class="form-control" id="idCodepostal" name="codePostal" value="<s:property value='codePostal' />" />
 					</div>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
@@ -108,8 +108,7 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-4">
-						<input type="text" class="form-control" id="idVille" name="ville"
-							value="Lyon" />
+						<input type="text" class="form-control" id="idVille" name="ville" value="<s:property value='ville' />" />
 					</div>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
@@ -124,8 +123,7 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
-						<input type="text" class="form-control" id="idAvatar"
-							name="avatar" value="<s:property value='avatar' />" />
+						<input type="text" class="form-control" id="idAvatar" name="avatar" value="<s:property value='avatar' />" />
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
