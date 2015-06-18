@@ -11,7 +11,7 @@
 		Le formulaire contient des erreurs. Veuillez réessayer.
 	</div>
 
-
+	<fieldset>
 	<legend>Identification</legend>
 	<div class="form-group">
 		<label for="idNom" class="col-sm-2 control-label">Nom du lieu *</label>
@@ -58,6 +58,7 @@
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
 	</div>
+	</fieldset>
 	
 	<legend>Adresse</legend>
 

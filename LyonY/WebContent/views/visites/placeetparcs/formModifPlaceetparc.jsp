@@ -53,7 +53,7 @@
 			<div class="row">
 				<select id="idQuartier" name="idQuartier">
 					<s:iterator value="listeDesQuartiers">
-						<s:if test='%{idquartier == placeetparc.idQuartier}'>
+						<s:if test='%{idQuartier == placeetparc.idQuartier}'>
 							<option value="<s:property value="idQuartier"/>" selected="selected"><s:property value="nom" /></option>
 						</s:if>
 						<s:else>
