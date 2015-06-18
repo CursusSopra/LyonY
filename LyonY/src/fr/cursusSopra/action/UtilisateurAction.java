@@ -180,6 +180,9 @@ public class UtilisateurAction extends ActionSupport {
 			avatar = uti.getAvatar();
 			idUtilisateur = uti.getIdUtilisateur();
 			
+			listeDesQuartiers = Quartier.getListeDesQuartiers();
+			adresse = uti.getAdresse();
+			
 			return SUCCESS;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -211,7 +214,7 @@ public class UtilisateurAction extends ActionSupport {
 			cnx.setAutoCommit(false);
 			
 			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
-			int idAdresse = adresse.update(cnx, numero, voie, codePostal, ville);
+			int idAdresse = adresse.update(cnx, numero, voie, codePostal, ville, idQuartier);
 			
 			uti.setIdadresse(idAdresse);			
 			uti.modif(cnx);		
