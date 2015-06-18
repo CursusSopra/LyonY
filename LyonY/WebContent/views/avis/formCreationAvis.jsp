@@ -6,27 +6,26 @@
 	
 	<form class="form-horizontal" method="post" id="idFormCreationAvis" action="<s:url action='creationAvis'/>">
 		
-<!-- 		// -->
-<!-- 		//Ne pas oublier de mettre champs cachés pour idlieu et id utilisateur -->
-<!-- 		// -->
-<!-- 		// -->
 		
+		<div id="idFormAlertError" class="alert alert-danger hidden" role="alert">
+			Le formulaire contient des erreurs. Veuillez réessayer.
+		</div>
 		
 		<div class="form-group">
-			<label for="idAvisNote" class="col-sm-2 control-label">Note:</label>
+			<label for="idAvisNote" class="col-sm-2 control-label">Note :</label>
 			<div class="col-sm-3">
 				<div class="row">
-					<input type="text" class="form-control" id="idAvisNote" name="note" placeholder="Donner une note sur 5."/>
+					<input type="text" class="form-control" id="idAvisNote" name="note" placeholder="Exemple : 5"/>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<label for="idAvisMessage" class="col-sm-2 control-label">Avis</label>
+			<label for="idAvisMessage" class="col-sm-2 control-label">Avis :</label>
 			<div class="col-sm-3">
 				<div class="row">
-					<TEXTAREA id="idAvisMessage" name="message" rows=4 cols=40 placeholder="Donner votre avis"></TEXTAREA>
+					<TEXTAREA id="idAvisMessage" name="message" rows=4 cols=40 placeholder="Exemple : C'est énooorme !"></TEXTAREA>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
 			</div>
