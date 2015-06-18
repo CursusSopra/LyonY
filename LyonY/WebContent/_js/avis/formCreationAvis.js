@@ -12,7 +12,7 @@ $(document).ready(
 				var formOK = true;
 				//Si champ obligatoire non rempli
 				var rx = new RegExp('[0-5]');
-				if (valAvisNote == '' || !rx.test(valAvisNote)) {
+				if (valAvisNote == '' || !rx.test(valAvisNote) || valAvisNote<0) {
 					formOK &= false;
 					$avisNote.parent().parent().parent().addClass('has-error');
 					$avisNote.parent().next('span').html('Vous devez fournir une note entre 0 et 5');
