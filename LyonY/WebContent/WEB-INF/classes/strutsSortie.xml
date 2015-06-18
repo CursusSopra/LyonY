@@ -43,7 +43,10 @@
 		</action>
 		<action name="creationRestaurant"
 			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeCreationRestaurant">
-			<result name="success" type="redirectAction">listeDesRestaurants</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">formCreationHoraire</param>
+				<param name="idSortie">${sortie.idSortie}</param>
+			</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
 
@@ -82,7 +85,10 @@
 		</action>
 		<action name="creationNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction"
 			method="executeCreationNclub">
-			<result name="success" type="redirectAction">listeDesNclubs</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">formCreationHoraire</param>
+				<param name="idSortie">${sortie.idSortie}</param>
+			</result>
 		</action>
 
 		<!-- Formulaire de modification -->
