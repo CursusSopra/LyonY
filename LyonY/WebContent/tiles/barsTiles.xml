@@ -52,12 +52,20 @@
 		<put-attribute name="title" value="Ajout d'un bar" />
 		<put-attribute name="body"
 			value="/views/sorties/bars/formCreationBar.jsp" />
+			
+			<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formCreationBar.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 	
 	<definition name="formModifBar" extends="baseLayout">
 		<put-attribute name="title" value="Modification d'un bar" />
 		<put-attribute name="body"
 			value="/views/sorties/bars/formModifBar.jsp" />
+			
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formModifBar.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 
 

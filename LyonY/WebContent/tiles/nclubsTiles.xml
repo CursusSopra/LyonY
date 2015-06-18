@@ -51,6 +51,10 @@
 	<definition name="formModifNclub" extends="baseLayout">
 		<put-attribute name="title" value="Modification d'un night club" />
 		<put-attribute name="body"	value="/views/sorties/nclubs/formModifNclub.jsp" />
+		
+			<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formModifNclub.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 
 </tiles-definitions>

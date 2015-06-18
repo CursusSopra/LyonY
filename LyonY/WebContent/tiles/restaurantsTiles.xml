@@ -44,12 +44,20 @@
 		<put-attribute name="title" value="Ajout d'un restaurant" />
 		<put-attribute name="body"
 			value="/views/sorties/restaurants/formCreationRestaurant.jsp" />
+			
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formCreationRestaurant.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 	
 	<definition name="formModifRestaurant" extends="baseLayout">
 		<put-attribute name="title" value="Modification d'un restaurant" />
 		<put-attribute name="body"
 			value="/views/sorties/restaurants/formModifRestaurant.jsp" />
+			
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formModifRestaurant.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 
 </tiles-definitions>
