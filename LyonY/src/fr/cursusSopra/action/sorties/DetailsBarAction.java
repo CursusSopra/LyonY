@@ -8,11 +8,8 @@ import fr.cursusSopra.model.Adresse;
 import fr.cursusSopra.model.Ambiance;
 import fr.cursusSopra.model.Bar;
 import fr.cursusSopra.model.Lieu;
-import fr.cursusSopra.model.Monument;
 import fr.cursusSopra.model.Quartier;
 import fr.cursusSopra.model.Sortie;
-import fr.cursusSopra.model.Typevisite;
-import fr.cursusSopra.model.Visite;
 import fr.cursusSopra.tech.Breadcrumbs;
 import fr.cursusSopra.tech.PostgresConnection;
 
@@ -192,7 +189,7 @@ public class DetailsBarAction extends SortiesAction {
 				
 				sortie = new Sortie(idLieu, idAmbiance, prixmin, prixmax);
 				int idSortie = sortie.save(cnx);
-				
+				happyhour=1;
 				bar = new Bar(idSortie, happyhour);
 				
 				return bar.save(cnx) == 0 ? ERROR : SUCCESS ;

@@ -30,6 +30,7 @@ public class Lieu {
 			String accessibilite) throws SQLException {
 		this.nom = nom;
 		this.adresse = new Adresse(idAdresse);
+		this.idAdresse = idAdresse;
 		this.setDescription(description);
 		this.setAccessibilite(accessibilite);
 	}
