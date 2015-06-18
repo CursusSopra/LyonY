@@ -118,16 +118,16 @@ public class Adresse {
 	public void setIdAdresse(int idAdresse) {
 		this.idAdresse = idAdresse;
 	}
-	public int getnumero() {
+	public int getNumero() {
 		return numero;
 	}
-	public void setnumero(int numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	public String getvoie() {
+	public String getVoie() {
 		return voie;
 	}
-	public void setvoie(String voie) {
+	public void setVoie(String voie) {
 		this.voie = voie;
 	}
 	public String getCodePostal() {

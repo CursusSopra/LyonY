@@ -12,16 +12,16 @@ import fr.cursusSopra.tech.PostgresConnection;
 
 public class Quartier {
 
-	private int idquartier;
+	private int idQuartier;
 	private String nom;
 	private int budgetMoyen;
 	private int distanceCentreVille;
 
-	public int getIdquartier() {
-		return idquartier;
+	public int getIdQuartier() {
+		return idQuartier;
 	}	
-	public void setIdquartier(int idquartier) {
-		this.idquartier = idquartier;
+	public void setIdQuartier(int idQuartier) {
+		this.idQuartier = idQuartier;
 	}
 	public String getNom() {
 		return nom;
@@ -45,9 +45,9 @@ public class Quartier {
 	// ********************************************************************************
 
 	// constructeur
-	public Quartier(int id) throws SQLException {
+	public Quartier(int idq) throws SQLException {
 
-		idquartier = id;
+		idQuartier = idq;
 
 		// connexion a la base de donnees postgresSQL
 		Connection cnx = PostgresConnection.getConnexion();
@@ -55,7 +55,7 @@ public class Quartier {
 		Statement stmt = cnx.createStatement();
 		// requete à executer
 		String query = "SELECT nom, budgetMoyen, distanceCentreVille"
-				+ "FROM quartiers WHERE idquartier = " + idquartier + " ; ";
+				+ "FROM quartiers WHERE idquartier = " + idQuartier + " ; ";
 		// obtention de l'ensemble resultat
 
 		ResultSet rs = stmt.executeQuery(query);// rs demande les valeur pour un
@@ -80,7 +80,7 @@ public class Quartier {
 		ps.setString(1, nom);
 		ps.setInt(2, budgetMoyen);
 		ps.setInt(3, distanceCentreVille);
-		ps.setInt(4, idquartier);
+		ps.setInt(4, idQuartier);
 		int ret = ps.executeUpdate();
 		return ret;
 	}
@@ -99,7 +99,7 @@ public class Quartier {
 		Connection cnx = PostgresConnection.getConnexion();
 		String query = "DELETE FROM quartiers WHERE idquartier=?";
 		PreparedStatement ps = cnx.prepareStatement(query);
-		ps.setInt(1, idquartier);
+		ps.setInt(1, idQuartier);
 		int ret = ps.executeUpdate();
 		return ret;
 	}
@@ -125,7 +125,7 @@ public class Quartier {
 												// ligne, ligne par ligne
 		while (rs.next()) {
 			Quartier q = new Quartier();
-			q.idquartier = rs.getInt("idquartier");
+			q.idQuartier = rs.getInt("idquartier");
 			q.nom = rs.getString("nom");
 			q.budgetMoyen = rs.getInt("budgetMoyen");
 			q.distanceCentreVille = rs.getInt("distanceCentreVille");
@@ -158,11 +158,11 @@ public class Quartier {
 												// ligne, ligne par ligne
 		while (rs.next()) {
 			Adresse a = new Adresse();
-			a.idAdresse = rs.getInt("idadresse");
-			a.numero = rs.getInt("numero");
-			a.voie = rs.getString("voie");
-			a.codePostal = rs.getString("codepostal");
-			a.ville = rs.getString("ville");
+			a.setIdAdresse(rs.getInt("idadresse"));
+			a.setNumero(rs.getInt("numero"));
+			a.setVoie(rs.getString("voie"));
+			a.setCodePostal(rs.getString("codepostal"));
+			a.setVille(rs.getString("ville"));
 
 			listeDesAdressesDunQuartier.add(a);
 		}
