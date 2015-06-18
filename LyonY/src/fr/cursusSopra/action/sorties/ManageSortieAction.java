@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import fr.cursusSopra.model.Horaire;
 import fr.cursusSopra.model.Ouverture;
 import fr.cursusSopra.model.PlageHoraire;
+import fr.cursusSopra.model.Sortie;
 import fr.cursusSopra.tech.PostgresConnection;
 
 public class ManageSortieAction extends ActionSupport {
@@ -96,15 +97,15 @@ public class ManageSortieAction extends ActionSupport {
 	}
 	
 	public String executeFormModifHoraire() {
-		
 		return SUCCESS;
-		
+	
 	}
 
 
 	private void timeStringToArray(String timeString) {
 		
 		// On crée un tableau de "hd-hf"
+		System.out.println(timeString);
 		String[] temp1 = timeString.split("\\|");
 		for (int i = 0; i < temp1.length; i++) {
 
