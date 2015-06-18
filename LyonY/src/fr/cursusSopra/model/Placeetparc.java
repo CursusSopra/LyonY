@@ -278,7 +278,7 @@ public class Placeetparc  {
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
 		String query  = "SELECT "
-							+ "l.nom AS nomL, "
+							+ "l.nom AS nomL, l.idlieu AS idLieu, "
 							+ "t.libtypevisite, "
 							+ "q.nom AS nomQ, "
 							+ "p.idplaceetparc, "
@@ -291,7 +291,7 @@ public class Placeetparc  {
 							+ "INNER JOIN quartiers q USING (idquartier) "
 							+ "INNER JOIN typevisites t ON v.idtypevisite = t.idtypevisite "
 							+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
-						+ "GROUP BY l.nom, t.libtypevisite, q.nom, p.idplaceetparc "
+						+ "GROUP BY l.nom, t.libtypevisite, q.nom, p.idplaceetparc, l.idLieu "
 						+ "ORDER BY l.nom;"	;
 		// Obtention de l'ensemble résultat
 		ResultSet rs = stmt.executeQuery(query);
@@ -304,6 +304,7 @@ public class Placeetparc  {
 			p.typeVisite = rs.getString("libtypevisite");
 			p.notemoy = rs.getFloat("notemoy");
 			p.nbavis = rs.getInt("nbavis");
+			p.idLieu = rs.getInt("idLieu");
 			
 
 			listeDesPlaceetparcs.add(p);
