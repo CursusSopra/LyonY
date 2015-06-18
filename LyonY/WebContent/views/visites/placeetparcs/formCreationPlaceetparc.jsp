@@ -49,7 +49,7 @@
 				<select id="idQuartier" name="idQuartier">
 					<option value="">Choisissez...</option>
 					<s:iterator value="listeDesQuartiers">
-						<option value="<s:property value="idquartier" />"><s:property value="nom" /></option>
+						<option value="<s:property value="idQuartier" />"><s:property value="nom" /></option>
 					</s:iterator>
 				</select>
 			</div>

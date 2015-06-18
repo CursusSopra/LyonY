@@ -54,10 +54,10 @@
 				<select id="idQuartier" name="idQuartier">
 					<s:iterator value="listeDesQuartiers">
 						<s:if test='%{idquartier == placeetparc.idQuartier}'>
-							<option value="<s:property value="idquartier"/>" selected="selected"><s:property value="nom" /></option>
+							<option value="<s:property value="idQuartier"/>" selected="selected"><s:property value="nom" /></option>
 						</s:if>
 						<s:else>
-							<option value="<s:property value="idquartier" />"><s:property value="nom" /></option>
+							<option value="<s:property value="idQuartier" />"><s:property value="nom" /></option>
 						</s:else>
 					</s:iterator>
 				</select>
