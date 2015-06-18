@@ -83,7 +83,7 @@
 					<select id="idQuartier" name="quartier">
 						<option value=" <s:property value="adresse.quartier.nom"/>"> </option>
 							<s:iterator value="listeDesQuartiers">
-								<option value="<s:property value="adresse.idQuartier" />"> <s:property value="nom" /> </option>
+								<option value="<s:property value="idQuartier" />"> <s:property value="nom" /> </option>
 							</s:iterator>
 					</select>
 				</div>
