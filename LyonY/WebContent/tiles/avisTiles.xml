@@ -5,11 +5,11 @@
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-
-	<!-- INDEX -->
-	<definition name="visites" extends="baseLayout">
-		<put-attribute name="title" value="Visites" />
-		<put-attribute name="body" value="/views/visites/visites.jsp" />
+	
+	<!-- Formulaire creation d'un avis-->
+	<definition name="formCreationAvis" extends="baseLayout">
+		<put-attribute name="title" value="Ajout d'un avis" />
+		<put-attribute name="body" value="/views/avis/formCreationAvis.jsp"/>
 	</definition>
 
 </tiles-definitions>

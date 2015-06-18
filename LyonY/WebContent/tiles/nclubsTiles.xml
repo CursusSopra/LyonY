@@ -9,15 +9,24 @@
 	<!-- NIGTH CLUBS -->
 	<definition name="listeDesNclubs" extends="baseLayout">
 		<put-attribute name="title" value="Night Clubs" />
-		<put-attribute name="body"
-			value="/views/sorties/nclubs/listeDesNclubs.jsp" />
+		<put-attribute name="body"	value="/views/sorties/nclubs/listeDesNclubs.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="./_plugins/Star_rating/js/star-rating.min.js"></add-attribute>
+		</put-list-attribute>
+			
+		<put-list-attribute name="moreStyles">
+			<add-attribute value="./_plugins/Star_rating/css/star-rating.min.css"></add-attribute>
+			<add-attribute value="./fonts/font-awesome-4.3.0/css/font-awesome.min.css"></add-attribute>
+
+		</put-list-attribute>
+		
 	</definition>
 
 
 	<definition name="detailsNclub" extends="baseLayout">
 		<put-attribute name="title" value="Détails du Night Club" />
-		<put-attribute name="body"
-			value="/views/sorties/nclubs/detailsNclub.jsp" />
+		<put-attribute name="body"	value="/views/sorties/nclubs/detailsNclub.jsp" />
 
 		<put-list-attribute name="moreScripts">
 			<add-attribute value="./_plugins/Star_rating/js/star-rating.min.js"></add-attribute>
@@ -32,14 +41,20 @@
 	
 	<definition name="formCreationNclub" extends="baseLayout">
 		<put-attribute name="title" value="Ajout d'un night club" />
-		<put-attribute name="body"
-			value="/views/sorties/nclubs/formCreationNclub.jsp" />
+		<put-attribute name="body"	value="/views/sorties/nclubs/formCreationNclub.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formCreationNclub.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 	
 	<definition name="formModifNclub" extends="baseLayout">
 		<put-attribute name="title" value="Modification d'un night club" />
-		<put-attribute name="body"
-			value="/views/sorties/nclubs/formModifNclub.jsp" />
+		<put-attribute name="body"	value="/views/sorties/nclubs/formModifNclub.jsp" />
+		
+			<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/sorties/formModifNclub.js"></add-attribute>
+		</put-list-attribute>
 	</definition>
 
 </tiles-definitions>

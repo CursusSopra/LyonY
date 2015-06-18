@@ -131,7 +131,7 @@ public class Bar extends Sortie {
 		Statement stmt = cnx.createStatement();
 
 		// Requête à exécuter
-		String query = "SELECT l.idlieu, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, "
+		String query = "SELECT s.idsortie, l.idlieu, b.idbar, l.nom nombar,q.nom nomquartier, libambiance, "
 				+ "prixmin, prixmax, numero, voie, codepostal, ville, description, l.accessibilite, happyhour, "
 				+ "AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM bars b "
@@ -143,7 +143,7 @@ public class Bar extends Sortie {
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
 				+ "WHERE b.idbar = "
 				+ idBar
-				+ " GROUP BY l.idlieu, b.idbar, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, "
+				+ " GROUP BY s.idsortie, l.idlieu, b.idbar, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, "
 				+ "description, l.accessibilite";
 
 		// Obtention de l'ensemble résultats
@@ -165,9 +165,10 @@ public class Bar extends Sortie {
 			notemoy = rs.getFloat("notemoy");
 			nbavis = rs.getInt("nbavis");
 			idl = rs.getInt("idlieu");
+			idSortie = rs.getInt("idsortie");
 		}
 		// Construction de la liste des horaires - Méthode de la classe mère
-		getListeDesHoraires();
+		getListeDesHoraires(idSortie);
 
 		Lieu lieu = new Lieu(idl);
 		listeDesAvisDunLieu = lieu.getListeDesAvisDunLieu();
@@ -267,4 +268,65 @@ public class Bar extends Sortie {
 		}
 		return listeDesBars;
 	}
+	
+	//Modification
+		public void modifBar(String nombar,int idambiance, int idquartier, int numero, String voie, String codepostal, String ville, String description, String accessibilite, int prixmin, int prixmax ) throws SQLException {
+
+			
+
+			// Connexion à la BDD postgreSQL
+			Connection cnx = PostgresConnection.getConnexion();
+			
+			String withQuery = "WITH A AS "
+					+ "("
+					+ "select * FROM bars "
+					+ "INNER JOIN sorties USING (idsortie) "
+					+ "INNER JOIN lieux USING (idlieu) "
+					+ "INNER JOIN adresses USING (idadresse) "
+					+ "INNER JOIN quartiers using (idquartier) "
+					+ "INNER JOIN ambiances USING (idambiance) "
+					+ "WHERE idbar = "+ idBar
+					+ ") ";
+			
+			// Requête à exécuter
+			String query1 ="UPDATE lieux l SET nom = ?,description = ?,accessibilite = ? FROM  A WHERE l.idlieu = A.idlieu ";
+			String query2 ="UPDATE adresses ad SET numero = ?,voie = ?,codepostal = ?,ville = ?,idquartier = ? FROM  A WHERE ad.idadresse = A.idadresse ";
+			String query3 ="UPDATE sorties s SET prixmin = ?, prixmax = ?, idambiance = ? FROM  A WHERE s.idsortie = A.idsortie ";
+					
+					
+
+			
+			// Object instruction SQL
+			PreparedStatement stmt = cnx.prepareStatement(withQuery + query1);
+			
+			stmt.setString(1,nombar);
+			stmt.setString(2,description);
+			stmt.setString(3,accessibilite);
+			
+			// execution de la requete de mise à jour
+			stmt.executeUpdate();
+			
+			
+			
+			
+			
+			stmt = cnx.prepareStatement(withQuery + query2);
+			stmt.setInt(1,numero);
+			stmt.setString(2,voie);
+			stmt.setString(3,codepostal);
+			stmt.setString(4,ville);
+			stmt.setInt(5,idquartier);
+			stmt.executeUpdate();
+			
+			
+			stmt = cnx.prepareStatement(withQuery + query3);
+			stmt.setInt(1,prixmin);
+			stmt.setInt(2,prixmax);
+			stmt.setInt(3,idambiance);
+			stmt.executeUpdate();
+			
+			
+
+
+		}
 }
