@@ -52,6 +52,7 @@
 		</div>
 	</fieldset>
 	
+	<fieldset>
 	<div class="form-group">
 			<label for="idNumero" class="col-lg-2 control-label">Numéro</label>
 			<div class="col-lg-4">
