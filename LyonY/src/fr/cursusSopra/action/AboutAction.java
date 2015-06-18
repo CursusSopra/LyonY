@@ -65,7 +65,7 @@ public class AboutAction extends ActionSupport {
 				"Pierre-Antoine Rodesch", // Nom complet
 				"Responsable du Stationnement", // Titre
 				"Lyon, France", "par@lyony.fr", "", "bio", // Bio
-				"competences, ...")); // Compétences
+				"SOAP, Pull & Push, ...")); // Compétences
 
 		listCollab.add(new Collaborateurs("celtique.jpg", // Image de fond
 				"gjouen.jpg", // Image identité
