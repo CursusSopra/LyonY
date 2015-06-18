@@ -81,7 +81,7 @@ $(document).ready(
 					if (valLibTypevisite == '') {
 						formOK &= false;
 						$libTypevisite.parent().parent().parent().addClass('has-error');
-						$libTypevisite.parent().next('span').html('Vous devez fournir un nouveau type !');
+						$libTypevisite.parent().next('span').html('Vous devez renseigner un nouveau type !');
 					} else {
 						$libTypevisite.parent().parent().parent().removeClass('has-error');
 						$libTypevisite.parent().next('span').html('');
@@ -91,20 +91,17 @@ $(document).ready(
 					}
 			});
 		
-		
-//		$("#idAppelModal#submit").click(function(){
-//			$.ajax({
-//				type: "POST",
-//				url: "process.php", //process to mail
-//				data: $('form.contact').serialize(),
-//				success: function(msg){
-//					$("#idAppelModal").html(msg) //hide button and show thank you
-//					$("#form-content").modal('hide'); //hide popup	
-//				},
-//				error: function(){
-//					alert("failure");
-//				}
-//			});
-//		});
+		$("#idFormCreationTypevisite#submit").click(function(){
+			$.ajax({
+				type: "POST", url: "creationTypevisite", data: $('form.contact').serialize(),
+				success: function(msg){
+					$("#idTypevisite").append('<option value="' + '" selected="selected">' + $('#idLibTypevisite').val() + '</option>');
+					$("#form-content").modal('hide'); //hide popup	
+				},
+				error: function(){
+					alert("failure");
+				}
+			});
+		});
 		
 		});
