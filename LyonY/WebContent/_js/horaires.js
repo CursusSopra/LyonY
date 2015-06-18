@@ -22,7 +22,7 @@ $(function() {
 			},
 			step : 1,
 			margin : 1,
-			behaviour : 'snap'
+			behaviour : 'snap',
 		}).on({
 			slide : function() {
 				setTimeHolder($(this));
@@ -49,7 +49,7 @@ function setTimeHolder(moi) {
 
 	var endTime = getTime(hours1, 30 * minutes1);
 	arrEndTime[rang - 1] = endTime;
-	
+
 	$spanTime.text(startTime + ' - ' + endTime);
 }
 
