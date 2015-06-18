@@ -96,7 +96,13 @@ public class Utilisateur {
 
 	/* Modification du compte */
 /* =================================================================================== */
-	public int modif(Connection cnx) throws SQLException {
+	public int modif(Connection cnx, int idUtilisateur, String email, String avatar, String pseudo, String motDePasse, int idadresse) throws SQLException {
+		this.idUtilisateur = idUtilisateur;
+		this.pseudo = pseudo;
+		this.email = email;
+		this.motDePasse = motDePasse;
+		this.avatar = avatar;
+		this.idadresse = idadresse;
 
 		String query = "UPDATE utilisateurs SET pseudo=?, email=?, avatar=?, motdepasse=?  WHERE idutilisateur=?";
 
@@ -115,11 +121,11 @@ public class Utilisateur {
 		// Connexion à la base de données postgresSQL
 		Connection cnx = PostgresConnection.getConnexion();
 		// requête SQL
-		String query = "SELECT idutilisateur, email, motdepasse, avatar, numero, voie, codepostal, ville, nom "
+		String query = "SELECT idutilisateur, email, motdepasse, avatar, numero, voie, codepostal, ville, nom, idquartier "
 				+ "FROM utilisateurs "
 				+ "INNER JOIN adresses USING (idadresse)"
 				+ "INNER JOIN quartiers USING (idquartier)"
-				+ "" + "WHERE pseudo=?";
+				+ "WHERE pseudo=?";
 		// System.out.println(query);
 		// Obtention de l'ensemble résultat
 		PreparedStatement ps = cnx.prepareStatement(query);
@@ -131,9 +137,7 @@ public class Utilisateur {
 			this.motDePasse = rs.getString("motdepasse");
 			this.avatar = rs.getString("avatar");
 			
-			this.adresse = new Adresse(rs.getInt(numero), rs.getString(voie), rs.getString(codePostal), rs.getString(ville), rs.getInt(idQuartier));
-			this.nom = rs.getString(nom);
-			
+			this.adresse = new Adresse(rs.getInt("numero"), rs.getString("voie"), rs.getString("codepostal"), rs.getString("ville"), rs.getInt("idquartier"));
 		}
 	}
 
