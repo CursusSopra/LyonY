@@ -31,7 +31,7 @@
 			<div class="row">				
 				<select id="idTypevisite" name="idTypevisite">
 					<s:iterator value="listeDesTypevisites">
-						<s:if test='%{libtypevisite == placeetparc.typeVisite}'>
+						<s:if test='%{idTypevisite == placeetparc.idTypevisite}'>
 							<option value="<s:property value="idTypevisite"/>" selected="selected"><s:property value="libtypevisite" /></option>
 						</s:if>
 						<s:else>
@@ -53,7 +53,7 @@
 			<div class="row">
 				<select id="idQuartier" name="idQuartier">
 					<s:iterator value="listeDesQuartiers">
-						<s:if test='%{nom == placeetparc.nomQuartier}'>
+						<s:if test='%{idquartier == placeetparc.idQuartier}'>
 							<option value="<s:property value="idquartier"/>" selected="selected"><s:property value="nom" /></option>
 						</s:if>
 						<s:else>
@@ -157,6 +157,12 @@
 			<div class="row">(* : champ obligatoire)</div>
 		</div>
 	</div>
+	
+	<!-- INPUT HIDDEN -->
+	<input type="hidden" name="idAdresse" value="<s:property value="placeetparc.idAdresse" />"/>
+	<input type="hidden" name="idLieu" value="<s:property value="placeetparc.idLieu" />"/>
+	<input type="hidden" name="idVisite" value="<s:property value="placeetparc.idVisite" />"/>
+	<input type="hidden" name="idPlaceetparc" value="<s:property value="placeetparc.idPlaceetparc" />"/>
 	
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">

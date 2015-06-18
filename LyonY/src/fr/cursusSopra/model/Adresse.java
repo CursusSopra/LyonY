@@ -9,26 +9,18 @@ import java.sql.Statement;
 import fr.cursusSopra.tech.PostgresConnection;
 
 public class Adresse {
-	// Clé primaire de l'adresse
-	int idAdresse;
 	
-	// Numéro de voie
-	int numero;
-	
-	// Libellé de la voie
-	String voie;
-	
-	// Code Postal
-	String codePostal;
-	
-	// Nom de la ville
-	String ville;
-	
-	// Identitfiant du quartier
+	private int idAdresse;
+	private int numero;
+	private String voie;
+	private String codePostal;
+	private String ville;
 	private int idQuartier;
 
 	// Constructeur vide
-	@SuppressWarnings("unused") Adresse(){};
+	public Adresse(){
+		
+	}
 	
 	// Constructeur à partir du nom
 	public Adresse(int numero, String voie, String codePostal, String ville, int idQuartier) throws SQLException {
@@ -47,7 +39,7 @@ public class Adresse {
 		// Objet instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requete à executer
-		String query = "SELECT numero, voie, codepostal, ville "
+		String query = "SELECT numero, voie, codepostal, ville, idquartier "
 				+ "FROM adresses "
 				+ "WHERE idadresse = " + idAdresse + " ; ";
 		// Obtention de l'ensemble résultat
@@ -57,6 +49,7 @@ public class Adresse {
 			voie = rs.getString("voie");
 			codePostal = rs.getString("codepostal");
 			ville = rs.getString("ville");		
+			idQuartier = rs.getInt("idquartier");	
 		} else {
 			throw new SQLException();
 		}
@@ -88,15 +81,15 @@ public class Adresse {
 	// Modifie une adresse dans la base de donnée
 	// Prend en paramètre une connection (synchronisation entre les classes
 	// métiers)
-	public int update(Connection cnx, int numero, String voie, String codePostal, String ville) throws SQLException {
-		String query = " UPDATE adresses  SET numero=?, voie=?, codepostal=?, ville=? "
+	public int update(Connection cnx, int numero, String voie, String codePostal, String ville, int idQuartier) throws SQLException {
+		String query = " UPDATE adresses  SET numero=?, voie=?, codepostal=?, ville=?, idquartier=? "
 				+ " WHERE idadresse=" + idAdresse;
-		System.out.println(query);
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, numero);
 		ps.setString(2, voie);
 		ps.setString(3, codePostal);
 		ps.setString(4, ville);
+		ps.setInt(5, idQuartier);
 		return ps.executeUpdate();
 	}
 
@@ -117,14 +110,14 @@ public class Adresse {
 		sb.append(codePostal + ville);
 		return sb.toString();
 	}
-
+	
+	// GETSETS
 	public int getIdAdresse() {
 		return idAdresse;
 	}
 	public void setIdAdresse(int idAdresse) {
 		this.idAdresse = idAdresse;
 	}
-
 	public int getnumero() {
 		return numero;
 	}

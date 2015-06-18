@@ -3,7 +3,10 @@ package fr.cursusSopra.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+
+import fr.cursusSopra.tech.PostgresConnection;
 
 public class Visite {
 	
@@ -32,6 +35,29 @@ public class Visite {
 	}
 	
 	// CTOR
+	public Visite(){
+		
+	}
+	
+	public Visite(int idv) throws SQLException{
+		idVisite = idv;
+        // connexion à la BDD PostGresSQL
+        Connection cnx = PostgresConnection.getConnexion();
+        // Objet instruction SQL
+        Statement stmt = cnx.createStatement();
+        // Requête à exécuter
+        String query  = "SELECT idlieu, idtypevisite "
+        	+ "FROM visites "
+    		+ "WHERE idvisite= "  + idVisite +";";
+	    // Obtention de l'ensemble résultat
+	    ResultSet rsV = stmt.executeQuery(query);
+	    // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
+	    if(rsV.next()){
+	        idLieu = rsV.getInt("idlieu");
+	        idTypevisite = rsV.getInt("idtypevisite");
+	    }
+	}
+	
 	public Visite(int idLieu, int idTypevisite) {
 		this.idLieu = idLieu;
 		this.idTypevisite = idTypevisite;
@@ -53,6 +79,14 @@ public class Visite {
 			throw new Exception();
 		}
 		return idVisite;
+	}
+	
+	public int update(Connection cnx, int idTypevisite) throws Exception {
+		String query = "UPDATE visites SET idtypevisite=? WHERE idvisite=" + idVisite + ";";
+		PreparedStatement ps = cnx.prepareStatement(query);
+		ps.setInt(1, idTypevisite);
+		
+		return ps.executeUpdate();
 	}
 	
 }

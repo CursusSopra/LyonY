@@ -12,76 +12,38 @@ import fr.cursusSopra.tech.PostgresConnection;
 
 public class Placeetparc  {
 
-	//Variables
 	private int idPlaceetparc;
+	private boolean avecFontaine;
+
+	private int idVisite;
+	
+	private int idTypevisite;
+	private String typeVisite;
+
+	private int idLieu;
 	private String nomLieu;
-	private int idLieu; 
 	private String descriptionLieu;
 	private String accessibiliteLieu;
+
+	private int idAdresse;
 	private int numAdres;
-	private String voieAdres; 
+	private String voieAdres;
 	private String cpAdres;
 	private String villeAdres;
+	
+	private int idQuartier;
 	private String nomQuartier;
-	private String typeVisite;
+	
 	private float notemoy;
 	private int nbavis;
-	private int idVisite;
-	private boolean avecFontaine;
-	
 	private List<Avis> listeDesAvisDunLieu;
 	
-	// GETS SETS
+	// GETSETS
 	public int getIdPlaceetparc() {
 		return idPlaceetparc;
 	}
 	public void setIdPlaceetparc(int idPlaceetparc) {
 		this.idPlaceetparc = idPlaceetparc;
-	}
-	public String getNomLieu() {
-		return nomLieu;
-	}
-	public int getIdLieu() {
-		return idLieu;
-	}
-	public void setIdLieu(int idLieu) {
-		this.idLieu = idLieu;
-	}
-	public String getDescriptionLieu() {
-		return descriptionLieu;
-	}
-	public String getAccessibiliteLieu() {
-		return accessibiliteLieu;
-	}
-	public int getNumAdres() {
-		return numAdres;
-	}
-	public String getVoieAdres() {
-		return voieAdres;
-	}
-	public String getCpAdres() {
-		return cpAdres;
-	}
-	public String getVilleAdres() {
-		return villeAdres;
-	}
-	public String getNomQuartier() {
-		return nomQuartier;
-	}
-	public String getTypeVisite() {
-		return typeVisite;
-	}
-	public float getNotemoy() {
-		return notemoy;
-	}
-	public int getNbavis() {
-		return nbavis;
-	}
-	public int getIdVisite() {
-		return idVisite;
-	}
-	public void setIdVisite(int idVisite) {
-		this.idVisite = idVisite;
 	}
 	public boolean isAvecFontaine() {
 		return avecFontaine;
@@ -89,10 +51,113 @@ public class Placeetparc  {
 	public void setAvecFontaine(boolean avecFontaine) {
 		this.avecFontaine = avecFontaine;
 	}
+
+	public int getIdVisite() {
+		return idVisite;
+	}
+	public void setIdVisite(int idVisite) {
+		this.idVisite = idVisite;
+	}
+
+	public int getIdTypevisite() {
+		return idTypevisite;
+	}
+	public void setIdTypevisite(int idTypevisite) {
+		this.idTypevisite = idTypevisite;
+	}
+	public String getTypeVisite() {
+		return typeVisite;
+	}
+	public void setTypeVisite(String typeVisite) {
+		this.typeVisite = typeVisite;
+	}
+
+	public int getIdLieu() {
+		return idLieu;
+	}
+	public void setIdLieu(int idLieu) {
+		this.idLieu = idLieu;
+	}
+	public String getNomLieu() {
+		return nomLieu;
+	}
+	public void setNomLieu(String nomLieu) {
+		this.nomLieu = nomLieu;
+	}
+	public String getDescriptionLieu() {
+		return descriptionLieu;
+	}
+	public void setDescriptionLieu(String descriptionLieu) {
+		this.descriptionLieu = descriptionLieu;
+	}
+	public String getAccessibiliteLieu() {
+		return accessibiliteLieu;
+	}
+	public void setAccessibiliteLieu(String accessibiliteLieu) {
+		this.accessibiliteLieu = accessibiliteLieu;
+	}
+
+	public int getIdAdresse() {
+		return idAdresse;
+	}
+	public void setIdAdresse(int idAdresse) {
+		this.idAdresse = idAdresse;
+	}
+	public int getNumAdres() {
+		return numAdres;
+	}
+	public void setNumAdres(int numAdres) {
+		this.numAdres = numAdres;
+	}
+	public String getVoieAdres() {
+		return voieAdres;
+	}
+	public void setVoieAdres(String voieAdres) {
+		this.voieAdres = voieAdres;
+	}
+	public String getCpAdres() {
+		return cpAdres;
+	}
+	public void setCpAdres(String cpAdres) {
+		this.cpAdres = cpAdres;
+	}
+	public String getVilleAdres() {
+		return villeAdres;
+	}
+	public void setVilleAdres(String villeAdres) {
+		this.villeAdres = villeAdres;
+	}
+
+	public int getIdQuartier() {
+		return idQuartier;
+	}
+	public void setIdQuartier(int idQuartier) {
+		this.idQuartier = idQuartier;
+	}
+	public String getNomQuartier() {
+		return nomQuartier;
+	}
+	public void setNomQuartier(String nomQuartier) {
+		this.nomQuartier = nomQuartier;
+	}
+
+	public float getNotemoy() {
+		return notemoy;
+	}
+	public void setNotemoy(float notemoy) {
+		this.notemoy = notemoy;
+	}
+	public int getNbavis() {
+		return nbavis;
+	}
+	public void setNbavis(int nbavis) {
+		this.nbavis = nbavis;
+	}
+
 	public List<Avis> getListeDesAvisDunLieu() {
 		return listeDesAvisDunLieu;
 	}
-	
+
 	// CTOR
 	public Placeetparc() {
 		
@@ -113,9 +178,10 @@ public class Placeetparc  {
         // Requête à exécuter
         String queryPPCompl  = "SELECT "
         		+ "l.idlieu, l.nom AS nomL, l.description, l.accessibilite, "
-        		+ "a.numero, a.voie, a.codepostal, a.ville, "
-        		+ "q.nom AS nomQ, "
-        		+ "t.libtypevisite, "
+        		+ "a.idadresse, a.numero, a.voie, a.codepostal, a.ville, "
+        		+ "q.idquartier, q.nom AS nomQ, "
+        		+ "t.idtypevisite, t.libtypevisite, "
+        		+ "v.idvisite, "
         		+ "p.idplaceetparc, p.avecfontaine, "
         		+ "AVG(av.note) AS notemoy, COUNT(av.note) AS nbavis  "
         	+ "FROM placeetparcs p "
@@ -127,26 +193,37 @@ public class Placeetparc  {
         		+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
     		+ "WHERE p.idplaceetparc = "+ idPlaceetparc
     		+ "GROUP BY l.idlieu, nomL, l.description, l.accessibilite, "
-        		+ "a.numero, a.voie, a.codepostal, a.ville, "
-        		+ "nomQ, "
-        		+ "t.libtypevisite, "
+            	+ "a.idadresse, a.numero, a.voie, a.codepostal, a.ville, "
+            	+ "q.idquartier, nomQ, "
+            	+ "v.idvisite, "
+            	+ "t.idtypevisite, t.libtypevisite, "
         		+ "p.idplaceetparc, p.avecfontaine;";
         // Obtention de l'ensemble résultat
         ResultSet rsPP = stmt.executeQuery(queryPPCompl);
         // Parcourt l'ensemble des résultats et crée objets candidats puis màj la liste
         if(rsPP.next()){
+            avecFontaine = rsPP.getBoolean("avecfontaine");
+            
+            idLieu = rsPP.getInt("idlieu");
             nomLieu = rsPP.getString("nomL");
             descriptionLieu = rsPP.getString("description");
             accessibiliteLieu = rsPP.getString("accessibilite");
+            
+            idAdresse = rsPP.getInt("idadresse");
             numAdres = rsPP.getInt("numero");
             voieAdres = rsPP.getString("voie");
             cpAdres = rsPP.getString("codepostal");
             villeAdres = rsPP.getString("ville");
+
+            idQuartier = rsPP.getInt("idquartier");
             nomQuartier = rsPP.getString("nomQ");
+
+            idVisite = rsPP.getInt("idvisite");
+            
+            idTypevisite = rsPP.getInt("idtypevisite");
             typeVisite = rsPP.getString("libtypevisite");
+            
             notemoy = rsPP.getFloat("notemoy");
-            idLieu = rsPP.getInt("idlieu");
-            avecFontaine = rsPP.getBoolean("avecfontaine");
             nbavis = rsPP.getInt("nbavis");
         }
         
@@ -173,7 +250,16 @@ public class Placeetparc  {
 		}
 		return idPlaceetparc;
 	}
-    
+	
+	public int update(Connection cnx, int idVisite, boolean avecFontaine) throws SQLException {
+		
+		String query = " UPDATE placeetparcs SET idvisite=?, avecfontaine=? WHERE idplaceetparc=" + idPlaceetparc + ";";
+		PreparedStatement ps = cnx.prepareStatement(query);
+		ps.setInt(1, idVisite);
+		ps.setBoolean(2, avecFontaine);
+		return ps.executeUpdate();
+		
+	}
     
 	// METHODES STATIQUES
 	private static List<Placeetparc> listeDesPlaceetparcs;

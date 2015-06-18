@@ -24,19 +24,25 @@ public class ManagePlaceetparcAction extends VisitesAction {
 	private Adresse adresse;
 	private List<Quartier> listeDesQuartiers;
 	private List<Typevisite> listeDesTypevisites;
-
+	
 	private int idQuartier;
+	
+	private int idAdresse;
 	private int numero;
 	private String voie;
 	private String codePostal;
 	private String ville;
+	
+	private int idLieu;
 	private String nomL;
 	private String description;
 	private String accessibilite;
+	
+	private int idVisite;
 	private int idTypevisite;
 	private boolean avecFontaine;
 	
-	//GET SETS
+	//GETSETS
 	public int getIdPlaceetparc() {
 		return idPlaceetparc;
 	}
@@ -79,7 +85,6 @@ public class ManagePlaceetparcAction extends VisitesAction {
 	public void setListeDesTypevisites(List<Typevisite> listeDesTypevisites) {
 		this.listeDesTypevisites = listeDesTypevisites;
 	}
-	
 	public int getIdQuartier() {
 		return idQuartier;
 	}
@@ -140,6 +145,24 @@ public class ManagePlaceetparcAction extends VisitesAction {
 	public void setAvecFontaine(boolean avecFontaine) {
 		this.avecFontaine = avecFontaine;
 	}
+	public int getIdAdresse() {
+		return idAdresse;
+	}
+	public void setIdAdresse(int idAdresse) {
+		this.idAdresse = idAdresse;
+	}
+	public int getIdLieu() {
+		return idLieu;
+	}
+	public void setIdLieu(int idLieu) {
+		this.idLieu = idLieu;
+	}
+	public int getIdVisite() {
+		return idVisite;
+	}
+	public void setIdVisite(int idVisite) {
+		this.idVisite = idVisite;
+	}
 	
 	//CTOR
 	public ManagePlaceetparcAction() {
@@ -148,17 +171,6 @@ public class ManagePlaceetparcAction extends VisitesAction {
 	}
 
 	//METHODES PUBLIQUES
-	// INITIALISATION FORMULAIRE CREATION
-	public String execute() {
-		try {
-			listeDesQuartiers = Quartier.getListeDesQuartiers();
-			listeDesTypevisites = Placeetparc.getListeDesTypevisitesDePlaceetparc();
-			return SUCCESS;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return ERROR;
-		}
-	}
 	
 	// DETAILS
 	public String executeDetailsPlaceetparc(){
@@ -173,6 +185,16 @@ public class ManagePlaceetparcAction extends VisitesAction {
 	}
 	
 	// CREATION
+	public String executeFormCreationPlaceetparc() {
+		try {
+			listeDesQuartiers = Quartier.getListeDesQuartiers();
+			listeDesTypevisites = Placeetparc.getListeDesTypevisitesDePlaceetparc();
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
 	public String executeCreationPlaceetparc(){
 		Connection cnx = PostgresConnection.getConnexion();
 		
@@ -216,8 +238,28 @@ public class ManagePlaceetparcAction extends VisitesAction {
 	}
 	
 	public String executeModifPlaceetparc(){
-
-		return SUCCESS;
+		Connection cnx = PostgresConnection.getConnexion();
+		
+		try {
+			adresse = new Adresse(idAdresse);
+			adresse.update(cnx, numero, voie, codePostal, ville, idQuartier);
+			
+			lieu = new Lieu(idLieu);
+			lieu.update(cnx, nomL, idAdresse, description, accessibilite);
+			
+			visite = new Visite(idVisite);
+			visite.update(cnx, idTypevisite);
+			
+			placeetparc = new Placeetparc(idPlaceetparc);
+			return placeetparc.update(cnx, idVisite, avecFontaine) == 0 ? ERROR : SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ERROR;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 	
 

@@ -26,13 +26,19 @@ public class ManageMonumentAction extends VisitesAction {
 	private List<Typevisite> listeDesTypevisites;
 	
 	private int idQuartier;
+	
+	private int idAdresse;
 	private int numero;
 	private String voie;
 	private String codePostal;
 	private String ville;
+	
+	private int idLieu;
 	private String nomL;
 	private String description;
 	private String accessibilite;
+	
+	private int idVisite;
 	private int idTypevisite;
 	private int annCons;
 	private int annFinCons;
@@ -77,6 +83,12 @@ public class ManageMonumentAction extends VisitesAction {
 	}public void setIdQuartier(int idQuartier) {
 		this.idQuartier = idQuartier;
 	}
+	public int getIdAdresse() {
+		return idAdresse;
+	}
+	public void setIdAdresse(int idAdresse) {
+		this.idAdresse = idAdresse;
+	}
 	public int getNumero() {
 		return numero;
 	}
@@ -101,6 +113,12 @@ public class ManageMonumentAction extends VisitesAction {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+	public int getIdLieu() {
+		return idLieu;
+	}
+	public void setIdLieu(int idLieu) {
+		this.idLieu = idLieu;
+	}
 	public String getNomL() {
 		return nomL;
 	}
@@ -118,6 +136,12 @@ public class ManageMonumentAction extends VisitesAction {
 	}
 	public void setAccessibilite(String accessibilite) {
 		this.accessibilite = accessibilite;
+	}
+	public int getIdVisite() {
+		return idVisite;
+	}
+	public void setIdVisite(int idVisite) {
+		this.idVisite = idVisite;
 	}
 	public int getIdTypevisite() {
 		return idTypevisite;
@@ -145,17 +169,6 @@ public class ManageMonumentAction extends VisitesAction {
 	}
 	
 	// METHODES PUBLIQUES
-	// INITIALISATION FORMULAIRE CREATION
-	public String execute() {
-		try {
-			listeDesQuartiers = Quartier.getListeDesQuartiers();
-			listeDesTypevisites = Monument.getListeDesTypevisitesDeMonument();
-			return SUCCESS;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return ERROR;
-		}
-	}
 	
 	// DETAILS
 	public String executeDetailsMonument(){
@@ -170,6 +183,17 @@ public class ManageMonumentAction extends VisitesAction {
 	}
 	
 	// CREATION
+	public String executeFormCreationMonument() {
+		try {
+			listeDesQuartiers = Quartier.getListeDesQuartiers();
+			listeDesTypevisites = Monument.getListeDesTypevisitesDeMonument();
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+	
 	public String executeCreationMonument(){
 		Connection cnx = PostgresConnection.getConnexion();
 		
@@ -213,8 +237,29 @@ public class ManageMonumentAction extends VisitesAction {
 	}
 	
 	public String executeModifMonument(){
+		Connection cnx = PostgresConnection.getConnexion();
+		
+		try {
+			adresse = new Adresse(idAdresse);
+			adresse.update(cnx, numero, voie, codePostal, ville, idQuartier);
+			
+			lieu = new Lieu(idLieu);
+			lieu.update(cnx, nomL, idAdresse, description, accessibilite);
+			
+			visite = new Visite(idVisite);
+			visite.update(cnx, idTypevisite);
+			
+			monument = new Monument(idMonument);
+			return monument.update(cnx, idVisite, annCons, annFinCons) == 0 ? ERROR : SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ERROR;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 
-		return SUCCESS;
 	}
 	
 }

@@ -11,31 +11,21 @@ import java.util.List;
 import fr.cursusSopra.tech.PostgresConnection;
 
 public class Lieu {
-	// Clé de la table Lieu
+
 	private int idLieu;
-
-	// Nom du lieu
 	private String nom;
-
-	// Description du lieu
 	private String description;
-
-	// Accessibilité du lieu
 	private String accessibilite;
-
+	private int idAdresse;
+	
 	// Adresse du lieu
 	private Adresse adresse;
 	
-	
-
-
-
 	// Constructeur vide non accessible 
 	private Lieu() {};
 
 	// Constructeur à partir du nom
-	public Lieu(String nom, int idAdresse, String description,
-			String accessibilite) throws SQLException {
+	public Lieu(String nom, int idAdresse, String description, String accessibilite) throws SQLException {
 		this.nom = nom;
 		this.adresse = new Adresse(idAdresse);
 		this.setDescription(description);
@@ -43,8 +33,8 @@ public class Lieu {
 	}
 
 	// Constructeur d'un lieu correspondant à partir d'un identifiant
-	public Lieu(int idLieu) throws SQLException{
-		this.idLieu = idLieu;
+	public Lieu(int idL) throws SQLException{
+		idLieu = idL;
 		// Connexion à la base de données postgresSQL
 		Connection cnx = PostgresConnection.getConnexion();
 		// Objet instruction SQL
@@ -57,7 +47,7 @@ public class Lieu {
 		ResultSet rs = stmt.executeQuery(query);
 		if (rs.next()) {
 			nom = rs.getString("nom");
-			adresse = new Adresse(rs.getInt("idadresse"));
+			idAdresse = rs.getInt("idadresse");
 			description = rs.getString("description");
 			accessibilite = rs.getString("accessibilite");		
 		} else {
@@ -74,7 +64,7 @@ public class Lieu {
 		String query = " INSERT INTO lieux(nom,idAdresse,description,accessibilite) VALUES (?,?,?,?)";
 		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		ps.setString(1, nom);
-		ps.setInt(2, adresse.getIdAdresse());
+		ps.setInt(2, idAdresse);
 		ps.setString(3, description);
 		ps.setString(4, accessibilite);
 		
@@ -96,10 +86,9 @@ public class Lieu {
 			String description, String accessibilite) throws SQLException {
 		String query = " UPDATE lieux  SET nom=?, idadresse=?, description=?, accessibilite=? "
 				+ " WHERE idlieu=" + idLieu;
-		System.out.println(query);
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setString(1, nom);
-		ps.setInt(2, adresse.getIdAdresse());
+		ps.setInt(2, idAdresse);
 		ps.setString(3, description);
 		ps.setString(4, accessibilite);
 		return ps.executeUpdate();
@@ -210,6 +199,14 @@ public class Lieu {
 
 	public void setIdLieu(int idLieu) {
 		this.idLieu = idLieu;
+	}
+
+	public int getIdAdresse() {
+		return idAdresse;
+	}
+
+	public void setIdAdresse(int idAdresse) {
+		this.idAdresse = idAdresse;
 	}
 
 	public Adresse getAdresse() {

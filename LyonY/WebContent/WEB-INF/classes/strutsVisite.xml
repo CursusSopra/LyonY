@@ -31,7 +31,7 @@
 		</action>
 		
  		<!-- Formulaire de création d'un monument -->
-		<action name="formCreationMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="execute">
+		<action name="formCreationMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeFormCreationMonument">
 			<result name="success" type="tiles">formCreationMonument</result>
 		</action>
 		<action name="creationMonument" class="fr.cursusSopra.action.visites.ManageMonumentAction" method="executeCreationMonument">
@@ -59,7 +59,7 @@
 		</action>
 		
  		<!-- Formulaire de création d'une place ou d'un parc -->
-		<action name="formCreationPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="execute">
+		<action name="formCreationPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeFormCreationPlaceetparc">
 			<result name="success" type="tiles">formCreationPlaceetparc</result>
 		</action>
 		<action name="creationPlaceetparc" class="fr.cursusSopra.action.visites.ManagePlaceetparcAction" method="executeCreationPlaceetparc">
