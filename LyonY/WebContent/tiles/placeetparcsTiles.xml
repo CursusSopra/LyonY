@@ -23,17 +23,26 @@
 			<add-attribute value="./_plugins/Star_rating/css/star-rating.min.css"></add-attribute>
 			<add-attribute value="./fonts/font-awesome-4.3.0/css/font-awesome.min.css"></add-attribute>
 		</put-list-attribute>
-		
 	</definition>
 	
 	<definition name="formCreationPlaceetparc" extends="baseLayout">
 		<put-attribute name="title" value="Ajout d'une place ou d'un parc" />
 		<put-attribute name="body" value="/views/visites/placeetparcs/formCreationPlaceetparc.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/visites/formCreationPlaceetparc.js"></add-attribute>
+		</put-list-attribute>
+		
 	</definition>
 	
 	<definition name="formModifPlaceetparc" extends="baseLayout">
 		<put-attribute name="title" value="Modification de place ou parc" />
 		<put-attribute name="body" value="/views/visites/placeetparcs/formModifPlaceetparc.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/visites/formModifPlaceetparc.js"></add-attribute>
+		</put-list-attribute>
+		
 	</definition>
 	
 </tiles-definitions>

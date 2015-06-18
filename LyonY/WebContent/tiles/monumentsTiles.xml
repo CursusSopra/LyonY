@@ -30,11 +30,21 @@
 	<definition name="formCreationMonument" extends="baseLayout">
 		<put-attribute name="title" value="Ajout d'un monument" />
 		<put-attribute name="body" value="/views/visites/monuments/formCreationMonument.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/visites/formCreationMonument.js"></add-attribute>
+		</put-list-attribute>
+		
 	</definition>
 
 	<definition name="formModifMonument" extends="baseLayout">
 		<put-attribute name="title" value="Modification de monument" />
 		<put-attribute name="body" value="/views/visites/monuments/formModifMonument.jsp" />
+		
+		<put-list-attribute name="moreScripts">
+			<add-attribute value="_js/visites/formModifMonument.js"></add-attribute>
+		</put-list-attribute>
+		
 	</definition>
 	
 </tiles-definitions>

@@ -35,10 +35,12 @@
 					</s:iterator>
 				</select>
 			</div>
-<!-- 			<div class = "row"> -->
-<%-- 				<a href="<s:url action='creationTypevisite'/>">Ajouter un type de monument</a> --%>
-<!-- 			</div> -->
 			<span class="col-lg-20 control-label">&nbsp;</span>
+			<div id="idAppelModal">
+				<p>
+					<a data-toggle="modal" href="#form-content">Ajouter un type</a>
+				</p>
+			</div>
 		</div>
 	</div>
 
@@ -149,75 +151,23 @@
 
 </form>
 
-<script type="text/javascript" src="js/jQuery/jquery-2.1.1.min.js"></script>
-
-<script type="text/javascript">
-	$(document).ready(
-			function() {
-			//Validation/refus selon le remplissage du formulaire
-				$('#idFormCreationPlaceetparc').submit(
-					function(e) {
-						var $nom = $('#idNom');
-						var $typev = $('#idTypevisite');
-						var $quart = $('#idQuartier');
-						var $cp = $('#idCodepostal');
-						var $ville = $('#idVille');
-						var valNom = $nom.val();
-						var valTypev = $typev.val();
-						var valQuart = $quart.val();
-						var valCp = $cp.val();
-						var valVille = $ville.val();
-						//Par défaut le formulaire est OK
-						var formOK = true;
-						//Si champ obligatoire non rempli
-						if (valNom == '') {
-							formOK &= false;
-							$nom.parent().parent().parent().addClass('has-error');
-							$nom.parent().next('span').html('Vous devez fournir le nom du monument');
-						} else {
-							$nom.parent().parent().parent().removeClass('has-error');
-							$nom.parent().next('span').html('');
-						}
-						if (valTypev == '') {
-							formOK &= false;
-							$typev.parent().parent().parent().addClass('has-error');
-							$typev.parent().next('span').html('Vous devez renseigner le type');
-						} else {
-							$typev.parent().parent().parent().removeClass('has-error');
-							$typev.parent().next('span').html('');
-						}
-						if (valQuart == '') {
-							formOK &= false;
-							$quart.parent().parent().parent().addClass('has-error');
-							$quart.parent().next('span').html('Vous devez selectionner un quartier');
-						} else {
-							$quart.parent().parent().parent().removeClass('has-error');
-							$quart.parent().next('span').html('');
-						}
-						var rx = new RegExp('[0-9]{5}');
-						if (valCp == '' || !rx.test(valCp)) {
-							formOK &= false;
-							$cp.parent().parent().parent().addClass('has-error');
-							$cp.parent().next('span').html('Vous devez fournir un code postal valide');
-						} else {
-							$cp.parent().parent().parent().removeClass('has-error');
-							$cp.parent().next('span').html('');
-						}
-						if (valVille == '') {
-							formOK &= false;
-							$ville.parent().parent().parent().addClass('has-error');
-							$ville.parent().next('span').html('Vous devez fournir un nom de ville');
-						} else {
-							$ville.parent().parent().parent().removeClass('has-error');
-							$ville.parent().next('span').html('');
-						}
-						if (!formOK) {
-							$('#idFormAlertError').removeClass('hidden');
-							$('#idFormAlertError').fadeTo(10000, 500).slideUp(500);
-							e.preventDefault();
-						} else {
-							$('#idFormAlertError').addClass('hidden');
-						}
-					});
-				});
-</script>
+<div id="form-content" class="modal hide fade in" style="display: none;">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal">×</a>
+		<h3>Send me a message</h3>
+	</div>
+	<div class="modal-body">
+		<form class="contact" name="contact">
+			<label class="label" for="name">Your Name</label><br>
+			<input type="text" name="name" class="input-xlarge"><br>
+			<label class="label" for="email">Your E-mail</label><br>
+			<input type="email" name="email" class="input-xlarge"><br>
+			<label class="label" for="message">Enter a Message</label><br>
+			<textarea name="message" class="input-xlarge"></textarea>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<input class="btn btn-success" type="submit" value="Ajouter ce type" id="submit">
+		<a href="#" class="btn" data-dismiss="modal">Nah.</a>
+	</div>
+</div>
