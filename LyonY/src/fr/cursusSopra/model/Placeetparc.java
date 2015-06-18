@@ -252,7 +252,12 @@ public class Placeetparc  {
 	}
 	
 	public int update(Connection cnx, int idVisite, boolean avecFontaine) throws SQLException {
+
+		// Mise à jour de l'objet courant
+		this.idVisite=idVisite;
+		this.avecFontaine=avecFontaine;
 		
+		// Mise à jour de la bse de données
 		String query = " UPDATE placeetparcs SET idvisite=?, avecfontaine=? WHERE idplaceetparc=" + idPlaceetparc + ";";
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, idVisite);

@@ -263,6 +263,12 @@ public class Monument {
 	
 	public int update(Connection cnx, int idVisite, int annCons, int annFinCons) throws SQLException {
 		
+		// Mise à jour de l'objet courant
+		this.idVisite=idVisite;
+		this.annCons=annCons;
+		this.annFinCons=annFinCons;
+		
+		// Mise à jour de la bse de données
 		String query = " UPDATE monuments SET idvisite=?, anneeconstruction=?, anneefinconstruction=? WHERE idmonument=" + idMonument + ";";
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, idVisite);

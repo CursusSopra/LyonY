@@ -82,6 +82,10 @@ public class Visite {
 	}
 	
 	public int update(Connection cnx, int idTypevisite) throws Exception {
+		// Mise à jour de l'objet courant
+		this.idTypevisite=idTypevisite;
+		
+		// Mise à jour de la bse de données
 		String query = "UPDATE visites SET idtypevisite=? WHERE idvisite=" + idVisite + ";";
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, idTypevisite);
