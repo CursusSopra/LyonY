@@ -46,9 +46,9 @@
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<select id="idQuartier" name="idquartier"">
+				<select id="idQuartier" name="idQuartier"">
 					<s:iterator value="listeDesQuartiers">
-						<option value="<s:property	value="idquartier" />" ${nclub.nomquartier == nom ? 'selected' : ''} >
+						<option value="<s:property	value="idQuartier" />" ${nclub.nomquartier == nom ? 'selected' : ''} >
 						
 						
 							<s:property	value="nom" />
@@ -87,7 +87,7 @@
 			postal</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idCodepostal" name="codepostal" value="<s:property value = "nclub.codepostal"/>"/>
+				<input type="text" class="form-control" id="idCodepostal" name="codePostal" value="<s:property value = "nclub.codePostal"/>"/>
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>

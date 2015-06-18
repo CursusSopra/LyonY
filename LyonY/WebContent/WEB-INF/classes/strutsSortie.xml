@@ -18,76 +18,85 @@
 			method="execute">
 			<result name="success" type="tiles">sorties</result>
 		</action>
-		
-		
+
+
 		<!-- RESTAURANTS -->
-	
+
 		<!-- Affichage de la liste -->
-		<action name="listeDesRestaurants" class="fr.cursusSopra.action.sorties.ListeDesRestaurantsAction"
+		<action name="listeDesRestaurants"
+			class="fr.cursusSopra.action.sorties.ListeDesRestaurantsAction"
 			method="executeListeDesRestaurants">
 			<result name="success" type="tiles">listeDesRestaurants</result>
 		</action>
-		
+
 		<!-- Affichage des détails -->
-		<action name="detailsRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction"
-			method="executeDetailsRestaurant">
+		<action name="detailsRestaurant"
+			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeDetailsRestaurant">
 			<result name="success" type="tiles">detailsRestaurant</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
-		
-			<!-- Formulaire de création -->
-		<action name="formCreationRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="execute">
+
+		<!-- Formulaire de création -->
+		<action name="formCreationRestaurant"
+			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="execute">
 			<result name="success" type="tiles">formCreationRestaurant</result>
 		</action>
-		<action name="creationRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeCreationRestaurant">
+		<action name="creationRestaurant"
+			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeCreationRestaurant">
 			<result name="success" type="redirectAction">listeDesRestaurants</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
-		
-		 	<!-- Formulaire de modification -->
-		 <action name="formModifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="execute">
+
+		<!-- Formulaire de modification -->
+		<action name="formModifRestaurant"
+			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="execute">
 			<result name="success" type="tiles">formModifRestaurant</result>
 		</action>
-		<action name="modifRestaurant" class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeModifRestaurant">
+		<action name="modifRestaurant"
+			class="fr.cursusSopra.action.sorties.DetailsRestaurantAction" method="executeModifRestaurant">
 			<result name="success" type="redirectAction">listeDesRestaurants</result>
 		</action>
-		
-		
-		
+
+
+
 		<!-- NIGHT CLUBS -->
-		
+
 		<!-- Affichage de la liste -->
-		<action name="listeDesNclubs" class="fr.cursusSopra.action.sorties.ListeDesNclubsAction"
-			method="executeListeDesNclubs">
+		<action name="listeDesNclubs"
+			class="fr.cursusSopra.action.sorties.ListeDesNclubsAction" method="executeListeDesNclubs">
 			<result name="success" type="tiles">listeDesNclubs</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
-		
+
 		<!-- Affichage des détails -->
 		<action name="detailsNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction"
 			method="executeDetailsNclub">
 			<result name="success" type="tiles">detailsNclub</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
-		
+
 		<!-- Formulaire de création -->
-		<action name="formCreationNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="execute">
+		<action name="formCreationNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction"
+			method="execute">
 			<result name="success" type="tiles">formCreationNclub</result>
 		</action>
-		<action name="creationNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="executeCreationNclub">
+		<action name="creationNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction"
+			method="executeCreationNclub">
 			<result name="success" type="redirectAction">listeDesNclubs</result>
 		</action>
-		
+
 		<!-- Formulaire de modification -->
-		<action name="modifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="executeModifNclub">
+		<action name="modifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction"
+			method="executeModifNclub">
 			<result name="success" type="redirectAction">listeDesNclubs</result>
 		</action>
-		<action name="formModifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction" method="execute">
+		<action name="formModifNclub" class="fr.cursusSopra.action.sorties.DetailsNclubAction"
+			method="execute">
 			<result name="success" type="tiles">formModifNclub</result>
 		</action>
-		
+
 		<!-- BARS -->
-		
+
 		<!-- Affichage de la liste -->
 		<action name="listeDesBars" class="fr.cursusSopra.action.sorties.ListeDesBarsAction"
 			method="executeListeDesBars">
@@ -101,21 +110,28 @@
 			<result name="success" type="tiles">detailsBar</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
-		
+
 		<!-- Formulaire de création -->
-		<action name="formCreationBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="execute">
+		<action name="formCreationBar" class="fr.cursusSopra.action.sorties.DetailsBarAction"
+			method="execute">
 			<result name="success" type="tiles">formCreationBar</result>
 		</action>
-		<action name="creationBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="executeCreationBar">
-			<result name="success" type="redirectAction">listeDesBars</result>
+		<action name="creationBar" class="fr.cursusSopra.action.sorties.DetailsBarAction"
+			method="executeCreationBar">
+			<result name="success" type="redirectAction">
+				<param name="actionName">formCreationHoraire</param>
+				<param name="idSortie">${sortie.idSortie}</param>
+			</result>
 			<result name="error">/views/sorties/bars/barsError.jsp</result>
 		</action>
-		
+
 		<!-- Formulaire de modification -->
-		<action name="formModifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="execute">
+		<action name="formModifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction"
+			method="execute">
 			<result name="success" type="tiles">formModifBar</result>
 		</action>
-		<action name="modifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction" method="executeModifBar">
+		<action name="modifBar" class="fr.cursusSopra.action.sorties.DetailsBarAction"
+			method="executeModifBar">
 			<result name="success" type="redirectAction">listeDesBars</result>
 		</action>
 
