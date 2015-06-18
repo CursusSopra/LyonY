@@ -74,7 +74,8 @@ public class UtilisateurAction extends ActionSupport {
 			
 			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd")
 					.parse(dateNaissance));
-
+			
+			System.out.println("av création adresse" + numero + idQuartier);
 			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
 			int idAdresse = adresse.save(cnx);
 			
@@ -83,15 +84,15 @@ public class UtilisateurAction extends ActionSupport {
 
 			return SUCCESS;			
 		} catch (ParseException e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 			return ERROR;
 		} catch (Exception e) {
 			try {
 				cnx.rollback();
-				//e.printStackTrace();
+				e.printStackTrace();
 				return ERROR;
 			} catch (SQLException e1) {
-				//e1.printStackTrace();
+				e1.printStackTrace();
 			}
 		} finally {
 			try {
@@ -99,7 +100,7 @@ public class UtilisateurAction extends ActionSupport {
 				cnx.setAutoCommit(true);
 				cnx.close();
 			} catch (SQLException e) {
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 		return ERROR;		
