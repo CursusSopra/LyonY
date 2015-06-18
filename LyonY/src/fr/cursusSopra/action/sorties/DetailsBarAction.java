@@ -159,6 +159,7 @@ public class DetailsBarAction extends SortiesAction {
 	// INITIALISATION FORMULAIRE CREATION
 	public String execute() {
 		try {
+			bar = new Bar();
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Bar.getListeDesAmbiancesDeBar();
 			return SUCCESS;

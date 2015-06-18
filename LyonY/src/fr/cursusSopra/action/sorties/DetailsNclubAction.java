@@ -167,6 +167,7 @@ public class DetailsNclubAction extends SortiesAction {
 	// INITIALISATION FORMULAIRE CREATION
 	public String execute() {
 		try {
+			nclub = new Nclub();
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Nclub.getListeDesAmbiancesDeNclub();
 			return SUCCESS;

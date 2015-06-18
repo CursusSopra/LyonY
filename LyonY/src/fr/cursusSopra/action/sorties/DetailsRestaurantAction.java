@@ -173,7 +173,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 	// INITIALISATION FORMULAIRE CREATION
 	public String execute() {
 		try {
-			restaurant = new Restaurant(idRestaurant);
+			restaurant = new Restaurant();
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Restaurant.getListeDesAmbiancesDeRestaurant();
 			return SUCCESS;
