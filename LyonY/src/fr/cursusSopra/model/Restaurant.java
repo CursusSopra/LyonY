@@ -143,7 +143,7 @@ public class Restaurant extends Sortie {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT l.idlieu, r.idsortie, r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codepostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
+		String query = "SELECT l.idlieu, r.idsortie, r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codePostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM restaurants r "
 				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
@@ -152,7 +152,7 @@ public class Restaurant extends Sortie {
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
 				+ "WHERE idrestaurant = " + idRestaurant
-				+ " GROUP BY l.idlieu, r.idrestaurant, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
+				+ " GROUP BY l.idlieu, r.idrestaurant, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codePostal, ville, description";
 		
 		
 		
@@ -169,7 +169,7 @@ public class Restaurant extends Sortie {
 			prixmax = rs.getInt("prixmax");
 			numero = rs.getInt("numero");
 			voie = rs.getString("voie");
-			codePostal = rs.getString("codepostal");
+			codePostal = rs.getString("codePostal");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
 			reservation = rs.getBoolean("reservation");
@@ -286,6 +286,72 @@ public class Restaurant extends Sortie {
 		}
 
 		return listeDesRestaurants;
+
+	}
+	
+public void modifRestaurant(String nomrestaurant,int idAmbiance, int idQuartier, int numero, String voie, String codePostal, String ville, String description, String accessibilite, int prixmin, int prixmax,boolean reservation, boolean aemporter ) throws SQLException {
+
+		
+
+		// Connexion à la BDD postgreSQL
+		Connection cnx = PostgresConnection.getConnexion();
+		
+		String withQuery = "WITH A AS "
+				+ "("
+				+ "select * FROM restaurants "
+				+ "INNER JOIN sorties USING (idsortie) "
+				+ "INNER JOIN lieux USING (idlieu) "
+				+ "INNER JOIN adresses USING (idadresse) "
+				+ "INNER JOIN quartiers using (idquartier) "
+				+ "INNER JOIN ambiances USING (idambiance) "
+				+ "WHERE idrestaurant = "+ idRestaurant
+				+ ") ";
+		
+		// Requête à exécuter
+		String query1 ="UPDATE lieux l SET nom = ?,description = ?,accessibilite = ? FROM  A WHERE l.idlieu = A.idlieu ";
+		String query2 ="UPDATE adresses ad SET numero = ?,voie = ?,codePostal = ?,ville = ?,idquartier = ? FROM  A WHERE ad.idadresse = A.idadresse ";
+		String query3 ="UPDATE sorties s SET prixmin = ?, prixmax = ?, idambiance = ? FROM  A WHERE s.idsortie = A.idsortie ";
+		String query4 ="UPDATE restaurants r SET reservation = ?, aemporter = ? FROM  A WHERE r.idsortie = A.idsortie ";
+				
+				
+
+		
+		// Object instruction SQL
+		PreparedStatement stmt = cnx.prepareStatement(withQuery + query1);
+		
+		stmt.setString(1,nomrestaurant);
+		stmt.setString(2,description);
+		stmt.setString(3,accessibilite);
+		
+		// execution de la requete de mise à jour
+		stmt.executeUpdate();
+		
+		
+		
+		
+		
+		stmt = cnx.prepareStatement(withQuery + query2);
+		stmt.setInt(1,numero);
+		stmt.setString(2,voie);
+		stmt.setString(3,codePostal);
+		stmt.setString(4,ville);
+		stmt.setInt(5,idQuartier);
+		stmt.executeUpdate();
+		
+		
+		stmt = cnx.prepareStatement(withQuery + query3);
+		stmt.setInt(1,prixmin);
+		stmt.setInt(2,prixmax);
+		stmt.setInt(3,idAmbiance);
+		stmt.executeUpdate();
+		
+		stmt = cnx.prepareStatement(withQuery + query4);
+		stmt.setBoolean(1,reservation);
+		stmt.setBoolean(2,aemporter);
+		stmt.executeUpdate();
+		
+		
+
 
 	}
 

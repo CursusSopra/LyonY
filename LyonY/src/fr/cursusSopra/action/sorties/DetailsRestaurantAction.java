@@ -24,7 +24,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 	private Adresse adresse;
 	private List<Quartier> listeDesQuartiers;
 	private List<Ambiance> listeDesAmbiances;
-	
+	private String nomrestaurant;
 	private int idQuartier;
 	private int numero;
 	private String voie;
@@ -40,7 +40,15 @@ public class DetailsRestaurantAction extends SortiesAction {
 	private int prixmax;
 
 
+	
 	///////////////////Getters and Setters///////////////////////
+	
+	public String getNomrestaurant() {
+		return nomrestaurant;
+	}
+	public void setNomrestaurant(String nomrestaurant) {
+		this.nomrestaurant = nomrestaurant;
+	}
 	public int getIdRestaurant() {
 		return idRestaurant;
 	}
@@ -165,6 +173,7 @@ public class DetailsRestaurantAction extends SortiesAction {
 	// INITIALISATION FORMULAIRE CREATION
 	public String execute() {
 		try {
+			restaurant = new Restaurant(idRestaurant);
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			listeDesAmbiances = Restaurant.getListeDesAmbiancesDeRestaurant();
 			return SUCCESS;
@@ -216,7 +225,18 @@ public class DetailsRestaurantAction extends SortiesAction {
 			
 	//Modification
 	public String executeModifRestaurant(){
+		
 
-		return SUCCESS;
+			try {
+				restaurant = new Restaurant(idRestaurant);
+				restaurant.modifRestaurant(nomrestaurant,idAmbiance,idQuartier,numero,voie,codePostal,ville,description,accessibilite,prixmin,prixmax,reservation,aemporter );
+				return SUCCESS;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return ERROR;
+			}
+
+		
 	}
+	
 }
