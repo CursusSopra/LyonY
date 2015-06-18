@@ -11,11 +11,13 @@ $(document).ready(
 				var $quart = $('#idQuartier');
 				var $cp = $('#idCodepostal');
 				var $ville = $('#idVille');
+				
 				var valNom = $nom.val();
 				var valTypev = $typev.val();
 				var valQuart = $quart.val();
 				var valCp = $cp.val();
 				var valVille = $ville.val();
+				
 				//Par défaut le formulaire est OK
 				var formOK = true;
 				//Si champ obligatoire non rempli
@@ -30,7 +32,7 @@ $(document).ready(
 				if (valTypev == '') {
 					formOK &= false;
 					$typev.parent().parent().parent().addClass('has-error');
-					$typev.parent().next('span').html('Vous devez renseigner le type');
+					$typev.parent().next('span').html('Vous devez renseigner le type<br/>');
 				} else {
 					$typev.parent().parent().parent().removeClass('has-error');
 					$typev.parent().next('span').html('');
@@ -68,21 +70,38 @@ $(document).ready(
 					$('#idFormAlertError').addClass('hidden');
 				}
 			});
+		$('#idFormCreationTypevisite').submit(
+				function(e) {
+					var $libTypevisite = $('#idLibTypevisite');
+					var valLibTypevisite = $libTypevisite.val();
+					
+					//Par défaut le formulaire est OK
+					var formOK = true;
+					//Si champ obligatoire non rempli
+					if (valLibTypevisite == '') {
+						formOK &= false;
+						$libTypevisite.parent().parent().parent().addClass('has-error');
+						$libTypevisite.parent().next('span').html('Vous devez renseigner un nouveau type !');
+					} else {
+						$libTypevisite.parent().parent().parent().removeClass('has-error');
+						$libTypevisite.parent().next('span').html('');
+					}
+					if (!formOK) {
+						e.preventDefault();
+					}
+			});
 		
-		
-//		$("#idAppelModal#submit").click(function(){
-//			$.ajax({
-//				type: "POST",
-//				url: "process.php", //process to mail
-//				data: $('form.contact').serialize(),
-//				success: function(msg){
-//					$("#idAppelModal").html(msg) //hide button and show thank you
-//					$("#form-content").modal('hide'); //hide popup	
-//				},
-//				error: function(){
-//					alert("failure");
-//				}
-//			});
-//		});
+		$("#idFormCreationTypevisite#submit").click(function(){
+			$.ajax({
+				type: "POST", url: "creationTypevisite", data: $('form.contact').serialize(),
+				success: function(msg){
+					$("#idTypevisite").append('<option value="' + '" selected="selected">' + $('#idLibTypevisite').val() + '</option>');
+					$("#form-content").modal('hide'); //hide popup	
+				},
+				error: function(){
+					alert("failure");
+				}
+			});
+		});
 		
 		});

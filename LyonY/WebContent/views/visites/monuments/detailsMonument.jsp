@@ -70,7 +70,7 @@
 				</s:url>
 
 				<s:if test='%{monument.nbavis == 0}'>
-				Aucun avis, <a href="">soyez le premier !</a>
+				Aucun avis, <a href="<s:property value='#am'/>">soyez le premier !</a>
 				</s:if>
 					<s:else>
 						<a href="<s:property value='#am'/>">Donnez votre avis</a>

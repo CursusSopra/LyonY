@@ -7,15 +7,19 @@ var arrStartTime = [];
 var arrEndTime = [];
 var startTime;
 var endTime;
-var timeString = "";
+var timeStringIn = "11:30-18:00|10:30-19:30|09:00-18:30|08:30-19:00|09:00-19:00|11:00-20:00|09:30-18:30";
 
-// Création des sliders
+ //Création des sliders
 $(function() {
 	var nbSliders = $("#Horaires tr").length;
-
+	toTime(timeStringIn);
 	for (var i = 1; i <= nbSliders; i++) {
+		var min = getValeurs(arrStartTime)[i-1];
+		var max = getValeurs(arrEndTime)[i-1];
+		console.log(min);
+		console.log(max);
 		$("#slider-range" + i).noUiSlider({
-			start : [ 20, 38 ],
+			start : [ min, max ],
 			range : {
 				'min' : [ 0 ],
 				'max' : [ 48 ]
@@ -25,7 +29,7 @@ $(function() {
 			behaviour : 'snap',
 		}).on({
 			slide : function() {
-				setTimeHolder($(this));
+				setTimeHolder($(this));	
 			}
 		})
 	}
@@ -54,23 +58,38 @@ function setTimeHolder(moi) {
 }
 
 // Transformation tableaux en une string pour transfère au java
-function toString(arrStartTime, arrEndTime) {
-	for (var a = 0; a < 7; a++) {
-		if (a < 6) {
-			timeString += arrStartTime[a];
-			timeString += "-";
-			timeString += arrEndTime[a];
-			timeString += "|";
-		} else {
-			timeString += arrStartTime[a];
-			timeString += "-";
-			timeString += arrEndTime[a];
-		}
+function toTime(timeStringIn) {
+	var temp1 = timeStringIn.split("|");
+	for (var i = 0; i < temp1.length; i++) {
+
+		// On crée un tableau de "hd" et "hf"
+		var temp2 = temp1[i].split("-");
+
+		// On valorise les tableaux heureDebut et heureFin
+		arrStartTime[i] = temp2[0];
+		arrEndTime[i] = temp2[1];
 	}
-	return timeString;
+	return arrStartTime, arrEndTime;
+	
 }
 
 // Affiche des données en mode horaire
+function getValeurs(arrTime) {
+	var arrValeurs = [];
+	
+	for (var i = 0; i < arrTime.length; i++) {
+		var temp = arrTime[i].split(":");
+		//temp[0] vaut heure et temp[1] vaut minutes (0 ou 30)
+		if(temp[1] == '00'){
+			arrValeurs[i] = (2 * temp[0]);
+		} else {
+			arrValeurs[i] = (2 * temp[0] + 1);
+		}
+	}
+	return arrValeurs;
+}
+
+//Affiche des données en mode horaire
 function getTime(hours, minutes) {
 	if (minutes == "0") {
 		minutes = minutes + "0";
@@ -85,7 +104,24 @@ function getTime(hours, minutes) {
 	return hours + ":" + minutes;
 }
 
-// Submit de la string des horaires
+function toString(arrStartTime, arrEndTime) {
+	for (var a = 0; a < 7; a++) {
+		if (a < 6) {
+			timeStringOut += arrStartTime[a];
+			timeStringOut += "-";
+			timeStringOut += arrEndTime[a];
+			timeStringOut += "|";
+		} else {
+			timeStringOut += arrStartTime[a];
+			timeStringOut += "-";
+			timeStringOut += arrEndTime[a];
+		}
+	}
+	return timeStringOut;
+}
+
+//
+//// Submit de la string des horaires
 $("#scheduleSubmit").on('click', function() {
 	$('#idTimeString').val(toString(arrStartTime, arrEndTime));
 });

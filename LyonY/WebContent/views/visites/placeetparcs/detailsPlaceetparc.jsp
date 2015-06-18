@@ -57,11 +57,18 @@
 			
 			<div>
 				<h3>Avis :</h3>
+				
+				<s:url action="formCreationAvis" var="am">
+					<s:param name="idLieu">
+						<s:property value="placeetparc.idLieu"/>
+					</s:param>
+				</s:url>
 	
 				<s:if test='%{placeetparc.nbavis == 0}'>
-					Aucun avis, <a href="">soyez le premier !</a>
+					Aucun avis, <a href="<s:property value='#am'/>">soyez le premier !</a>
 				</s:if>
 				<s:else>
+				<a href="<s:property value='#am'/>">Donnez votre avis</a>
 					<table class="table table-striped table-hover" >
 						<s:iterator value="placeetparc.listeDesAvisDunLieu"> 
 							<tr> 

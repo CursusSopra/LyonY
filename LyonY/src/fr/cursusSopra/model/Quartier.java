@@ -47,14 +47,14 @@ public class Quartier {
 	// constructeur
 	public Quartier(int idq) throws SQLException {
 
-		idQuartier = idq;
+		this.idQuartier = idq;
 
 		// connexion a la base de donnees postgresSQL
 		Connection cnx = PostgresConnection.getConnexion();
 		// objet instruction SQL
 		Statement stmt = cnx.createStatement();
 		// requete à executer
-		String query = "SELECT nom, budgetMoyen, distanceCentreVille"
+		String query = "SELECT nom, budgetMoyen, distanceCentreVille "
 				+ "FROM quartiers WHERE idquartier = " + idQuartier + " ; ";
 		// obtention de l'ensemble resultat
 
@@ -62,10 +62,11 @@ public class Quartier {
 												// ligne, ligne par ligne
 
 		if (rs.next()) {
-			nom = rs.getString("nom");
-			budgetMoyen = rs.getInt("budgetMoyen");
-			distanceCentreVille = rs.getInt("distanceCentreVille");
-
+			this.nom = rs.getString("nom");
+			this.budgetMoyen = rs.getInt("budgetMoyen");
+			this.distanceCentreVille = rs.getInt("distanceCentreVille");
+		} else {
+			throw new SQLException();
 		}
 	}
 

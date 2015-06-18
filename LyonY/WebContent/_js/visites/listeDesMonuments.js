@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function() {
-	$('#listeDesBars').DataTable({
+	$('#listeDesMonuments').DataTable({
 		   "language": {
 	            "lengthMenu": "Montrer _MENU_ items par page",
 	            "zeroRecords": "Aucun résultat",
