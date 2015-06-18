@@ -14,7 +14,7 @@
 		<label for="idNom" class="col-sm-2 control-label">Nom du Night Club *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idNom" name="nomnclub" />
+				<input type="text" class="form-control" id="idNom" name="nomL" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -24,9 +24,9 @@
 	<label for="idAmbiance" class="col-sm-2 control-label">Ambiance *</label>
 		<div class="col-sm-3">
 			<div class="row">				
-				<select id="idAmbiance">
+				<select id="idAmbiance" name="idAmbiance">
 					<s:iterator value="listeDesAmbiances">
-						<option value="<s:property value="idambiance" />"><s:property value="libambiance" /></option>
+						<option value="<s:property value="idAmbiance" />"><s:property value="libambiance" /></option>
 					</s:iterator>
 				</select>
 			</div>
@@ -42,9 +42,9 @@
 		<label for="idQuartier" class="col-sm-2 control-label">Quartier *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<select id="idQuartier">
+				<select id="idQuartier" name="idQuartier">
 					<s:iterator value="listeDesQuartiers">
-						<option value="<s:property value="idquartier" />"><s:property value="nom" /></option>
+						<option value="<s:property value="idQuartier" />"><s:property value="nom" /></option>
 					</s:iterator>
 				</select>
 			</div>
@@ -75,12 +75,10 @@
 	</div>
 
 	<div class="form-group">
-		<label for="idCodepostal" class="col-sm-2 control-label">Code
-			postal *</label>
+		<label for="idCodePostal" class="col-sm-2 control-label">Code postal *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idCodepostal"
-					name="codepostal" />
+				<input type="text" class="form-control" id="idCodePostal" name="codePostal" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -90,8 +88,7 @@
 		<label for="idVille" class="col-sm-2 control-label">Ville *</label>
 		<div class="col-sm-3">
 			<div class="row">
-				<input type="text" class="form-control" id="idVille"
-					name="ville" />
+				<input type="text" class="form-control" id="idVille" name="ville" />
 			</div>
 			<span class="col-lg-20 control-label">&nbsp;</span>
 		</div>
@@ -171,7 +168,7 @@ $(document).ready(
 			$('#idFormCreationNclub').submit(
 				function(e) {
 					var $nom = $('#idNom');
-					var $cp = $('#idCodepostal');
+					var $cp = $('#idCodePostal');
 					var $ville = $('#idVille');
 					var valNom = $nom.val();
 					var valCp = $cp.val();
