@@ -82,6 +82,14 @@ public class Adresse {
 	// Prend en paramètre une connection (synchronisation entre les classes
 	// métiers)
 	public int update(Connection cnx, int numero, String voie, String codePostal, String ville, int idQuartier) throws SQLException {
+		// Mise à jour de l'objet courant
+		this.numero=numero;
+		this.voie=voie;
+		this.ville=ville;
+		this.codePostal=codePostal;
+		this.idQuartier=idQuartier;
+		
+		// Mise à jour de la bse de données
 		String query = " UPDATE adresses  SET numero=?, voie=?, codepostal=?, ville=?, idquartier=? "
 				+ " WHERE idadresse=" + idAdresse;
 		PreparedStatement ps = cnx.prepareStatement(query);
@@ -90,6 +98,7 @@ public class Adresse {
 		ps.setString(3, codePostal);
 		ps.setString(4, ville);
 		ps.setInt(5, idQuartier);
+		
 		return ps.executeUpdate();
 	}
 

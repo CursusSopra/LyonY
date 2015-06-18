@@ -17,15 +17,17 @@ public class Lieu {
 	private String description;
 	private String accessibilite;
 	private int idAdresse;
-	
+
 	// Adresse du lieu
 	private Adresse adresse;
-	
-	// Constructeur vide non accessible 
-	private Lieu() {};
+
+	// Constructeur vide non accessible
+	private Lieu() {
+	};
 
 	// Constructeur à partir du nom
-	public Lieu(String nom, int idAdresse, String description, String accessibilite) throws SQLException {
+	public Lieu(String nom, int idAdresse, String description,
+			String accessibilite) throws SQLException {
 		this.nom = nom;
 		this.adresse = new Adresse(idAdresse);
 		this.setDescription(description);
@@ -33,7 +35,7 @@ public class Lieu {
 	}
 
 	// Constructeur d'un lieu correspondant à partir d'un identifiant
-	public Lieu(int idL) throws SQLException{
+	public Lieu(int idL) throws SQLException {
 		idLieu = idL;
 		// Connexion à la base de données postgresSQL
 		Connection cnx = PostgresConnection.getConnexion();
@@ -41,20 +43,18 @@ public class Lieu {
 		Statement stmt = cnx.createStatement();
 		// Requete à executer
 		String query = "SELECT nom, idadresse, description, accessibilite "
-				+ "FROM lieux "
-				+ "WHERE idlieu = " + idLieu + " ; ";
+				+ "FROM lieux " + "WHERE idlieu = " + idLieu + " ; ";
 		// Obtention de l'ensemble résultat
 		ResultSet rs = stmt.executeQuery(query);
 		if (rs.next()) {
 			nom = rs.getString("nom");
 			idAdresse = rs.getInt("idadresse");
 			description = rs.getString("description");
-			accessibilite = rs.getString("accessibilite");		
+			accessibilite = rs.getString("accessibilite");
 		} else {
 			throw new SQLException();
 		}
-		
-		
+
 	}
 
 	// Rentre un lieu dans la base de donnée
@@ -62,14 +62,15 @@ public class Lieu {
 	// métiers)
 	public int save(Connection cnx) throws Exception {
 		String query = " INSERT INTO lieux(nom,idAdresse,description,accessibilite) VALUES (?,?,?,?)";
-		PreparedStatement ps = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		PreparedStatement ps = cnx.prepareStatement(query,
+				Statement.RETURN_GENERATED_KEYS);
 		ps.setString(1, nom);
 		ps.setInt(2, idAdresse);
 		ps.setString(3, description);
 		ps.setString(4, accessibilite);
-		
+
 		ps.executeUpdate();
-		
+
 		ResultSet rs = ps.getGeneratedKeys();
 		if (rs != null && rs.next()) {
 			idLieu = rs.getInt(1);
@@ -84,6 +85,13 @@ public class Lieu {
 	// métiers)
 	public int update(Connection cnx, String nom, int idAdresse,
 			String description, String accessibilite) throws SQLException {
+		// Mise à jour de l'objet courant
+		this.nom = nom;
+		this.idAdresse = idAdresse;
+		this.description = description;
+		this.accessibilite = accessibilite;
+
+		// Mise à jour de la bse de données
 		String query = " UPDATE lieux  SET nom=?, idadresse=?, description=?, accessibilite=? "
 				+ " WHERE idlieu=" + idLieu;
 		PreparedStatement ps = cnx.prepareStatement(query);
@@ -117,6 +125,7 @@ public class Lieu {
 
 	// Liste des Lieux
 	private static List<Lieu> listeDesLieux;
+
 	public static List<Lieu> getListeDesLieux() throws SQLException {
 		listeDesLieux = new ArrayList<Lieu>();
 		// connexion a la base de donnees postgresSQL
@@ -125,9 +134,10 @@ public class Lieu {
 		Statement stmt = cnx.createStatement();
 		// requete à executer
 		String query = "SELECT nom, idadresse, description, accessibilite "
-				+ "FROM lieux " ;
+				+ "FROM lieux ";
 		// obtention de l'ensemble resultat
-		ResultSet rs = stmt.executeQuery(query);// rs demande les valeur pour un ligne, ligne par ligne
+		ResultSet rs = stmt.executeQuery(query);// rs demande les valeur pour un
+												// ligne, ligne par ligne
 		while (rs.next()) {
 			Lieu l = new Lieu();
 			l.idLieu = rs.getInt("idlieu");
@@ -139,11 +149,10 @@ public class Lieu {
 		}
 		return listeDesLieux;
 	}
-	
-	
-	//Liste des avis pour un seul lieu
+
+	// Liste des avis pour un seul lieu
 	private List<Avis> listeDesAvisDunLieu;
-	
+
 	public List<Avis> getListeDesAvisDunLieu() throws SQLException {
 		listeDesAvisDunLieu = new ArrayList<Avis>();
 		// connexion à la BDD PostGresSQL
@@ -151,25 +160,25 @@ public class Lieu {
 		cnx = PostgresConnection.getConnexion();
 		// Objet instruction SQL
 		Statement stmt = cnx.createStatement();
-		
+
 		// Requête à exécuter
 		String queryAvis = "SELECT pseudo, note, message FROM avis "
-        		+ "INNER JOIN lieux USING (idlieu) "
-        		+ "INNER JOIN utilisateurs USING (idutilisateur) "
-        		+ "WHERE idlieu =" +idLieu ;
-    
+				+ "INNER JOIN lieux USING (idlieu) "
+				+ "INNER JOIN utilisateurs USING (idutilisateur) "
+				+ "WHERE idlieu =" + idLieu;
+
 		// Obtention de l'ensemble résultat
 		ResultSet rs = stmt.executeQuery(queryAvis);
-		
-		while(rs.next()){
-			Avis a = new Avis(); 
+
+		while (rs.next()) {
+			Avis a = new Avis();
 			a.setNote(rs.getInt("note"));
-			a.setMessage (rs.getString("message"));
-			a.setPseudo (rs.getString("pseudo"));
-			
+			a.setMessage(rs.getString("message"));
+			a.setPseudo(rs.getString("pseudo"));
+
 			listeDesAvisDunLieu.add(a);
 		}
-		
+
 		return listeDesAvisDunLieu;
 	}
 
@@ -177,18 +186,23 @@ public class Lieu {
 	public String getNom() {
 		return nom;
 	}
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 	public String getAccessibilite() {
 		return accessibilite;
 	}
+
 	public void setAccessibilite(String accessibilite) {
 		this.accessibilite = accessibilite;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -216,9 +230,9 @@ public class Lieu {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	
+
 	public static void setListeDesLieux(List<Lieu> listeDesLieux) {
 		Lieu.listeDesLieux = listeDesLieux;
 	}
-	
+
 }
