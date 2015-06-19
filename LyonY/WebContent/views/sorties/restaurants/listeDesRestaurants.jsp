@@ -22,6 +22,7 @@
 						<th>Prix max</th>
 						<th>Popularité</th>
 						<th>Quartier</th>
+						<th>Photos</th>
 					</tr>
 				</thead>
 
@@ -46,6 +47,14 @@
 (<s:property value="nbavis" /> avis)
 								</s:else></td>
 							<td><s:property value="nomquartier" /></td>
+							<td>
+								<s:iterator value="listeDesPhotosDeRestaurant">
+								
+									<a href="<s:property value="libPhoto" />"><img
+			src="<s:property value="libPhoto" />" height="50" /></a>
+									
+								</s:iterator>
+							</td>
 						</tr>
 
 					</s:iterator>

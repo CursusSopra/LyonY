@@ -26,6 +26,8 @@ public class Restaurant extends Sortie {
 	private float notemoy;
 	private int nbavis;
 	private List<Avis> listeDesAvisDunLieu;
+	private List<Photo> listeDesPhotosDeRestaurant;
+	
 
 //////////////Getters and Setters////////////////////
 	public int getIdRestaurant() {
@@ -137,8 +139,16 @@ public class Restaurant extends Sortie {
 		return listeDesAvisDunLieu;
 	}
 
+	public List<Photo> getListeDesPhotosDeRestaurant() {
+		return listeDesPhotosDeRestaurant;
+	}
+	public void setListeDesPhotosDeRestaurant(List<Photo> listeDesPhotosDeRestaurant) {
+		this.listeDesPhotosDeRestaurant = listeDesPhotosDeRestaurant;
+	}
 	//CTORS
 	public Restaurant() {
+		
+		listeDesPhotosDeRestaurant= new ArrayList<Photo>();
 	}
 	
 	public Restaurant(int id) throws SQLException {
@@ -257,6 +267,11 @@ public class Restaurant extends Sortie {
 				
 		return listeDesAmbiancesDeRestaurant;
 	}
+	
+	
+    
+    
+	
 
 	/* Membres statiques */
 	public static List<Restaurant> listeDesRestaurants;
@@ -270,7 +285,7 @@ public class Restaurant extends Sortie {
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query = "SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, libambiance, prixmin, prixmax, AVG(av.note) AS notemoy, "
+		String query = "SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, libambiance, prixmin, prixmax, idphoto, AVG(av.note) AS notemoy, "
 				+ "COUNT (av.note) AS nbavis "
 				+ "FROM restaurants r "
 				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
@@ -278,11 +293,13 @@ public class Restaurant extends Sortie {
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
+				+ "INNER JOIN photos p ON l.idlieu = p.idlieu "
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
-				+ "GROUP BY nomrestaurant, nomquartier, libambiance, r.idrestaurant, prixmin, prixmax;";
+				+ "GROUP BY nomrestaurant, nomquartier, libambiance, r.idrestaurant, prixmin, prixmax, idphoto;";
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
+		
 		while (rs.next()) {
 			Restaurant r = new Restaurant();
 			r.idRestaurant = rs.getInt("idrestaurant");
@@ -293,6 +310,7 @@ public class Restaurant extends Sortie {
 			r.prixmax = rs.getInt("prixmax");
 			r.notemoy = rs.getFloat("notemoy");
 			r.nbavis = rs.getInt("nbavis");
+			r.listeDesPhotosDeRestaurant.add(new Photo(rs.getInt("idphoto")));
 			listeDesRestaurants.add(r);
 		}
 

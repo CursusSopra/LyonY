@@ -43,7 +43,7 @@
 									Aucun avis, <a href="">soyez le premier !</a>
 								</s:if> <s:else>
 										<input id="input-5b" data-size="xxs" class="rating"  data-symbol="&#xf001;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
-()<s:property value="nbavis" /> avis)
+(<s:property value="nbavis" /> avis)
 								</s:else></td>
 							<td><s:property value="nomquartier" /></td>
 						</tr>
