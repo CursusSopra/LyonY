@@ -16,7 +16,7 @@ public class ManageSortieAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
 
-	private int idSortie = 7;
+	private int idSortie;
 	private String[] heureDebut = new String[7];
 	private String[] heureFin = new String[7];
 	private String[] jours = { "Lundi", "Mardi", "Mercredi", "Jeudi",
@@ -78,7 +78,7 @@ public class ManageSortieAction extends ActionSupport {
 			cnx.setAutoCommit(false);
 
 			for (int i = 0; i < jours.length; i++) {
-				PlageHoraire ph = new PlageHoraire(heureDebut[i], heureFin[1]);
+				PlageHoraire ph = new PlageHoraire(heureDebut[i], heureFin[i]);
 				int idPlageHoraire = ph.save(cnx);
 
 				Horaire h = new Horaire(jours[i], idPlageHoraire);
@@ -128,14 +128,16 @@ public class ManageSortieAction extends ActionSupport {
 	}
 	
 	public String executeModifHoraire() {
-		timeStringToArray(timeString);
 		
 		Sortie s = new Sortie();
 		s.setIdSortie(idSortie);
-		s.deleteHoraire(jours, heureDebut, heureFin);
-		// AJOUTER RE-CREATION DES HORAIRES MODIFIÉS
-		return SUCCESS;
 		
+		// SUPPR DES HORAIRES EXISTANTS
+		s.deleteHoraire();
+		
+		// ON CREE DES NOUVEAUX HORAIRES
+		executeCreationHoraire();
+		return SUCCESS;
 		
 	}
 

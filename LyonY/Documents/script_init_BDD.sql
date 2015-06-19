@@ -420,4 +420,4 @@ INSERT INTO avis
 
 insert into photos (libphoto, idlieu) values ('_pictures/restaurants/brasseriegeorges.jpg', 6);
 insert into photos (libphoto, idlieu) values ('_pictures/restaurants/lahugonniere1.png', 7);
-insert into photos (libphoto, idlieu) values ('_pictures/restaurants/lahugonnier21.png', 7);
+insert into photos (libphoto, idlieu) values ('_pictures/restaurants/lahugonniere2.png', 7);

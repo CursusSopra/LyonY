@@ -146,5 +146,22 @@ public class Sortie {
 		}
 		return idSortie;
 	}
+	
+	//ECRITURE DE LA MODIFICATION DES HORAIRES EN BDD
+	public void deleteHoraire() {
+		try {
+			
+			Connection cnx = PostgresConnection.getConnexion();
+			String query = "DELETE FROM ouvertures WHERE idsortie=?";
+			PreparedStatement ps = cnx.prepareStatement(query);
+			ps.setInt(1, idSortie);
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }
