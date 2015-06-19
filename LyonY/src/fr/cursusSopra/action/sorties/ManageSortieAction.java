@@ -2,6 +2,7 @@ package fr.cursusSopra.action.sorties;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -24,7 +25,8 @@ public class ManageSortieAction extends ActionSupport {
 	private String[] jours = { "Lundi", "Mardi", "Mercredi", "Jeudi",
 			"Vendredi", "Samedi", "Dimanche" };
 	private String timeString;
-	private String timeStringOut;
+	private String timeStringJavaOut;
+	public List<Horaire> listeDesHoraires;
 
 	public int getIdSortie() {
 		return idSortie;
@@ -51,11 +53,11 @@ public class ManageSortieAction extends ActionSupport {
 	}
 
 	public String getStringHoraires() {
-		return timeStringOut;
+		return timeStringJavaOut;
 	}
 
 	public void setStringHoraires(String stringHoraires) {
-		this.timeStringOut = stringHoraires;
+		this.timeStringJavaOut = stringHoraires;
 	}
 
 	public String[] getJours() {
@@ -115,7 +117,8 @@ public class ManageSortieAction extends ActionSupport {
 		try {
 			Sortie s = new Sortie();
 			s.setIdSortie(idSortieTest);
-			timeStringOut = s.getStringHoraires(idSortieTest);
+			timeStringJavaOut = s.getStringHoraires(idSortieTest);
+			listeDesHoraires = s.getListeDesHoraires(idSortieTest);
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -125,6 +128,10 @@ public class ManageSortieAction extends ActionSupport {
 			return ERROR;
 		}
 
+	}
+	
+	public String executeModifHoraire() {
+		return SUCCESS;
 	}
 
 	private void timeStringToArray(String timeString) {
