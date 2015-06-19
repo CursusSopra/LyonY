@@ -6,7 +6,7 @@
 <div>
 	<s:url action="formModifRestaurant" var="mr">
 		<s:param name="idRestaurant">
-			<s:property value="restaurant.idRestaurant"/>
+			<s:property value="restaurant.idRestaurant" />
 		</s:param>
 	</s:url>
 	<a href="<s:property value='#mr'/>">Modifier les informations</a>
@@ -18,10 +18,14 @@
 		<div class="col-md-10">
 
 			<div>
-			<input id="input-5b" data-size="sm" class="rating"  data-symbol="&#xf0f5;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="restaurant.notemoy" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
-				Nom du restaurant :
+				<input id="input-5b" data-size="sm" class="rating"
+					data-symbol="&#xf0f5;" data-glyphicon="false"
+					data-show-caption="false" data-show-clear="false"
+					value=<s:property value="restaurant.notemoy" /> data-min="0"
+					data-max="5" data-step="0.5" data-disabled="true"
+					data-rating-class="rating-fa"> Nom du restaurant :
 				<s:property value="restaurant.nomrestaurant" />
-			
+
 			</div>
 			<div>
 				Quartier :
@@ -57,7 +61,7 @@
 				Reservation :
 
 
-				<s:set var="res" value="restaurant.reservation" />				
+				<s:set var="res" value="restaurant.reservation" />
 
 				<s:if test="%{res}">
 					Oui
@@ -79,7 +83,7 @@
     				Non
 				</s:else>
 			</div>
-			
+
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -89,14 +93,14 @@
 					</tr>
 				</thead>
 				<tbody>
-						<s:iterator value="restaurant.listeDesHoraires">
+					<s:iterator value="restaurant.listeDesHoraires">
 						<tr>
-							<td><s:property value="jour"/></td>
+							<td><s:property value="jour" /></td>
 							<td><s:date name="plageHoraire.heureDebut" format="HH:mm" /></td>
 							<td><s:date name="plageHoraire.heureFin" format="HH:mm" /></td>
 						</tr>
 					</s:iterator>
-						
+
 
 				</tbody>
 			</table>
@@ -107,22 +111,40 @@
 					src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIXm3hVBQgLwOmmsORoaxue1ZSqYx4rc0
 &q=<s:property value="restaurant.nomrestaurant" />,<s:property value="restaurant.numero" />+<s:property value="restaurant.voie" />,<s:property value="restaurant.ville" />"></iframe>
 			</div>
+
+			<div>
+
+				Photos : <br />
+
+						<s:iterator value="restaurant.listeDesPhotosDeRestaurant">
+
+
+							<a href="<s:property value="libPhoto" />"><img
+								src="<s:property value="libPhoto" />" height="150" /></a>
+									&nbsp;
+								</s:iterator>
 			
+			</div>
+
 			<div>
 				Avis :
-				<table class="table table-striped table-hover" >
-				<s:iterator value="restaurant.listeDesAvisDunLieu"> 
-					<tr> 
-					<td ><s:property value="pseudo"/>&nbsp;</td> 
-					
-					<td><input data-size="xxs" id="input-5b" class="rating"  data-symbol="&#xf0f5;" data-glyphicon="false" data-show-caption="false" data-show-clear="false" value=<s:property value="note" />  data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-rating-class="rating-fa" >
-					</td> 
-					
-					<td><s:property value="message"/>&nbsp;</td>
-					</tr>
-				</s:iterator>
+				<table class="table table-striped table-hover">
+					<s:iterator value="restaurant.listeDesAvisDunLieu">
+						<tr>
+							<td><s:property value="pseudo" />&nbsp;</td>
+
+							<td><input data-size="xxs" id="input-5b" class="rating"
+								data-symbol="&#xf0f5;" data-glyphicon="false"
+								data-show-caption="false" data-show-clear="false"
+								value=<s:property value="note" /> data-min="0" data-max="5"
+								data-step="0.5" data-disabled="true"
+								data-rating-class="rating-fa"></td>
+
+							<td><s:property value="message" />&nbsp;</td>
+						</tr>
+					</s:iterator>
 				</table>
-				
+
 			</div>
 
 
