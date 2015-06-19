@@ -230,10 +230,10 @@ ALTER TABLE sorties
 	ADD CONSTRAINT fk_sorties_ambiances FOREIGN KEY ( idambiance ) REFERENCES ambiances( idambiance ) ;
 
 ALTER TABLE horaires
-	ADD CONSTRAINT fk_horaires_plagehoraires FOREIGN KEY ( idplagehoraire ) REFERENCES plagehoraires( idplagehoraire ) ;
+	ADD CONSTRAINT fk_horaires_plagehoraires FOREIGN KEY ( idplagehoraire ) REFERENCES plagehoraires( idplagehoraire ) ON DELETE CASCADE ;
 
 ALTER TABLE ouvertures
-	ADD CONSTRAINT fk_ouvertures_horaires FOREIGN KEY ( idhoraire ) REFERENCES horaires( idhoraire ) ,
+	ADD CONSTRAINT fk_ouvertures_horaires FOREIGN KEY ( idhoraire ) REFERENCES horaires( idhoraire ) ON DELETE CASCADE ,
 	ADD CONSTRAINT fk_ouvertures_sorties FOREIGN KEY ( idsortie ) REFERENCES sorties( idsortie ) ; 
 
 ALTER TABLE bars

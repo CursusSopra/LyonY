@@ -1,6 +1,5 @@
 package fr.cursusSopra.model;
 
-import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +27,7 @@ public class Utilisateur {
 	private JRadioButton male;
 	private int idQuartier;
 	
-	private Adresse adresse;
+	public Adresse adresse;
 	private int numero;
 	private String voie;
 	private String codePostal;
@@ -36,8 +35,10 @@ public class Utilisateur {
 	private String nom;
 
 	public Utilisateur() {
+		adresse = new Adresse();
 	}
 
+	
 	/* Création d'un compte utilisateur Candidat */
 /* =================================================================================== */
 	public boolean create(Connection cnx) {
@@ -99,6 +100,7 @@ public class Utilisateur {
 	/* Modification du compte */
 /* =================================================================================== */
 	public int modif(Connection cnx, int idUtilisateur, String email, String avatar, String pseudo, String motDePasse, int idadresse) throws SQLException {
+		 		
 		this.idUtilisateur = idUtilisateur;
 		this.pseudo = pseudo;
 		this.email = email;
@@ -106,8 +108,8 @@ public class Utilisateur {
 		this.avatar = avatar;
 		this.idadresse = idadresse;
 
-		String query = "UPDATE utilisateurs SET pseudo=?, email=?, avatar=?, motdepasse=?  WHERE idutilisateur=?";
-
+		String query = "UPDATE utilisateurs SET pseudo=?, email=?, avatar=?, motdepasse=? WHERE idutilisateur =?";
+		
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setString(1, pseudo);
 		ps.setString(2, email);
@@ -115,7 +117,6 @@ public class Utilisateur {
 		ps.setString(4, motDePasse);
 		ps.setInt(5, idUtilisateur);
 		
-
 		return ps.executeUpdate();
 	}
 
