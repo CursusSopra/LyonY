@@ -96,7 +96,7 @@ public class Sortie {
 	}
 
 //	Récupère les horaires d'une sortie sous forme de STRING pour les afficher dans le formulaire de modification
-	public String getStringHoraires(int idSortie) throws SQLException {
+	public String getStringHoraires(int idSortie) throws Exception {
 		Connection cnx = PostgresConnection.getConnexion();
 		String query = "SELECT "
 				+ "STRING_AGG(CAST(heuredebut AS varchar(5)) || '-' || CAST(heurefin  AS varchar(5)), '|') "
@@ -107,7 +107,12 @@ public class Sortie {
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, idSortie);
 		ResultSet rs = ps.executeQuery();
-		return stringHoraires = rs.getString("string_agg");
+		if (rs != null && rs.next()) {
+			stringHoraires = rs.getString("string_agg");
+		} else {
+			throw new Exception();
+		}
+		return stringHoraires;
 	}
 
 	// CTOR
