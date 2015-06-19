@@ -285,7 +285,7 @@ public class Restaurant extends Sortie {
 		// Object instruction SQL
 		Statement stmt = cnx.createStatement();
 		// Requête à exécuter
-		String query = "SELECT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, libambiance, prixmin, prixmax, idphoto, AVG(av.note) AS notemoy, "
+		String query = "SELECT DISTINCT r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, libambiance, prixmin, prixmax, AVG(av.note) AS notemoy, "
 				+ "COUNT (av.note) AS nbavis "
 				+ "FROM restaurants r "
 				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
@@ -295,7 +295,7 @@ public class Restaurant extends Sortie {
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
 				+ "INNER JOIN photos p ON l.idlieu = p.idlieu "
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
-				+ "GROUP BY nomrestaurant, nomquartier, libambiance, r.idrestaurant, prixmin, prixmax, idphoto;";
+				+ "GROUP BY nomrestaurant, nomquartier, libambiance, r.idrestaurant, prixmin, prixmax";
 
 		// Obtention de l'ensemble résultats
 		ResultSet rs = stmt.executeQuery(query);
@@ -310,7 +310,26 @@ public class Restaurant extends Sortie {
 			r.prixmax = rs.getInt("prixmax");
 			r.notemoy = rs.getFloat("notemoy");
 			r.nbavis = rs.getInt("nbavis");
-			r.listeDesPhotosDeRestaurant.add(new Photo(rs.getInt("idphoto")));
+			
+			Statement stmt2= cnx.createStatement();
+			
+			String query2 = "SELECT  idphoto "
+					+ "FROM photos p "
+					+ "INNER JOIN lieux l ON p.idlieu=l.idlieu "
+					+ "INNER JOIN sorties s ON l.idlieu=s.idlieu "
+					+ "INNER JOIN restaurants r ON s.idsortie=r.idsortie "
+					+ "WHERE idrestaurant =" + r.idRestaurant;
+			
+			ResultSet rs2 = stmt2.executeQuery(query2);
+					
+			while (rs2.next()) {
+				
+				r.listeDesPhotosDeRestaurant.add(new Photo(rs2.getInt("idphoto")));
+				
+			
+			}
+
+			
 			listeDesRestaurants.add(r);
 		}
 

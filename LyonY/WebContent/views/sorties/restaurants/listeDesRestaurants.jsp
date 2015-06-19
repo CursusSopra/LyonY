@@ -47,12 +47,13 @@
 (<s:property value="nbavis" /> avis)
 								</s:else></td>
 							<td><s:property value="nomquartier" /></td>
-							<td>
+							<td nowrap>
 								<s:iterator value="listeDesPhotosDeRestaurant">
+								
 								
 									<a href="<s:property value="libPhoto" />"><img
 			src="<s:property value="libPhoto" />" height="50" /></a>
-									
+									&nbsp;
 								</s:iterator>
 							</td>
 						</tr>
