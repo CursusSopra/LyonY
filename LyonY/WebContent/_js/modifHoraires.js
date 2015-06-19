@@ -7,8 +7,8 @@ var arrStartTime = [];
 var arrEndTime = [];
 var startTime;
 var endTime;
-var timeStringIn = "11:30-18:00|10:30-19:30|09:00-18:30|08:30-19:00|09:00-19:00|11:00-20:00|09:30-18:30";
-
+var timeStringIn = $("#idtimeStringOut").value;
+console.log(timeStringIn);
  //Création des sliders
 $(function() {
 	var nbSliders = $("#Horaires tr").length;

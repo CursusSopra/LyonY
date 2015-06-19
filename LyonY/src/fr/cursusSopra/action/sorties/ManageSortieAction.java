@@ -24,7 +24,7 @@ public class ManageSortieAction extends ActionSupport {
 	private String[] jours = { "Lundi", "Mardi", "Mercredi", "Jeudi",
 			"Vendredi", "Samedi", "Dimanche" };
 	private String timeString;
-	private String stringHoraires;
+	private String timeStringOut;
 
 	public int getIdSortie() {
 		return idSortie;
@@ -51,11 +51,11 @@ public class ManageSortieAction extends ActionSupport {
 	}
 
 	public String getStringHoraires() {
-		return stringHoraires;
+		return timeStringOut;
 	}
 
 	public void setStringHoraires(String stringHoraires) {
-		this.stringHoraires = stringHoraires;
+		this.timeStringOut = stringHoraires;
 	}
 
 	public String[] getJours() {
@@ -115,7 +115,7 @@ public class ManageSortieAction extends ActionSupport {
 		try {
 			Sortie s = new Sortie();
 			s.setIdSortie(idSortieTest);
-			stringHoraires = s.getStringHoraires(idSortieTest);
+			timeStringOut = s.getStringHoraires(idSortieTest);
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();

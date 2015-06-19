@@ -34,16 +34,14 @@
 
 				<!-- affichage de l'heure à côté -->
 				<td style="width: 200px" align="center"><span id="time"
-					data-rang="<s:property value = "#idx.count"/>"></span></td>
+					data-rang="<s:property value = "#idx.count"/>"> </span></td>
 			</tr>
 		</s:iterator>
 	</table>
 	<!-- Bouton submit -->
 	<input type="submit" name="scheduleSubmit" value="Submit"
 		id="scheduleSubmit" class="ui-button ui-state-default ui-corner-all" />
-	<input type="hidden" id="idTimeString" name="timeString" /> 
-<%-- 	<input type="hidden" id="idIdSortie" name="idSortie" value="${idSortie}" /> --%>
-
+	<input type="hidden" id="idIdSortie" name="idSortie" value="${idSortie}" />
 </form>
 
 
