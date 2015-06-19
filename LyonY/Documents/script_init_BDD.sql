@@ -416,3 +416,8 @@ INSERT INTO avis
 	(10, 4, 'Jolie statue !', 1),
 	(4, 5, 'Mojitos que te llevan al paraiso!', 2),
 	(10,5, 'Ke placita tan mona', 2);
+	
+
+insert into photos (libphoto, idlieu) values ('_pictures/restaurants/brasseriegeorges.jpg', 6);
+insert into photos (libphoto, idlieu) values ('_pictures/restaurants/lahugonniere1.png', 7);
+insert into photos (libphoto, idlieu) values ('_pictures/restaurants/lahugonnier21.png', 7);
