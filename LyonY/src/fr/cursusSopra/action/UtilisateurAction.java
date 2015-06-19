@@ -73,7 +73,7 @@ public class UtilisateurAction extends ActionSupport {
 			// On se met en mode 'transaction'
 			cnx.setAutoCommit(false);
 			
-			uti.setDateNaissance(new SimpleDateFormat("yyyy-MM-dd")
+			uti.setDateNaissance(new SimpleDateFormat("dd/MM/yyyy")
 					.parse(dateNaissance));
 			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
 			int idAdresse = adresse.save(cnx);
