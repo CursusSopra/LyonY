@@ -84,7 +84,7 @@ CREATE TABLE lieux (
 
 CREATE TABLE photos ( 
 	idphoto              serial  NOT NULL,
-	libphoto             varchar(20) NOT NULL ,
+	libphoto             varchar(100) NOT NULL ,
 	idlieu               integer  NOT NULL,
 	CONSTRAINT pk_photos PRIMARY KEY ( idphoto )
  );
