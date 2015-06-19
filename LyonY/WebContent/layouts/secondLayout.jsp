@@ -185,8 +185,6 @@
 	<script type="text/javascript" src="/LyonY/js/jQuery/jquery-2.1.1.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->
 	<script src="/LyonY/js/bootstrap.js"></script>
-  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<!-- ================================================== -->
 	<!--                  Extra JavaScript                  -->
 	<tiles:useAttribute name="moreHttpScripts" scope="request" ignore="true" />

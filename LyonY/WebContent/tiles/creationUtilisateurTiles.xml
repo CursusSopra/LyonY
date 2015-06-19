@@ -13,6 +13,9 @@
 		
 		<put-list-attribute name="moreScripts">
 			<add-attribute value="_js/creationUtilisateur.js"></add-attribute>
+		</put-list-attribute>		
+		<put-list-attribute name="moreHttpScripts">
+			<add-attribute value="//code.jquery.com/ui/1.11.4/jquery-ui.js"></add-attribute>
 		</put-list-attribute>
 	</definition>
 	
