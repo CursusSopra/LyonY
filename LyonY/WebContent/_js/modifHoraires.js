@@ -7,32 +7,41 @@ var arrStartTime = [];
 var arrEndTime = [];
 var startTime;
 var endTime;
-var timeStringIn = $("#idtimeStringOut").value;
-console.log(timeStringIn);
  //Création des sliders
 $(function() {
-	var nbSliders = $("#Horaires tr").length;
-	toTime(timeStringIn);
-	for (var i = 1; i <= nbSliders; i++) {
-		var min = getValeurs(arrStartTime)[i-1];
-		var max = getValeurs(arrEndTime)[i-1];
-		console.log(min);
-		console.log(max);
-		$("#slider-range" + i).noUiSlider({
-			start : [ min, max ],
-			range : {
-				'min' : [ 0 ],
-				'max' : [ 48 ]
-			},
-			step : 1,
-			margin : 1,
-			behaviour : 'snap',
-		}).on({
-			slide : function() {
-				setTimeHolder($(this));	
-			}
-		})
-	}
+//	$.getJSON('getTimeStringJavaOut?idSortie=' + selectedPseudo)
+	$.getJSON('getTimeStringJavaOut?idSortie=11')
+ 	.success(function(data) { 
+// 		if(data.timeStringJavaOut) {
+ 			var	timeStringIn=data.timeStringJavaOut;
+	 		var nbSliders = $("#Horaires tr").length;
+	 		toTime(timeStringIn);
+	 		for (var i = 1; i <= nbSliders; i++) {
+	 			var min = getValeurs(arrStartTime)[i-1];
+	 			var max = getValeurs(arrEndTime)[i-1];
+	 				if (max == 0){
+	 					max = 48;
+	 				}
+	 			console.log("min ="+min);
+	 			console.log("max ="+max);
+	 			$("#slider-range" + i).noUiSlider({
+	 				start : [ min, max ],
+	 				range : {
+	 					'min' : [ 0 ],
+	 					'max' : [ 48 ]
+	 				},
+	 				step : 1,
+	 				margin : 1,
+	 				behaviour : 'snap',
+	 			}).on({
+	 				slide : function() {
+	 					setTimeHolder($(this));	
+	 				}
+	 			})
+	 		}
+ 	})
+	.fail(function(indispo) { /* affiche pseudo indisponible */
+	});
 });
 
 // Fonction pour modifier les données des sliders

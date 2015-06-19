@@ -39,4 +39,12 @@
 
 
 	</package>
+
+
+	<!-- JSON pour récupérer la liste des horaires -->
+	<package name="jsonHoraireAction" extends="json-default">
+		<action name="getTimeStringJavaOut" class="fr.cursusSopra.json.JSONHorairesStringAction">
+			<result type="json" />
+		</action>
+	</package>
 </struts>
