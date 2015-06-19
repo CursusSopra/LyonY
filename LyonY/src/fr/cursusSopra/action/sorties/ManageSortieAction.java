@@ -2,6 +2,7 @@ package fr.cursusSopra.action.sorties;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -14,45 +15,56 @@ import fr.cursusSopra.tech.PostgresConnection;
 public class ManageSortieAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
-	
-//	valeur de test - form modif horaire
-	private int idSortieTest = 7;
-//	--------------
 
-	private int idSortie;
+	private int idSortie = 7;
 	private String[] heureDebut = new String[7];
 	private String[] heureFin = new String[7];
 	private String[] jours = { "Lundi", "Mardi", "Mercredi", "Jeudi",
 			"Vendredi", "Samedi", "Dimanche" };
 	private String timeString;
+	private String timeStringJavaOut;
+	public List<Horaire> listeDesHoraires;
 
 	public int getIdSortie() {
 		return idSortie;
 	}
+
 	public void setIdSortie(int idSortie) {
 		this.idSortie = idSortie;
 	}
+
 	public void setHeureDebut(String[] heureDebut) {
 		this.heureDebut = heureDebut;
 	}
+
 	public void setHeureFin(String[] heureFin) {
 		this.heureFin = heureFin;
 	}
+
 	public String getTimeString() {
 		return timeString;
 	}
+
 	public void setTimeString(String timeString) {
 		this.timeString = timeString;
+	}
+
+	public String getStringHoraires() {
+		return timeStringJavaOut;
+	}
+
+	public void setStringHoraires(String stringHoraires) {
+		this.timeStringJavaOut = stringHoraires;
 	}
 
 	public String[] getJours() {
 		return jours;
 	}
-	
+
 	public String execute() {
 		return SUCCESS;
 	}
-	
+
 	// Création des horaires d'une sortie puis appel de la méthode de
 	// Sortie.java qui les ajoute dans la DB
 
@@ -65,7 +77,7 @@ public class ManageSortieAction extends ActionSupport {
 			// On se met en mode 'transaction'
 			cnx.setAutoCommit(false);
 
-			for (int i = 0; i < jours.length; i++) { // jours.length
+			for (int i = 0; i < jours.length; i++) {
 				PlageHoraire ph = new PlageHoraire(heureDebut[i], heureFin[1]);
 				int idPlageHoraire = ph.save(cnx);
 
@@ -95,25 +107,40 @@ public class ManageSortieAction extends ActionSupport {
 		}
 		return ERROR;
 	}
-	
-//	Récupération des horaires d'une Sortie existante en vue de la modifier
-//	Appel de la methode getStringHoraires de Sortie.java
+
+	// Récupération des horaires d'une Sortie existante en vue de la modifier
+	// Appel de la methode getStringHoraires de Sortie.java
 	public String executeFormModifHoraire() {
 		try {
 			Sortie s = new Sortie();
-			s.setIdSortie(idSortieTest);
-			s.getStringHoraires(idSortieTest);
+			s.setIdSortie(idSortie);
+			timeStringJavaOut = s.getStringHoraires(idSortie);
+			listeDesHoraires = s.getListeDesHoraires(idSortie);
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ERROR;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
 		}
+
+	}
 	
+	public String executeModifHoraire() {
+		timeStringToArray(timeString);
+		
+		Sortie s = new Sortie();
+		s.setIdSortie(idSortie);
+		s.deleteHoraire(jours, heureDebut, heureFin);
+		// AJOUTER RE-CREATION DES HORAIRES MODIFIÉS
+		return SUCCESS;
+		
+		
 	}
 
-
 	private void timeStringToArray(String timeString) {
-		
+
 		// On crée un tableau de "hd-hf"
 		System.out.println(timeString);
 		String[] temp1 = timeString.split("\\|");

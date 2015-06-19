@@ -5,6 +5,34 @@
 
 <h1>Ajout d'un monument</h1>
 
+<!-- Modal -->
+<div class="modal fade" id="idModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Ajout d'un type de monument</h3>
+      </div>
+      <div class="modal-body">
+        <form id="idFormCreationTypevisite" class="form-horizontal">
+			<div class="form-group">
+				<label for="idLibTypevisite" class="col-sm-4 control-label">Nouveau type *</label>
+				<div class="col-sm-4">
+					<div class="row">
+						<input type="text" class="form-control" id="idLibTypevisite" name="libtypevisite" placeholder="Exemple : Musée"/>
+					</div>
+					<span class="col-lg-20 control-label">&nbsp;</span>
+				</div>
+			</div>
+        	<input type="hidden" id="idTypeV"  name="typev" value="M"/>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+	        <button type="submit" class="btn btn-primary">Ajouter ce type</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <form class="form-horizontal" method="post" id="idFormCreationMonument" action="<s:url action='creationMonument'/>">
 
 	<div id="idFormAlertError" class="alert alert-danger hidden" role="alert">
@@ -36,10 +64,8 @@
 						</s:iterator>
 					</select>
 				</div>
-	<!-- 			<div class = "row"> -->
-	<%-- 				<a href="<s:url action='creationTypevisite'/>">Ajouter un type de monument</a> --%>
-	<!-- 			</div> -->
 				<span class="col-lg-20 control-label">&nbsp;</span>
+				<a data-toggle="modal" href="#idModal">Ajouter un type</a>
 			</div>
 		</div>
 	

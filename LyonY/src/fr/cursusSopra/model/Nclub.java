@@ -19,6 +19,7 @@ public class Nclub extends Sortie {
 	private String codePostal;
 	private String ville;
 	private String description;
+	private String accessibilite;
 	private String ambiance;
 	private float notemoy;
 	private int nbavis;
@@ -92,6 +93,12 @@ public class Nclub extends Sortie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getAccessibilite() {
+		return accessibilite;
+	}
+	public void setAccessibilite(String accessibilite) {
+		this.accessibilite = accessibilite;
+	}
 	public String getAmbiance() {
 		return ambiance;
 	}
@@ -137,7 +144,7 @@ public class Nclub extends Sortie {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT l.idlieu, n.idsortie, n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
+		String query = "SELECT l.idlieu, n.idsortie, n.idnightclub, l.nom nomnightclub,q.nom nomquartier, libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, accessibilite, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
 				+ "FROM nightclubs n "
 				+ "INNER JOIN sorties s ON s.idsortie=n.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
@@ -146,7 +153,7 @@ public class Nclub extends Sortie {
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
 				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
 				+ "WHERE n.idnightclub =" + idNightclub
-				+ " GROUP BY l.idlieu, n.idnightclub, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description";
+				+ " GROUP BY l.idlieu, n.idnightclub, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codepostal, ville, description, accessibilite";
 		
 		
 		
@@ -167,6 +174,7 @@ public class Nclub extends Sortie {
 			codePostal = rs.getString("codepostal");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
+			accessibilite = rs.getString("accessibilite");
 			notemoy = rs.getFloat("notemoy");
 			nbavis = rs.getInt("nbavis");
 			idl = rs.getInt("idlieu");

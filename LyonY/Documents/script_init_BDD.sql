@@ -84,7 +84,7 @@ CREATE TABLE lieux (
 
 CREATE TABLE photos ( 
 	idphoto              serial  NOT NULL,
-	libphoto             varchar(20) NOT NULL ,
+	libphoto             varchar(100) NOT NULL ,
 	idlieu               integer  NOT NULL,
 	CONSTRAINT pk_photos PRIMARY KEY ( idphoto )
  );
@@ -416,3 +416,8 @@ INSERT INTO avis
 	(10, 4, 'Jolie statue !', 1),
 	(4, 5, 'Mojitos que te llevan al paraiso!', 2),
 	(10,5, 'Ke placita tan mona', 2);
+	
+
+insert into photos (libphoto, idlieu) values ('_pictures/restaurants/brasseriegeorges.jpg', 6);
+insert into photos (libphoto, idlieu) values ('_pictures/restaurants/lahugonniere1.png', 7);
+insert into photos (libphoto, idlieu) values ('_pictures/restaurants/lahugonnier21.png', 7);

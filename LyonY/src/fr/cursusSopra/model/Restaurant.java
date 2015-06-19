@@ -19,6 +19,7 @@ public class Restaurant extends Sortie {
 	private String codePostal;
 	private String ville;
 	private String description;
+	private String accessibilite;
 	private boolean reservation;
 	private boolean aemporter;
 	private String ambiance;
@@ -93,6 +94,12 @@ public class Restaurant extends Sortie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getAccessibilite() {
+		return accessibilite;
+	}
+	public void setAccessibilite(String accessibilite) {
+		this.accessibilite = accessibilite;
+	}
 	public boolean isReservation() {
 		return reservation;
 	}
@@ -143,17 +150,20 @@ public class Restaurant extends Sortie {
 		Statement stmt = cnx.createStatement();
 		
 		// Requête à exécuter
-		String query = "SELECT l.idlieu, r.idsortie, r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, voie, codePostal, ville, libambiance, prixmin, prixmax, description, reservation, aemporter, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis "
+		String query = "SELECT l.idlieu, r.idsortie, r.idrestaurant, l.nom nomrestaurant,q.nom nomquartier, numero, "
+				+ "voie, codePostal, ville, libambiance, prixmin, prixmax, description, accessibilite, "
+				+ "reservation, aemporter, AVG(av.note) AS notemoy,COUNT(av.note) AS nbavis, idphoto, libphoto	"
 				+ "FROM restaurants r "
 				+ "INNER JOIN sorties s ON s.idsortie=r.idsortie "
 				+ "INNER JOIN lieux l ON s.idlieu=l.idlieu "
 				+ "INNER JOIN adresses a ON a.idadresse=l.idadresse "
 				+ "INNER JOIN quartiers q ON q.idquartier=a.idquartier "
 				+ "INNER JOIN ambiances am ON am.idambiance=s.idambiance "
-				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu "
-				+ "WHERE idrestaurant = " + idRestaurant
-				+ " GROUP BY l.idlieu, r.idrestaurant, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, codePostal, ville, description";
-		
+				+ "INNER JOIN photos p on p.idlieu = l.idlieu "
+				+ "LEFT OUTER JOIN avis av ON l.idlieu = av.idlieu"
+				+ "WHERE idrestaurant = "+ idRestaurant
+				+ " GROUP BY l.idlieu, r.idrestaurant, l.nom ,q.nom , libambiance, prixmin, prixmax, numero, voie, "
+				+ "codePostal, ville, description, idphoto";
 		
 		
 		// Obtention de l'ensemble résultats
@@ -172,6 +182,7 @@ public class Restaurant extends Sortie {
 			codePostal = rs.getString("codePostal");
 			ville = rs.getString("ville");
 			description = rs.getString("description");
+			accessibilite = rs.getString("accessibilite");
 			reservation = rs.getBoolean("reservation");
 			aemporter = rs.getBoolean("aemporter");
 			notemoy = rs.getFloat("notemoy");

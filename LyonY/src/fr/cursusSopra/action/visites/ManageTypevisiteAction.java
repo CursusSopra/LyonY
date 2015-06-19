@@ -3,7 +3,6 @@ package fr.cursusSopra.action.visites;
 import java.sql.Connection;
 
 import fr.cursusSopra.action.general.ActionGeneral;
-import fr.cursusSopra.model.Adresse;
 import fr.cursusSopra.model.Typevisite;
 import fr.cursusSopra.tech.PostgresConnection;
 
@@ -50,8 +49,8 @@ public class ManageTypevisiteAction extends ActionGeneral {
 
 		try {
 			typevisite = new Typevisite(typev, libtypevisite);
-		
-			return typevisite.save(cnx) == 0 ? ERROR : SUCCESS;
+			idTypevisite = typevisite.save(cnx);
+			return idTypevisite == 0 ? ERROR : SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ERROR;

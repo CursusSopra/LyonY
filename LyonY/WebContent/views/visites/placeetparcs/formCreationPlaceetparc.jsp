@@ -11,7 +11,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" id="myModalLabel">Ajout d'un type de monument</h3>
+        <h3 class="modal-title" id="myModalLabel">Ajout d'un type de lieu</h3>
       </div>
       <div class="modal-body">
         <form id="idFormCreationTypevisite" class="form-horizontal">
@@ -19,12 +19,12 @@
 				<label for="idLibTypevisite" class="col-sm-4 control-label">Nouveau type *</label>
 				<div class="col-sm-4">
 					<div class="row">
-						<input type="text" class="form-control" id="idLibTypevisite" name="libtypevisite" placeholder="Exemple : Musée"/>
+						<input type="text" class="form-control" id="idLibTypevisite" name="libtypevisite" placeholder="Exemple : Parc"/>
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
 			</div>
-        	<input type="hidden" name="typev" value="P"/>
+        	<input type="hidden" id="idTypeV"  name="typev" value="P"/>
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
 	        <button type="submit" class="btn btn-primary">Ajouter ce type</button>
         </form>
