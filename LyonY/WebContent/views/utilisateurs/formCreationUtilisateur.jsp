@@ -1,8 +1,11 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <h1>Création de votre profil Lyon'Y</h1>
 
-<div id="idFormAlertError" class="alert alert-danger hidden" role="alert">Alerte !</div>
-<form class="form-horizontal" method="post" id="idSendCreationUtilisateur" action="<s:url action='sendCreationUtilisateur'/>">
+<div id="idFormAlertError" class="alert alert-danger hidden"
+	role="alert">Alerte !</div>
+<form class="form-horizontal" method="post"
+	id="idSendCreationUtilisateur"
+	action="<s:url action='sendCreationUtilisateur'/>">
 
 	<div class="form-group">
 		<div class="col-sm-offset-1 col-sm-10">
@@ -13,13 +16,14 @@
 	<fieldset>
 		<legend>Login</legend>
 		<div class="form-group">
-			<label for="idNewPseudo" class="col-lg-2 control-label" >Pseudo
+			<label for="idNewPseudo" class="col-lg-2 control-label">Pseudo
 				*</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
 						<!--  data-valid indique si le pseudo est unique  -->
-						<input type="text" class="form-control" id="idNewPseudo" name="pseudo" placeholder="Pseudo" data-valid="false"  required />
+						<input type="text" class="form-control" id="idNewPseudo"
+							name="pseudo" placeholder="Pseudo" data-valid="false" required />
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
@@ -31,7 +35,8 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
-						<input type="password" class="form-control" id="idNewMotDePasse" name="motDePasse" placeholder="Mot de Passe" required />
+						<input type="password" class="form-control" id="idNewMotDePasse"
+							name="motDePasse" placeholder="Mot de Passe" required />
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
@@ -41,13 +46,28 @@
 
 	<fieldset>
 		<legend>Informations personnelles</legend>
+<%-- 		<div class="form-group">
+			<label for="ancien" class="col-lg-2 control-label">Date
+				de Naissance 1 *</label>
+			<div class="col-lg-4">
+				<div class="row">
+					<div class="col-lg-6">
+						<input type="text" class="form-control" id="ancien"
+							name="dateNaissance" placeholder="aaaa-mm-jj"
+							pattern="\d{4}-\d{2}-\d{2}" required />
+					</div>
+					<span class="col-lg-20 control-label">&nbsp;</span>
+				</div>
+			</div>
+		</div>
+ --%>
 		<div class="form-group">
 			<label for="idDateNaissance" class="col-lg-2 control-label">Date
 				de Naissance *</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
-						<input type="text" class="form-control" id="idDateNaissance" name="dateNaissance" placeholder="aaaa-mm-jj" pattern="\d{4}-\d{2}-\d{2}" required />
+						<input type="text" id="idDateNaissance" name="dateNaissance" placeholder="Cliquez pour le calendrier" />
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
@@ -66,12 +86,15 @@
 	<fieldset>
 		<legend>Contacts et Adresse</legend>
 		<div class="form-group">
-			<label for="idNewEmail" class="col-lg-2 control-label">Adresse mail *</label>
+			<label for="idNewEmail" class="col-lg-2 control-label">Adresse
+				mail *</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-8">
 						<!--  data-valid indique si le mail est unique  -->
-						<input type="text" class="form-control" id="idNewEmail" name="email" placeholder="exemple.exemple@gmail.fr" data-valid = "false" required />
+						<input type="text" class="form-control" id="idNewEmail"
+							name="email" placeholder="exemple.exemple@gmail.fr"
+							data-valid="false" required />
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
@@ -83,7 +106,8 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-5">
-						<input type="text" class="form-control" id="idNumero" name="numero" placeholder="Exemple : 66" />
+						<input type="text" class="form-control" id="idNumero"
+							name="numero" placeholder="Exemple : 66" />
 					</div>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
@@ -95,7 +119,8 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-10">
-						<input type="text" class="form-control" id="idVoie" name="voie" placeholder="Exemple : cours Charlemagne" />
+						<input type="text" class="form-control" id="idVoie" name="voie"
+							placeholder="Exemple : cours Charlemagne" />
 					</div>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
@@ -103,26 +128,30 @@
 		</div>
 
 		<div class="form-group">
-			<label for="idQuartier" class="col-lg-2 control-label">Quartier *</label>
+			<label for="idQuartier" class="col-lg-2 control-label">Quartier
+				*</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<select id="idQuartier" name="quartier">
 						<option value="">Choisissez...</option>
-							<s:iterator value="listeDesQuartiers">
-								<option value="<s:property value="idQuartier" />"><s:property value="nom" /></option>
-							</s:iterator>
+						<s:iterator value="listeDesQuartiers">
+							<option value="<s:property value="idQuartier" />"><s:property
+									value="nom" /></option>
+						</s:iterator>
 					</select>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
 			</div>
 		</div>
-	
+
 		<div class="form-group">
-			<label for="idCodepostal" class="col-lg-2 control-label">Code postal *</label>
+			<label for="idCodepostal" class="col-lg-2 control-label">Code
+				postal *</label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-5">
-						<input type="text" class="form-control" id="idCodepostal" name="codePostal" placeholder="Exemple : 69002" />
+						<input type="text" class="form-control" id="idCodepostal"
+							name="codePostal" placeholder="Exemple : 69002" />
 					</div>
 				</div>
 				<span class="col-lg-20 control-label">&nbsp;</span>
@@ -150,7 +179,8 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-6">
-						<input type="text" class="form-control" id="idAvatar" name="avatar" />
+						<input type="text" class="form-control" id="idAvatar"
+							name="avatar" />
 					</div>
 					<span class="col-lg-20 control-label">&nbsp;</span>
 				</div>
@@ -159,26 +189,27 @@
 	</fieldset>
 
 	<fieldset>
-	<legend> Envoi du formulaire</legend>
+		<legend> Envoi du formulaire</legend>
 		<div class="form-group">
 			<label for="idSubmit" class="col-lg-2 control-label"></label>
 			<div class="col-lg-4">
 				<div class="row">
 					<div id="idSubmit" class="alert alert-danger hidden" role="alert">
-					A cane non magno sæpe tenetur aper <br/>
-					« Souvent le sanglier est arrêté par le petit chien. » <br/>					
-					--> Votre pseduo ou vote courriel électronique est déjà utilisé par un autre utilisateur, veuillez proceder aux changements adéquats.
+						A cane non magno sæpe tenetur aper <br /> « Souvent le sanglier
+						est arrêté par le petit chien. » <br /> --> Votre pseduo ou vote
+						courriel électronique est déjà utilisé par un autre utilisateur,
+						veuillez proceder aux changements adéquats.
 					</div>
 					<span class="col-lg-15 control-label">&nbsp;</span>
 				</div>
 			</div>
-		</div> 
+		</div>
 	</fieldset>
 
 	<div class="form-group">
 		<div class="row">
-			<input type="submit" value="Créer le compte" />
-			<input type="reset" value="Etat initial" />
+			<input type="submit" value="Créer le compte" /> <input type="reset"
+				value="Etat initial" />
 		</div>
 	</div>
 </form>

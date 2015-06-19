@@ -15,11 +15,8 @@ import fr.cursusSopra.tech.PostgresConnection;
 public class ManageSortieAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
-	// valeur de test - form modif horaire
-	private int idSortieTest = 1;
-	// --------------
 
-	private int idSortie;
+	private int idSortie = 7;
 	private String[] heureDebut = new String[7];
 	private String[] heureFin = new String[7];
 	private String[] jours = { "Lundi", "Mardi", "Mercredi", "Jeudi",
@@ -116,9 +113,9 @@ public class ManageSortieAction extends ActionSupport {
 	public String executeFormModifHoraire() {
 		try {
 			Sortie s = new Sortie();
-			s.setIdSortie(idSortieTest);
-			timeStringJavaOut = s.getStringHoraires(idSortieTest);
-			listeDesHoraires = s.getListeDesHoraires(idSortieTest);
+			s.setIdSortie(idSortie);
+			timeStringJavaOut = s.getStringHoraires(idSortie);
+			listeDesHoraires = s.getListeDesHoraires(idSortie);
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -131,7 +128,15 @@ public class ManageSortieAction extends ActionSupport {
 	}
 	
 	public String executeModifHoraire() {
+		timeStringToArray(timeString);
+		
+		Sortie s = new Sortie();
+		s.setIdSortie(idSortie);
+		s.deleteHoraire(jours, heureDebut, heureFin);
+		// AJOUTER RE-CREATION DES HORAIRES MODIFIÉS
 		return SUCCESS;
+		
+		
 	}
 
 	private void timeStringToArray(String timeString) {

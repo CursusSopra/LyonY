@@ -59,5 +59,15 @@ $(function() {
  			e.preventDefault(); 
  		}
 	});
+	
+	$('#idDateNaissance').datepicker({
+		dateFormat:"dd/mm/yy",
+	      changeMonth: true,
+		  changeYear: true,
+		  yearRange: '1871:1996'
+	});
+	
 });
+
+
 

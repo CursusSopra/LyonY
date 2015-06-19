@@ -2,6 +2,34 @@
 
 <h1>Entrez les informations sur le nouveau Bar :</h1>
 
+<!-- Modal -->
+<div class="modal fade" id="idModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Ajout d'une ambiance</h3>
+      </div>
+      <div class="modal-body">
+        <form id="idFormCreationAmbiance" class="form-horizontal">
+			<div class="form-group">
+				<label for="idLibAmbiance" class="col-sm-4 control-label">Nouvelle ambiance *</label>
+				<div class="col-sm-4">
+					<div class="row">
+						<input type="text" class="form-control" id="idLibAmbiance" name="libambiance" placeholder="Exemple : Pub"/>
+					</div>
+					<span class="col-lg-20 control-label">&nbsp;</span>
+				</div>
+			</div>
+        	<input type="hidden" id="idTypeS"  name="types" value="B"/>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+	        <button type="submit" class="btn btn-primary">Ajouter cette ambiance</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <form class="form-horizontal" method="post" id="idFormCreationBar" action="<s:url action='creationBar'/>">
 
 	<div id="idFormAlertError" class="alert alert-danger hidden"
@@ -30,10 +58,8 @@
 					</s:iterator>
 				</select>
 			</div>
-			<div class = "row">
-				<a href="<s:url action='creationAmbiance'/>">Ajouter une ambiance</a>
-			</div>
-			<span class="col-lg-20 control-label">&nbsp;</span>
+				<span class="col-lg-20 control-label">&nbsp;</span>
+				<a data-toggle="modal" href="#idModal">Ajouter une ambiance</a>
 		</div>
 	</div>
 

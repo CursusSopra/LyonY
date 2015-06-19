@@ -48,4 +48,37 @@ $(document).ready(
 						$('#idFormAlertError').addClass('hidden');
 					}
 				});
+			
+
+			$('#idFormCreationAmbiance').submit(
+					function(e) {
+						e.preventDefault();
+						var $libAmbiance = $('#idLibAmbiance');
+						var valLibAmbiance = $libAmbiance.val();
+						
+						//Par défaut le formulaire est OK
+						var formOK = true;
+						//Si champ obligatoire non rempli
+						if (valLibAmbiance == '') {
+							formOK &= false;
+							$libAmbiance.parent().parent().parent().addClass('has-error');
+							$libAmbiance.parent().next('span').html('Vous devez renseigner un nouveau type !');
+						} else {
+							$libAmbiance.parent().parent().parent().removeClass('has-error');
+							$libAmbiance.parent().next('span').html('');
+						}
+						if (formOK) {
+							$.ajax({
+								type: "POST", url: "creationAmbiance", data: $('#idFormCreationAmbiance').serialize(),
+								success: function(msg){
+									$("#idAmbiance").append('<option value="' + msg.idAmbiance + '" selected="selected">' + msg.libambiance + '</option>');
+									$("#idModal").modal('hide'); //hide popup
+									$('#idFormCreationAmbiance')[0].reset();
+								},
+								error: function(){
+									alert("failure");
+								}
+							});
+						}
+				});
 			});
