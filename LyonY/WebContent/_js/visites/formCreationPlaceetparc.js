@@ -70,8 +70,10 @@ $(document).ready(
 					$('#idFormAlertError').addClass('hidden');
 				}
 			});
+		
 		$('#idFormCreationTypevisite').submit(
 				function(e) {
+					e.preventDefault();
 					var $libTypevisite = $('#idLibTypevisite');
 					var valLibTypevisite = $libTypevisite.val();
 					
@@ -86,22 +88,19 @@ $(document).ready(
 						$libTypevisite.parent().parent().parent().removeClass('has-error');
 						$libTypevisite.parent().next('span').html('');
 					}
-					if (!formOK) {
-						e.preventDefault();
+					if (formOK) {
+						$.ajax({
+							type: "POST", url: "creationTypevisite", data: $('#idFormCreationTypevisite').serialize(),
+							success: function(msg){	
+								$("#idTypevisite").append('<option value="' + msg.idTypevisite + '" selected="selected">' + msg.libtypevisite + '</option>');
+								$("#idModal").modal('hide'); //hide popup
+								$('#idFormCreationTypevisite')[0].reset();
+							},
+							error: function(){
+								alert("failure");
+							}
+						});
 					}
 			});
-		
-		$("#idFormCreationTypevisite#submit").click(function(){
-			$.ajax({
-				type: "POST", url: "creationTypevisite", data: $('form.contact').serialize(),
-				success: function(msg){
-					$("#idTypevisite").append('<option value="' + '" selected="selected">' + $('#idLibTypevisite').val() + '</option>');
-					$("#form-content").modal('hide'); //hide popup	
-				},
-				error: function(){
-					alert("failure");
-				}
-			});
-		});
 		
 		});

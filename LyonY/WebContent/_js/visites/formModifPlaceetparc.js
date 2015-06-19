@@ -49,4 +49,36 @@ $(document).ready(
 				}
 			});
 
+		$('#idFormCreationTypevisite').submit(
+				function(e) {
+					e.preventDefault();
+					var $libTypevisite = $('#idLibTypevisite');
+					var valLibTypevisite = $libTypevisite.val();
+					
+					//Par défaut le formulaire est OK
+					var formOK = true;
+					//Si champ obligatoire non rempli
+					if (valLibTypevisite == '') {
+						formOK &= false;
+						$libTypevisite.parent().parent().parent().addClass('has-error');
+						$libTypevisite.parent().next('span').html('Vous devez renseigner un nouveau type !');
+					} else {
+						$libTypevisite.parent().parent().parent().removeClass('has-error');
+						$libTypevisite.parent().next('span').html('');
+					}
+					if (formOK) {
+						$.ajax({
+							type: "POST", url: "creationTypevisite", data: $('#idFormCreationTypevisite').serialize(),
+							success: function(msg){	
+								$("#idTypevisite").append('<option value="' + msg.idTypevisite + '" selected="selected">' + msg.libtypevisite + '</option>');
+								$("#idModal").modal('hide'); //hide popup
+								$('#idFormCreationTypevisite')[0].reset();
+							},
+							error: function(){
+								alert("failure");
+							}
+						});
+					}
+			});
+		
 	});
