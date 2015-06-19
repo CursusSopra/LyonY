@@ -144,12 +144,14 @@
 
 	</package>
 
-	<!-- <include file="struts???.xml" /> -->
+	<!-- AMBIANCES -->
 
-	<!-- <package name="jsonAction" extends="json-default"> -->
-	<!-- <action name="getJSONDep" class="fr.cursusSopra.json.JSONDepAction"> -->
-	<!-- <result type="json" /> -->
-	<!-- </action> -->
-	<!-- </package> -->
+	<!-- JSON pour les ambiances -->
+	<package name="jsonSortieAction" extends="json-default">
+		<action name="creationAmbiance"
+			class="fr.cursusSopra.action.sorties.ManageAmbianceAction" method="executeCreationAmbiance">
+			<result type="json" />
+		</action>
+	</package>
 
 </struts>

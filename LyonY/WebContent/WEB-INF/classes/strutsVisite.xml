@@ -90,8 +90,7 @@
 
 	<!-- TYPEVISITES -->
 
-
-	<!-- JSON pour tester si le pseudo ou email est unique -->
+	<!-- JSON pour les typevisites -->
 	<package name="jsonVisiteAction" extends="json-default">
 		<action name="creationTypevisite"
 			class="fr.cursusSopra.action.visites.ManageTypevisiteAction" method="executeCreationTypevisite">

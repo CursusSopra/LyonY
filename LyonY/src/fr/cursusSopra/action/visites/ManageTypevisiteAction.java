@@ -3,7 +3,6 @@ package fr.cursusSopra.action.visites;
 import java.sql.Connection;
 
 import fr.cursusSopra.action.general.ActionGeneral;
-import fr.cursusSopra.model.Adresse;
 import fr.cursusSopra.model.Typevisite;
 import fr.cursusSopra.tech.PostgresConnection;
 
