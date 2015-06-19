@@ -44,6 +44,10 @@
 				<s:property value="nclub.description" />
 			</div>
 			<div>
+				Accessibilité :
+				<s:property value="nclub.accessibilite" />
+			</div>
+			<div>
 				Budget :
 				<s:property value="nclub.prixmin" />
 				-

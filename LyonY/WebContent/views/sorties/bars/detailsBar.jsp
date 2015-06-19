@@ -44,6 +44,10 @@
 				<s:property value="bar.description" />
 			</div>
 			<div>
+				Accessibilité :
+				<s:property value="bar.accessibilite" />
+			</div>
+			<div>
 				Budget :
 				<s:property value="bar.prixmin" />
 				-

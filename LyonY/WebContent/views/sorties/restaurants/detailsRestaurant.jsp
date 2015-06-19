@@ -43,6 +43,10 @@
 				<s:property value="restaurant.description" />
 			</div>
 			<div>
+				Accessibilité :
+				<s:property value="restaurant.accessibilite" />
+			</div>
+			<div>
 				Budget :
 				<s:property value="restaurant.prixmin" />
 				-
