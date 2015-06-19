@@ -3,8 +3,8 @@
 
 <form class="form-horizontal" method="post" id="idSendModifUtilisateur" action="<s:url action='sendModifUtilisateur'/>">
 	<input type="hidden" name="idUtilisateur" value="<s:property value='idUtilisateur'/>" />
-	<input type ="hidden" name="idAdresse" value="<s:property value='idAdresse'/>"/>
-	<input type ="hidden" name="idQuartier" value="<s:property value='idQuartier'/>"/>
+	<input type="hidden" name="idadresse" value="<s:property value='idadresse'/>"/>
+	<input type="hidden" name="idQuartier" value="<s:property value='adresse.idQuartier'/>"/>
 	
 	<fieldset>
 		<legend>Login</legend>

@@ -99,15 +99,13 @@ public class Utilisateur {
 
 	/* Modification du compte */
 /* =================================================================================== */
-	public int modif(Connection cnx, int idUtilisateur, String email, String avatar, String pseudo, String motDePasse, int idadresse) throws SQLException {
+	public int modif(Connection cnx, int idUtilisateur, String email, String avatar, String pseudo, String motDePasse) throws SQLException {
 		 		
 		this.idUtilisateur = idUtilisateur;
 		this.pseudo = pseudo;
 		this.email = email;
 		this.motDePasse = motDePasse;
 		this.avatar = avatar;
-		this.idadresse = idadresse;
-
 		String query = "UPDATE utilisateurs SET pseudo=?, email=?, avatar=?, motdepasse=? WHERE idutilisateur =?";
 		
 		PreparedStatement ps = cnx.prepareStatement(query);
@@ -124,10 +122,10 @@ public class Utilisateur {
 		// Connexion à la base de données postgresSQL
 		Connection cnx = PostgresConnection.getConnexion();
 		// requête SQL
-		String query = "SELECT idutilisateur, email, motdepasse, avatar, numero, voie, codepostal, ville, idquartier "
+		String query = "SELECT idutilisateur, email, motdepasse, avatar, numero, voie, codepostal, ville, idquartier, idadresse "
 				+ "FROM utilisateurs "
-				+ "INNER JOIN adresses USING (idadresse)"
-				+ "INNER JOIN quartiers USING (idquartier)"
+				+ "INNER JOIN adresses USING (idadresse) "
+				+ "INNER JOIN quartiers USING (idquartier) "
 				+ "WHERE pseudo=?";
 		// System.out.println(query);
 		// Obtention de l'ensemble résultat
@@ -139,7 +137,7 @@ public class Utilisateur {
 			this.email = rs.getString("email");
 			this.motDePasse = rs.getString("motdepasse");
 			this.avatar = rs.getString("avatar");
-			
+			this.setIdadresse(rs.getInt("idadresse"));
 			this.adresse = new Adresse(rs.getInt("numero"), rs.getString("voie"), rs.getString("codepostal"), rs.getString("ville"), rs.getInt("idquartier"));
 		}
 	}
@@ -257,6 +255,7 @@ public class Utilisateur {
 	}
 	public void setIdadresse(int idadresse) {
 		this.idadresse = idadresse;
+		this.adresse.setIdAdresse(idadresse);
 	}
 	public String getPseudo() {
 		return pseudo;

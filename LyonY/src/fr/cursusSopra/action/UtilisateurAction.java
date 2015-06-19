@@ -179,7 +179,7 @@ public class UtilisateurAction extends ActionSupport {
 			motDePasse = uti.getMotDePasse();
 			avatar = uti.getAvatar();
 			idUtilisateur = uti.getIdUtilisateur();
-			
+			idadresse = uti.getIdadresse();
 			listeDesQuartiers = Quartier.getListeDesQuartiers();
 			adresse = uti.getAdresse();
 						
@@ -209,13 +209,10 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setAvatar(avatar);
 		uti.setMotDePasse(motDePasse);
 		uti.setEmail(email);
-		
-		uti.adresse.setCodePostal(codePostal);
-		uti.adresse.setNumero(numero);
-		uti.adresse.setVoie(voie);
-		uti.adresse.setVille(ville);
+		uti.setIdadresse(idadresse);
 		
 		try {
+			uti.modif(cnx, idUtilisateur, email, avatar, pseudo, motDePasse);
 			uti.adresse.update(cnx, numero, voie, codePostal, ville, idQuartier);
 			return SUCCESS;
 		} catch (SQLException e) {
@@ -259,6 +256,16 @@ public class UtilisateurAction extends ActionSupport {
 	/* Fin de modification du compte */
 /* ================================================================================================ */
 	
+	public int getIdQuartier() {
+		return idQuartier;
+	}
+
+
+	public void setIdQuartier(int idQuartier) {
+		this.idQuartier = idQuartier;
+	}
+
+
 	// Liste des avis
 /* ================================================================================================ */
 	public String executeDisplayAvis() {

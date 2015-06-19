@@ -90,16 +90,18 @@ public class Adresse {
 		this.ville=ville;
 		this.codePostal=codePostal;
 		this.idQuartier=idQuartier;
+		System.out.println(numero + voie + codePostal);
 		
 		// Mise à jour de la bse de données
 		String query = " UPDATE adresses  SET numero=?, voie=?, codepostal=?, ville=?, idquartier=? "
-				+ " WHERE idadresse=" + idAdresse;
+				+ " WHERE idadresse= " + idAdresse;
 		PreparedStatement ps = cnx.prepareStatement(query);
 		ps.setInt(1, numero);
 		ps.setString(2, voie);
 		ps.setString(3, codePostal);
 		ps.setString(4, ville);
 		ps.setInt(5, idQuartier);
+		System.out.println(ps.toString());
 		
 		return ps.executeUpdate();
 	}
