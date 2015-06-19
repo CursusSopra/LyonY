@@ -192,6 +192,15 @@ public class UtilisateurAction extends ActionSupport {
 	}
 
 	public String executeModif() {
+		
+//		try {
+//			utilisateur= new Utilisateur();
+//			utilisateur.modif(idUtilisateur, email, avatar, pseudo, motDePasse, idadresse, numero, voie, codePostal, ville);
+//			return SUCCESS;
+//		}catch (SQLException e) {
+//			return ERROR;
+//		}
+			
 		Connection cnx = PostgresConnection.getConnexion();
 
 		Utilisateur uti = new Utilisateur();
@@ -200,44 +209,50 @@ public class UtilisateurAction extends ActionSupport {
 		uti.setAvatar(avatar);
 		uti.setMotDePasse(motDePasse);
 		uti.setEmail(email);
-
-		/*try {
-			return uti.modif(cnx) != 0 ? SUCCESS : ERROR;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return ERROR;*/
+		
+		uti.adresse.setCodePostal(codePostal);
+		uti.adresse.setNumero(numero);
+		uti.adresse.setVoie(voie);
+		uti.adresse.setVille(ville);
 		
 		try {
-			// On se met en mode 'transaction'
-			cnx.setAutoCommit(false);
-			
-			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
-			int idAdresse = adresse.update(cnx, numero, voie, codePostal, ville, idQuartier);
-			
-			uti.setIdadresse(idAdresse);			
-			uti.modif(cnx, idUtilisateur, email, avatar, pseudo, motDePasse, idadresse);		
-
-			return SUCCESS;			
-		} catch (Exception e) {
-			try {
-				cnx.rollback();
-				//e.printStackTrace();
-				return ERROR;
-			} catch (SQLException e1) {
-				//e1.printStackTrace();
-			}
-		} finally {
-			try {
-				// On remet en mode 'auto-commit'
-				cnx.setAutoCommit(true);
-				cnx.close();
-			} catch (SQLException e) {
-				//e.printStackTrace();
-			}
+			uti.adresse.update(cnx, numero, voie, codePostal, ville, idQuartier);
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return ERROR;
+
+	
+//		try {
+//			// On se met en mode 'transaction'
+//			cnx.setAutoCommit(false);
+//			
+//			adresse = new Adresse(numero, voie, codePostal, ville, idQuartier);
+//			int idAdresse = adresse.update(cnx, numero, voie, codePostal, ville, idQuartier);
+//			
+//			uti.setIdadresse(idAdresse);			
+//			uti.modif(cnx, idUtilisateur, email, avatar, pseudo, motDePasse, idadresse);		
+//
+//			return SUCCESS;			
+//		} catch (Exception e) {
+//			try {
+//				cnx.rollback();
+//				//e.printStackTrace();
+//				return ERROR;
+//			} catch (SQLException e1) {
+//				//e1.printStackTrace();
+//			}
+//		} finally {
+//			try {
+//				// On remet en mode 'auto-commit'
+//				cnx.setAutoCommit(true);
+//				cnx.close();
+//			} catch (SQLException e) {
+//				//e.printStackTrace();
+//			}
+//		}
+//		return ERROR;
 	}
 	
 	
